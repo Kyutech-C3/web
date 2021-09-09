@@ -8,15 +8,15 @@
 ![フロー1 - Google Chrome 2021_09_06 22_49_23 (2)](https://user-images.githubusercontent.com/65708479/132235192-371ce95f-e4ff-4b40-9d66-a11f147e5cbb.png)
 * トップページ(pages/index.vue)：シモ
     components/
-    * Top.vue：ko_suke(担当：ふぃる先輩)
+    * TopTop.vue：ko_suke(担当：ふぃる先輩)
     * ![フロー1 - Google Chrome 2021_09_06 22_48_52 (2)](https://user-images.githubusercontent.com/65708479/132235269-f2a5018a-9a65-4b82-b750-2bc11cafbcd8.png)
-    * AboutC3.vue：Kizuku(担当：鳩)
+    * TopAboutC3.vue：Kizuku(担当：鳩)
     * ![フロー1 - Google Chrome 2021_09_06 22_48_58 (2)](https://user-images.githubusercontent.com/65708479/132235320-764faf29-e38c-42ee-bfb2-25c2a0258c90.png)
-    * AboutCommunity.vue：まつり(担当：シモ)
+    * TopAboutCommunity.vue：まつり(担当：シモ)
     * ![フロー1 - Google Chrome 2021_09_06 22_49_07 (2)](https://user-images.githubusercontent.com/65708479/132235334-e68e5503-8836-4bdb-a0ab-f48047816881.png)
-    * CommunityLink.vue：オンコン(担当：シモ)
+    * TopCommunityLink.vue：オンコン(担当：シモ)
     * ![フロー1 - Google Chrome 2021_09_06 22_49_12 (2)](https://user-images.githubusercontent.com/65708479/132235359-92d1ccb0-e9f9-444a-b08e-6997dd8f6b71.png)
-    * Blog.vue：Kouichi_T(担当：鳩)
+    * TopBlog.vue：Kouichi_T(担当：鳩)
     * ![フロー1 - Google Chrome 2021_09_06 22_49_20 (2)](https://user-images.githubusercontent.com/65708479/132235398-2bbd68bd-ba6d-4686-89bc-90c06dc260f5.png)
 * C3について(pages/about/index.vue)  
     components/
