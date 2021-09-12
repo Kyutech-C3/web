@@ -34,13 +34,9 @@
 
 <script>
 // JavaScript使わん
-import { defineComponent } from '@vue/composition-api'
+export default {
 
-export default defineComponent({
-    setup() {
-        
-    },
-})
+}
 </script>
 
 <style lang = "scss" scoped>
