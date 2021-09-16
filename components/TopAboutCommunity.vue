@@ -1,37 +1,27 @@
 <template>
     <div>
         <div class = "community-wrapper">
-            <!-- <div class = "about-community"> -->
-                <!-- <div class ="box sub-title"> -->
-                    
-                <!-- </div> -->
                 <div class = "box text-contents">
-                    <h1>Community</h1>
+                    <h1>コミュニティ</h1>
                     <p>九工大のサークル、<span>C3</span>です。</p>
                     <p><span>Unity</span>を使ってゲームを作ったり、<span>Web</span>の開発、<span>Blender</span>で<span>3D</span>モデリングなど、コンピュータを使って色々な創作活動を行っているサークルです。</p>
-                    
                 </div>
-            <!-- </div> -->
 
             <div class = "box community-icons">
-                <!-- <div class = "community-icon"> -->
+                <!-- メディアアートコミュニティのアイコン -->
                 <img class = "icon art" src = "https://3.bp.blogspot.com/-To8tA3yiE0k/VJF_QawmPdI/AAAAAAAAp0w/oihka8c4k90/s800/animalface_usagi.pngS"/>
-                <!-- </div> -->
 
-                <!-- <div class = "community-icon"> -->
+                <!--ゲームコミュニティのアイコン -->
                 <img class = "icon game" src = "https://1.bp.blogspot.com/-ZqRV1i42ELM/VJF_J7IvQjI/AAAAAAAApzk/GCpLXcqU6WE/s800/animalface_neko.png"/> 
-                <!-- </div> -->
                     
-                <!-- <div class = "community-icon">   -->
+                <!-- ハックコミュニティのアイコン -->
                 <img class = "icon hack" src = "https://2.bp.blogspot.com/-fhkRCjjEO98/VJF_LkOt_bI/AAAAAAAApzs/jYqrTFF6XA4/s800/animalface_niwatori.png"/>
-                <!-- </div> -->
 
-                <!-- <div class = "community-icon"> -->
+                <!-- CGコミュニティのアイコン -->
                 <img class = "icon cg" src = "https://4.bp.blogspot.com/-co9Gfae-aWE/XNE-4L7WvLI/AAAAAAABStA/kX0r_XmPRcgt8x69YxtLM3rZ_53H4Y-MgCLcBGAs/s800/food_niku_buta_ro-su.png">
-                <!-- </div> -->
+                
             </div>
         </div>
-        
     </div>
 </template>
 
@@ -48,13 +38,14 @@ export default {
 /* しも先輩にきく SCSSわからん*/
 
     .community-wrapper {
-        /* ↓チェック用  */
-        /* background-color: lightgreen; */
         width: 100%;
     
         display: flex;
         flex-wrap: wrap; 
         padding: 30px;
+
+        /* チェック用  */
+        /* background-color: lightgreen; */
     }
 
     .text-contents {
