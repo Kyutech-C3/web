@@ -6,7 +6,7 @@
                     
                 <!-- </div> -->
                 <div class = "box text-contents">
-                    <h1>コミュニティ</h1>
+                    <h1>Community</h1>
                     <p>九工大のサークル、<span>C3</span>です。</p>
                     <p><span>Unity</span>を使ってゲームを作ったり、<span>Web</span>の開発、<span>Blender</span>で<span>3D</span>モデリングなど、コンピュータを使って色々な創作活動を行っているサークルです。</p>
                     
