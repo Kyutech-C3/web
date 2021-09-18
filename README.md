@@ -3,7 +3,7 @@
 公式サイトのリニューアル版
 
 # 役割分担
-* Header：最終デザインがまだ  
+* Header：ふぃる先輩
 * Footer：もおん(担当：ふぃる先輩)  
 ![フロー1 - Google Chrome 2021_09_06 22_49_23 (2)](https://user-images.githubusercontent.com/65708479/132235192-371ce95f-e4ff-4b40-9d66-a11f147e5cbb.png)
 * トップページ(pages/index.vue)：シモ
