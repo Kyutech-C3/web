@@ -2,9 +2,7 @@
     <div>
         <div class = "community-wrapper">
                 <div class = "box text-contents">
-                    <div class ="title-box">
                     <p class="title">コミュニティ</p>
-                    </div>
                     <div class ="description">
                     <p>九工大のサークル、C3です。</p>
                     <p>Unityを使ってゲームを作ったり、Webの開発、Blenderで3Dモデリングなど、コンピュータを使って色々な創作活動を行っているサークルです。</p>
@@ -65,6 +63,10 @@ export default {
 
         /* チェック用 */
         /* background-color: skyblue; */
+
+        text-align: left;
+        font-size: $font-size-contents-description;
+        color: $base-font-color;
     }
 
     
@@ -78,14 +80,6 @@ export default {
         /* background-color: orange; */
     }
     
-    
-    /* 説明文章 */
-    p {
-        text-align: left;
-        font-size: $font-size-contents-description;
-        color: $base-font-color;
-    }
-
     
     /* アイコン全体 */
     .community-icons {
@@ -140,36 +134,41 @@ export default {
         transform: translate(-50%, -50%);
     }
 
+    .description {
+        /* チェック用 */
+        /* background-color: thistle; */
+    }
+
     
-    /* 画面小さくしたら縦並びになる仕様 */
+    /* スマホ・タブレット仕様 */
     @media not all and (min-width: 1400px) {
-        .text-contents {
+        .community-wrapper {
             width: 100%;
-            margin-left: 124px;
-            margin-right: 124px;
+            position: relative;
         }
 
-
-       .community-icons {
-           position: absolute;
-           left: 0;
-           right: 0;
-           margin: auto;
-       }
-       .community-wrapper {
-            position: relative;
-            margin: auto;
+        .text-contents {
+            width: 100%;
+            /* margin-left: 124px; */
+            /* margin-right: 124px; */
+            text-align: center;
         }
 
         .title {
-            text-align: center;
             padding-bottom: 200px;
-            width: 100%;
+            text-align: center;
         }
+
         .description {
             padding-top: 200px;
         }
 
-      
+        .community-icons {
+           position: absolute;
+           left: 0;
+           right: 0;
+           margin: auto;
+        }
+
     }
 </style>
