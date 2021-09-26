@@ -10,10 +10,11 @@ $black: #000000;
 
 
 // Variable for text
-$font-size-top-title: 120px;
-$font-size-contents-title: 100px;
-$font-size-contents-description: 28px;
-$font-size-button: 24px;
+$base_font_size: 1rem;
+$font-size-top-title: $base_font_size * 12;
+$font-size-contents-title: $base_font_size * 10;
+$font-size-contents-description: $base_font_size * 2.8;
+$font-size-button: $base_font_size * 2.4;
 $font-size-header: 28px;
 $font-size-footer: 20px;
 $base-font-color: $gray;
