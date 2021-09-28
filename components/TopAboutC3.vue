@@ -5,10 +5,10 @@
                 <div class="top">
                     C3について
                 </div>
-                <p class="sentence">
+                <div class="sentence">
                     九工大のサークル、C3です。<br>
                     Unityを使ってゲームを作ったり、Webの開発、Blenderで3Dモデリングなど、コンピュータを使って色々な創作活動を行っているサークルです。
-                </p>
+                </div>
                 <a class="link" href="about">
                     <div class="frame">
                         詳しく見る
@@ -21,13 +21,16 @@
 </template>
 
 <style lang="scss" scoped>
-.icon{position: relative;
-top: 0px;
-left: 120px;
+.area{
+    display: flex;
+    width: 100%;
+}
+.icon{
+    margin: 0 0 0 120px;
 width: 400px;
 height: 400px;
 line-height: 242px;
-max-width: $max-width;
+
 border: solid #555555;
 border-radius: 200px;
 background: #555555;
@@ -35,18 +38,12 @@ color: $white;
 font-size: 200px;
 font-family: "Inter";
 text-align: center;
-display: table-cell;
-vertical-align: middle;
 }
 .main-area{
-    position: absolute;
-    top: 0px;
-    left: 620px;
+    
 }
 .top{
-position: relative;
-top: 0px;
-left: 0px;
+padding: 0 0 0 100px;
 width: 536px;
 height: 129px;
 line-height: 160px;
@@ -57,9 +54,8 @@ font-style: Regular;
 font-style: Medium;
 font-size: $font-size-contents-title;
 }
-.sentence{position: relative;
-top: 60px;
-left: 8px;
+.sentence{
+    padding: 60px 0 0 108px;
 width: 1014px;
 height: 178px;
 line-height: 45px;
@@ -70,11 +66,9 @@ font-family: "Inter","游ゴシック";
 font-style: Regular;
 font-size: $font-size-contents-description;
 }
-.link{position: relative;
-top: 14.8px;
-left: 395px;
-width: 100%;
-height: 31px;
+.link{margin: 0 0 0 495px;
+width: 240px;
+height: 60px;
 line-height: 39px;
 max-width: $max-width;
 color: $gray;
@@ -84,9 +78,7 @@ font-family: "游ゴシック";
 font-style: Medium;
 font-size: $font-size-button;
 }
-.frame{position: relative;
-top: 14.8px;
-left: 0px;
+.frame{
 width: 240px;
 height: 60px;
 max-width: $max-width;
