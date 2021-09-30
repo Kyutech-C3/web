@@ -1,16 +1,16 @@
+@media screen and (max-width: 600px) {
+    body {
+        font-size: 5px;
+    }    
+}
+
 @media screen and (max-width: 1000px) {
     body {
         font-size: 8px;
     }    
 }
 
-@media screen and (max-width: 1980px) {
-    body {
-        font-size: 10px;
-    }    
-}
-
-@media screen and (min-width: 1980px) {
+@media screen and (min-width: 1000px) {
     body {
         font-size: 10px;
     }    
