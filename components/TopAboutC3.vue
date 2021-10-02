@@ -1,50 +1,45 @@
 <template>
     <div class="area">
         <div class="icon">C3</div>
-            <div class="main-area">
-                <div class="top">
-                    C3について
-                </div>
-                <div class="sentence">
-                    九工大のサークル、C3です。<br>
-                    Unityを使ってゲームを作ったり、Webの開発、Blenderで3Dモデリングなど、コンピュータを使って色々な創作活動を行っているサークルです。
-                </div>
-                <a class="link" href="about">
-                    <div class="frame">
-                        詳しく見る
-                    </div>
-                </a>
+            <div class="top">
+                C3について
             </div>
-        
-        
+            <div class="sentence">
+                九工大のサークル、C3です。<br>
+                Unityを使ってゲームを作ったり、Webの開発、Blenderで3Dモデリングなど、コンピュータを使って色々な創作活動を行っているサークルです。
+            </div>
+            <a class="link" href="about">
+                <div class="frame">
+                    詳しく見る
+                </div>
+            </a>
     </div>
 </template>
 
 <style lang="scss" scoped>
 .area{
-    display: flex;
-    width: 100%;
+display: flex;
+flex-direction: column;
+flex-wrap: wrap;
+height: 500px;
 }
 .icon{
-    margin: 0 0 0 120px;
+margin: 0 0 0 120px;
 width: 400px;
 height: 400px;
-line-height: 242px;
-
+line-height: 400px;
 border: solid #555555;
-border-radius: 200px;
+border-radius: 50%;
 background: #555555;
 color: $white;
 font-size: 200px;
 font-family: "Inter";
 text-align: center;
 }
-.main-area{
-    
-}
+
 .top{
 padding: 0 0 0 100px;
-width: 536px;
+width: 100%;
 height: 129px;
 line-height: 160px;
 max-width: $max-width;
@@ -55,7 +50,7 @@ font-style: Medium;
 font-size: $font-size-contents-title;
 }
 .sentence{
-    padding: 60px 0 0 108px;
+padding: 60px 0 0 108px;
 width: 1014px;
 height: 178px;
 line-height: 45px;
@@ -92,59 +87,47 @@ vertical-align: middle;
 }
 
 .frame:hover{
-    color: $white;
-    background-color: $gray;
+color: $white;
+background-color: $gray;
 }
 
-@media screen and (max-width: 1024px){
+@media screen and (max-width: 1000px){
 .area{
-width: 100%;
-height: 659px;
+height: 800px;
+justify-content: center;
 }
-.main-area{
-        position: relative;
-        top: -279px;
-        left: 0px;
-        width: 100%;
 
-}
 .top{
-position: relative;
-top: 0px;
-margin: 0 26%;
-width: 48%;
+padding: 0 0;
+text-align: center;
 height: 92px;
 line-height: 115px;
-font-size: 72px;
+font-size: $font-size-contents-title;
+order: 1;
 }
-.icon{position: relative;
-top: 132px;
-margin: 0 32.5%;
+.icon{
+margin: 40px auto 0 auto;
 width: 279px;
 height: 279px;
-line-height: 181px;
-border-radius: 200px;
+line-height: 279px;
 font-size: 150px;
+order: 2;
 }
-.sentence{position: relative;
-top: 359px;
-margin: 0 7.5%;
+.sentence{
+padding: 40px 7.5% 0 7.5%;
 width: 85%;
-height: 148px;
+height: auto;
 line-height: 34px;
 text-align: center;
-font-size: 21px;
+font-size: $font-size-contents-description;
+order: 3;
 }
-.link{position: relative;
-top: 359px;
-left: 220px;
-margin: 0 auto;  
+.link{
+margin: 15px auto 0 auto;
+font-size: $font-size-button;
+order: 4;
 }
-.frame{position: relative;
-top: 0px;
-left: 0px;
-margin: 0 auto; 
-}
+
 }
 
 </style>
