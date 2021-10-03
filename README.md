@@ -34,12 +34,12 @@
 * ブログ一覧(pages/blog/index.vue)  ：シモ
     components/
     * 必要に応じて作成
-* ブログ詳細(pages/blog/_id.vue)      
+* ブログ詳細(pages/blog/\_id.vue)   ：シモ   
     components/
-    * シモ
-* お問い合わせ(pages/contact/index.vue)  
+    * 必要に応じて作成
+* お問い合わせ(pages/contact/index.vue) ：ko_suke 
     components/
-    * ko_suke
+    * 必要に応じて作成
 
 # デザイン
 
