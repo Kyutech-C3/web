@@ -1,5 +1,4 @@
 <template>
-  <div>
     <div class="wrap">
       <div class="left-wrap">
         <!-- トップタイトル(Composite Computer Club) -->
@@ -13,13 +12,13 @@
           <div class="top-news-flex-wrap">
             <div class="top-news-title">お知らせ</div>
             <div class="all-news-link">
-              <a :href="allNewsLink">一覧を見る</a>
+              <nuxt-link to="/news">一覧を見る<nuxt-link>
             </div>
           </div>
           <div class="top-news">
-            <a :href="topNewsLink">
+            <nuxt-link to='/news/${news.id}'>
               {{ news.date + ' ' + news.content }}
-            </a>
+            </nuxt-link>
           </div>
         </div>
       </div>
@@ -31,9 +30,9 @@
               v-for="(slide, idx) in slides"
               :key="idx"
             >
-              <a :href="slides[idx].link" >
+              <nuxt-link>
                 <img :src="slides[idx].img"/>
-              </a>
+              </nuxt-link>
             </slide>
             <hooper-navigation slot="hooper-addons"></hooper-navigation>
             <hooper-pagination slot="hooper-addons"></hooper-pagination>
@@ -44,18 +43,17 @@
           <div class="top-news-flex-wrap">
             <div class="top-news-title">お知らせ</div>
             <div class="all-news-link">
-              <a :href="allNewsLink">一覧を見る</a>
+              <nuxt-link to="/news">一覧を見る<nuxt-link>
             </div>
           </div>
           <div class="top-news">
-            <a :href="topNewsLink">
+            <nuxt-link to='/news/${news.id}'>
               {{ news.date + ' ' + news.content }}
-            </a>
+            </nuxt-link>
           </div>
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -77,6 +75,7 @@ export default {
   data() {
     return {
 			news: {
+        id: 0,
 				date: '2021.9.30',
 				content: 'オフィシャルサイト更新！！'
 			},
@@ -87,8 +86,6 @@ export default {
         { link: '#4', img: '/carousel_4.png' },
         { link: '#5', img: '/carousel_5.png' }
       ],
-      allNewsLink: '#allnews',
-      topNewsLink: '#topnews',
       hooperSettings: {
         infiniteScroll: true,
         centerMode: true,
