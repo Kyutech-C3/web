@@ -21,25 +21,25 @@
     * ![フロー1 - Google Chrome 2021_09_06 22_49_20 (2)](https://user-images.githubusercontent.com/65708479/132235398-2bbd68bd-ba6d-4686-89bc-90c06dc260f5.png)
 * C3について(pages/about/index.vue)  
     components/
-    * 未
+    * Kizuku
 * お知らせ一覧(pages/news/index.vue)  
     components/
-    * 未
+    * まつり
 * お知らせ詳細(pages/news/_id.vue)  
     components/
-    * 未
+    * まつり
 * 各コミュニティーページ(pages/community/_id.vue)  
     components/
-    * 未
+    *　鳩屋敷
 * ブログ一覧(pages/blog/index.vue)  
     components/
-    * 未
+    * ko_suke
 * ブログ詳細(pages/blog/_id.vue)      
     components/
-    * 未
+    * シモ
 * お問い合わせ(pages/contact/index.vue)  
     components/
-    * 未
+    * ko_suke
 
 # デザイン
 
