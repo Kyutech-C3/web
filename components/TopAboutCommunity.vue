@@ -1,15 +1,17 @@
 <template>
     <div>
         <div class = "community-wrapper">
-                <div class = "box text-contents">
-                    <p class="title">コミュニティ</p>
+                <div class = "text-contents">
+                    <div class="title">
+                    <p>コミュニティ</p>
+                    </div>
                     <div class ="description">
                     <p>九工大のサークル、C3です。</p>
                     <p>Unityを使ってゲームを作ったり、Webの開発、Blenderで3Dモデリングなど、コンピュータを使って色々な創作活動を行っているサークルです。</p>
                     </div>
                 </div>
 
-            <div class = "box community-icons">
+            <div class = "community-icons">
                 <div id="icon_set_1" class="icon_set">
                     <div class="icon_box">
                         <!-- メディアアートコミュニティのアイコン -->
@@ -50,6 +52,8 @@ export default {
         display: flex;
         align-items: center;
         flex-wrap: wrap;
+        justify-content: center;
+        /* justify-content: space-between; */
 
         /* チェック用  */
         /* background-color: lightgreen; */
@@ -61,10 +65,15 @@ export default {
     .text-contents {
         width: 60%;
 
+        /* display: flex; */
+        /* flex-direction: column; */
+        /* align-items: flex-start; */
+        /* justify-content: space-between; */;
+
         /* チェック用 */
         /* background-color: skyblue; */
 
-        text-align: left;
+        /* text-align: left; */
         font-size: $font-size-contents-description;
         color: $base-font-color;
     }
@@ -72,12 +81,14 @@ export default {
     
     /* 小見出し */
     .title {
-        text-align: left;
+        /* text-align: left; */
         font-size: $font-size-contents-title;
         color: $base-font-color;
-        
+        margin-top: -80px;
+
         /* チェック用 */
         /* background-color: orange; */
+        
     }
     
     
@@ -149,8 +160,6 @@ export default {
 
         .text-contents {
             width: 100%;
-            /* margin-left: 124px; */
-            /* margin-right: 124px; */
             text-align: center;
         }
 
