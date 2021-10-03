@@ -3,14 +3,13 @@
     <div class="header-wrapper" :style="headerStyles">
       <div class="header-container center">
         <div class="left-contents center">
-          <div @click="showContents = !showContents">
-            <font-awesome-icon :icon="showContents ? 'times' : 'bars'" />
-          </div>
-          <div>
-            <img
-              src="https://avatars.githubusercontent.com/u/61457046?s=200&v=4"
-            />
-          </div>
+          <font-awesome-icon
+            :icon="isShowContents ? 'times' : 'bars'"
+            @click="showContents()"
+          />
+          <img
+            src="https://avatars.githubusercontent.com/u/61457046?s=200&v=4"
+          />
         </div>
         <div class="right-contents center">
           <div class="contact">
@@ -40,7 +39,7 @@
         </div>
       </div>
       <transition>
-        <div v-show="showContents" class="main-container">
+        <div v-show="isShowContents" class="main-container">
           <div class="contents-wrapper center">
             <ul v-for="(contents, i) in allContents" :key="i">
               <li v-for="(content, j) in contents" :key="j">
@@ -65,7 +64,7 @@
 export default {
   data() {
     return {
-      showContents: false,
+      isShowContents: false,
       isChangedLanguage: false,
       allContents: [
         [
@@ -139,7 +138,7 @@ export default {
   },
   computed: {
     headerStyles() {
-      if (this.showContents) {
+      if (this.isShowContents) {
         return {
           '--height': '300px',
         }
@@ -148,6 +147,15 @@ export default {
           '--height': '90px',
         }
       }
+    },
+  },
+  methods: {
+    showContents() {
+      this.isShowContents = !this.isShowContents
+      this.$emit('masked-screen')
+    },
+    closeHeader() {
+      this.isShowContents = false
     },
   },
 }
@@ -160,10 +168,12 @@ export default {
   position: fixed;
   top: 20px;
   left: 0;
+  z-index: 10;
 }
 .header-wrapper {
   width: 95%;
   height: var(--height);
+  background-color: $white;
   margin: auto;
   box-shadow: 0px 2px 8px #00000033;
   border-radius: 60px;
