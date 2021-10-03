@@ -31,7 +31,7 @@
 * 各コミュニティーページ(pages/community/\_id.vue) ：Kizuku  
     components/  
     * 必要に応じて作成
-* ブログ一覧(pages/blog/index.vue)  ：シモ
+* ブログ一覧(pages/blog/index.vue)  ：もおん
     components/
     * 必要に応じて作成
 * ブログ詳細(pages/blog/\_id.vue)   ：シモ   
