@@ -30,7 +30,7 @@
               v-for="(slide, idx) in slides"
               :key="idx"
             >
-              <nuxt-link>
+              <nuxt-link to="slides[idx].link">
                 <img :src="slides[idx].img"/>
               </nuxt-link>
             </slide>
