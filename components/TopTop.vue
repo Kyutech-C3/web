@@ -12,7 +12,7 @@
           <div class="top-news-flex-wrap">
             <div class="top-news-title">お知らせ</div>
             <div class="all-news-link">
-              <nuxt-link to="/news">一覧を見る<nuxt-link>
+              <nuxt-link to="/news">一覧を見る</nuxt-link>
             </div>
           </div>
           <div class="top-news">
@@ -43,7 +43,7 @@
           <div class="top-news-flex-wrap">
             <div class="top-news-title">お知らせ</div>
             <div class="all-news-link">
-              <nuxt-link to="/news">一覧を見る<nuxt-link>
+              <nuxt-link to="/news">一覧を見る</nuxt-link>
             </div>
           </div>
           <div class="top-news">
