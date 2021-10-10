@@ -8,20 +8,29 @@ $black: #000000;
 
 //Variable for default ui
 
-
-// Variable for text
+// Common variable for text
 $base_font_size: 1rem;
+$base-font-color: $gray;
+$footer-font-color: $light-gray;
+$font-size-header: 28px;
+$font-size-footer: 20px;
+
+// Variable for top page text
 $font-size-top-title: $base_font_size * 12;
 $font-size-contents-title: $base_font_size * 10;
 $font-size-contents-description: $base_font_size * 2.8;
 $font-size-button: $base_font_size * 2.4;
-$font-size-header: 28px;
-$font-size-footer: 20px;
-$base-font-color: $gray;
-$footer-font-color: $light-gray;
 
-// width
-$max-width: 1920px;
+// Variable for other page text
+$font-size-other-title: $base_font_size * 10;
+$font-size-other-contents-title: $base_font_size * 4;
+$font-size-other-contents-description: $base_font_size * 2.8;
+$font-size-other-contents-date: $base_font_size * 3.2;
+
+// Variable for media query
+$media-query-small-max-width: 600px;
+$media-query-standard-max-width: 1000px;
+$media-query-min-width: 1000px;
 
 // opacity
 $opacity-carousel-point: 30%;

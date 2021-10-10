@@ -1,16 +1,16 @@
-@media screen and (max-width: 600px) {
+@media screen and (max-width: $media-query-small-max-width) {
     html {
         font-size: 5px;
     }    
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: $media-query-standard-max-width) {
     html {
         font-size: 8px;
     }    
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: $media-query-min-width) {
     html {
         font-size: 10px;
     }    
