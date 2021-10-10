@@ -22,10 +22,10 @@ display: flex;
 flex-direction: column;
 flex-wrap: wrap;
 align-content: flex-start;
-height: 477px;
+height: 637px;
 }
 .icon{
-margin: 0 0 0 6.25%;
+margin: 0 0 160px 6.25%;
 width: 400px;
 border-radius: 50%;
 }
@@ -33,7 +33,7 @@ border-radius: 50%;
 .top{
 margin: 0 0 0 5.2%;
 width: 536px;
-height: 129px;
+height: auto;
 line-height: 160px;
 max-width: $max-width;
 color: $gray;
@@ -43,7 +43,7 @@ font-style: Medium;
 font-size: $font-size-contents-title;
 }
 .sentence{
-margin: 60px 0 0 5.6%;
+margin: 29px 0 0 5.6%;
 width: 51.2%;
 line-height: 45px;
 text-align: left;
@@ -104,8 +104,6 @@ order: 1;
 margin: 40px auto 0 auto;
 width: 279px;
 height: 279px;
-line-height: 279px;
-font-size: 150px;
 order: 2;
 }
 .sentence{
