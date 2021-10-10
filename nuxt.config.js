@@ -22,14 +22,14 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     {
-      src: './assets/stylesheets/variables.scss', lang: 'scss'
-    
+      src: './assets/stylesheets/variables.scss', lang: 'scss'    
     }
   ],
 
   styleResources: {
     scss: [
-      './assets/stylesheets/variables.scss'
+      './assets/stylesheets/variables.scss',
+      './assets/stylesheets/responsive.scss'
     ]
   },
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
