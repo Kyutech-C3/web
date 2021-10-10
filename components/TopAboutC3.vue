@@ -21,7 +21,8 @@
 display: flex;
 flex-direction: column;
 flex-wrap: wrap;
-height: 500px;
+align-content: flex-start;
+height: 477px;
 }
 .icon{
 margin: 0 0 0 6.25%;
@@ -30,7 +31,7 @@ border-radius: 50%;
 }
 
 .top{
-padding: 0 0 0 5.2%;
+margin: 0 0 0 5.2%;
 width: 536px;
 height: 129px;
 line-height: 160px;
@@ -42,7 +43,7 @@ font-style: Medium;
 font-size: $font-size-contents-title;
 }
 .sentence{
-padding: 60px 0 0 5.6%;
+margin: 60px 0 0 5.6%;
 width: 51.2%;
 line-height: 45px;
 text-align: left;
@@ -54,7 +55,7 @@ font-style: Regular;
 font-size: $font-size-contents-description;
 }
 .link{
-margin: 28px 0 0 25.7%;
+margin: 28px 0 0 22.7%;
 width: 240px;
 height: 60px;
 line-height: 39px;
@@ -91,10 +92,10 @@ justify-content: center;
 }
 
 .top{
-padding: 0 0;
+margin: 0 0;
 text-align: center;
 width: 100%;
-height: 92px;
+height: auto;
 line-height: 115px;
 font-size: $font-size-contents-title;
 order: 1;
@@ -108,9 +109,10 @@ font-size: 150px;
 order: 2;
 }
 .sentence{
-padding: 40px 7.5% 0 7.5%;
+margin: 40px 7.5% 0 7.5%;
 width: 85%;
 height: auto;
+max-height: none;
 line-height: 34px;
 text-align: center;
 font-size: $font-size-contents-description;
