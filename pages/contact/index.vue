@@ -7,7 +7,12 @@
         お問い合わせ
       </div>
       <!-- form -->
-      <div class="contact-form-wrap">
+      <form
+        class="contact-form-wrap"
+        method="post"
+        novalidate="true"
+        @submit.prevent
+      >
         <!-- description -->
         <div class="contact-form-description">
           当サイトやC3へのお問い合わせ，ご希望などございましたら、以下のフォームよりご連絡ください。内容を確認しメールにて連絡致します。
@@ -18,7 +23,9 @@
           <div class="contact-form-input" :class="{'contact-form-input-error': nameError}">
             <input v-model="name" type="text"/>
           </div>
-          <div v-if="nameError" class="contact-form-error">*お名前を入力してください。</div>
+          <div v-if="nameError" class="contact-form-error">
+            {{ nameComment }}
+          </div>
         </div>
         <!-- email -->
         <div class="contact-form">
@@ -26,7 +33,9 @@
           <div class="contact-form-input" :class="{'contact-form-input-error': emailError}">
             <input v-model="email" type="email"/>
           </div>
-          <div v-if="emailError" class="contact-form-error">*メールアドレスを入力してください。</div>
+          <div v-if="emailError" class="contact-form-error">
+            {{ emailComment }}
+          </div>
         </div>
         <!-- contact -->
         <div class="contact-form">
@@ -34,13 +43,15 @@
           <div class="contact-form-input" :class="{'contact-form-input-error': messageError}">
             <textarea v-model="message"/>
           </div>
-          <div v-if="messageError" class="contact-form-error">*お問い合わせ内容を入力してください。</div>
+          <div v-if="messageError" class="contact-form-error">
+            {{ messageComment }}
+          </div>
         </div>
         <!-- button -->
         <div class="contact-form-submit">
-          <button @click="post">送信</button>
+          <button @click="checkForm">送信</button>
         </div>
-      </div>
+      </form>
     </div>
     <!-- <Footer/>がここに入る -->
   </div>
@@ -54,31 +65,48 @@ export default {
   // components: { Header, Footer },
   data() {
     return {
+      // value
       name: '',
       email: '',
       message: '',
+      // error boolean
       nameError : false,
       emailError: false,
-      messageError: false
+      messageError: false,
+      // error message
+      nameComment: '*お名前を入力してください',
+      emailComment: '*メールアドレスを入力してください',
+      messageComment: '*お問い合わせ内容を入力してください',
     }
   },
   methods: {
-    post() {
-      if(this.name === '') {
+    checkForm() {
+      // name
+      if(!this.name) {
         this.nameError = true;
       } else {
         this.nameError = false;
       }
-      if(this.email === '') {
+      // email
+      if(!this.email) {
         this.emailError = true;
+        this.emailComment = '*メールアドレスを入力してください'
+      } else if(!this.validEmail(this.email)) {
+        this.emailError = true;
+        this.emailComment = '*メールアドレスの形式で入力してください'
       } else {
         this.emailError = false;
       }
-      if(this.message === '') {
+      // message
+      if(!this.message) {
         this.messageError = true;
       } else {
         this.messageError = false;
       }
+    },
+    validEmail(email) {
+      const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return regex.test(email);
     }
   }
 }
