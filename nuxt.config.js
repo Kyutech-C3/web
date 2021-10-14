@@ -22,14 +22,14 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     {
-      src: './assets/stylesheets/variables.scss', lang: 'scss'
-    
+      src: './assets/stylesheets/variables.scss', lang: 'scss'    
     }
   ],
 
   styleResources: {
     scss: [
-      './assets/stylesheets/variables.scss'
+      './assets/stylesheets/variables.scss',
+      './assets/stylesheets/responsive.scss'
     ]
   },
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -49,6 +49,7 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     'nuxt-fontawesome',
+    '@nuxtjs/dotenv',
   ],
   fontawesome: {
     imports: [
@@ -65,5 +66,10 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+  },
+
+  env: {
+    CTF_SPACE_ID: process.env.CTF_SPACE_ID,
+    CTF_CDA_ACCESS_TOKEN: process.env.CTF_CDA_ACCESS_TOKEN,
   }
 }
