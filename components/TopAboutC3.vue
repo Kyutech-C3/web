@@ -23,6 +23,7 @@ flex-direction: column;
 flex-wrap: wrap;
 align-content: flex-start;
 height: 637px;
+max-width: 1920px;
 }
 .icon{
 margin: 0 0 160px 6.25%;
@@ -32,10 +33,9 @@ border-radius: 50%;
 
 .top{
 margin: 0 0 0 5.2%;
-width: 536px;
+
 height: auto;
 line-height: 160px;
-max-width: $max-width;
 color: $gray;
 font-family: "Inter","游ゴシック";
 font-style: Regular;
@@ -47,7 +47,6 @@ margin: 29px 0 0 5.6%;
 width: 51.2%;
 line-height: 45px;
 text-align: left;
-max-width: $max-width;
 max-height: 200px;
 color: $gray;
 font-family: "Inter","游ゴシック";
@@ -59,7 +58,7 @@ margin: 28px 0 0 22.7%;
 width: 240px;
 height: 60px;
 line-height: 39px;
-max-width: $max-width;
+
 color: $gray;
 text-decoration: none;
 letter-spacing: 0px;
@@ -70,7 +69,7 @@ font-size: $font-size-button;
 .frame{
 width: 240px;
 height: 60px;
-max-width: $max-width;
+
 color: $gray;
 border: 1px solid;
 border-color: $gray;
@@ -85,7 +84,7 @@ color: $white;
 background-color: $gray;
 }
 
-@media screen and (max-width: 1000px){
+@media screen and (max-width: $media-query-standard-max-width){
 .area{
 height: auto;
 justify-content: center;
