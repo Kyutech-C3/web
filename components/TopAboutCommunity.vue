@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div class = "community-wrapper">
-                <div class = "text-contents">
+        <div class = "community_wrapper">
+                <div class = "text_contents">
                     <div class="title">
                     <p>コミュニティ</p>
                     </div>
@@ -11,25 +11,25 @@
                     </div>
                 </div>
 
-            <div class = "community-icons">
+            <div class = "community_icons">
                 <div id="icon_set_1" class="icon_set">
                     <div class="icon_box">
-                        <!-- メディアアートコミュニティのアイコン -->
-                        <img class = "icon art" src = "https://3.bp.blogspot.com/-To8tA3yiE0k/VJF_QawmPdI/AAAAAAAAp0w/oihka8c4k90/s800/animalface_usagi.pngS"/>
+                        <!-- 左上のアイコン -->
+                        <img class = "icon 1" src = "https://3.bp.blogspot.com/-To8tA3yiE0k/VJF_QawmPdI/AAAAAAAAp0w/oihka8c4k90/s800/animalface_usagi.pngS"/>
                     </div>
                     <div class="icon_box">
-                        <!--ゲームコミュニティのアイコン -->
-                        <img class = "icon game" src = "https://1.bp.blogspot.com/-ZqRV1i42ELM/VJF_J7IvQjI/AAAAAAAApzk/GCpLXcqU6WE/s800/animalface_neko.png"/> 
+                        <!--右上のアイコン -->
+                        <img class = "icon 2" src = "https://1.bp.blogspot.com/-ZqRV1i42ELM/VJF_J7IvQjI/AAAAAAAApzk/GCpLXcqU6WE/s800/animalface_neko.png"/> 
                     </div>
                 </div>
                 <div id="icon_set_2" class="icon_set">  
                     <div class="icon_box">
-                        <!-- ハックコミュニティのアイコン -->
-                        <img class = "icon hack" src = "https://2.bp.blogspot.com/-fhkRCjjEO98/VJF_LkOt_bI/AAAAAAAApzs/jYqrTFF6XA4/s800/animalface_niwatori.png"/>
+                        <!-- 左下のアイコン -->
+                        <img class = "icon 3" src = "https://2.bp.blogspot.com/-fhkRCjjEO98/VJF_LkOt_bI/AAAAAAAApzs/jYqrTFF6XA4/s800/animalface_niwatori.png"/>
                     </div>
                     <div class="icon_box">
-                        <!-- CGコミュニティのアイコン -->
-                        <img class = "icon cg" src = "https://4.bp.blogspot.com/-co9Gfae-aWE/XNE-4L7WvLI/AAAAAAABStA/kX0r_XmPRcgt8x69YxtLM3rZ_53H4Y-MgCLcBGAs/s800/food_niku_buta_ro-su.png">
+                        <!-- 右下のアイコン -->
+                        <img class = "icon 4" src = "https://4.bp.blogspot.com/-co9Gfae-aWE/XNE-4L7WvLI/AAAAAAABStA/kX0r_XmPRcgt8x69YxtLM3rZ_53H4Y-MgCLcBGAs/s800/food_niku_buta_ro-su.png">
                     </div>
                 </div>
             </div>
@@ -46,54 +46,27 @@ export default {
 
 <style lang = "scss" scoped>
     
-    /* ページ全体 */
-    .community-wrapper {
+    .community_wrapper {
         width: 100%;
         display: flex;
         align-items: center;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         justify-content: center;
-        /* justify-content: space-between; */
-
-        /* チェック用  */
-        /* background-color: lightgreen; */
-
     }
     
-    
-    /* 文章全体 */
-    .text-contents {
+    .text_contents {
         width: 60%;
-
-        /* display: flex; */
-        /* flex-direction: column; */
-        /* align-items: flex-start; */
-        /* justify-content: space-between; */;
-
-        /* チェック用 */
-        /* background-color: skyblue; */
-
-        /* text-align: left; */
         font-size: $font-size-contents-description;
         color: $base-font-color;
     }
 
-    
-    /* 小見出し */
     .title {
-        /* text-align: left; */
         font-size: $font-size-contents-title;
         color: $base-font-color;
-        margin-top: -80px;
-
-        /* チェック用 */
-        /* background-color: orange; */
-        
+        margin-top: -100px;
     }
     
-    
-    /* アイコン全体 */
-    .community-icons {
+    .community_icons {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -101,9 +74,6 @@ export default {
         height: 320px;
         margin-left: 5%;
         margin-right: 5%;
-
-        /* チェック用 */
-        /* background-color: tomato; */
     }
 
     .icon_set {
@@ -131,10 +101,8 @@ export default {
         border-radius: 50%;
         background-color: $base-font-color;
         text-align: center;
-        
     }
     
-    /* 各アイコン */
     .icon {
         width: 40px;
         height: 40px;
@@ -145,20 +113,14 @@ export default {
         transform: translate(-50%, -50%);
     }
 
-    .description {
-        /* チェック用 */
-        /* background-color: thistle; */
-    }
 
-    
-    /* スマホ・タブレット仕様 */
-    @media not all and (min-width: 1400px) {
-        .community-wrapper {
+    @media screen and (max-width: 1000px) {
+        .community_wrapper {
             width: 100%;
             position: relative;
         }
 
-        .text-contents {
+        .text_contents {
             width: 100%;
             text-align: center;
         }
@@ -172,12 +134,19 @@ export default {
             padding-top: 200px;
         }
 
-        .community-icons {
+        .community_icons {
            position: absolute;
            left: 0;
            right: 0;
            margin: auto;
         }
-
     }
+
+    @media screen and (min-width: 1000px) {
+        .title {
+            white-space: nowrap;
+        }
+    }
+
+    
 </style>
