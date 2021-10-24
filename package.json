@@ -12,11 +12,16 @@
     "test": "jest"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-brands-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/vue-fontawesome": "^2.0.2",
     "@nuxtjs/dotenv": "^1.4.1",
     "contentful": "^9.0.3",
     "core-js": "^3.15.1",
-    "hooper": "^0.3.4",
-    "nuxt": "^2.15.7"
+    "nuxt": "^2.15.7",
+    "nuxt-fontawesome": "^0.4.0",
+    "hooper": "^0.3.4"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.14.7",
