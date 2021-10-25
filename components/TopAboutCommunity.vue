@@ -65,6 +65,10 @@ export default {
         color: $base-font-color;
         margin-top: -100px;
     }
+
+    .description p {
+        margin: 0;
+    }
     
     .community_icons {
         display: flex;
@@ -114,7 +118,7 @@ export default {
     }
 
 
-    @media screen and (max-width: 1000px) {
+    @media screen and (max-width: $media-query-standard-max-width) {
         .community_wrapper {
             width: 100%;
             position: relative;
@@ -142,7 +146,7 @@ export default {
         }
     }
 
-    @media screen and (min-width: 1000px) {
+    @media screen and (min-width: $media-query-min-width) {
         .title {
             white-space: nowrap;
         }
