@@ -11,7 +11,7 @@
         v-for="(slide, idx) in slides"
         :key="idx"
       >
-        <img :src="slide.img"/>
+        <img :src="slide.img" @click="toPage(slide.id)"/>
       </slide>
       <hooper-navigation slot="hooper-addons"></hooper-navigation>
       <hooper-pagination slot="hooper-addons"></hooper-pagination>
@@ -40,7 +40,7 @@ export default {
   data() {
     return {
       slides: [
-        { id: '1', link: '#1', img: 'https://simo-c3.github.io/image_url/CG.png' },
+        { id: '100', link: '#1', img: 'https://simo-c3.github.io/image_url/CG.png' },
         { id: '2', link: '#2', img: 'https://simo-c3.github.io/image_url/Game.png' },
         { id: '3', link: '#3', img: 'https://simo-c3.github.io/image_url/MediaArt.jpg' },
         { id: '4', link: '#4', img: 'https://simo-c3.github.io/image_url/hack.jpg' },
@@ -56,6 +56,11 @@ export default {
         playSpeed: 5000,
         transition: 1000
       },
+    }
+  },
+  methods: {
+    toPage(id) {
+      this.$router.push({path: '/blog/' + id})
     }
   }
 }
