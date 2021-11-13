@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- <Header/>がここに入る -->
     <div class="contact">
       <!-- title -->
       <div class="contact-title">
@@ -49,18 +48,18 @@
         </div>
         <!-- button -->
         <div class="contact-form-submit">
-          <button @click="checkForm">送信</button>
+          <button 
+            @click="checkForm"
+          >
+            送信
+          </button>
         </div>
       </form>
     </div>
-    <!-- <Footer/>がここに入る -->
   </div>
 </template>
 
 <script>
-// import Header from '~/components/Header.vue';
-// import Footer from '~/components/Footer.vue';
-
 export default {
   // components: { Header, Footer },
   data() {
@@ -82,31 +81,31 @@ export default {
   methods: {
     checkForm() {
       // name
-      if(!this.name) {
-        this.nameError = true;
-      } else {
-        this.nameError = false;
-      }
+      if(!this.name) this.nameError = true
+      else this.nameError = false
       // email
       if(!this.email) {
-        this.emailError = true;
+        this.emailError = true
         this.emailComment = '*メールアドレスを入力してください'
       } else if(!this.validEmail(this.email)) {
-        this.emailError = true;
+        this.emailError = true
         this.emailComment = '*メールアドレスの形式で入力してください'
-      } else {
-        this.emailError = false;
-      }
+      } else this.emailError = false
       // message
-      if(!this.message) {
-        this.messageError = true;
-      } else {
-        this.messageError = false;
+      if(!this.message) this.messageError = true
+      else this.messageError = false
+      // submit
+      if(!this.nameError & !this.emailError & !this.messageError) {
+        // submit()
+        this.$router.push('/contact/thanks')
       }
     },
     validEmail(email) {
-      const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      return regex.test(email);
+      const regex = /^[a-zA-Z0-9_+-]+(.[a-zA-Z0-9_+-]+)*@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$/
+      return regex.test(email)
+    },
+    submit() {
+      /* ここにバックエンド側への送信を行い，自動でメール送信をする処理を入れてほしい */
     }
   }
 }
@@ -181,7 +180,8 @@ export default {
   border: solid 1px #4949ff;
 }
 .contact-form-input textarea {
-  resize: none;
+  min-height: 4vh;
+  resize: vertical;
   height: min(30vw, 300px);
 }
 .contact-form-input textarea::-webkit-scrollbar {
