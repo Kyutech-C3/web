@@ -75,17 +75,14 @@ export default {
 .wraper {
   width: 100%;
   height: min(37.5vw, 720px);
-  position: relative;
 }
 .carousel-nav {
   margin: auto;
   box-shadow: 15px 15px 25px #00000035;
-  background: transparent;
   width: min(50vw, 950px);
   height: inherit;
   border-radius: 20px;
   background-color: rgba(255, 255, 255, 0);
-  border-radius: 12px;
 }
 *:focus {
   outline: none;
@@ -97,17 +94,15 @@ export default {
   height: inherit;
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
-  border-radius: 12px;
   object-fit:cover;
 }
 ::v-deep .hooper-list {
-  border-radius: 12px;
+  border-radius: 20px;
   object-fit:cover;
 }
 .hooper img {
   margin: 0;
   padding: 0;
-  background-color: aqua;
   width: min(50vw, 950px);
   height: min(37.5vw, 720px);
 }
@@ -160,7 +155,7 @@ export default {
 }
 
 /* タブレット↓ */
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: $media-query-standard-max-width) {
   .carousel-nav {
     width: min(70vw, 680px);
     height: min(50vw, 680px);
@@ -169,28 +164,29 @@ export default {
     width: min(70vw, 680px);
     height: min(50vw, 680px);
   }
+  ::v-deep .hooper-next svg,
+  ::v-deep .hooper-prev svg {
+    width: 80px;
+    height: min(50vw, 680px);
+    transform: scale(1);
+  }
   ::v-deep .hooper-next,
   ::v-deep .hooper-prev {
     width: 80px;
-    height: 80px;
+    height: min(50vw, 680px);
   }
   ::v-deep .hooper-next {
     right: 0px;
+    border-radius: 0 20px 20px 0;
   }
   ::v-deep .hooper-prev {
     left: 0px;
+    border-radius: 20px 0 0 20px;
   }
   ::v-deep .hooper-next:hover,
   ::v-deep .hooper-prev:hover {
-    transition: 0s;
-    height: min(50vw, 680px);
+    transition: 0.1s;
     background-color: rgba(255, 255, 255, 0.8);
-  }
-  ::v-deep .hooper-next:hover {
-    border-radius: 0 12px 12px 0;
-  }
-  ::v-deep .hooper-prev:hover {
-    border-radius: 12px 0 0 12px;
   }
 }
 </style>
