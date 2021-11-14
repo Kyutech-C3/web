@@ -7,7 +7,6 @@
         <div class="description">
             {{items.description}}
         </div>
-        
     </div>
 </template>
 
@@ -19,13 +18,15 @@ export default {
 
 <style lang="scss" scoped>
 .main-area{
-    margin: 200px 6.25% 0 6.25%;
+    width: 87.5%;
+    margin: 170px 6.25% 0 6.25%;
 }
 .title{
     font-family: 'Inter';
     font-style: Regular;
     font-size: $font-size-other-title;
     color: $base-font-color;
+    overflow-wrap: break-word;
 }
 .img{
     margin: 60px 0;
@@ -38,5 +39,15 @@ export default {
     font-style: Regular;
     font-size: $font-size-other-contents-description;
     color: $base-font-color;
+}
+@media screen and (max-width: $media-query-small-max-width) {
+    .title{
+        font-size: 60px;
+    }    
+}
+@media screen and (max-width: 450px) {
+    .title{
+        font-size: 40px;
+    }    
 }
 </style>
