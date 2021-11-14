@@ -1,5 +1,5 @@
 <template>
-  <div class="wraper">
+  <div class="wrapper">
     <div class="title">
       <p>
         ブログ
@@ -72,7 +72,7 @@ export default {
   color: $base-font-color;
   text-align: center;
 }
-.wraper {
+.wrapper {
   width: 100%;
   height: min(37.5vw, 720px);
 }
