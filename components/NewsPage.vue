@@ -12,7 +12,7 @@
                     <div class = "text_title">{{item.news_box.title}}</div> 
                     <div class = "text_date">{{item.news_box.date}}</div>
                 </div>    
-                <div class = "text">
+                <div class = "message">
                     <p>{{item.news_box.message}}</p>
                 </div>    
                 </div>
@@ -76,6 +76,7 @@ export default {
     .text_title_date {
         display: flex;
         margin-top: 60px;
+        align-items: center;
     }
 
     .text_title {
@@ -89,24 +90,14 @@ export default {
         margin-left: 20px;
     }
 
-    .text {
+    .message {
         font-size: $font-size-other-contents-description;
         color: $base-font-color;
         margin-top: 40px;
     }
 
-    .text p {
+    .message p {
         margin: 0;
     }
-
-    @media screen and (max-width: $media-query-standard-max-width) {
-        .page {
-            display: flex;
-            flex-wrap: wrap;
-        }
-        .text_title_date {
-            display: flex;
-        }
-    }
-
+    
 </style>
