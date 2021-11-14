@@ -49,7 +49,7 @@
         <!-- button -->
         <div class="contact-form-submit">
           <button 
-            @click="checkForm"
+            @click="submit"
           >
             送信
           </button>
@@ -79,6 +79,11 @@ export default {
     }
   },
   methods: {
+    submit() {
+      this.checkForm()
+      this.transition()
+      this.send()
+    },
     checkForm() {
       // name
       (!this.name) ? this.nameError = true : this.nameError = false
@@ -94,17 +99,15 @@ export default {
       }
       // message
       (!this.message) ? this.messageError = true : this.messageError = false
-      // submit
-      if(!this.nameError & !this.emailError & !this.messageError) {
-        // submit()
-        this.$router.push('/contact/thanks')
-      }
     },
     validEmail(email) {
       const regex = /^[a-zA-Z0-9_+-]+(.[a-zA-Z0-9_+-]+)*@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$/
       return regex.test(email)
     },
-    submit() {
+    transition() {
+      if(!this.nameError & !this.emailError & !this.messageError) this.$router.push('/contact/thanks')
+    },
+    send() {
       /* ここにバックエンド側への送信を行い，自動でメール送信をする処理を入れてほしい */
     }
   }
