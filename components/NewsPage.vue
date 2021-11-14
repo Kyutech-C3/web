@@ -99,5 +99,5 @@ export default {
     .message p {
         margin: 0;
     }
-    
+
 </style>
