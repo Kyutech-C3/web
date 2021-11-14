@@ -81,8 +81,7 @@ export default {
   methods: {
     checkForm() {
       // name
-      if(!this.name) this.nameError = true
-      else this.nameError = false
+      (!this.name) ? this.nameError = true : this.nameError = false
       // email
       if(!this.email) {
         this.emailError = true
@@ -90,10 +89,11 @@ export default {
       } else if(!this.validEmail(this.email)) {
         this.emailError = true
         this.emailComment = '*メールアドレスの形式で入力してください'
-      } else this.emailError = false
+      } else {
+        this.emailError = false
+      }
       // message
-      if(!this.message) this.messageError = true
-      else this.messageError = false
+      (!this.message) ? this.messageError = true : this.messageError = false
       // submit
       if(!this.nameError & !this.emailError & !this.messageError) {
         // submit()
