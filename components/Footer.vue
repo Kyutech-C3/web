@@ -1,0 +1,168 @@
+<template>
+    <div class="footer">
+        <div class="footer-wrapper">
+            <div class="left-container">
+                <img src="../c3_logo.png" alt="C3アイコン" class="c3-icon">
+                <div>
+                    <div class="official-text">
+                        C3 Official Website
+                    </div>
+                    <div class="inquiry-text">
+                        <font-awesome-icon :icon="['fas','envelope-open-text']" />
+                        お問い合わせはこちら
+                    </div>
+                </div>
+            </div>
+            <div class="center-container">
+                <div class="icon-container">
+                    <font-awesome-icon :icon="['fas','box-open']" class="icons"/>
+                    <font-awesome-icon :icon="['fab','twitter']" class="icons" />
+                    <font-awesome-icon :icon="['fab','youtube']" class="icons"/>
+                    <font-awesome-icon :icon="['fab','github']" class="icons"/>
+                </div>
+                <div class="copyright">
+                    © 2021 C3
+                </div>
+            </div>
+            <div class="right-container">
+                <a href="#" id="return-top">
+                    <font-awesome-icon :icon="['fas','angle-up']" class="angle-icon"/><br>
+                    PAGE TOP
+                </a>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+export default {
+    
+}
+</script>
+
+<style lang="scss" scoped>
+.footer{
+    width: 100%;
+    position: relative;
+    top: 362px;
+    margin: 0 0;
+    background-color: $gray;
+}
+.footer-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    //height: 440px;
+}
+.left-container{
+    width: 25%;
+
+}
+.center-container{
+    width: 50%;
+    text-align: center;
+}
+.right-container{
+    width: 25%;
+    text-align: center;
+}
+.c3-icon{
+    padding: 60px 0 0 8.3%;
+    width: 120px;
+}
+.official-text{
+    padding: 40px 0 0 6.25%;
+    width: 300px;
+    font-size: $font-size-other-contents-date;
+    font-family: "Inter";
+    font-style: Regular;
+    color: $white;
+}
+.inquiry-text{
+    padding: 47px 0 0 6.45%;
+    font-size: 20px;
+    font-family: "游ゴシック";
+    font-style: Medium;
+    color: #C9CFD5;
+}
+.icon-container{
+    width: 100%;
+    padding: 179px 0 0 0;
+    font-size: 60px;
+    font-style: Regular;
+    color: $light-gray;
+}
+.icons{
+    padding: 0 45px;
+}
+.copyright{
+    padding: 120px 0 56px 0;
+    font-size: 20px;
+    font-family: "Inter";
+    font-style: Medium;
+    color: #AAAAAAE6;
+    text-align: center;
+}
+.angle-icon{
+    font-size: 40px;
+    font-style: Regular;
+    color: #FFFFFFE6;
+}
+.right-container #return-top{
+    position: relative;
+    top: 60px;
+    font-size: 20px;
+    font-family: "Inter";
+    font-style: Medium;
+    color: #FFFFFFE6;
+    text-decoration: none;
+    scroll-behavior: smooth;
+}
+
+
+
+@media screen and (max-width: $media-query-standard-max-width){
+.left-container{
+    width: 80%;
+    height: 150px;
+    order: 1;
+    display: flex;
+    flex-wrap: wrap;
+}
+.center-container{
+    width: 100%;
+    order: 3;
+}
+.right-container{
+    width: 20%;
+    order: 2;
+}
+.c3-icon{
+    width: 90px;
+    height: 90px;
+    padding: 40px 0 0 7.5%;
+}
+.official-text{
+    padding: 48px 0 0 2.5%;
+}
+.inquiry-text{
+    padding: 26px 0 0 2.5%;
+    font-size: 15px;
+}
+.icon-container{
+    padding: 32px 0 0 0;
+    font-size: 40px;
+}
+.icons{
+    padding: 0 15px;
+}
+.copyright{
+    padding: 50px 0 0 39px;
+    font-size: 15px;
+}
+
+
+
+
+}
+</style>
