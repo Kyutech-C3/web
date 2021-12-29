@@ -16,8 +16,8 @@
             </div>
           </div>
           <div class="top-news">
-            <nuxt-link to='/news/${news.id}'>
-              {{ news.date + ' ' + news.content }}
+            <nuxt-link :to="'/news/' + news[0].sys.id">
+              {{ getNewsDate + ' ' + news[0].fields.title }}
             </nuxt-link>
           </div>
         </div>
@@ -47,8 +47,8 @@
             </div>
           </div>
           <div class="top-news">
-            <nuxt-link to='/news/${news.id}'>
-              {{ news.date + ' ' + news.content }}
+            <nuxt-link :to="`/news/` + news[0].sys.id">
+              {{ getNewsDate + ' ' + news[0].fields.title }}
             </nuxt-link>
           </div>
         </div>
@@ -72,13 +72,25 @@ export default {
     HooperPagination,
     HooperNavigation
   },
+  props: {
+    news: {
+      type: Array,
+      require: true,
+      default() {
+        return [{
+          sys: {
+            id: "hoge"
+          },
+          fields: {
+            publishedAt: "2020",
+            title: 'hogehoge'
+          },
+        }]
+      }
+    }
+  },
   data() {
     return {
-			news: {
-        id: 0,
-				date: '2021.9.30',
-				content: 'オフィシャルサイト更新！！'
-			},
       slides: [
         { link: '#1', img: '/carousel_1.png' },
         { link: '#2', img: '/carousel_2.png' },
@@ -96,6 +108,14 @@ export default {
       },
     }
   },
+  computed: {
+    getNewsDate() {
+      const date = new Date(this.news[0].fields.publishedAt)
+      const newsDate = date.getFullYear().toString() + "." + date.getMonth().toString() + "." + date.getDate().toString()
+      // const newsDateTest = "hoge"
+      return newsDate
+    }
+  }
 };
 </script>
 
