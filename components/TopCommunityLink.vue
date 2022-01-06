@@ -26,14 +26,14 @@ export default {
   props: {
     community: {
       type: Object,
-      require: true,
+      required: true,
       default() {
         return {}
       },
     },
     id: {
       type: Number,
-      require: true,
+      required: true,
       default() {
         return 0
       },
