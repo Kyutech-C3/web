@@ -1,93 +1,92 @@
 <template>
-    <div class="wrap">
-      <div class="left-wrap">
-        <!-- トップタイトル(Composite Computer Club) -->
-        <div class="top-title">
-          <div class="top-title-text">Composite</div>
-          <div class="top-title-text">Computer</div>
-          <div class="top-title-text">Club</div>
-        </div>
-        <!-- トップニュース(pc) -->
-        <div class="top-news-nav pc">
-          <div class="top-news-flex-wrap">
-            <div class="top-news-title">お知らせ</div>
-            <div class="all-news-link">
-              <nuxt-link to="/news">一覧を見る</nuxt-link>
-            </div>
-          </div>
-          <div class="top-news">
-            <nuxt-link :to="'/news/' + news[0].sys.id">
-              {{ getNewsDate + ' ' + news[0].fields.title }}
-            </nuxt-link>
-          </div>
-        </div>
+  <div class="wrap">
+    <div class="left-wrap">
+      <!-- トップタイトル(Composite Computer Club) -->
+      <div class="top-title">
+        <div class="top-title-text">Composite</div>
+        <div class="top-title-text">Computer</div>
+        <div class="top-title-text">Club</div>
       </div>
-      <div class="right-wrap">
-        <!-- カルーセル -->
-        <div class="carousel-nav">
-          <hooper :settings="hooperSettings">
-            <slide 
-              v-for="(slide, idx) in slides"
-              :key="idx"
-            >
-              <nuxt-link to="slides[idx].link">
-                <img :src="slides[idx].img"/>
-              </nuxt-link>
-            </slide>
-            <hooper-navigation slot="hooper-addons"></hooper-navigation>
-            <hooper-pagination slot="hooper-addons"></hooper-pagination>
-          </hooper>
+      <!-- トップニュース(pc) -->
+      <div class="top-news-nav pc">
+        <div class="top-news-flex-wrap">
+          <div class="top-news-title">お知らせ</div>
+          <div class="all-news-link">
+            <nuxt-link to="/news">一覧を見る</nuxt-link>
+          </div>
         </div>
-        <!-- トップニュース(sp) -->
-        <div class="top-news-nav sp">
-          <div class="top-news-flex-wrap">
-            <div class="top-news-title">お知らせ</div>
-            <div class="all-news-link">
-              <nuxt-link to="/news">一覧を見る</nuxt-link>
-            </div>
-          </div>
-          <div class="top-news">
-            <nuxt-link :to="`/news/` + news[0].sys.id">
-              {{ getNewsDate + ' ' + news[0].fields.title }}
-            </nuxt-link>
-          </div>
+        <div class="top-news">
+          <nuxt-link :to="'/news/' + news[0].sys.id">
+            {{ getNewsDate + ' ' + news[0].fields.title }}
+          </nuxt-link>
         </div>
       </div>
     </div>
+    <div class="right-wrap">
+      <!-- カルーセル -->
+      <div class="carousel-nav">
+        <hooper :settings="hooperSettings">
+          <slide v-for="(slide, idx) in slides" :key="idx">
+            <nuxt-link to="slides[idx].link">
+              <img :src="slides[idx].img" />
+            </nuxt-link>
+          </slide>
+          <hooper-navigation slot="hooper-addons"></hooper-navigation>
+          <hooper-pagination slot="hooper-addons"></hooper-pagination>
+        </hooper>
+      </div>
+      <!-- トップニュース(sp) -->
+      <div class="top-news-nav sp">
+        <div class="top-news-flex-wrap">
+          <div class="top-news-title">お知らせ</div>
+          <div class="all-news-link">
+            <nuxt-link to="/news">一覧を見る</nuxt-link>
+          </div>
+        </div>
+        <div class="top-news">
+          <nuxt-link :to="`/news/` + news[0].sys.id">
+            {{ getNewsDate + ' ' + news[0].fields.title }}
+          </nuxt-link>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-import { 
+import {
   Hooper,
   Slide,
   Pagination as HooperPagination,
-  Navigation as HooperNavigation
-} from 'hooper';
-import 'hooper/dist/hooper.css';
+  Navigation as HooperNavigation,
+} from 'hooper'
+import 'hooper/dist/hooper.css'
 
 export default {
-  components: { 
+  components: {
     Hooper,
     Slide,
     HooperPagination,
-    HooperNavigation
+    HooperNavigation,
   },
   props: {
     news: {
       type: Array,
       require: true,
       default() {
-        return [{
-          sys: {
-            id: "hoge"
+        return [
+          {
+            sys: {
+              id: 'defaultID',
+            },
+            fields: {
+              publishedAt: '2020',
+              title: 'defaultTitle',
+            },
           },
-          fields: {
-            publishedAt: "2020",
-            title: 'hogehoge'
-          },
-        }]
-      }
-    }
+        ]
+      },
+    },
   },
   data() {
     return {
@@ -96,7 +95,7 @@ export default {
         { link: '#2', img: '/carousel_2.png' },
         { link: '#3', img: '/carousel_3.png' },
         { link: '#4', img: '/carousel_4.png' },
-        { link: '#5', img: '/carousel_5.png' }
+        { link: '#5', img: '/carousel_5.png' },
       ],
       hooperSettings: {
         infiniteScroll: true,
@@ -104,19 +103,20 @@ export default {
         keysControl: false,
         autoPlay: true,
         playSpeed: 5000,
-        transition: 1500
+        transition: 1500,
       },
     }
   },
   computed: {
     getNewsDate() {
       const date = new Date(this.news[0].fields.publishedAt)
-      const newsDate = date.getFullYear().toString() + "." + date.getMonth().toString() + "." + date.getDate().toString()
-      // const newsDateTest = "hoge"
+      const newsDate = `${date.getFullYear().toString()}.${date
+        .getMonth()
+        .toString()}.${date.getDate().toString()}`
       return newsDate
-    }
-  }
-};
+    },
+  },
+}
 </script>
 
 <style lang="scss" scoped>
@@ -127,7 +127,7 @@ export default {
 }
 .wrap {
   margin: 0;
-  padding: 80px/*ヘッダーの高さ*/ 0 50px 0;
+  padding: 80px /*ヘッダーの高さ*/ 0 50px 0;
   background: $white;
   color: $gray;
   font-family: 'Inter', '游ゴシック';
@@ -219,7 +219,8 @@ export default {
   width: 80%;
   text-align: center;
 }
-.top-news a:hover, .all-news-link a:hover {
+.top-news a:hover,
+.all-news-link a:hover {
   opacity: 0.5;
   transition: 0.3s ease;
 }
@@ -231,8 +232,8 @@ export default {
     border-radius: 0 20px 20px 0;
   }
   .top-news a {
-  font-size: min(24px, 1.3vw);
-}
+    font-size: min(24px, 1.3vw);
+  }
   .sp {
     display: none;
   }
@@ -246,8 +247,8 @@ export default {
     border-radius: 0 12px 12px 0;
   }
   .top-news a {
-  font-size: 2vw
-}
+    font-size: 2vw;
+  }
   .pc {
     display: none;
   }
@@ -271,7 +272,7 @@ export default {
   display: inline-block;
   position: relative;
   cursor: pointer;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 .hooper img {
   margin: 0;

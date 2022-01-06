@@ -16,7 +16,7 @@ export default {
   props: {
     c3Introduction: {
       type: String,
-      require: true,
+      required: true,
       default() {
         return ''
       },
