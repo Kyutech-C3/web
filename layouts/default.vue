@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header ref="header" @masked-screen="isMaskedScreen = !isMaskedScreen" />
-    <Nuxt />
+    <Nuxt class="page_content" />
     <transition>
       <div v-show="isMaskedScreen" class="mask" @click="closeHeader()"></div>
     </transition>
@@ -58,5 +58,8 @@ html {
 .v-enter,
 .v-leave-to {
   opacity: 0;
+}
+.page_content {
+  margin-top: 150px !important;
 }
 </style>
