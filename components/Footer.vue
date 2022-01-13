@@ -7,18 +7,28 @@
                     <div class="official-text">
                         C3 Official Website
                     </div>
-                    <div class="inquiry-text">
-                        <font-awesome-icon :icon="['fas','envelope-open-text']" />
-                        お問い合わせはこちら
-                    </div>
+                    <nuxt-link to="/contact" class="inquiry-text-container">
+                        <div class="inquiry-text">
+                            <font-awesome-icon :icon="['fas','envelope-open-text']" />
+                            お問い合わせはこちら
+                        </div>
+                    </nuxt-link>
                 </div>
             </div>
             <div class="center-container">
                 <div class="icon-container">
-                    <font-awesome-icon :icon="['fas','box-open']" class="icons"/>
-                    <font-awesome-icon :icon="['fab','twitter']" class="icons" />
-                    <font-awesome-icon :icon="['fab','youtube']" class="icons"/>
-                    <font-awesome-icon :icon="['fab','github']" class="icons"/>
+                    <a href="/">
+                        <font-awesome-icon :icon="['fas','box-open']" class="icons"/>
+                    </a>
+                    <a href="https://twitter.com/c3_kyutech">
+                        <font-awesome-icon :icon="['fab','twitter']" class="icons" />
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCeRY2jujVBYRqmilrCZytFw">
+                        <font-awesome-icon :icon="['fab','youtube']" class="icons"/>
+                    </a>
+                    <a href="https://github.com/Kyutech-C3">
+                        <font-awesome-icon :icon="['fab','github']" class="icons"/>
+                    </a>
                 </div>
                 <div class="copyright">
                     © 2021 C3
@@ -43,8 +53,6 @@ export default {
 <style lang="scss" scoped>
 .footer{
     width: 100%;
-    position: relative;
-    top: 362px;
     margin: 0 0;
     background-color: $gray;
 }
@@ -78,6 +86,9 @@ export default {
     font-style: Regular;
     color: $white;
 }
+.inquiry-text-container{
+    text-decoration: none;
+}
 .inquiry-text{
     padding: 47px 0 0 6.45%;
     font-size: 20px;
@@ -90,10 +101,10 @@ export default {
     padding: 179px 0 0 0;
     font-size: 60px;
     font-style: Regular;
-    color: $light-gray;
 }
 .icons{
-    padding: 0 45px;
+    padding: 0 4.7%;
+    color: $light-gray;
 }
 .copyright{
     padding: 120px 0 56px 0;
@@ -121,7 +132,8 @@ export default {
 
 
 
-@media screen and (max-width: $media-query-standard-max-width){
+//タブレット用
+@media screen and (max-width: 1200px){
 .left-container{
     width: 80%;
     height: 150px;
@@ -157,8 +169,55 @@ export default {
     padding: 0 15px;
 }
 .copyright{
-    padding: 50px 0 0 39px;
+    padding: 50px 0 39px 0;
     font-size: 15px;
+}
+
+
+
+//スマホ用
+@media screen and (max-width: 530px){
+.left-container{
+    width: 80%;
+    height: auto;
+    order: 1;
+    display: flex;
+    //flex-wrap: wrap;
+    flex-direction: column;
+}
+.center-container{
+    width: 100%;
+    order: 3;
+}
+.right-container{
+    width: 20%;
+    order: 2;
+}
+.c3-icon{
+    width: 50%;
+    height: auto;
+    padding: 50px 12.5% 0 37.5%;
+}
+.official-text{
+    max-width: 300px;
+    padding: 0 auto;
+    text-align: center;
+}
+
+.angle-icon{
+    font-size: 40px;
+    font-style: Regular;
+}
+.right-container #return-top{
+    position: relative;
+    top: 20px;
+    font-size: 17px;
+}
+.copyright{
+    padding: 50px 0 20px 0;
+    font-size: 15px;
+}
+
 }
 
 
