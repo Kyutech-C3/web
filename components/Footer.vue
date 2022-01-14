@@ -208,7 +208,7 @@ export default {
 .official-text{
     width: 100%;
     text-align: center;
-    padding:30px 0;
+    padding:0 0 30px 0;
 }
 .inquiry-text{
     width: 100%;
@@ -231,6 +231,7 @@ export default {
 .c3-icon{
     width: 40%;
     height: auto;
+    padding: 50px;
     padding-left: 0;
     padding-right: 0;
 }
