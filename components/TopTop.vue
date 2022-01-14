@@ -72,7 +72,7 @@ export default {
   props: {
     news: {
       type: Array,
-      require: true,
+      required: true,
       default() {
         return [
           {

@@ -44,10 +44,6 @@ export default {
         }),
       ])
         .then(([c3Introduction, aboutCommunity, eachCommunity, news, blog]) => {
-          // eslint-disable-next-line no-console
-          // console.log(c3Introduction.items[0].fields, communityIntroduction.items, news.items, blog.items)
-          // eslint-disable-next-line no-console
-          console.log(eachCommunity.items)
           return {
             c3Introduction:
               c3Introduction.items[0].fields.summaryOfIntroduction,

@@ -1,17 +1,15 @@
 <template>
   <div class="wrapper">
     <div class="title">
-      <p>
-        ブログ
-      </p>
+      <p>ブログ</p>
     </div>
     <div class="carousel-nav">
       <hooper :settings="hooperSettings">
-        <slide 
-          v-for="(item, idx) in blog"
-          :key="idx"
-        >
-          <img :src="item.fields.thumbnail.fields.file.url" @click="toPage(item.sys.id)"/>
+        <slide v-for="(item, idx) in blog" :key="idx">
+          <img
+            :src="item.fields.thumbnail.fields.file.url"
+            @click="toPage(item.sys.id)"
+          />
         </slide>
         <hooper-navigation slot="hooper-addons"></hooper-navigation>
         <hooper-pagination slot="hooper-addons"></hooper-pagination>
@@ -22,16 +20,16 @@
 </template>
 
 <script>
-import { 
+import {
   Hooper,
   Slide,
   Pagination as HooperPagination,
-  Navigation as HooperNavigation
-} from 'hooper';
-import 'hooper/dist/hooper.css';
+  Navigation as HooperNavigation,
+} from 'hooper'
+import 'hooper/dist/hooper.css'
 
 export default {
-  components: { 
+  components: {
     Hooper,
     Slide,
     HooperPagination,
@@ -40,20 +38,22 @@ export default {
   props: {
     blog: {
       type: Array,
-      require: true,
+      required: true,
       default() {
-        return [{
-          sys: {
-            id: "hoge"
+        return [
+          {
+            sys: {
+              id: 'hoge',
+            },
+            fields: {
+              publishedAt: '2020',
+              title: 'hogehoge',
+              thumbnail: {},
+            },
           },
-          fields: {
-            publishedAt: "2020",
-            title: 'hogehoge',
-            thumbnail: {}
-          },
-        }]
-      }
-    }
+        ]
+      },
+    },
   },
   data() {
     return {
@@ -65,15 +65,15 @@ export default {
         hoverPause: false,
         autoPlay: true,
         playSpeed: 5000,
-        transition: 1000
+        transition: 1000,
       },
     }
   },
   methods: {
     toPage(id) {
       this.$router.push(`/blog/${id}`)
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -104,12 +104,12 @@ export default {
   width: inline;
   height: inherit;
   cursor: pointer;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  object-fit:cover;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  object-fit: cover;
 }
 ::v-deep .hooper-list {
   border-radius: 20px;
-  object-fit:cover;
+  object-fit: cover;
 }
 .hooper img {
   margin: 0;

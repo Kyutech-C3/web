@@ -53,7 +53,7 @@ export default {
   props: {
     aboutCommunity: {
       type: String,
-      require: true,
+      required: true,
       default() {
         return ''
       },
