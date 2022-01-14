@@ -19,9 +19,9 @@
     "@nuxtjs/dotenv": "^1.4.1",
     "contentful": "^9.0.3",
     "core-js": "^3.15.1",
+    "hooper": "^0.3.4",
     "nuxt": "^2.15.7",
-    "nuxt-fontawesome": "^0.4.0",
-    "hooper": "^0.3.4"
+    "nuxt-fontawesome": "^0.4.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.14.7",
@@ -35,7 +35,6 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-vue": "^7.12.1",
-    "fibers": "^5.0.0",
     "jest": "^27.0.5",
     "prettier": "^2.3.2",
     "sass": "^1.39.0",
