@@ -21,6 +21,7 @@ import TopAboutC3 from '~/components/TopAboutC3.vue'
 import TopAboutCommunity from '~/components/TopAboutCommunity.vue'
 import TopBlog from '~/components/TopBlog.vue'
 import TopCommunityLink from '~/components/TopCommunityLink.vue'
+
 import sdkClient from '@/plugins/contentful.js'
 
 export default {
@@ -80,6 +81,6 @@ export default {
 
 <style lang="scss" scoped>
 .component {
-  margin: 60px 7% 60px 7%;
+  margin: 100px 7% 100px 7%;
 }
 </style>

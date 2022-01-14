@@ -127,7 +127,6 @@ export default {
 }
 .wrap {
   margin: 0;
-  padding: 80px /*ヘッダーの高さ*/ 0 50px 0;
   background: $white;
   color: $gray;
   font-family: 'Inter', '游ゴシック';
