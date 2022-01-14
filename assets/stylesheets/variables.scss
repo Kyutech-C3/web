@@ -1,10 +1,9 @@
 //Commonly used web colors
 $gray: #707070;
-$light-gray: #C9D0D6;
-$light-blue: #76A5C3;
-$white: #FFFFFF;
+$light-gray: #c9d0d6;
+$light-blue: #76a5c3;
+$white: #ffffff;
 $black: #000000;
-
 
 //Variable for default ui
 
@@ -14,6 +13,8 @@ $base-font-color: $gray;
 $footer-font-color: $light-gray;
 $font-size-header: 28px;
 $font-size-footer: 20px;
+$font-family-title: 'Inter';
+$font-family-contens: '游ゴシック';
 
 // Variable for top page text
 $font-size-top-title: $base_font_size * 12;
