@@ -2,7 +2,9 @@
     <div class="footer">
         <div class="footer-wrapper">
             <div class="left-container">
-                <img src="../c3_logo.png" alt="C3アイコン" class="c3-icon">
+                <div class="c3-icon-container">
+                    <img src="../c3_logo.png" alt="C3アイコン" class="c3-icon">
+                </div>
                 <div>
                     <div class="official-text">
                         C3 Official Website
@@ -36,8 +38,12 @@
             </div>
             <div class="right-container">
                 <a href="#" id="return-top">
-                    <font-awesome-icon :icon="['fas','angle-up']" class="angle-icon"/><br>
-                    PAGE TOP
+                    <div>
+                        <font-awesome-icon :icon="['fas','angle-up']" class="angle-icon"/><br>
+                        <div>
+                            PAGE TOP
+                        </div>
+                    </div>
                 </a>
             </div>
         </div>
@@ -60,7 +66,6 @@ export default {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    //height: 440px;
 }
 .left-container{
     width: 25%;
@@ -135,7 +140,7 @@ export default {
 //タブレット用
 @media screen and (max-width: 1200px){
 .left-container{
-    width: 80%;
+    width: 85%;
     height: 150px;
     order: 1;
     display: flex;
@@ -146,8 +151,11 @@ export default {
     order: 3;
 }
 .right-container{
-    width: 20%;
+    width: 15%;
     order: 2;
+}
+.c3-icon-container{
+    padding: 0 20px;
 }
 .c3-icon{
     width: 90px;
@@ -176,52 +184,68 @@ export default {
 
 
 //スマホ用
-@media screen and (max-width: 530px){
+@media screen and (max-width: 510px){
+.footer-wrapper{
+    position: relative;
+}
 .left-container{
-    width: 80%;
+    display: block;
+    width: 100%;
     height: auto;
     order: 1;
-    display: flex;
-    //flex-wrap: wrap;
-    flex-direction: column;
 }
 .center-container{
     width: 100%;
-    order: 3;
+    height: auto;
+    order:2;
 }
 .right-container{
-    width: 20%;
-    order: 2;
-}
-.c3-icon{
-    width: 50%;
-    height: auto;
-    padding: 50px 12.5% 0 37.5%;
-}
-.official-text{
-    max-width: 300px;
-    padding: 0 auto;
+    position: absolute;
+    top: -40px;
+    right: 10px;
     text-align: center;
 }
-
+.official-text{
+    width: 100%;
+    text-align: center;
+    padding:30px 0;
+}
+.inquiry-text{
+    width: 100%;
+    text-align: center;
+    padding: 0;
+}
+.icon-container{
+    width: 67%;
+    padding: 32px 16.5% 0 16.5%;
+    font-size: 50px;
+}
+.icons{
+    padding: 24px;
+}
+.c3-icon-container{
+    width: 100%;
+    padding: 0;
+    text-align: center;
+}
+.c3-icon{
+    width: 40%;
+    height: auto;
+    padding-left: 0;
+    padding-right: 0;
+}
 .angle-icon{
+    width: 100%;
     font-size: 40px;
     font-style: Regular;
 }
 .right-container #return-top{
-    position: relative;
-    top: 20px;
     font-size: 17px;
 }
 .copyright{
-    padding: 50px 0 20px 0;
+    padding: 26px 0 39px 0;
     font-size: 15px;
 }
-
 }
-
-
-
-
 }
 </style>
