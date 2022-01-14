@@ -5,6 +5,7 @@
     <transition>
       <div v-show="isMaskedScreen" class="mask" @click="closeHeader()"></div>
     </transition>
+    <Footer />
   </div>
 </template>
 
@@ -35,6 +36,10 @@ html {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
   overflow-x: hidden;
+}
+body{
+  width: 100%;
+  margin: 0;  
 }
 </style>
 
