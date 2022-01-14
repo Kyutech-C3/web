@@ -15,7 +15,6 @@
         <hooper-pagination slot="hooper-addons"></hooper-pagination>
       </hooper>
     </div>
-    <div style="height: 500px"></div>
   </div>
 </template>
 
@@ -84,7 +83,6 @@ export default {
   text-align: center;
 }
 .wrapper {
-  width: 100%;
   height: min(37.5vw, 720px);
 }
 .carousel-nav {

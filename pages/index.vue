@@ -77,3 +77,9 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.component {
+  margin: 60px 7% 60px 7%;
+}
+</style>
