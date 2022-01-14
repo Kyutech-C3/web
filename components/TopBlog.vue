@@ -1,8 +1,6 @@
 <template>
   <div class="wrapper">
-    <div class="title">
-      <p>ブログ</p>
-    </div>
+    <div class="title">ブログ</div>
     <div class="carousel-nav">
       <hooper :settings="hooperSettings">
         <slide v-for="(item, idx) in blog" :key="idx">
@@ -15,7 +13,6 @@
         <hooper-pagination slot="hooper-addons"></hooper-pagination>
       </hooper>
     </div>
-    <div style="height: 500px"></div>
   </div>
 </template>
 
@@ -82,9 +79,9 @@ export default {
   font-size: $font-size-contents-title;
   color: $base-font-color;
   text-align: center;
+  margin: 52px 0 20px 0;
 }
 .wrapper {
-  width: 100%;
   height: min(37.5vw, 720px);
 }
 .carousel-nav {

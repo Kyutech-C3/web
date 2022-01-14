@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header ref="header" @masked-screen="isMaskedScreen = !isMaskedScreen" />
-    <Nuxt />
+    <Nuxt class="page" />
     <transition>
       <div v-show="isMaskedScreen" class="mask" @click="closeHeader()"></div>
     </transition>
@@ -36,6 +36,10 @@ html {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
   overflow-x: hidden;
+  font-size: max(0.5vw, 7px);
+}
+.page {
+  padding: 120px 0 0 0;
 }
 body{
   width: 100%;
