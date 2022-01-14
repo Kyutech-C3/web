@@ -1,20 +1,18 @@
 <template>
   <div class="wrapper">
     <div class="title">
-      <p>
-        ブログ
-      </p>
+      <p>ブログ</p>
     </div>
     <div class="carousel-nav">
       <hooper :settings="hooperSettings">
-      <slide 
-        v-for="(slide, idx) in slides"
-        :key="idx"
-      >
-        <img :src="slide.img" @click="toPage(slide.id)"/>
-      </slide>
-      <hooper-navigation slot="hooper-addons"></hooper-navigation>
-      <hooper-pagination slot="hooper-addons"></hooper-pagination>
+        <slide v-for="(item, idx) in blog" :key="idx">
+          <img
+            :src="item.fields.thumbnail.fields.file.url"
+            @click="toPage(item.sys.id)"
+          />
+        </slide>
+        <hooper-navigation slot="hooper-addons"></hooper-navigation>
+        <hooper-pagination slot="hooper-addons"></hooper-pagination>
       </hooper>
     </div>
     <div style="height: 500px"></div>
@@ -22,30 +20,43 @@
 </template>
 
 <script>
-import { 
+import {
   Hooper,
   Slide,
   Pagination as HooperPagination,
-  Navigation as HooperNavigation
-} from 'hooper';
-import 'hooper/dist/hooper.css';
+  Navigation as HooperNavigation,
+} from 'hooper'
+import 'hooper/dist/hooper.css'
 
 export default {
-  components: { 
+  components: {
     Hooper,
     Slide,
     HooperPagination,
-    HooperNavigation
+    HooperNavigation,
+  },
+  props: {
+    blog: {
+      type: Array,
+      required: true,
+      default() {
+        return [
+          {
+            sys: {
+              id: 'hoge',
+            },
+            fields: {
+              publishedAt: '2020',
+              title: 'hogehoge',
+              thumbnail: {},
+            },
+          },
+        ]
+      },
+    },
   },
   data() {
     return {
-      slides: [
-        { id: '100', link: '#1', img: 'https://simo-c3.github.io/image_url/CG.png' },
-        { id: '2', link: '#2', img: 'https://simo-c3.github.io/image_url/Game.png' },
-        { id: '3', link: '#3', img: 'https://simo-c3.github.io/image_url/MediaArt.jpg' },
-        { id: '4', link: '#4', img: 'https://simo-c3.github.io/image_url/hack.jpg' },
-        { id: '5', link: '#5', img: 'https://simo-c3.github.io/image_url/Game.png' }
-      ],
       hooperSettings: {
         infiniteScroll: true,
         centerMode: false,
@@ -54,15 +65,15 @@ export default {
         hoverPause: false,
         autoPlay: true,
         playSpeed: 5000,
-        transition: 1000
+        transition: 1000,
       },
     }
   },
   methods: {
     toPage(id) {
-      this.$router.push({path: '/blog/' + id})
-    }
-  }
+      this.$router.push(`/blog/${id}`)
+    },
+  },
 }
 </script>
 
@@ -93,12 +104,12 @@ export default {
   width: inline;
   height: inherit;
   cursor: pointer;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  object-fit:cover;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  object-fit: cover;
 }
 ::v-deep .hooper-list {
   border-radius: 20px;
-  object-fit:cover;
+  object-fit: cover;
 }
 .hooper img {
   margin: 0;
@@ -154,7 +165,6 @@ export default {
   transition: 0.3s ease;
 }
 
-/* タブレット↓ */
 @media screen and (max-width: $media-query-standard-max-width) {
   .carousel-nav {
     width: min(70vw, 680px);

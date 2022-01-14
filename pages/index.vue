@@ -1,10 +1,10 @@
 <template>
   <div>
-    <top-top/>
-    <top-about-c-3/>
-    <top-about-community/>
-    <top-community-link/>
-    <top-blog/>
+    <top-top :news="news" />
+    <top-about-c-3 :c3-introduction="c3Introduction" />
+    <top-about-community :about-community="aboutCommunity" />
+    <top-community-link :each-community="eachCommunity" />
+    <top-blog :blog="blog" />
   </div>
 </template>
 
@@ -14,7 +14,7 @@ import TopAboutC3 from '~/components/TopAboutC3.vue'
 import TopAboutCommunity from '~/components/TopAboutCommunity.vue'
 import TopBlog from '~/components/TopBlog.vue'
 import TopCommunityLink from '~/components/TopCommunityLink.vue'
-
+import sdkClient from '@/plugins/contentful.js'
 
 export default {
   components: {
@@ -22,7 +22,40 @@ export default {
     TopAboutC3,
     TopTop,
     TopCommunityLink,
-    TopBlog
-  }
+    TopBlog,
+  },
+  async asyncData({ env }) {
+    return (
+      Promise.all([
+        await sdkClient.getEntries({
+          content_type: 'c3Introduction',
+        }),
+        await sdkClient.getEntries({
+          content_type: 'aboutCommunity',
+        }),
+        await sdkClient.getEntries({
+          content_type: 'eachCommunity',
+        }),
+        await sdkClient.getEntries({
+          content_type: 'news',
+        }),
+        await sdkClient.getEntries({
+          content_type: 'blog',
+        }),
+      ])
+        .then(([c3Introduction, aboutCommunity, eachCommunity, news, blog]) => {
+          return {
+            c3Introduction:
+              c3Introduction.items[0].fields.summaryOfIntroduction,
+            aboutCommunity: aboutCommunity.items[0].fields.about,
+            eachCommunity: eachCommunity.items,
+            news: news.items,
+            blog: blog.items,
+          }
+        })
+        // eslint-disable-next-line no-console
+        .catch(console.error)
+    )
+  },
 }
 </script>
