@@ -2,14 +2,14 @@
   <div class="community-wrapper">
     <div class="community">
       <div class="img-wrapper" :class="{ 'order-2': id % 2 === 1 }">
-        <img :src="community.image" />
+        <img :src="community.field.image" />
       </div>
       <div class="introduction" :class="{ 'order-1': id % 2 === 1 }">
         <div class="name">
-          {{ community.name }}
+          {{ community.field.name }}
         </div>
         <div class="about">
-          {{ community.about }}
+          {{ community.field.about }}
         </div>
         <div class="link-wrapper">
           <nuxt-link :to="'/community/' + community.id" class="link">
