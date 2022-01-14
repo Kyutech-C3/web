@@ -3,42 +3,43 @@
 公式サイトのリニューアル版
 
 # 役割分担
-* Header：最終デザインがまだ  
-* Footer：もおん(担当：ふぃる先輩)  
+* <s>Header：ふぃる先輩</s>
+![フロー1 - Google Chrome 9_19_2021 2_20_13 AM (2)](https://user-images.githubusercontent.com/65708479/133897178-74b9ceb9-452e-495b-aff2-b594e68e5d49.png)
+* Footer：Kizuku(担当：ふぃる先輩)  
 ![フロー1 - Google Chrome 2021_09_06 22_49_23 (2)](https://user-images.githubusercontent.com/65708479/132235192-371ce95f-e4ff-4b40-9d66-a11f147e5cbb.png)
 * トップページ(pages/index.vue)：シモ
     components/
-    * Top.vue：ko_suke(担当：ふぃる先輩)
+    * <s>TopTop.vue：ko_suke(担当：ふぃる先輩)</s>
     * ![フロー1 - Google Chrome 2021_09_06 22_48_52 (2)](https://user-images.githubusercontent.com/65708479/132235269-f2a5018a-9a65-4b82-b750-2bc11cafbcd8.png)
-    * AboutC3.vue：Kizuku(担当：鳩)
+    * <s>TopAboutC3.vue：Kizuku(担当：鳩)</s>
     * ![フロー1 - Google Chrome 2021_09_06 22_48_58 (2)](https://user-images.githubusercontent.com/65708479/132235320-764faf29-e38c-42ee-bfb2-25c2a0258c90.png)
-    * AboutCommunity.vue：まつり(担当：シモ)
+    * <s>TopAboutCommunity.vue：まつり(担当：シモ)</s>
     * ![フロー1 - Google Chrome 2021_09_06 22_49_07 (2)](https://user-images.githubusercontent.com/65708479/132235334-e68e5503-8836-4bdb-a0ab-f48047816881.png)
-    * CommunityLink.vue：オンコン(担当：シモ)
+    * TopCommunityLink.vue：オンコン(担当：シモ)
     * ![フロー1 - Google Chrome 2021_09_06 22_49_12 (2)](https://user-images.githubusercontent.com/65708479/132235359-92d1ccb0-e9f9-444a-b08e-6997dd8f6b71.png)
-    * Blog.vue：Kouichi_T(担当：鳩)
+    * <s>TopBlog.vue：シモ(担当：鳩)</s>
     * ![フロー1 - Google Chrome 2021_09_06 22_49_20 (2)](https://user-images.githubusercontent.com/65708479/132235398-2bbd68bd-ba6d-4686-89bc-90c06dc260f5.png)
-* C3について(pages/about/index.vue)  
+* C3について(pages/about/index.vue)  ：鳩屋敷
     components/
-    * 未
-* お知らせ一覧(pages/news/index.vue)  
+    * 必要に応じて作成
+* お知らせ一覧(pages/news/index.vue)  ：まつり
     components/
-    * 未
-* お知らせ詳細(pages/news/_id.vue)  
+    * 必要に応じて作成
+* お知らせ詳細(pages/news/\_id.vue) ：ko_suke
     components/
-    * 未
-* 各コミュニティーページ(pages/community/_id.vue)  
+    * 必要に応じて作成
+* 各コミュニティーページ(pages/community/\_id.vue) ：Kizuku  
+    components/  
+    * 必要に応じて作成
+* ブログ一覧(pages/blog/index.vue)  ：もおん
     components/
-    * 未
-* ブログ一覧(pages/blog/index.vue)  
+    * 必要に応じて作成
+* ブログ詳細(pages/blog/\_id.vue)   ：シモ   
     components/
-    * 未
-* ブログ詳細(pages/blog/_id.vue)      
+    * 必要に応じて作成
+* お問い合わせ(pages/contact/index.vue) ：ko_suke 
     components/
-    * 未
-* お問い合わせ(pages/contact/index.vue)  
-    components/
-    * 未
+    * 必要に応じて作成
 
 # デザイン
 
@@ -48,7 +49,7 @@
 
 # CSS
 ## SCSSで値を変数化
-今回は共通の値をCSSに値を直書きせず、SCSSで変数定義した値を使って、スタイルを記述していきます。変数定義場所は
+今回共通化したいスタイルの値をSCSSの変数定義の機能を用いて変数化します。変数定義場所は
 ```
 ~/assets/stylesheets/variables.scss
 ```
@@ -58,22 +59,22 @@
 **慣れている人**：
 * SCSSで各値の変数定義
 * コードチェック
+* 完成したら他の上回生にもコードチェックをお願いする。
 
 **慣れていない人**：
-* 役割部分のコーディング（スタイルの値はSCSSの変数を使う）
+* 役割部分のコーディング
 * 質問があるときや分からい時は担当の人に聞くか、シモに聞くか、他の分かる人に聞く。
 * 完成したら担当の人にコードをチェックしてもらう。
 
-## SCSSでの変数命名規則
-プロパティー名　＋　大きさ（small, large,...）・色(red,blue,...)  
-例）フォントの色を定義する場合
+## SCSSの変数利用
+例）定義されたフォントサイズの利用
 
 ```
-$color-red: #FF0;
+font-size: $font-size-top-title;
 ```
-例）フォントのサイズを定義する場合
+例）定義された色の利用
 ```
-$font-size-small: 15px;
+color: $base-font-color;
 ```
 
 # コンポーネント
@@ -85,16 +86,16 @@ $font-size-small: 15px;
 ページ名 + コンポーネント名
 例）トップページのトップコンポーネント
 ```
-topTop.vue
+TopTop.vue
 ```
 
 例）ブログ一覧ページのカード一覧コンポーネント
 ```
-blogListCardList.vue
+BlogListCardList.vue
 ```
 例）ブログ一覧ページのカードコンポーネント
 ```
-blogListCard.vue
+BlogListCard.vue
 ```
 
 ## コンポーネント制作注意点

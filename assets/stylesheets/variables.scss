@@ -1,0 +1,37 @@
+//Commonly used web colors
+$gray: #707070;
+$light-gray: #c9d0d6;
+$light-blue: #76a5c3;
+$white: #ffffff;
+$black: #000000;
+
+//Variable for default ui
+
+// Common variable for text
+$base_font_size: 1rem;
+$base-font-color: $gray;
+$footer-font-color: $light-gray;
+$font-size-header: 28px;
+$font-size-footer: 20px;
+$font-family-title: 'Inter';
+$font-family-contens: '游ゴシック';
+
+// Variable for top page text
+$font-size-top-title: $base_font_size * 12;
+$font-size-contents-title: $base_font_size * 10;
+$font-size-contents-description: $base_font_size * 2.8;
+$font-size-button: $base_font_size * 2.4;
+
+// Variable for other page text
+$font-size-other-title: $base_font_size * 10;
+$font-size-other-contents-title: $base_font_size * 4;
+$font-size-other-contents-description: $base_font_size * 2.8;
+$font-size-other-contents-date: $base_font_size * 3.2;
+
+// Variable for media query
+$media-query-small-max-width: 600px;
+$media-query-standard-max-width: 1000px;
+$media-query-min-width: 1000px;
+
+// opacity
+$opacity-carousel-point: 30%;
