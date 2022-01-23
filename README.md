@@ -28,7 +28,7 @@
 * お知らせ詳細(pages/news/\_id.vue) ：ko_suke
     components/
     * 必要に応じて作成
-* 各コミュニティーページ(pages/community/\_id.vue) ：Kizuku  
+* <s>各コミュニティーページ(pages/community/\_id.vue) ：Kizuku</s>  
     components/  
     * 必要に応じて作成
 * ブログ一覧(pages/blog/index.vue)  ：もおん
@@ -37,7 +37,7 @@
 * ブログ詳細(pages/blog/\_id.vue)   ：シモ   
     components/
     * 必要に応じて作成
-* お問い合わせ(pages/contact/index.vue) ：ko_suke 
+* <s>お問い合わせ(pages/contact/index.vue) ：ko_suke</s>  
     components/
     * 必要に応じて作成
 
