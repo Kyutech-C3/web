@@ -141,7 +141,7 @@ export default {
   }
   .about {
     height: fit-content;
-    padding-bottom: 64vw;
+    padding-bottom: 58vw;
     padding-left: 0;
     text-align: left;
   }
