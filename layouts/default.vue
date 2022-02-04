@@ -36,14 +36,13 @@ html {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
   overflow-x: hidden;
-  font-size: max(0.5vw, 7px);
 }
 .page {
   padding: 120px 0 0 0;
 }
-body{
+body {
   width: 100%;
-  margin: 0;  
+  margin: 0;
 }
 </style>
 

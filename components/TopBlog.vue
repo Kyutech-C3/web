@@ -82,13 +82,14 @@ export default {
   margin: 52px 0 20px 0;
 }
 .wrapper {
-  height: min(37.5vw, 720px);
+  height: fit-content;
+  padding-bottom: 100px;
 }
 .carousel-nav {
   margin: auto;
   box-shadow: 15px 15px 25px #00000035;
   width: min(50vw, 950px);
-  height: inherit;
+  height: min(37.5vw, 720px);
   border-radius: 20px;
   background-color: rgba(255, 255, 255, 0);
 }
