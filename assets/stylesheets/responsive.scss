@@ -1,17 +1,17 @@
 @media screen and (max-width: $media-query-small-max-width) {
-    html {
-        font-size: 5px;
-    }    
+  html {
+    font-size: 5px;
+  }
 }
 
-@media screen and (max-width: $media-query-standard-max-width) {
-    html {
-        font-size: 8px;
-    }    
+@media screen and (min-width: $media-query-small-max-width) {
+  html {
+    font-size: 8px;
+  }
 }
 
 @media screen and (min-width: $media-query-min-width) {
-    html {
-        font-size: 10px;
-    }    
+  html {
+    font-size: 8px;
+  }
 }
