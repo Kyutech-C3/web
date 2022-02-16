@@ -4,10 +4,15 @@
     <div class="carousel-nav">
       <hooper :settings="hooperSettings">
         <slide v-for="(item, idx) in blog" :key="idx">
-          <img
-            :src="item.fields.thumbnail.fields.file.url"
-            @click="toPage(item.sys.id)"
-          />
+          <nuxt-link id="link-to-blog" :to="item.sys.id">
+            <img :src="item.fields.thumbnail.fields.file.url" />
+          </nuxt-link>
+        </slide>
+        <slide class="link-to-blog-list">
+          <nuxt-link id="link-to-blog-list-content" to="/blog">
+            <span>一覧を見る</span>
+            <font-awesome-icon id="arrow" :icon="['fas', 'angle-right']" />
+          </nuxt-link>
         </slide>
         <hooper-navigation slot="hooper-addons"></hooper-navigation>
         <hooper-pagination slot="hooper-addons"></hooper-pagination>
@@ -60,7 +65,7 @@ export default {
         keysControl: false,
         wheelControl: false,
         hoverPause: false,
-        autoPlay: true,
+        autoPlay: false,
         playSpeed: 5000,
         transition: 1000,
       },
@@ -101,19 +106,59 @@ export default {
   padding: 0;
   width: inline;
   height: inherit;
-  cursor: pointer;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  object-fit: cover;
 }
 ::v-deep .hooper-list {
   border-radius: 20px;
-  object-fit: cover;
 }
-.hooper img {
-  margin: 0;
-  padding: 0;
-  width: min(50vw, 950px);
-  height: min(37.5vw, 720px);
+::v-deep .link-to-blog-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: large;
+}
+::v-deep #link-to-blog-list-content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  color: $base-font-color;
+}
+::v-deep #link-to-blog-list-content::after {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: $base-font-color;
+  transform: scale(0, 1);
+  transform-origin: center top;
+  transition: transform 0.3s;
+}
+::v-deep #link-to-blog-list-content:hover {
+  color: $black;
+}
+::v-deep #link-to-blog-list-content:hover::after {
+  background: $black;
+  transform: scale(1, 1);
+}
+::v-deep .link-to-blog-list #arrow,
+span {
+  margin: 6px 7px;
+}
+::v-deep .link-to-blog-list #arrow {
+  font-size: 25px;
+}
+#link-to-blog,
+#link-to-blog img {
+  width: inherit;
+  height: inherit;
+}
+#link-to-blog img {
+  object-fit: cover;
 }
 ::v-deep .hooper-pagination {
   bottom: max(-50px, -6vw);

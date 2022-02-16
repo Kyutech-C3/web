@@ -12,10 +12,12 @@
           :markdown-text="community.field.about"
           class="markdown"
         />
-        <!-- {{ community.field.about }} -->
       </div>
       <div class="community-link">
-        <base-button :link="'/community/' + community.id">
+        <base-button
+          :to="'/community/' + community.id"
+          :animation="changeAnimation(id % 2)"
+        >
           詳しく見る
         </base-button>
       </div>
@@ -46,6 +48,17 @@ export default {
       default() {
         return 0
       },
+    },
+  },
+  methods: {
+    changeAnimation(value) {
+      if (value === 0) {
+        return 'toLeft'
+      } else if (value === 1) {
+        return 'toRight'
+      } else {
+        return ''
+      }
     },
   },
 }
@@ -91,9 +104,6 @@ export default {
   margin-bottom: 20px;
   height: 55%;
   width: 100%;
-  // display: -webkit-box;
-  // -webkit-box-orient: vertical;
-  // -webkit-line-clamp: 5;
   overflow: hidden;
   position: relative;
 }
