@@ -3,11 +3,12 @@
     <div class="sidebar-title">最近の投稿</div>
     <sidebar-card
       v-for="(blog, idx) in blogs"
+      :id="blog.sys.id"
       :key="idx"
-      :img="blog.img"
+      :img="blog.fields.thumbnail.fields.file.url"
       class="sidebar-card"
     >
-      {{ blog.title }}
+      {{ blog.fields.title }}
     </sidebar-card>
   </div>
 </template>

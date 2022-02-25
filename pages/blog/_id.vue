@@ -18,66 +18,45 @@
         </div>
       </div>
       <div class="date">
-        {{ blog_item.sys.updatedAt }}
+        {{ dateFormatter(blog_item.sys.updatedAt) }}
       </div>
       <markdown-view :markdown-text="blog_item.fields.body" />
     </div>
-    <sidebar :blogs="blogs" class="sidebar" />
+    <sidebar :blogs="recent_blog" class="sidebar" />
   </div>
 </template>
 
 <script>
+import Vue from 'vue'
 import MarkdownView from '~/components/MarkdownView.vue'
 import Sidebar from '~/components/Sidebar.vue'
 import Tag from '~/components/Tag.vue'
 import sdkClient from '~/plugins/contentful.js'
 
-export default {
+export default Vue.extend({
   components: {
     MarkdownView,
     Sidebar,
     Tag,
   },
-  async asyncData({ env }) {
+  async asyncData({ env, params }) {
     return Promise.all([
-      await sdkClient.getEntry('66O1WYPMRra7vRT0oScSv0'),
-      await sdkClient.getEntries({ content_type: 'blog' }),
-    ]).then((blog, recentBlog) => {
-      // eslint-disable-next-line no-console
-      console.log(blog)
+      await sdkClient.getEntry(params.id),
+      await sdkClient.getEntries({ content_type: 'blog', limit: 3 }),
+    ]).then(([blog, recentBlog]) => {
       return {
-        blog_item: blog[0],
-        recent_blog: recentBlog,
+        blog_item: blog,
+        recent_blog: recentBlog.items,
       }
     })
   },
-  data() {
-    return {
-      title: 'defaultTitle',
-      img: 'https://simo-c3.github.io/image_url/CG.png',
-      date: '2021/21/21',
-      markdownText:
-        '# hoge <br> hogehogehoge<br>asssdfha;hdfa;iusegduiayfoiuashydoiucfaoiybhcuoiayuisdafadsjkhfjkdhsakjh cauh',
-      blogs: [
-        {
-          img: 'https://simo-c3.github.io/image_url/CG.png',
-          title: 'hoge',
-          date: '2021/12/21 12:12:33',
-        },
-        {
-          img: 'https://simo-c3.github.io/image_url/CG.png',
-          title: 'hoge',
-          date: '2021/12/21 12:12:33',
-        },
-        {
-          img: 'https://simo-c3.github.io/image_url/CG.png',
-          title: 'hoge',
-          date: '2021/12/21 12:12:33',
-        },
-      ],
+  methods: {
+    dateFormatter(date) {
+      date = new Date(date)
+      return date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate() + '  ' + date.getHours() + ':' + date.getMinutes() +':'+ date.getSeconds()
     }
   },
-}
+})
 </script>
 
 <style lang="scss" scoped>
@@ -103,7 +82,7 @@ export default {
 }
 .title-wrapper {
   position: absolute;
-  padding: 50px 0;
+  padding: 30px 0;
   width: 100%;
   background-color: $through-light-blue;
   color: $white;
@@ -155,7 +134,7 @@ export default {
   width: 300px;
 }
 
-@media screen and (max-width: 1225px) {
+@media screen and (max-width: 1285px) {
   .blog_page {
     width: 90%;
     margin: 0;
@@ -164,7 +143,7 @@ export default {
     height: 50vw;
   }
   .title-wrapper {
-    padding: 30px 0;
+    padding: 20px 0;
   }
   .title {
     width: 50%;
@@ -173,8 +152,9 @@ export default {
     margin: 100px 0 0 0;
   }
   .sidebar {
-    margin: 0;
-    width: 60vw;
+    margin: 80px 0 0 0;
+    width: 350px;
+    padding: 20px 10vw;
   }
 }
 @media screen and (max-width: $media-query-small-max-width) {
@@ -182,7 +162,7 @@ export default {
     width: 95%;
   }
   .title-wrapper {
-    padding: 20px 0;
+    padding: 15px 0;
   }
   .title {
     width: 60%;
@@ -191,7 +171,9 @@ export default {
     margin: 40px 0 0 0;
   }
   .sidebar {
-    width: 70vw;
+    margin: 60px 0 0 0;
+    padding: 20px 30px;
+    width: 75vw;
   }
 }
 </style>

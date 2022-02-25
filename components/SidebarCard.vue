@@ -1,8 +1,8 @@
 <template>
-  <div class="sidebar-card">
+  <nuxt-link :to="'/blog/'+id" class="sidebar-card">
     <img :src="img" />
     <div><slot></slot></div>
-  </div>
+  </nuxt-link>
 </template>
 
 <script>
@@ -15,11 +15,18 @@ export default {
         return ''
       },
     },
+    id: {
+      type: String,
+      required: true,
+      default() {
+        return ''
+      },
+    },
   },
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .sidebar-card {
   display: flex;
   overflow: hidden;
@@ -27,6 +34,8 @@ export default {
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
   width: 100%;
   height: 130px;
+  text-decoration: none;
+  color: $base-font-color;
 }
 .sidebar-card img {
   width: 50%;
