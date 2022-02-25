@@ -99,11 +99,11 @@ export default {
   data() {
     return {
       slides: [
-        { link: '#1', img: '/carousel_1.png' },
-        { link: '#2', img: '/carousel_2.png' },
-        { link: '#3', img: '/carousel_3.png' },
-        { link: '#4', img: '/carousel_4.png' },
-        { link: '#5', img: '/carousel_5.png' },
+        { link: '#1', img: 'https://simo-c3.github.io/image_url/CG.png' },
+        { link: '#2', img: 'https://simo-c3.github.io/image_url/CG.png' },
+        { link: '#3', img: 'https://simo-c3.github.io/image_url/CG.png' },
+        { link: '#4', img: 'https://simo-c3.github.io/image_url/CG.png' },
+        { link: '#5', img: 'https://simo-c3.github.io/image_url/CG.png' },
       ],
       hooperSettings: {
         infiniteScroll: true,

@@ -4,7 +4,7 @@
     <div class="carousel-nav">
       <hooper :settings="hooperSettings">
         <slide v-for="(item, idx) in blog" :key="idx">
-          <nuxt-link id="link-to-blog" :to="item.sys.id">
+          <nuxt-link id="link-to-blog" :to="'blog/' + item.sys.id">
             <img :src="item.fields.thumbnail.fields.file.url" />
           </nuxt-link>
         </slide>

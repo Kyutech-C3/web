@@ -19,16 +19,16 @@
             </div>
             <div class="center-container">
                 <div class="icon-container">
-                    <a href="/">
+                    <a href="/" target="_blank">
                         <font-awesome-icon :icon="['fas','box-open']" class="icons"/>
                     </a>
-                    <a href="https://twitter.com/c3_kyutech">
+                    <a href="https://twitter.com/c3_kyutech" target="_blank">
                         <font-awesome-icon :icon="['fab','twitter']" class="icons" />
                     </a>
-                    <a href="https://www.youtube.com/channel/UCeRY2jujVBYRqmilrCZytFw">
+                    <a href="https://www.youtube.com/channel/UCeRY2jujVBYRqmilrCZytFw" target="_blank">
                         <font-awesome-icon :icon="['fab','youtube']" class="icons"/>
                     </a>
-                    <a href="https://github.com/Kyutech-C3">
+                    <a href="https://github.com/Kyutech-C3" target="_blank">
                         <font-awesome-icon :icon="['fab','github']" class="icons"/>
                     </a>
                 </div>
