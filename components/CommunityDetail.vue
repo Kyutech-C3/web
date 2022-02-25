@@ -12,7 +12,15 @@
 
 <script>
 export default {
-    props:["items"]
+    props: {
+      items: {
+        type: Object,
+        required: true,
+        default() {
+          return {}
+        }
+      }
+    }
 }
 </script>
 
@@ -43,11 +51,11 @@ export default {
 @media screen and (max-width: $media-query-small-max-width) {
     .title{
         font-size: 60px;
-    }    
+    }
 }
 @media screen and (max-width: 450px) {
     .title{
         font-size: 40px;
-    }    
+    }
 }
 </style>

@@ -38,7 +38,7 @@ html {
   overflow-x: hidden;
 }
 .page {
-  padding: 120px 0 0 0;
+  margin-top: 150px !important;
 }
 body {
   width: 100%;
