@@ -1,68 +1,81 @@
 <template>
   <div class="wrapper">
-    <div class="title">
-      <p>
-        ブログ
-      </p>
-    </div>
+    <div class="title">ブログ</div>
     <div class="carousel-nav">
       <hooper :settings="hooperSettings">
-      <slide 
-        v-for="(slide, idx) in slides"
-        :key="idx"
-      >
-        <img :src="slide.img" @click="toPage(slide.id)"/>
-      </slide>
-      <hooper-navigation slot="hooper-addons"></hooper-navigation>
-      <hooper-pagination slot="hooper-addons"></hooper-pagination>
+        <slide v-for="(item, idx) in blog" :key="idx">
+          <nuxt-link id="link-to-blog" :to="item.sys.id">
+            <img :src="item.fields.thumbnail.fields.file.url" />
+          </nuxt-link>
+        </slide>
+        <slide class="link-to-blog-list">
+          <nuxt-link id="link-to-blog-list-content" to="/blog">
+            <span>一覧を見る</span>
+            <font-awesome-icon id="arrow" :icon="['fas', 'angle-right']" />
+          </nuxt-link>
+        </slide>
+        <hooper-navigation slot="hooper-addons"></hooper-navigation>
+        <hooper-pagination slot="hooper-addons"></hooper-pagination>
       </hooper>
     </div>
-    <div style="height: 500px"></div>
   </div>
 </template>
 
 <script>
-import { 
+import {
   Hooper,
   Slide,
   Pagination as HooperPagination,
-  Navigation as HooperNavigation
-} from 'hooper';
-import 'hooper/dist/hooper.css';
+  Navigation as HooperNavigation,
+} from 'hooper'
+import 'hooper/dist/hooper.css'
 
 export default {
-  components: { 
+  components: {
     Hooper,
     Slide,
     HooperPagination,
-    HooperNavigation
+    HooperNavigation,
+  },
+  props: {
+    blog: {
+      type: Array,
+      required: true,
+      default() {
+        return [
+          {
+            sys: {
+              id: 'hoge',
+            },
+            fields: {
+              publishedAt: '2020',
+              title: 'hogehoge',
+              thumbnail: {},
+            },
+          },
+        ]
+      },
+    },
   },
   data() {
     return {
-      slides: [
-        { id: '100', link: '#1', img: 'https://simo-c3.github.io/image_url/CG.png' },
-        { id: '2', link: '#2', img: 'https://simo-c3.github.io/image_url/Game.png' },
-        { id: '3', link: '#3', img: 'https://simo-c3.github.io/image_url/MediaArt.jpg' },
-        { id: '4', link: '#4', img: 'https://simo-c3.github.io/image_url/hack.jpg' },
-        { id: '5', link: '#5', img: 'https://simo-c3.github.io/image_url/Game.png' }
-      ],
       hooperSettings: {
         infiniteScroll: true,
         centerMode: false,
         keysControl: false,
         wheelControl: false,
         hoverPause: false,
-        autoPlay: true,
+        autoPlay: false,
         playSpeed: 5000,
-        transition: 1000
+        transition: 1000,
       },
     }
   },
   methods: {
     toPage(id) {
-      this.$router.push({path: '/blog/' + id})
-    }
-  }
+      this.$router.push(`/blog/${id}`)
+    },
+  },
 }
 </script>
 
@@ -71,16 +84,17 @@ export default {
   font-size: $font-size-contents-title;
   color: $base-font-color;
   text-align: center;
+  margin: 52px 0 20px 0;
 }
 .wrapper {
-  width: 100%;
-  height: min(37.5vw, 720px);
+  height: fit-content;
+  padding-bottom: 100px;
 }
 .carousel-nav {
   margin: auto;
   box-shadow: 15px 15px 25px #00000035;
   width: min(50vw, 950px);
-  height: inherit;
+  height: min(37.5vw, 720px);
   border-radius: 20px;
   background-color: rgba(255, 255, 255, 0);
 }
@@ -92,19 +106,59 @@ export default {
   padding: 0;
   width: inline;
   height: inherit;
-  cursor: pointer;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  object-fit:cover;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 ::v-deep .hooper-list {
   border-radius: 20px;
-  object-fit:cover;
 }
-.hooper img {
-  margin: 0;
-  padding: 0;
-  width: min(50vw, 950px);
-  height: min(37.5vw, 720px);
+::v-deep .link-to-blog-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: large;
+}
+::v-deep #link-to-blog-list-content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  color: $base-font-color;
+}
+::v-deep #link-to-blog-list-content::after {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: $base-font-color;
+  transform: scale(0, 1);
+  transform-origin: center top;
+  transition: transform 0.3s;
+}
+::v-deep #link-to-blog-list-content:hover {
+  color: $black;
+}
+::v-deep #link-to-blog-list-content:hover::after {
+  background: $black;
+  transform: scale(1, 1);
+}
+::v-deep .link-to-blog-list #arrow,
+span {
+  margin: 6px 7px;
+}
+::v-deep .link-to-blog-list #arrow {
+  font-size: 25px;
+}
+#link-to-blog,
+#link-to-blog img {
+  width: inherit;
+  height: inherit;
+}
+#link-to-blog img {
+  object-fit: cover;
 }
 ::v-deep .hooper-pagination {
   bottom: max(-50px, -6vw);
@@ -154,7 +208,6 @@ export default {
   transition: 0.3s ease;
 }
 
-/* タブレット↓ */
 @media screen and (max-width: $media-query-standard-max-width) {
   .carousel-nav {
     width: min(70vw, 680px);

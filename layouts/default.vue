@@ -1,10 +1,11 @@
 <template>
   <div>
     <Header ref="header" @masked-screen="isMaskedScreen = !isMaskedScreen" />
-    <Nuxt class="page_content" />
+    <Nuxt class="page" />
     <transition>
       <div v-show="isMaskedScreen" class="mask" @click="closeHeader()"></div>
     </transition>
+    <Footer />
   </div>
 </template>
 
@@ -36,6 +37,13 @@ html {
   box-sizing: border-box;
   overflow-x: hidden;
 }
+.page {
+  margin-top: 150px !important;
+}
+body {
+  width: 100%;
+  margin: 0;
+}
 </style>
 
 <style lang="scss" scoped>
@@ -58,8 +66,5 @@ html {
 .v-enter,
 .v-leave-to {
   opacity: 0;
-}
-.page_content {
-  margin-top: 150px !important;
 }
 </style>

@@ -1,10 +1,17 @@
 <template>
   <div>
-    <top-top/>
-    <top-about-c-3/>
-    <top-about-community/>
-    <top-community-link/>
-    <top-blog/>
+    <top-top :news="news" />
+    <top-about-c-3 :c3-introduction="c3Introduction" class="component" />
+    <top-about-community :about-community="aboutCommunity" class="component" />
+    <top-community-link
+      v-for="(community, idx) in eachCommunity"
+      :id="idx"
+      :key="idx"
+      :each-community="eachCommunity"
+      :community="community"
+      class="component"
+    />
+    <top-blog :blog="blog" class="component" />
   </div>
 </template>
 
@@ -15,6 +22,7 @@ import TopAboutCommunity from '~/components/TopAboutCommunity.vue'
 import TopBlog from '~/components/TopBlog.vue'
 import TopCommunityLink from '~/components/TopCommunityLink.vue'
 
+import sdkClient from '@/plugins/contentful.js'
 
 export default {
   components: {
@@ -22,7 +30,57 @@ export default {
     TopAboutC3,
     TopTop,
     TopCommunityLink,
-    TopBlog
-  }
+    TopBlog,
+  },
+  async asyncData({ env }) {
+    return (
+      Promise.all([
+        await sdkClient.getEntries({
+          content_type: 'c3Introduction',
+        }),
+        await sdkClient.getEntries({
+          content_type: 'aboutCommunity',
+        }),
+        await sdkClient.getEntries({
+          content_type: 'eachCommunity',
+        }),
+        await sdkClient.getEntries({
+          content_type: 'news',
+        }),
+        await sdkClient.getEntries({
+          content_type: 'blog',
+        }),
+      ])
+        .then(([c3Introduction, aboutCommunity, eachCommunity, news, blog]) => {
+          const communities = []
+          for (let i = 0; i < eachCommunity.items.length; i++) {
+            communities.push({
+              id: eachCommunity.items[i].sys.id,
+              field: {
+                name: eachCommunity.items[i].fields.name,
+                about: eachCommunity.items[i].fields.about,
+                image: eachCommunity.items[i].fields.image.fields.file.url,
+              },
+            })
+          }
+          return {
+            c3Introduction:
+              c3Introduction.items[0].fields.summaryOfIntroduction,
+            aboutCommunity: aboutCommunity.items[0].fields.about,
+            eachCommunity: communities,
+            news: news.items,
+            blog: blog.items,
+          }
+        })
+        // eslint-disable-next-line no-console
+        .catch(console.error)
+    )
+  },
 }
 </script>
+
+<style lang="scss" scoped>
+.component {
+  margin: 100px 7% 100px 7%;
+}
+</style>
