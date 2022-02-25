@@ -47,7 +47,7 @@
                   <font-awesome-icon :icon="content.icon" />
                   <div>{{ content.text }}</div>
                 </nuxt-link>
-                <a v-else :href="content.link">
+                <a v-else :href="content.link" target="_blank">
                   <font-awesome-icon :icon="content.icon" />
                   <div>{{ content.text }}</div>
                 </a>

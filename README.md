@@ -19,7 +19,7 @@
     * ![フロー1 - Google Chrome 2021_09_06 22_49_12 (2)](https://user-images.githubusercontent.com/65708479/132235359-92d1ccb0-e9f9-444a-b08e-6997dd8f6b71.png)
     * <s>TopBlog.vue：シモ(担当：鳩)</s>
     * ![フロー1 - Google Chrome 2021_09_06 22_49_20 (2)](https://user-images.githubusercontent.com/65708479/132235398-2bbd68bd-ba6d-4686-89bc-90c06dc260f5.png)
-* C3について(pages/about/index.vue)  ：鳩屋敷
+* C3について(pages/about/index.vue)  ：シモ
     components/
     * 必要に応じて作成
 * お知らせ一覧(pages/news/index.vue)  ：まつり
@@ -28,16 +28,16 @@
 * お知らせ詳細(pages/news/\_id.vue) ：ko_suke
     components/
     * 必要に応じて作成
-* 各コミュニティーページ(pages/community/\_id.vue) ：Kizuku  
+* <s>各コミュニティーページ(pages/community/\_id.vue) ：Kizuku</s>  
     components/  
     * 必要に応じて作成
-* ブログ一覧(pages/blog/index.vue)  ：もおん
+* ブログ一覧(pages/blog/index.vue)  ：シモ
     components/
     * 必要に応じて作成
-* ブログ詳細(pages/blog/\_id.vue)   ：シモ   
+* <s>ブログ詳細(pages/blog/\_id.vue)   ：シモ</s>   
     components/
     * 必要に応じて作成
-* お問い合わせ(pages/contact/index.vue) ：ko_suke 
+* <s>お問い合わせ(pages/contact/index.vue) ：ko_suke</s>  
     components/
     * 必要に応じて作成
 

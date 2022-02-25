@@ -16,9 +16,12 @@
           </div>
         </div>
         <div class="top-news">
-          <nuxt-link :to="'/news/' + news[0].sys.id">
+          <base-button
+            :to="`/news/` + news[0].sys.id"
+            :animation="'rightToRight'"
+          >
             {{ getNewsDate + ' ' + news[0].fields.title }}
-          </nuxt-link>
+          </base-button>
         </div>
       </div>
     </div>
@@ -44,9 +47,12 @@
           </div>
         </div>
         <div class="top-news">
-          <nuxt-link :to="`/news/` + news[0].sys.id">
+          <base-button
+            :to="`/news/` + news[0].sys.id"
+            :animation="'rightToRight'"
+          >
             {{ getNewsDate + ' ' + news[0].fields.title }}
-          </nuxt-link>
+          </base-button>
         </div>
       </div>
     </div>
@@ -61,6 +67,7 @@ import {
   Navigation as HooperNavigation,
 } from 'hooper'
 import 'hooper/dist/hooper.css'
+import BaseButton from '@/components/BaseButton.vue'
 
 export default {
   components: {
@@ -68,6 +75,7 @@ export default {
     Slide,
     HooperPagination,
     HooperNavigation,
+    BaseButton,
   },
   props: {
     news: {
@@ -91,11 +99,11 @@ export default {
   data() {
     return {
       slides: [
-        { link: '#1', img: '/carousel_1.png' },
-        { link: '#2', img: '/carousel_2.png' },
-        { link: '#3', img: '/carousel_3.png' },
-        { link: '#4', img: '/carousel_4.png' },
-        { link: '#5', img: '/carousel_5.png' },
+        { link: '#1', img: 'https://simo-c3.github.io/image_url/CG.png' },
+        { link: '#2', img: 'https://simo-c3.github.io/image_url/CG.png' },
+        { link: '#3', img: 'https://simo-c3.github.io/image_url/CG.png' },
+        { link: '#4', img: 'https://simo-c3.github.io/image_url/CG.png' },
+        { link: '#5', img: 'https://simo-c3.github.io/image_url/CG.png' },
       ],
       hooperSettings: {
         infiniteScroll: true,
@@ -203,26 +211,10 @@ export default {
 }
 .top-news {
   margin: 0;
+  height: min(7vw, 60px);
   padding: min(40px, 3vw) min(30px, 1.5vw);
 }
-.top-news a {
-  margin: 0;
-  padding: min(20px, 2vw) min(40px, 3.8vw);
-  text-decoration: none;
-  color: $gray;
-  border: solid $gray;
-  border-width: min(2px, 0.1vw);
-  border-radius: 50px;
-  white-space: nowrap;
-  display: block;
-  width: 80%;
-  text-align: center;
-}
-.top-news a:hover,
-.all-news-link a:hover {
-  opacity: 0.5;
-  transition: 0.3s ease;
-}
+
 /* タブレット↑ */
 @media screen and (min-width: 1001px) {
   .top-news-nav {

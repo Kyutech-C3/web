@@ -19,16 +19,16 @@
             </div>
             <div class="center-container">
                 <div class="icon-container">
-                    <a href="/">
+                    <a href="/" target="_blank">
                         <font-awesome-icon :icon="['fas','box-open']" class="icons"/>
                     </a>
-                    <a href="https://twitter.com/c3_kyutech">
+                    <a href="https://twitter.com/c3_kyutech" target="_blank">
                         <font-awesome-icon :icon="['fab','twitter']" class="icons" />
                     </a>
-                    <a href="https://www.youtube.com/channel/UCeRY2jujVBYRqmilrCZytFw">
+                    <a href="https://www.youtube.com/channel/UCeRY2jujVBYRqmilrCZytFw" target="_blank">
                         <font-awesome-icon :icon="['fab','youtube']" class="icons"/>
                     </a>
-                    <a href="https://github.com/Kyutech-C3">
+                    <a href="https://github.com/Kyutech-C3" target="_blank">
                         <font-awesome-icon :icon="['fab','github']" class="icons"/>
                     </a>
                 </div>
@@ -37,7 +37,7 @@
                 </div>
             </div>
             <div class="right-container">
-                <a href="#" id="return-top">
+                <a id="return-top" href="#">
                     <div>
                         <font-awesome-icon :icon="['fas','angle-up']" class="angle-icon"/><br>
                         <div>
@@ -52,7 +52,7 @@
 
 <script>
 export default {
-    
+
 }
 </script>
 
@@ -86,7 +86,7 @@ export default {
 .official-text{
     padding: 40px 0 0 6.25%;
     width: 300px;
-    font-size: $font-size-other-contents-date;
+    font-size: $font-size-other-contents-description;
     font-family: "Inter";
     font-style: Regular;
     color: $white;
@@ -135,8 +135,6 @@ export default {
     scroll-behavior: smooth;
 }
 
-
-
 //タブレット用
 @media screen and (max-width: 1200px){
 .left-container{
@@ -180,8 +178,6 @@ export default {
     padding: 50px 0 39px 0;
     font-size: 15px;
 }
-
-
 
 //スマホ用
 @media screen and (max-width: 510px){

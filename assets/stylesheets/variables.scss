@@ -1,7 +1,8 @@
 //Commonly used web colors
 $gray: #707070;
 $light-gray: #c9d0d6;
-$light-blue: #76a5c3;
+$light-blue: #7db4d6;
+$through-light-blue: #489fd4e0;
 $white: #ffffff;
 $black: #000000;
 
@@ -23,10 +24,10 @@ $font-size-contents-description: $base_font_size * 2.8;
 $font-size-button: $base_font_size * 2.4;
 
 // Variable for other page text
-$font-size-other-title: $base_font_size * 10;
-$font-size-other-contents-title: $base_font_size * 4;
-$font-size-other-contents-description: $base_font_size * 2.8;
-$font-size-other-contents-date: $base_font_size * 3.2;
+$font-size-other-title: $base_font_size * 4;
+$font-size-other-contents-title: $base_font_size * 3;
+$font-size-other-contents-description: $base_font_size * 1.8;
+$font-size-other-contents-other: $base_font_size * 1.1;
 
 // Variable for media query
 $media-query-small-max-width: 600px;
