@@ -11,6 +11,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           persist-credentials: false
+          node-version: 14
       - name: create .env
         run: |
           touch .env
