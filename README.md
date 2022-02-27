@@ -5,7 +5,7 @@
 # 役割分担
 * <s>Header：ふぃる先輩</s>
 ![フロー1 - Google Chrome 9_19_2021 2_20_13 AM (2)](https://user-images.githubusercontent.com/65708479/133897178-74b9ceb9-452e-495b-aff2-b594e68e5d49.png)
-* Footer：Kizuku(担当：ふぃる先輩)  
+* <s>Footer：Kizuku(担当：ふぃる先輩)</s>  
 ![フロー1 - Google Chrome 2021_09_06 22_49_23 (2)](https://user-images.githubusercontent.com/65708479/132235192-371ce95f-e4ff-4b40-9d66-a11f147e5cbb.png)
 * トップページ(pages/index.vue)：シモ
     components/
