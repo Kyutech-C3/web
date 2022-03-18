@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/about", {data:[{c3_introduction:"## hoge\ngdaskgjajhdjgfha "}],fetch:{},mutations:void 0});
