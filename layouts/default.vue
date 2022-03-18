@@ -39,6 +39,7 @@ html {
 }
 .page {
   margin-top: 150px !important;
+  margin-bottom: 10vw !important;
 }
 body {
   width: 100%;
