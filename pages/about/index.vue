@@ -31,8 +31,9 @@ export default {
 
 <style lang="scss" scoped>
 .about {
+  width: 70%;
   max-width: 1500px;
-  margin: 0 15vw;
+  margin: 0 auto;
   padding: 40px 0;
   color: $base-font-color;
 }
