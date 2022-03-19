@@ -158,6 +158,9 @@ export default {
       this.isShowContents = !this.isShowContents
       this.$emit('masked-screen')
     },
+    closeHeader() {
+      this.isShowContents = false
+    },
     clickContents(to) {
       this.$router.push(to)
       this.isShowContents = false
