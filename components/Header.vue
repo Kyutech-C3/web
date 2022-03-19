@@ -92,22 +92,22 @@ export default {
         [
           {
             text: 'GAME',
-            link: '/community/0',
+            link: '/community/21AY3pJOP214Gsw1d9u6cD',
             icon: 'gamepad',
           },
           {
             text: 'CG',
-            link: '/community/1',
+            link: '/community/5Ay58j7CHdYFqKShRbr5tD',
             icon: 'cubes',
           },
           {
             text: 'HACK',
-            link: '/community/2',
+            link: '/community/39t5DaMrgq579LDvqWGKZK',
             icon: 'laptop-code',
           },
           {
             text: 'MEDIA_ART',
-            link: '/community/3',
+            link: '/community/1q0aXzj2r1O0pC5soNRQok',
             icon: 'palette',
           },
         ],
