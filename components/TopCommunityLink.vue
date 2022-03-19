@@ -68,7 +68,8 @@ export default {
 .community {
   display: flex;
   justify-content: center;
-  height: 34vw;
+  height: 28vw;
+  max-height: 540px;
 }
 .img-wrapper {
   height: 100%;

@@ -53,8 +53,20 @@ export default Vue.extend({
   methods: {
     dateFormatter(date) {
       date = new Date(date)
-      return date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate() + '  ' + date.getHours() + ':' + date.getMinutes() +':'+ date.getSeconds()
-    }
+      return (
+        date.getFullYear() +
+        '/' +
+        date.getMonth() +
+        '/' +
+        date.getDate() +
+        '  ' +
+        date.getHours() +
+        ':' +
+        date.getMinutes() +
+        ':' +
+        date.getSeconds()
+      )
+    },
   },
 })
 </script>
@@ -65,6 +77,7 @@ export default Vue.extend({
   justify-content: center;
   flex-wrap: wrap;
   color: $base-font-color;
+  padding: 40px 0;
 }
 .blog_page {
   width: 63vw;

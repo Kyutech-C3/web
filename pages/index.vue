@@ -81,6 +81,8 @@ export default {
 
 <style lang="scss" scoped>
 .component {
-  margin: 100px 7% 100px 7%;
+  margin: 10vw auto;
+  width: 75vw;
+  max-width: 1500px;
 }
 </style>

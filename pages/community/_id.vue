@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-box">
+  <div class="community">
     <community-detail
       :title="community.fields.name"
       :img="community.fields.image.fields.file.url"
@@ -18,6 +18,7 @@ export default {
   async asyncData({ params }) {
     return Promise.all([await sdkClient.getEntry(params.id)]).then(
       ([community]) => {
+        // eslint-disable-next-line no-console
         console.log(community)
         return {
           community,
@@ -58,3 +59,10 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.community {
+  padding: 40px 0;
+  margin: 0 15vw;
+}
+</style>

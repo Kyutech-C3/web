@@ -15,7 +15,7 @@ export default {
   components: {
     MarkdownView,
   },
-  async asyncData({ env, params }) {
+  async asyncData() {
     return Promise.all([
       await sdkClient.getEntries({ content_type: 'c3Introduction' }),
     ]).then(([about]) => {
@@ -31,13 +31,13 @@ export default {
 
 <style lang="scss" scoped>
 .about {
-  width: 80%;
   max-width: 1500px;
-  margin: 0 auto;
+  margin: 0 15vw;
+  padding: 40px 0;
   color: $base-font-color;
 }
 .title {
-  font-size: $font-size-other-title * 2;
+  font-size: $font-size-other-title;
 }
 .about-logo {
   display: block;
