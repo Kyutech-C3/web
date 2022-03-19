@@ -43,10 +43,14 @@
           <div class="contents-wrapper center">
             <ul v-for="(contents, i) in allContents" :key="i">
               <li v-for="(content, j) in contents" :key="j">
-                <nuxt-link v-if="i != 2" :to="content.link">
+                <div
+                  v-if="i != 2"
+                  class="contents"
+                  @click="clickContents(content.link)"
+                >
                   <font-awesome-icon :icon="content.icon" />
                   <div>{{ content.text }}</div>
-                </nuxt-link>
+                </div>
                 <a v-else :href="content.link" target="_blank">
                   <font-awesome-icon :icon="content.icon" />
                   <div>{{ content.text }}</div>
@@ -154,8 +158,10 @@ export default {
       this.isShowContents = !this.isShowContents
       this.$emit('masked-screen')
     },
-    closeHeader() {
+    clickContents(to) {
+      this.$router.push(to)
       this.isShowContents = false
+      this.$emit('masked-screen')
     },
   },
 }
@@ -241,6 +247,12 @@ export default {
     justify-content: space-around;
     border-top: solid 1px $light-gray;
 
+    .contents {
+      display: flex;
+      align-items: center;
+      color: $base-font-color;
+      cursor: pointer;
+    }
     ul {
       list-style: none;
       padding-left: 0;
