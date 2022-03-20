@@ -1,6 +1,6 @@
 <template>
   <div>
-    <top-top :news="news" />
+    <top-top :news="news" :important-news="importantNews" />
     <top-about-c-3 :c3-introduction="c3Introduction" class="component" />
     <top-about-community :about-community="aboutCommunity" class="component" />
     <top-community-link
@@ -32,7 +32,7 @@ export default {
     TopCommunityLink,
     TopBlog,
   },
-  async asyncData({ env }) {
+  async asyncData() {
     return (
       Promise.all([
         await sdkClient.getEntries({
@@ -53,6 +53,7 @@ export default {
       ])
         .then(([c3Introduction, aboutCommunity, eachCommunity, news, blog]) => {
           const communities = []
+          const selectNews = []
           for (let i = 0; i < eachCommunity.items.length; i++) {
             communities.push({
               id: eachCommunity.items[i].sys.id,
@@ -63,12 +64,18 @@ export default {
               },
             })
           }
+          for (let i = 0; i < news.items.length; i++) {
+            if (news.items[i].fields.important) {
+              selectNews.push(news.items[i])
+            }
+          }
           return {
             c3Introduction:
               c3Introduction.items[0].fields.summaryOfIntroduction,
             aboutCommunity: aboutCommunity.items[0].fields.about,
             eachCommunity: communities,
             news: news.items,
+            importantNews: selectNews,
             blog: blog.items,
           }
         })

@@ -29,9 +29,28 @@
       <!-- カルーセル -->
       <div class="carousel-nav">
         <hooper :settings="hooperSettings">
-          <slide v-for="(slide, idx) in slides" :key="idx">
-            <nuxt-link to="slides[idx].link">
-              <img :src="slides[idx].img" />
+          <slide v-for="(content, idx) in importantNews" :key="idx">
+            <nuxt-link id="link-to-news" :to="'/news/' + content.sys.id">
+              <img
+                :src="content.fields.thumbnail.fields.file.url"
+                class="img"
+              />
+              <div class="news-info">
+                <div class="news-title">{{ content.fields.title }}</div>
+                <div class="news-tags">
+                  <nuxt-link
+                    v-for="(tag, index) in content.fields.tags"
+                    :key="index"
+                    :to="'/news?tag=' + tag.fields.name"
+                    class="link"
+                  >
+                    <tag :tag="tag.fields.name" class="tag" />
+                  </nuxt-link>
+                </div>
+                <div class="news-date">
+                  {{ dateFormatter(content.sys.updatedAt) }}
+                </div>
+              </div>
             </nuxt-link>
           </slide>
           <hooper-navigation slot="hooper-addons"></hooper-navigation>
@@ -95,6 +114,23 @@ export default {
         ]
       },
     },
+    importantNews: {
+      type: Array,
+      required: true,
+      default() {
+        return [
+          {
+            sys: {
+              id: 'defaultID',
+            },
+            fields: {
+              publishedAt: '2020',
+              title: 'defaultTitle',
+            },
+          },
+        ]
+      },
+    },
   },
   data() {
     return {
@@ -122,6 +158,24 @@ export default {
         .getMonth()
         .toString()}.${date.getDate().toString()}`
       return newsDate
+    },
+  },
+  methods: {
+    dateFormatter(date) {
+      date = new Date(date)
+      return (
+        date.getFullYear() +
+        '/' +
+        date.getMonth() +
+        '/' +
+        date.getDate() +
+        '  ' +
+        date.getHours() +
+        ':' +
+        date.getMinutes() +
+        ':' +
+        date.getSeconds()
+      )
     },
   },
 }
@@ -265,11 +319,65 @@ export default {
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-.hooper img {
-  margin: 0;
-  padding: 0;
-  object-fit: cover;
+
+#link-to-news {
+  width: inherit;
+  height: inherit;
+  position: relative;
+
+  img {
+    object-fit: cover;
+    width: inherit;
+    height: inherit;
+  }
+  .news-info {
+    position: absolute;
+    width: 100%;
+    height: 13vw;
+    bottom: 0;
+    background-color: $through-light-blue;
+    color: $white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s 0s ease;
+
+    .news-title,
+    .news-tags,
+    .news-date {
+      width: fit-content;
+    }
+    .news-title {
+      font-size: $base_font_size * 3;
+      max-width: 60%;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .news-tags {
+      display: flex;
+      justify-content: center;
+      margin: 10px 0;
+      font-size: $font-size-other-contents-other;
+
+      .link {
+        text-decoration: none;
+        color: $white;
+
+        .tag {
+          margin: 0 3px;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .news-date {
+      font-size: $base_font_size * 1.1;
+    }
+  }
 }
+
 ::v-deep .hooper-list {
   margin: 0;
   padding: 0;
