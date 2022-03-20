@@ -278,7 +278,7 @@ export default {
   animation: slideAnime 30s ease infinite;
   height: min(7vw, 60px);
   padding: 5px min(30px, 1.5vw);
-  width: 30.5vw;
+  width: 30vw;
 }
 
 .slide a:nth-of-type(1) {
