@@ -43,11 +43,15 @@
           <div class="contents-wrapper center">
             <ul v-for="(contents, i) in allContents" :key="i">
               <li v-for="(content, j) in contents" :key="j">
-                <nuxt-link v-if="i != 2" :to="content.link">
+                <div
+                  v-if="i != 2"
+                  class="contents"
+                  @click="clickContents(content.link)"
+                >
                   <font-awesome-icon :icon="content.icon" />
                   <div>{{ content.text }}</div>
-                </nuxt-link>
-                <a v-else :href="content.link" target="_blank">
+                </div>
+                <a v-else :href="content.link" target="_blank" class="contents">
                   <font-awesome-icon :icon="content.icon" />
                   <div>{{ content.text }}</div>
                 </a>
@@ -92,22 +96,22 @@ export default {
         [
           {
             text: 'GAME',
-            link: '/community/0',
+            link: '/community/21AY3pJOP214Gsw1d9u6cD',
             icon: 'gamepad',
           },
           {
             text: 'CG',
-            link: '/community/1',
+            link: '/community/5Ay58j7CHdYFqKShRbr5tD',
             icon: 'cubes',
           },
           {
             text: 'HACK',
-            link: '/community/2',
+            link: '/community/39t5DaMrgq579LDvqWGKZK',
             icon: 'laptop-code',
           },
           {
             text: 'MEDIA_ART',
-            link: '/community/3',
+            link: '/community/1q0aXzj2r1O0pC5soNRQok',
             icon: 'palette',
           },
         ],
@@ -156,6 +160,11 @@ export default {
     },
     closeHeader() {
       this.isShowContents = false
+    },
+    clickContents(to) {
+      this.$router.push(to)
+      this.isShowContents = false
+      this.$emit('masked-screen')
     },
   },
 }
@@ -241,6 +250,36 @@ export default {
     justify-content: space-around;
     border-top: solid 1px $light-gray;
 
+    .contents {
+      display: flex;
+      align-items: center;
+      color: $base-font-color;
+      cursor: pointer;
+      position: relative;
+    }
+    .contents::after {
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      content: '';
+      width: 100%;
+      height: 2px;
+      background: $base-font-color;
+      transform: scale(0, 1);
+      transform-origin: left top;
+      transition: transform 0.3s;
+    }
+    .contents:hover {
+      color: $black;
+
+      svg {
+        color: $black;
+      }
+    }
+    .contents:hover::after {
+      background: $black;
+      transform: scale(1, 1);
+    }
     ul {
       list-style: none;
       padding-left: 0;
