@@ -67,12 +67,14 @@
             <nuxt-link to="/news">一覧を見る</nuxt-link>
           </div>
         </div>
-        <div class="top-news">
+        <div class="top-news slide">
           <base-button
-            :to="`/news/` + news[0].sys.id"
+            v-for="(item, index) in news"
+            :key="index"
+            :to="`/news/` + item.sys.id"
             :animation="'rightToRight'"
           >
-            {{ news[0].fields.title }}
+            {{ dateFormatter(item.sys.updatedAt) + ' ' + item.fields.title }}
           </base-button>
         </div>
       </div>
@@ -147,6 +149,7 @@ export default {
         infiniteScroll: true,
         centerMode: true,
         keysControl: false,
+        wheelControl: false,
         autoPlay: true,
         playSpeed: 5000,
         transition: 1500,
@@ -339,6 +342,26 @@ export default {
   }
   .top-news a {
     font-size: 2vw;
+    // padding: 3px min(30px, 1.5vw);
+    height: min(5vw, 50px);
+    width: min(60vw, 465px);
+  }
+  @keyframes slideAnime {
+    0% {
+      top: -100%;
+    }
+    2% {
+      top: 2vw;
+    }
+    19% {
+      top: 2vw;
+    }
+    20% {
+      top: 100%;
+    }
+    100% {
+      top: 100%;
+    }
   }
   .pc {
     display: none;
@@ -423,7 +446,11 @@ export default {
     }
   }
 }
-
+#link-to-news:hover {
+  .news-info {
+    height: 15vw;
+  }
+}
 ::v-deep .hooper-list {
   margin: 0;
   padding: 0;
