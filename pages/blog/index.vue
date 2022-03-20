@@ -50,7 +50,7 @@ export default {
   max-width: 1500px;
   margin: 0 auto;
   color: $base-font-color;
-  padding: 40px 0;
+  padding: 50px 0;
 }
 .title {
   font-size: $font-size-other-title;

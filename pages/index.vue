@@ -54,6 +54,7 @@ export default {
         .then(([c3Introduction, aboutCommunity, eachCommunity, news, blog]) => {
           const communities = []
           const selectNews = []
+          const latestNews = []
           for (let i = 0; i < eachCommunity.items.length; i++) {
             communities.push({
               id: eachCommunity.items[i].sys.id,
@@ -69,6 +70,11 @@ export default {
               selectNews.push(news.items[i])
             }
           }
+          for (let i = 0; i < 5; i++) {
+            if (news.items[i].fields.important) {
+              latestNews.push(news.items[i])
+            }
+          }
           return {
             c3Introduction:
               c3Introduction.items[0].fields.summaryOfIntroduction,
@@ -76,7 +82,7 @@ export default {
             eachCommunity: communities,
             news: news.items,
             importantNews: selectNews,
-            blog: blog.items,
+            blog: latestNews,
           }
         })
         // eslint-disable-next-line no-console

@@ -34,7 +34,7 @@ export default {
   width: 70%;
   max-width: 1500px;
   margin: 0 auto;
-  padding: 40px 0;
+  padding: 50px 0;
   color: $base-font-color;
 }
 .title {
