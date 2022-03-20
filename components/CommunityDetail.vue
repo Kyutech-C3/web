@@ -3,7 +3,9 @@
     <div class="title">
       {{ title }}
     </div>
-    <img class="img" :src="img" />
+    <div class="img-wrapper">
+      <img class="img" :src="img" />
+    </div>
     <markdown-view :markdown-text="description" class="markdown" />
   </div>
 </template>
@@ -42,22 +44,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.main-area {
-  width: 87.5%;
-  margin: 170px 6.25% 0 6.25%;
-}
 .title {
-  font-family: 'Inter';
-  font-style: Regular;
   font-size: $font-size-other-title;
   color: $base-font-color;
   overflow-wrap: break-word;
 }
-.img {
-  margin: 60px 0;
-  width: 100%;
+.img-wrapper {
+  width: 65%;
+  height: 30vw;
+  margin: 60px auto;
+  overflow: hidden;
   border-radius: 20px;
   box-shadow: 8px 8px 8px #00000029;
+}
+.img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 .markdown {
   font-size: $font-size-other-contents-description;

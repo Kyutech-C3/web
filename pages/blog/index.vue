@@ -46,13 +46,14 @@ export default {
 
 <style lang="scss" scoped>
 .blog {
-  width: 80%;
+  width: 70%;
   max-width: 1500px;
   margin: 0 auto;
   color: $base-font-color;
+  padding: 50px 0;
 }
 .title {
-  font-size: $font-size-other-title * 2;
+  font-size: $font-size-other-title;
 }
 .blog-list {
   margin: 2vw 0;

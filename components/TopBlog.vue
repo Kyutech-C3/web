@@ -6,6 +6,22 @@
         <slide v-for="(item, idx) in blog" :key="idx">
           <nuxt-link id="link-to-blog" :to="'blog/' + item.sys.id">
             <img :src="item.fields.thumbnail.fields.file.url" />
+            <div class="blog-info">
+              <div class="blog-title">{{ item.fields.title }}</div>
+              <div class="blog-tags">
+                <nuxt-link
+                  v-for="(tag, index) in item.fields.tags"
+                  :key="index"
+                  :to="'/blog?tag=' + tag.fields.name"
+                  class="link"
+                >
+                  <tag :tag="tag.fields.name" class="tag" />
+                </nuxt-link>
+              </div>
+              <div class="blog-date">
+                {{ dateFormatter(item.sys.updatedAt) }}
+              </div>
+            </div>
           </nuxt-link>
         </slide>
         <slide class="link-to-blog-list">
@@ -30,12 +46,15 @@ import {
 } from 'hooper'
 import 'hooper/dist/hooper.css'
 
+import Tag from '~/components/Tag.vue'
+
 export default {
   components: {
     Hooper,
     Slide,
     HooperPagination,
     HooperNavigation,
+    Tag,
   },
   props: {
     blog: {
@@ -65,7 +84,7 @@ export default {
         keysControl: false,
         wheelControl: false,
         hoverPause: false,
-        autoPlay: false,
+        autoPlay: true,
         playSpeed: 5000,
         transition: 1000,
       },
@@ -74,6 +93,22 @@ export default {
   methods: {
     toPage(id) {
       this.$router.push(`/blog/${id}`)
+    },
+    dateFormatter(date) {
+      date = new Date(date)
+      return (
+        date.getFullYear() +
+        '/' +
+        date.getMonth() +
+        '/' +
+        date.getDate() +
+        '  ' +
+        date.getHours() +
+        ':' +
+        date.getMinutes() +
+        ':' +
+        date.getSeconds()
+      )
     },
   },
 }
@@ -152,13 +187,67 @@ span {
 ::v-deep .link-to-blog-list #arrow {
   font-size: 25px;
 }
-#link-to-blog,
-#link-to-blog img {
+#link-to-blog {
   width: inherit;
   height: inherit;
+  position: relative;
+
+  img {
+    object-fit: cover;
+    width: inherit;
+    height: inherit;
+  }
+  .blog-info {
+    position: absolute;
+    width: 100%;
+    height: 13vw;
+    bottom: 0;
+    background-color: $through-light-blue;
+    color: $white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s 0s ease;
+
+    .blog-title,
+    .blog-tags,
+    .blog-date {
+      width: fit-content;
+    }
+    .blog-title {
+      font-size: $base_font_size * 3;
+      max-width: 60%;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .blog-tags {
+      display: flex;
+      justify-content: center;
+      margin: 10px 0;
+      font-size: $font-size-other-contents-other;
+
+      .link {
+        text-decoration: none;
+        color: $white;
+
+        .tag {
+          margin: 0 3px;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .blog-date {
+      font-size: $base_font_size * 1.1;
+    }
+  }
 }
-#link-to-blog img {
-  object-fit: cover;
+#link-to-blog:hover {
+  .blog-info {
+    height: 15vw;
+  }
 }
 ::v-deep .hooper-pagination {
   bottom: max(-50px, -6vw);

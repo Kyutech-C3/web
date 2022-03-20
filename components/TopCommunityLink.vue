@@ -68,7 +68,8 @@ export default {
 .community {
   display: flex;
   justify-content: center;
-  height: 34vw;
+  height: 28vw;
+  max-height: 540px;
 }
 .img-wrapper {
   height: 100%;
@@ -133,6 +134,7 @@ export default {
     align-items: center;
     height: fit-content;
     position: relative;
+    max-height: none;
   }
   .img-wrapper {
     position: absolute;
@@ -162,7 +164,5 @@ export default {
     height: 8vw;
     width: 50%;
   }
-}
-@media screen and (min-width: $media-query-min-width) {
 }
 </style>
