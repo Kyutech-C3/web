@@ -15,12 +15,14 @@
             <nuxt-link to="/news">一覧を見る</nuxt-link>
           </div>
         </div>
-        <div class="top-news">
+        <div class="top-news slide">
           <base-button
-            :to="`/news/` + news[0].sys.id"
+            v-for="(item, index) in news"
+            :key="index"
+            :to="`/news/` + item.sys.id"
             :animation="'rightToRight'"
           >
-            {{ getNewsDate + ' ' + news[0].fields.title }}
+            {{ dateFormatter(item.sys.updatedAt) + ' ' + item.fields.title }}
           </base-button>
         </div>
       </div>
@@ -70,7 +72,7 @@
             :to="`/news/` + news[0].sys.id"
             :animation="'rightToRight'"
           >
-            {{ getNewsDate + ' ' + news[0].fields.title }}
+            {{ news[0].fields.title }}
           </base-button>
         </div>
       </div>
@@ -150,15 +152,6 @@ export default {
         transition: 1500,
       },
     }
-  },
-  computed: {
-    getNewsDate() {
-      const date = new Date(this.news[0].fields.publishedAt)
-      const newsDate = `${date.getFullYear().toString()}.${date
-        .getMonth()
-        .toString()}.${date.getDate().toString()}`
-      return newsDate
-    },
   },
   methods: {
     dateFormatter(date) {
@@ -249,6 +242,7 @@ export default {
 }
 .top-news-flex-wrap {
   display: flex;
+  justify-content: space-between;
   vertical-align: middle;
 }
 .top-news-title {
@@ -265,16 +259,64 @@ export default {
   color: $gray;
 }
 .top-news {
-  margin: 0;
   height: min(7vw, 60px);
-  padding: min(40px, 3vw) min(30px, 1.5vw);
+  padding: min(30px, 2.5vw) min(30px, 1.5vw);
+}
+
+.slide {
+  position: relative;
+  overflow: hidden;
+}
+
+.slide a {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  animation: slideAnime 30s ease infinite;
+  height: min(7vw, 60px);
+  padding: 5px min(30px, 1.5vw);
+  width: 30.5vw;
+}
+
+.slide a:nth-of-type(1) {
+  animation-delay: 0s;
+}
+.slide a:nth-of-type(2) {
+  animation-delay: 6s;
+}
+.slide a:nth-of-type(3) {
+  animation-delay: 12s;
+}
+.slide a:nth-of-type(4) {
+  animation-delay: 18s;
+}
+.slide a:nth-of-type(5) {
+  animation-delay: 24s;
+}
+
+@keyframes slideAnime {
+  0% {
+    top: -100%;
+  }
+  2% {
+    top: 25px;
+  }
+  19% {
+    top: 25px;
+  }
+  20% {
+    top: 100%;
+  }
+  100% {
+    top: 100%;
+  }
 }
 
 /* タブレット↑ */
 @media screen and (min-width: 1001px) {
   .top-news-nav {
     margin: 0;
-    padding: min(40px, 4vw) min(40px, 3.8vw) min(20px, 2vw) min(70px, 4.5vw);
+    padding: min(40px, 4vw) min(70px, 4.5vw) min(20px, 2vw) min(70px, 4.5vw);
     border-radius: 0 20px 20px 0;
   }
   .top-news a {
@@ -291,6 +333,9 @@ export default {
     padding: 2vw 4vw;
     width: min(65vw, 500px);
     border-radius: 0 12px 12px 0;
+  }
+  .top-news {
+    padding: min(40px, 2vw) min(30px, 1.5vw);
   }
   .top-news a {
     font-size: 2vw;
