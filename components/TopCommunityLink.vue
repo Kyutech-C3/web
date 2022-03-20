@@ -134,6 +134,7 @@ export default {
     align-items: center;
     height: fit-content;
     position: relative;
+    max-height: none;
   }
   .img-wrapper {
     position: absolute;
@@ -163,7 +164,5 @@ export default {
     height: 8vw;
     width: 50%;
   }
-}
-@media screen and (min-width: $media-query-min-width) {
 }
 </style>
