@@ -194,6 +194,7 @@ export default {
   font-family: 'Inter', '游ゴシック';
   justify-content: space-between;
   max-width: 1920px;
+  user-select: none;
 }
 
 /* タブレット↑ */
