@@ -51,7 +51,7 @@
                   <font-awesome-icon :icon="content.icon" />
                   <div>{{ content.text }}</div>
                 </div>
-                <a v-else :href="content.link" target="_blank">
+                <a v-else :href="content.link" target="_blank" class="contents">
                   <font-awesome-icon :icon="content.icon" />
                   <div>{{ content.text }}</div>
                 </a>
@@ -255,6 +255,30 @@ export default {
       align-items: center;
       color: $base-font-color;
       cursor: pointer;
+      position: relative;
+    }
+    .contents::after {
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      content: '';
+      width: 100%;
+      height: 2px;
+      background: $base-font-color;
+      transform: scale(0, 1);
+      transform-origin: left top;
+      transition: transform 0.3s;
+    }
+    .contents:hover {
+      color: $black;
+
+      svg {
+        color: $black;
+      }
+    }
+    .contents:hover::after {
+      background: $black;
+      transform: scale(1, 1);
     }
     ul {
       list-style: none;
