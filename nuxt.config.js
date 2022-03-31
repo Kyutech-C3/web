@@ -4,14 +4,19 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'web',
+    title: 'Composite Computer Club [ C3 ]',
     htmlAttrs: {
-      lang: 'en',
+      lang: 'jp',
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      {
+        hid: 'description',
+        name: 'description',
+        content:
+          '九州工業大学情報工学部の Composite Computer Club 通称「C3」の公式サイトです。C3はデジタル作品の制作を行なっているサークルで、現在、「GAME、HACK、CG、MEDIA_ART」の４つのコミュニティーから構成されています。This is the official site of the Composite Computer Club, commonly known as "C3," in the Faculty of Information Technology at Kyushu Institute of Technology. C3 is a club that produces digital works and currently consists of four communities: GAME, HACK, CG, and MEDIA_ART.',
+      },
       { name: 'format-detection', content: 'telephone=no' },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],

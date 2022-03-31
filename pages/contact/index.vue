@@ -2,9 +2,7 @@
   <div>
     <div class="contact">
       <!-- title -->
-      <div class="contact-title">
-        お問い合わせ
-      </div>
+      <div class="contact-title">お問い合わせ</div>
       <!-- form -->
       <form
         class="contact-form-wrap"
@@ -19,8 +17,11 @@
         <!-- name -->
         <div class="contact-form">
           <div class="contact-form-text">お名前</div>
-          <div class="contact-form-input" :class="{'contact-form-input-error': nameError}">
-            <input v-model="name" type="text"/>
+          <div
+            class="contact-form-input"
+            :class="{ 'contact-form-input-error': nameError }"
+          >
+            <input v-model="name" type="text" />
           </div>
           <div v-if="nameError" class="contact-form-error">
             {{ nameComment }}
@@ -29,8 +30,11 @@
         <!-- email -->
         <div class="contact-form">
           <div class="contact-form-text">メールアドレス</div>
-          <div class="contact-form-input" :class="{'contact-form-input-error': emailError}">
-            <input v-model="email" type="email"/>
+          <div
+            class="contact-form-input"
+            :class="{ 'contact-form-input-error': emailError }"
+          >
+            <input v-model="email" type="email" />
           </div>
           <div v-if="emailError" class="contact-form-error">
             {{ emailComment }}
@@ -39,8 +43,11 @@
         <!-- contact -->
         <div class="contact-form">
           <div class="contact-form-text">お問い合わせ内容</div>
-          <div class="contact-form-input" :class="{'contact-form-input-error': messageError}">
-            <textarea v-model="message"/>
+          <div
+            class="contact-form-input"
+            :class="{ 'contact-form-input-error': messageError }"
+          >
+            <textarea v-model="message" />
           </div>
           <div v-if="messageError" class="contact-form-error">
             {{ messageComment }}
@@ -48,11 +55,7 @@
         </div>
         <!-- button -->
         <div class="contact-form-submit">
-          <button 
-            @click="submit"
-          >
-            送信
-          </button>
+          <button @click="submit">送信</button>
         </div>
       </form>
     </div>
@@ -69,13 +72,25 @@ export default {
       email: '',
       message: '',
       // error boolean
-      nameError : false,
+      nameError: false,
       emailError: false,
       messageError: false,
       // error message
       nameComment: '*お名前を入力してください',
       emailComment: '*メールアドレスを入力してください',
       messageComment: '*お問い合わせ内容を入力してください',
+    }
+  },
+  head() {
+    return {
+      title: 'お問合せ | 入力フォーム',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'お問い合わせ | お問合せ情報の入力ページ',
+        },
+      ],
     }
   },
   methods: {
@@ -86,31 +101,33 @@ export default {
     },
     checkForm() {
       // name
-      (!this.name) ? this.nameError = true : this.nameError = false
+      !this.name ? (this.nameError = true) : (this.nameError = false)
       // email
-      if(!this.email) {
+      if (!this.email) {
         this.emailError = true
         this.emailComment = '*メールアドレスを入力してください'
-      } else if(!this.validEmail(this.email)) {
+      } else if (!this.validEmail(this.email)) {
         this.emailError = true
         this.emailComment = '*メールアドレスの形式で入力してください'
       } else {
         this.emailError = false
       }
       // message
-      (!this.message) ? this.messageError = true : this.messageError = false
+      !this.message ? (this.messageError = true) : (this.messageError = false)
     },
     validEmail(email) {
-      const regex = /^[a-zA-Z0-9_+-]+(.[a-zA-Z0-9_+-]+)*@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$/
+      const regex =
+        /^[a-zA-Z0-9_+-]+(.[a-zA-Z0-9_+-]+)*@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$/
       return regex.test(email)
     },
     transition() {
-      if(!this.nameError & !this.emailError & !this.messageError) this.$router.push('/contact/thanks')
+      if (!this.nameError & !this.emailError & !this.messageError)
+        this.$router.push('/contact/thanks')
     },
     send() {
       /* ここにバックエンド側への送信を行い，自動でメール送信をする処理を入れてほしい */
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -211,7 +228,7 @@ export default {
 .contact-form-submit {
   text-align: center;
 }
-.contact-form-submit button{
+.contact-form-submit button {
   font-size: $font-size-other-contents-title;
   color: $base-font-color;
   background: transparent;

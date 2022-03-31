@@ -1,7 +1,7 @@
 <template>
   <div>
     <base-entry-detail
-      :page-name="'Blog'"
+      :page-name="'ブログ'"
       :title="blog_item.fields.title"
       :tags="blog_item.fields.tags"
       :img="blog_item.fields.thumbnail.fields.file.url"
@@ -33,6 +33,18 @@ export default Vue.extend({
         recent_blog: recentBlog.items,
       }
     })
+  },
+  head() {
+    return {
+      title: `ブログ | ${this.blog_item.fields.title}`,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: `ブログ | ${this.blog_item.fields.title} | ${this.blog_item.fields.digest}`,
+        },
+      ],
+    }
   },
 })
 </script>

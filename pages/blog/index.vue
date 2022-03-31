@@ -41,6 +41,18 @@ export default {
         .catch(console.error)
     )
   },
+  head() {
+    return {
+      title: `ブログ | 一覧`,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: `ブログ | 一覧`,
+        },
+      ],
+    }
+  },
 }
 </script>
 

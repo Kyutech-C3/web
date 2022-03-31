@@ -1,24 +1,20 @@
 <template>
   <div class="contact-thanks-wrap">
     <!-- title -->
-    <div class="contact-thanks-title">
-      Thank you!
-    </div>
+    <div class="contact-thanks-title">Thank you!</div>
     <!-- message -->
     <div class="contact-thanks-message">
       このたびはC3へのお問い合わせ、誠にありがとうございます。
-      <br><br>
+      <br /><br />
       メールフォームにご記入いただいたメールアドレスへ、お問い合わせ内容の確認メールをお送りいたしましたので、確認お願い致します。
-      <br><br>
+      <br /><br />
       1週間以内を目安に、C3部員の方からメールにて連絡いたします。
-      <br><br>
+      <br /><br />
       なお、5分以上経過しても確認メールが受信できない場合、お手数をおかけしますが、もう一度メールアドレスを確認し、お問い合わせ頂けますようお願い致します。
     </div>
     <!-- to home -->
     <div class="to-home-button">
-      <nuxt-link to="/" class="to-home">
-        Homeへ戻る
-      </nuxt-link>
+      <nuxt-link to="/" class="to-home"> Homeへ戻る </nuxt-link>
     </div>
     <!-- sns -->
     <div class="sns-wrap">
@@ -39,8 +35,7 @@
 export default {
   data() {
     return {
-      snslinks:
-      [
+      snslinks: [
         {
           text: 'Toybox',
           link: '/',
@@ -64,9 +59,20 @@ export default {
       ],
     }
   },
+  head() {
+    return {
+      title: 'お問合せ | 完了',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'お問い合わせ | お問合せ内容の送信が完了ページs',
+        },
+      ],
+    }
+  },
 }
 </script>
-
 
 <style lang="scss" scoped>
 .contact-thanks-wrap {
