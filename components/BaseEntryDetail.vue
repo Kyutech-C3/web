@@ -1,28 +1,31 @@
 <template>
-  <div class="blog">
-    <div class="blog_page">
-      <div class="blog_top">
-        <img :src="img" class="img" />
-        <div class="title-wrapper">
-          <div class="title">{{ title }}</div>
-          <div class="tags">
-            <nuxt-link
-              v-for="(tag, index) in tags"
-              :key="index"
-              :to="'/blog?tag=' + tag.fields.name"
-              class="link"
-            >
-              <tag :tag="tag.fields.name" class="tag" />
-            </nuxt-link>
+  <div class="page">
+    <div class="page-name">{{ pageName }}</div>
+    <div class="page-content">
+      <div class="entry-detail">
+        <div class="entry-top">
+          <img :src="img" class="img" />
+          <div class="title-wrapper">
+            <div class="title">{{ title }}</div>
+            <div class="tags">
+              <nuxt-link
+                v-for="(tag, index) in tags"
+                :key="index"
+                :to="'/blog?tag=' + tag.fields.name"
+                class="link"
+              >
+                <tag :tag="tag.fields.name" class="tag" />
+              </nuxt-link>
+            </div>
           </div>
         </div>
+        <div class="date">
+          {{ dateFormatter(updatedAt) }}
+        </div>
+        <markdown-view :markdown-text="body" />
       </div>
-      <div class="date">
-        {{ dateFormatter(updatedAt) }}
-      </div>
-      <markdown-view :markdown-text="body" />
+      <sidebar :blogs="recentBlog" class="sidebar" />
     </div>
-    <sidebar :blogs="recentBlog" class="sidebar" />
   </div>
 </template>
 
@@ -38,6 +41,13 @@ export default {
     Tag,
   },
   props: {
+    pageName: {
+      type: String,
+      required: true,
+      default() {
+        return 'Page Name'
+      },
+    },
     title: {
       type: String,
       required: true,
@@ -103,19 +113,26 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.blog {
+.page {
+  padding: 40px 0;
+}
+.page-content {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   color: $base-font-color;
-  padding: 40px 0;
 }
-.blog_page {
+.entry-detail {
   width: 63vw;
   max-width: 1000px;
   margin-left: 5vw;
 }
-.blog_top {
+.page-name {
+  font-size: $font-size-other-title;
+  color: $base-font-color;
+  margin: 0 7vw 2vw 7vw;
+}
+.entry-top {
   position: relative;
   box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.3);
   border-radius: 20px;
@@ -179,11 +196,11 @@ export default {
 }
 
 @media screen and (max-width: 1285px) {
-  .blog_page {
+  .entry-detail {
     width: 90%;
     margin: 0;
   }
-  .blog_top {
+  .entry-top {
     height: 50vw;
   }
   .title-wrapper {
@@ -202,7 +219,7 @@ export default {
   }
 }
 @media screen and (max-width: $media-query-small-max-width) {
-  .blog_page {
+  .entry-detail {
     width: 95%;
   }
   .title-wrapper {
