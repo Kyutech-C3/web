@@ -1,6 +1,10 @@
 <template>
   <div class="area">
-    <img src="../c3_logo.png" alt="C3アイコン" class="icon" />
+    <img
+      src="@/assets/image/c3_logo_circled.png"
+      alt="C3アイコン"
+      class="icon"
+    />
     <div class="top">C3について</div>
     <div class="sentence">
       <div v-html="$md.render(c3Introduction)"></div>

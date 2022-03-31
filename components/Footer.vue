@@ -3,7 +3,11 @@
     <div class="footer-wrapper">
       <div class="left-container">
         <div class="c3-icon-container">
-          <img src="../c3_logo.png" alt="C3アイコン" class="c3-icon" />
+          <img
+            src="@/assets/image/c3_logo_circled.png"
+            alt="C3アイコン"
+            class="c3-icon"
+          />
         </div>
         <div>
           <div class="official-text">C3 Official Website</div>
