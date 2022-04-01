@@ -17,38 +17,41 @@ export default {
     BaseEntryList,
     BaseBreadcrumbs,
   },
-  async asyncData({ store }) {
-    await store.commit('breadcrumbs/setBreadcrumbs', {
-      breadcrumbs: [
-        { url: '/', text: 'ホーム' },
-        { url: '/blog', text: 'ブログ一覧' },
-      ],
-    })
-    return (
-      Promise.all([
+  async asyncData({ store, error }) {
+    try {
+      await store.commit('breadcrumbs/setBreadcrumbs', {
+        breadcrumbs: [
+          { url: '/', text: 'ホーム' },
+          { url: '/blog', text: 'ブログ一覧' },
+        ],
+      })
+      return Promise.all([
         await sdkClient.getEntries({
           content_type: 'blog',
         }),
-      ])
-        .then(([blog]) => {
-          const resEntryList = []
-          // eslint-disable-next-line no-console
-          console.log(blog.items)
-          for (let i = 0; i < blog.items.length; i++) {
-            resEntryList.push({
-              id: blog.items[i].sys.id,
-              title: blog.items[i].fields.title,
-              date: blog.items[i].sys.updatedAt,
-              contents: blog.items[i].fields.digest,
-            })
-          }
-          return {
-            entry_list: resEntryList,
-          }
-        })
+      ]).then(([blog]) => {
+        const resEntryList = []
         // eslint-disable-next-line no-console
-        .catch(console.error)
-    )
+        console.log(blog.items)
+        for (let i = 0; i < blog.items.length; i++) {
+          resEntryList.push({
+            id: blog.items[i].sys.id,
+            title: blog.items[i].fields.title,
+            date: blog.items[i].sys.updatedAt,
+            contents: blog.items[i].fields.digest,
+          })
+        }
+        return {
+          entry_list: resEntryList,
+        }
+      })
+      // eslint-disable-next-line no-console
+    } catch (e) {
+      error({
+        errorCode: e.errorCode,
+        message: e.message,
+      })
+    }
   },
   data() {
     return {

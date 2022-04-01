@@ -40,14 +40,13 @@
               <div class="news-info">
                 <div class="news-title">{{ content.fields.title }}</div>
                 <div class="news-tags">
-                  <nuxt-link
+                  <div
                     v-for="(tag, index) in content.fields.tags"
                     :key="index"
-                    :to="'/news?tag=' + tag.fields.name"
                     class="link"
                   >
                     <tag :tag="tag.fields.name" class="tag" />
-                  </nuxt-link>
+                  </div>
                 </div>
                 <div class="news-date">
                   {{ dateFormatter(content.sys.updatedAt) }}
@@ -105,46 +104,19 @@ export default {
       type: Array,
       required: true,
       default() {
-        return [
-          {
-            sys: {
-              id: 'defaultID',
-            },
-            fields: {
-              publishedAt: '2020',
-              title: 'defaultTitle',
-            },
-          },
-        ]
+        return []
       },
     },
     importantNews: {
       type: Array,
       required: true,
       default() {
-        return [
-          {
-            sys: {
-              id: 'defaultID',
-            },
-            fields: {
-              publishedAt: '2020',
-              title: 'defaultTitle',
-            },
-          },
-        ]
+        return []
       },
     },
   },
   data() {
     return {
-      slides: [
-        { link: '#1', img: 'https://simo-c3.github.io/image_url/CG.png' },
-        { link: '#2', img: 'https://simo-c3.github.io/image_url/CG.png' },
-        { link: '#3', img: 'https://simo-c3.github.io/image_url/CG.png' },
-        { link: '#4', img: 'https://simo-c3.github.io/image_url/CG.png' },
-        { link: '#5', img: 'https://simo-c3.github.io/image_url/CG.png' },
-      ],
       hooperSettings: {
         infiniteScroll: true,
         centerMode: true,
@@ -402,7 +374,7 @@ export default {
   .news-info {
     position: absolute;
     width: 100%;
-    height: 13vw;
+    height: max(13vw, 120px);
     bottom: 0;
     background-color: $through-light-blue;
     color: $white;

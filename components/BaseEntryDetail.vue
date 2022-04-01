@@ -46,14 +46,14 @@ export default {
       type: String,
       required: true,
       default() {
-        return 'Page Name'
+        return ''
       },
     },
     title: {
       type: String,
       required: true,
       default() {
-        return 'Title'
+        return ''
       },
     },
     tags: {
@@ -74,14 +74,14 @@ export default {
       type: String,
       required: true,
       default() {
-        return 'Title'
+        return ''
       },
     },
     updatedAt: {
       type: String,
       required: true,
       default() {
-        return 'Title'
+        return ''
       },
     },
     recentBlog: {
