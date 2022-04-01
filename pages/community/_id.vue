@@ -36,14 +36,46 @@ export default {
       }
     )
   },
+  data() {
+    return {
+      title: '',
+      description: '',
+    }
+  },
   head() {
     return {
-      title: `コミュニティー | ${this.community.fields.name}`,
+      title: this.title,
+      htmlAttrs: {
+        lang: 'jp',
+        prefix:
+          'og: https://ogp.me/ns# fb: https://ogp.me/ns/fb# article: https://ogp.me/ns/article#',
+      },
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: `コミュニティー | ${this.community.fields.name} | ${this.community.fields.about}`,
+          content: this.description,
+        },
+        {
+          hid: 'og-url',
+          property: 'og:url',
+          content: `${process.env.BASE_URL}/community/${this.$route.params.id}`,
+        },
+        {
+          hid: 'og-title',
+          property: 'og:title',
+          content: this.title,
+        },
+        { hid: 'og-type', property: 'og:type', content: 'article' },
+        {
+          hid: 'og-description',
+          property: 'og:description',
+          content: this.description,
+        },
+        {
+          hid: 'og-image',
+          property: 'og:image',
+          content: this.community.fields.image.fields.file.url,
         },
       ],
       link: [
@@ -54,6 +86,10 @@ export default {
         },
       ],
     }
+  },
+  created() {
+    this.title = `コミュニティー - ${this.community.fields.name}`
+    this.description = `${this.title} - ${this.community.fields.about}`
   },
 }
 </script>

@@ -50,14 +50,41 @@ export default {
         .catch(console.error)
     )
   },
+  data() {
+    return {
+      title: 'ブログ - 一覧',
+      description: `${this.title} - ブログ一覧を表示するページです。`,
+    }
+  },
   head() {
     return {
-      title: `ブログ | 一覧`,
+      title: this.title,
+      htmlAttrs: {
+        lang: 'jp',
+        prefix:
+          'og: https://ogp.me/ns# fb: https://ogp.me/ns/fb# article: https://ogp.me/ns/article#',
+      },
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: `ブログ | 一覧`,
+          content: this.description,
+        },
+        {
+          hid: 'og-url',
+          property: 'og:url',
+          content: `${process.env.BASE_URL}/blog`,
+        },
+        {
+          hid: 'og-title',
+          property: 'og:title',
+          content: this.title,
+        },
+        { hid: 'og-type', property: 'og:type', content: 'article' },
+        {
+          hid: 'og-description',
+          property: 'og:description',
+          content: this.description,
         },
       ],
     }
