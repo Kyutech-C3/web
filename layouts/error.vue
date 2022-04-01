@@ -20,6 +20,14 @@ export default {
       default: null,
     },
   },
+  mounted() {
+    if (this.error.statusCode !== 404) {
+      this.$gtag('event', 'exception', {
+        description: this.error.message,
+        fatal: false,
+      })
+    }
+  },
 }
 </script>
 
