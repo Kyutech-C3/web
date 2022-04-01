@@ -42,10 +42,11 @@ export default {
       {
         hid: 'og-image',
         property: 'og:image',
-        content: '@/assets/image/c3_logo_circled.png',
+        content:
+          'https://kyutech-c3.github.io/web/_nuxt/img/c3_logo.b2cd3f4.png',
       },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: 'favicon.ico' }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
