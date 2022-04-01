@@ -79,6 +79,7 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: ['nuxt-fontawesome', '@nuxtjs/dotenv', '@nuxtjs/markdownit'],
+
   fontawesome: {
     imports: [
       {
@@ -107,5 +108,9 @@ export default {
 
   router: {
     base: '/web',
+  },
+
+  generate: {
+    fallback: true,
   },
 }

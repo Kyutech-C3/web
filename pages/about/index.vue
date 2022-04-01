@@ -16,23 +16,30 @@ export default {
   components: {
     MarkdownView,
   },
-  async asyncData({ store }) {
-    return Promise.all([
-      await sdkClient.getEntries({ content_type: 'c3Introduction' }),
-    ]).then(([about]) => {
-      store.commit('breadcrumbs/setBreadcrumbs', {
-        breadcrumbs: [
-          { url: '/', text: 'ホーム' },
-          { url: '/about', text: 'C3について' },
-        ],
+  async asyncData({ store, error }) {
+    try {
+      return Promise.all([
+        await sdkClient.getEntries({ content_type: 'c3Introduction' }),
+      ]).then(([about]) => {
+        store.commit('breadcrumbs/setBreadcrumbs', {
+          breadcrumbs: [
+            { url: '/', text: 'ホーム' },
+            { url: '/about', text: 'C3について' },
+          ],
+        })
+        // eslint-disable-next-line no-console
+        console.log(about.items)
+        return {
+          c3_introduction: about.items[0].fields.introduction,
+          c3_introduction_digest: about.items[0].fields.summaryOfIntroduction,
+        }
       })
-      // eslint-disable-next-line no-console
-      console.log(about.items)
-      return {
-        c3_introduction: about.items[0].fields.introduction,
-        c3_introduction_digest: about.items[0].fields.summaryOfIntroduction,
-      }
-    })
+    } catch (e) {
+      error({
+        errorCode: e.errorCode,
+        message: e.message,
+      })
+    }
   },
   data() {
     return {
