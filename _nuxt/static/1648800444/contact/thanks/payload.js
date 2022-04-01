@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/contact/thanks", {data:[{}],fetch:{},mutations:[["breadcrumbs\u002FsetBreadcrumbs",{breadcrumbs:[{url:"\u002F",text:"ホーム"},{url:"\u002Fcontact",text:"お問合せ"},{url:"\u002Fcontact\u002Fthanks",text:"お問合せ完了"}]}]]});

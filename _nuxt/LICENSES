@@ -10,6 +10,19 @@
  * Released under the MIT License.
  */
 
+/*!
+ * vuex v3.6.2
+ * (c) 2021 Evan You
+ * @license MIT
+ */
+
+
+/**
+  * Hopper 0.3.4
+  * (c) 2019
+    * @license MIT
+    */
+
 
 /*!
  * Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com
@@ -29,10 +42,3 @@
  */
 
 /*! https://mths.be/punycode v1.4.1 by @mathias */
-
-
-/**
-  * Hopper 0.3.4
-  * (c) 2019
-    * @license MIT
-    */
