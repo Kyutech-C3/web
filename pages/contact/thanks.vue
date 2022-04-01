@@ -78,6 +78,7 @@ export default {
           name: 'description',
           content: 'お問い合わせ | お問合せ内容の送信が完了ページs',
         },
+        { hid: 'robots', name: 'robots', content: 'noindex' },
       ],
     }
   },
