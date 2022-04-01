@@ -120,7 +120,7 @@ export default {
   },
 
   router: {
-    base: '/web',
+    base: '/',
   },
 
   generate: {
