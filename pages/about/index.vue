@@ -1,5 +1,6 @@
 <template>
   <div class="about">
+    <base-breadcrumbs />
     <div class="title">C3について</div>
     <img src="@/assets/image/c3_logo_circled.png" class="about-logo" />
     <markdown-view :markdown-text="c3_introduction" class="markdown" />
@@ -15,10 +16,16 @@ export default {
   components: {
     MarkdownView,
   },
-  async asyncData() {
+  async asyncData({ store }) {
     return Promise.all([
       await sdkClient.getEntries({ content_type: 'c3Introduction' }),
     ]).then(([about]) => {
+      store.commit('breadcrumbs/setBreadcrumbs', {
+        breadcrumbs: [
+          { url: '/', text: 'ホーム' },
+          { url: '/about', text: 'C3について' },
+        ],
+      })
       // eslint-disable-next-line no-console
       console.log(about.items)
       return {
