@@ -7,6 +7,7 @@ export default {
     title: 'Composite Computer Club [ C3 ]',
     htmlAttrs: {
       lang: 'jp',
+      prefix: 'og: http://ogp.me/ns#',
     },
     meta: [
       { charset: 'utf-8' },
@@ -32,7 +33,7 @@ export default {
         property: 'og:title',
         content: 'Composite Computer Club [ C3 ] - ホーム',
       },
-      { hid: 'og-type', property: 'og:type', content: 'website' },
+      { hid: 'og-type', property: 'og:type', content: 'website|article' },
       {
         hid: 'og-description',
         property: 'og:description',
@@ -45,7 +46,7 @@ export default {
         content: 'https://simo-c3.github.io/image_url/c3_logo_circled.png',
       },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: 'favicon.ico' }],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -104,6 +105,6 @@ export default {
   },
 
   router: {
-    base: '/web/',
+    base: '/web',
   },
 }
