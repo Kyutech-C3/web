@@ -10,7 +10,7 @@ export default {
       type: String,
       required: true,
       default() {
-        return '# hoge'
+        return ''
       },
     },
   },
