@@ -44,14 +44,41 @@ export default Vue.extend({
       }
     })
   },
+  data() {
+    return {
+      title: '',
+      description: '',
+    }
+  },
   head() {
     return {
-      title: `ブログ | ${this.blog_item.fields.title}`,
+      title: this.title,
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: `ブログ | ${this.blog_item.fields.title} | ${this.blog_item.fields.digest}`,
+          content: this.description,
+        },
+        {
+          hid: 'og-url',
+          property: 'og:url',
+          content: `${process.env.BASE_URL}/blog/${this.$route.params.id}`,
+        },
+        {
+          hid: 'og-title',
+          property: 'og:title',
+          content: this.title,
+        },
+        { hid: 'og-type', property: 'og:type', content: 'article' },
+        {
+          hid: 'og-description',
+          property: 'og:description',
+          content: this.description,
+        },
+        {
+          hid: 'og-image',
+          property: 'og:image',
+          content: this.blog_item.fields.thumbnail.fields.file.url,
         },
       ],
       link: [
@@ -62,6 +89,10 @@ export default Vue.extend({
         },
       ],
     }
+  },
+  created() {
+    this.title = `ブログ - ${this.blog_item.fields.title}`
+    this.description = `${this.title} - ${this.blog_item.fields.digest}`
   },
 })
 </script>

@@ -30,8 +30,58 @@ export default {
       console.log(about.items)
       return {
         c3_introduction: about.items[0].fields.introduction,
+        c3_introduction_digest: about.items[0].fields.summaryOfIntroduction,
       }
     })
+  },
+  data() {
+    return {
+      title: 'C3について',
+      description: '',
+    }
+  },
+  head() {
+    return {
+      title: this.title,
+      htmlAttrs: {
+        lang: 'jp',
+        prefix:
+          'og: https://ogp.me/ns# fb: https://ogp.me/ns/fb# article: https://ogp.me/ns/article#',
+      },
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.description,
+        },
+        {
+          hid: 'og-url',
+          property: 'og:url',
+          content: `${process.env.BASE_URL}/about`,
+        },
+        {
+          hid: 'og-title',
+          property: 'og:title',
+          content: this.title,
+        },
+        { hid: 'og-type', property: 'og:type', content: 'article' },
+        {
+          hid: 'og-description',
+          property: 'og:description',
+          content: this.description,
+        },
+      ],
+      link: [
+        {
+          hid: 'canonical',
+          rel: 'canonical',
+          href: `${process.env.BASE_URL}/news/${this.$route.params.id}`,
+        },
+      ],
+    }
+  },
+  created() {
+    this.description = this.c3_introduction_digest
   },
 }
 </script>
