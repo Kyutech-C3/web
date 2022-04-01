@@ -74,11 +74,23 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
+    // https://github.com/nuxt-community/style-resources-module
     '@nuxtjs/style-resources',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['nuxt-fontawesome', '@nuxtjs/dotenv', '@nuxtjs/markdownit'],
+  modules: [
+    'nuxt-fontawesome',
+    '@nuxtjs/dotenv',
+    '@nuxtjs/markdownit',
+    [
+      '@nuxtjs/google-gtag',
+      {
+        id: process.env.GOOGLE_ANALYTICS_ID,
+        debug: true,
+      },
+    ],
+  ],
 
   fontawesome: {
     imports: [
@@ -104,6 +116,7 @@ export default {
     CTF_SPACE_ID: process.env.CTF_SPACE_ID,
     CTF_CDA_ACCESS_TOKEN: process.env.CTF_CDA_ACCESS_TOKEN,
     BASE_URL: process.env.BASE_URL,
+    GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID,
   },
 
   router: {
