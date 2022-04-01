@@ -40,6 +40,7 @@ export default {
     return {
       title: '',
       description: '',
+      img_url: '',
     }
   },
   head() {
@@ -75,7 +76,7 @@ export default {
         {
           hid: 'og-image',
           property: 'og:image',
-          content: this.community.fields.image.fields.file.url,
+          content: this.img_url,
         },
       ],
       link: [
@@ -90,6 +91,7 @@ export default {
   created() {
     this.title = `コミュニティー - ${this.community.fields.name}`
     this.description = `${this.title} - ${this.community.fields.about}`
+    this.img_url = `http:${this.community.fields.image.fields.file.url}`
   },
 }
 </script>

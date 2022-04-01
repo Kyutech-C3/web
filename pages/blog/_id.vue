@@ -48,6 +48,7 @@ export default Vue.extend({
     return {
       title: '',
       description: '',
+      img_url: '',
     }
   },
   head() {
@@ -78,7 +79,7 @@ export default Vue.extend({
         {
           hid: 'og-image',
           property: 'og:image',
-          content: this.blog_item.fields.thumbnail.fields.file.url,
+          content: this.img_url,
         },
       ],
       link: [
@@ -93,6 +94,7 @@ export default Vue.extend({
   created() {
     this.title = `ブログ - ${this.blog_item.fields.title}`
     this.description = `${this.title} - ${this.blog_item.fields.digest}`
+    this.img_url = `http:${this.blog_item.fields.thumbnail.fields.file.url}`
   },
 })
 </script>
