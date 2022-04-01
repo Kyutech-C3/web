@@ -48,6 +48,7 @@ export default Vue.extend({
     return {
       title: '',
       description: '',
+      img_url: '',
     }
   },
   head() {
@@ -83,7 +84,7 @@ export default Vue.extend({
         {
           hid: 'og-image',
           property: 'og:image',
-          content: this.news_item.fields.thumbnail.fields.file.url,
+          content: this.img_url,
         },
       ],
       link: [
@@ -98,6 +99,7 @@ export default Vue.extend({
   created() {
     this.title = `お知らせ - ${this.news_item.fields.title}`
     this.description = `${this.title} - ${this.news_item.fields.digest}`
+    this.img_url = `http:${this.news_item.fields.thumbnail.fields.file.url}`
   },
 })
 </script>
