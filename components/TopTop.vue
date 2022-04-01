@@ -40,14 +40,13 @@
               <div class="news-info">
                 <div class="news-title">{{ content.fields.title }}</div>
                 <div class="news-tags">
-                  <nuxt-link
+                  <div
                     v-for="(tag, index) in content.fields.tags"
                     :key="index"
-                    :to="'/news?tag=' + tag.fields.name"
                     class="link"
                   >
                     <tag :tag="tag.fields.name" class="tag" />
-                  </nuxt-link>
+                  </div>
                 </div>
                 <div class="news-date">
                   {{ dateFormatter(content.sys.updatedAt) }}
@@ -402,7 +401,7 @@ export default {
   .news-info {
     position: absolute;
     width: 100%;
-    height: 13vw;
+    height: max(13vw, 120px);
     bottom: 0;
     background-color: $through-light-blue;
     color: $white;

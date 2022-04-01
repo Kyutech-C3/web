@@ -9,14 +9,13 @@
             <div class="blog-info">
               <div class="blog-title">{{ item.fields.title }}</div>
               <div class="blog-tags">
-                <nuxt-link
+                <div
                   v-for="(tag, index) in item.fields.tags"
                   :key="index"
-                  :to="'/blog?tag=' + tag.fields.name"
                   class="link"
                 >
                   <tag :tag="tag.fields.name" class="tag" />
-                </nuxt-link>
+                </div>
               </div>
               <div class="blog-date">
                 {{ dateFormatter(item.sys.updatedAt) }}
@@ -200,7 +199,7 @@ span {
   .blog-info {
     position: absolute;
     width: 100%;
-    height: 13vw;
+    height: max(13vw, 100px);
     bottom: 0;
     background-color: $through-light-blue;
     color: $white;
