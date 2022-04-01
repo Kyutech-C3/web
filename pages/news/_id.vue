@@ -44,6 +44,13 @@ export default Vue.extend({
           content: `お知らせ | ${this.news_item.fields.title} | ${this.news_item.fields.digest}`,
         },
       ],
+      link: [
+        {
+          hid: 'canonical',
+          rel: 'canonical',
+          href: `${process.env.BASE_URL}/news/${this.$route.params.id}`,
+        },
+      ],
     }
   },
 })

@@ -54,6 +54,13 @@ export default Vue.extend({
           content: `ブログ | ${this.blog_item.fields.title} | ${this.blog_item.fields.digest}`,
         },
       ],
+      link: [
+        {
+          hid: 'canonical',
+          rel: 'canonical',
+          href: `${process.env.BASE_URL}/blog/${this.$route.params.id}`,
+        },
+      ],
     }
   },
 })

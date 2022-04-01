@@ -46,6 +46,13 @@ export default {
           content: `コミュニティー | ${this.community.fields.name} | ${this.community.fields.about}`,
         },
       ],
+      link: [
+        {
+          hid: 'canonical',
+          rel: 'canonical',
+          href: `${process.env.BASE_URL}/community/${this.$route.params.id}`,
+        },
+      ],
     }
   },
 }
