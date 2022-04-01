@@ -44,14 +44,46 @@ export default Vue.extend({
       }
     })
   },
+  data() {
+    return {
+      title: '',
+      description: '',
+    }
+  },
   head() {
     return {
-      title: `お知らせ | ${this.news_item.fields.title}`,
+      title: this.title,
+      htmlAttrs: {
+        lang: 'jp',
+        prefix:
+          'og: https://ogp.me/ns# fb: https://ogp.me/ns/fb# article: https://ogp.me/ns/article#',
+      },
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: `お知らせ | ${this.news_item.fields.title} | ${this.news_item.fields.digest}`,
+          content: this.description,
+        },
+        {
+          hid: 'og-url',
+          property: 'og:url',
+          content: `${process.env.BASE_URL}/news/${this.$route.params.id}`,
+        },
+        {
+          hid: 'og-title',
+          property: 'og:title',
+          content: this.title,
+        },
+        { hid: 'og-type', property: 'og:type', content: 'article' },
+        {
+          hid: 'og-description',
+          property: 'og:description',
+          content: this.description,
+        },
+        {
+          hid: 'og-image',
+          property: 'og:image',
+          content: this.news_item.fields.thumbnail.fields.file.url,
         },
       ],
       link: [
@@ -62,6 +94,10 @@ export default Vue.extend({
         },
       ],
     }
+  },
+  created() {
+    this.title = `お知らせ - ${this.news_item.fields.title}`
+    this.description = `${this.title} - ${this.news_item.fields.digest}`
   },
 })
 </script>
