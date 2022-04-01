@@ -1,7 +1,7 @@
 <template>
   <div>
     <base-entry-detail
-      :page-name="'News'"
+      :page-name="'お知らせ'"
       :title="news_item.fields.title"
       :tags="news_item.fields.tags"
       :img="news_item.fields.thumbnail.fields.file.url"
@@ -33,6 +33,25 @@ export default Vue.extend({
         recent_news: recentNews.items,
       }
     })
+  },
+  head() {
+    return {
+      title: `お知らせ | ${this.news_item.fields.title}`,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: `お知らせ | ${this.news_item.fields.title} | ${this.news_item.fields.digest}`,
+        },
+      ],
+      link: [
+        {
+          hid: 'canonical',
+          rel: 'canonical',
+          href: `${process.env.BASE_URL}/news/${this.$route.params.id}`,
+        },
+      ],
+    }
   },
 })
 </script>
