@@ -42,8 +42,7 @@ export default {
       {
         hid: 'og-image',
         property: 'og:image',
-        content:
-          'https://kyutech-c3.github.io/web/_nuxt/img/c3_logo.b2cd3f4.png',
+        content: 'https://simo-c3.github.io/image_url/c3_logo_circled.png',
       },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: 'favicon.ico' }],
