@@ -23,11 +23,21 @@ export default Vue.extend({
   components: {
     BaseEntryDetail,
   },
-  async asyncData({ params }) {
+  async asyncData({ store, params }) {
     return Promise.all([
       await sdkClient.getEntry(params.id),
       await sdkClient.getEntries({ content_type: 'blog', limit: 3 }),
     ]).then(([blog, recentBlog]) => {
+      store.commit('breadcrumbs/setBreadcrumbs', {
+        breadcrumbs: [
+          { url: '/', text: 'ホーム' },
+          { url: '/blog', text: 'ブログ一覧' },
+          {
+            url: `/blog/${params.id}`,
+            text: blog.fields.title,
+          },
+        ],
+      })
       return {
         blog_item: blog,
         recent_blog: recentBlog.items,

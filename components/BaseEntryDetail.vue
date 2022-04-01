@@ -1,5 +1,6 @@
 <template>
   <div class="page">
+    <base-breadcrumbs class="detail-breadcrumbs" />
     <div class="page-name">{{ pageName }}</div>
     <div class="page-content">
       <div class="entry-detail">
@@ -131,6 +132,9 @@ export default {
   font-size: $font-size-other-title;
   color: $base-font-color;
   margin: 0 7vw 2vw 7vw;
+}
+.detail-breadcrumbs {
+  margin: 0 7vw;
 }
 .entry-top {
   position: relative;

@@ -1,5 +1,6 @@
 <template>
   <div class="contact-thanks-wrap">
+    <base-breadcrumbs class="contact-thanks-breadcrumbs" />
     <!-- title -->
     <div class="contact-thanks-title">Thank you!</div>
     <!-- message -->
@@ -59,6 +60,15 @@ export default {
       ],
     }
   },
+  async asyncData({ store }) {
+    await store.commit('breadcrumbs/setBreadcrumbs', {
+      breadcrumbs: [
+        { url: '/', text: 'ホーム' },
+        { url: '/contact', text: 'お問合せ' },
+        { url: '/contact/thanks', text: 'お問合せ完了' },
+      ],
+    })
+  },
   head() {
     return {
       title: 'お問合せ | 完了',
@@ -80,6 +90,9 @@ export default {
   text-align: center;
   display: grid;
   font-family: 'Inter', '游ゴシック';
+}
+.contact-thanks-breadcrumbs {
+  margin-left: min(5vw, 100px);
 }
 /* title */
 .contact-thanks-title {

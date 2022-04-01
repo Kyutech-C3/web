@@ -1,5 +1,6 @@
 <template>
   <div class="blog">
+    <base-breadcrumbs />
     <div class="title">Blog</div>
     <base-entry-list :entry-list="entry_list" class="blog-list" />
   </div>
@@ -7,14 +8,22 @@
 
 <script>
 import BaseEntryList from '@/components/BaseEntryList.vue'
+import BaseBreadcrumbs from '@/components/BaseBreadcrumbs.vue'
 
 import sdkClient from '@/plugins/contentful.js'
 
 export default {
   components: {
     BaseEntryList,
+    BaseBreadcrumbs,
   },
-  async asyncData() {
+  async asyncData({ store }) {
+    await store.commit('breadcrumbs/setBreadcrumbs', {
+      breadcrumbs: [
+        { url: '/', text: 'ホーム' },
+        { url: '/blog', text: 'ブログ一覧' },
+      ],
+    })
     return (
       Promise.all([
         await sdkClient.getEntries({

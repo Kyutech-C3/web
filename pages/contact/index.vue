@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="contact">
+      <base-breadcrumbs class="contact-breadcrumbs" />
       <!-- title -->
       <div class="contact-title">お問い合わせ</div>
       <!-- form -->
@@ -81,6 +82,14 @@ export default {
       messageComment: '*お問い合わせ内容を入力してください',
     }
   },
+  async asyncData({ store }) {
+    await store.commit('breadcrumbs/setBreadcrumbs', {
+      breadcrumbs: [
+        { url: '/', text: 'ホーム' },
+        { url: '/contact', text: 'お問合せ' },
+      ],
+    })
+  },
   head() {
     return {
       title: 'お問合せ | 入力フォーム',
@@ -141,6 +150,9 @@ export default {
   font-family: 'Inter', '游ゴシック';
   justify-content: center;
   padding: 100px 0 50px 0;
+}
+.contact-breadcrumbs {
+  margin-left: min(5vw, 100px);
 }
 /* title */
 .contact-title {
