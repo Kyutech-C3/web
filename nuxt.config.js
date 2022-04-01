@@ -47,7 +47,7 @@ export default {
         content: 'https://simo-c3.github.io/image_url/c3_logo_circled.png',
       },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: 'favicon.ico' }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
