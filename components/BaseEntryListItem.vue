@@ -15,28 +15,28 @@ export default {
       type: String,
       required: true,
       default() {
-        return '11'
+        return ''
       },
     },
     entryTitle: {
       type: String,
       required: true,
       default() {
-        return 'title'
+        return ''
       },
     },
     entryContents: {
       type: String,
       required: true,
       default() {
-        return 'キャメルケース（英: camel case）は、複合語をひと綴りとして、要素語の最初を大文字で書き表すことをいう。キャメルケースとは、大文字が「らくだのこぶ」のように見えることからの命名である。例えば、「camel case」をキャメルケースで書き表すと、「camelCase」（または「CamelCase」）となる。'
+        return ''
       },
     },
     entryDate: {
       type: String,
       required: true,
       default() {
-        return '2021.2.2'
+        return ''
       },
     },
   },

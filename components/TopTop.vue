@@ -104,46 +104,19 @@ export default {
       type: Array,
       required: true,
       default() {
-        return [
-          {
-            sys: {
-              id: 'defaultID',
-            },
-            fields: {
-              publishedAt: '2020',
-              title: 'defaultTitle',
-            },
-          },
-        ]
+        return []
       },
     },
     importantNews: {
       type: Array,
       required: true,
       default() {
-        return [
-          {
-            sys: {
-              id: 'defaultID',
-            },
-            fields: {
-              publishedAt: '2020',
-              title: 'defaultTitle',
-            },
-          },
-        ]
+        return []
       },
     },
   },
   data() {
     return {
-      slides: [
-        { link: '#1', img: 'https://simo-c3.github.io/image_url/CG.png' },
-        { link: '#2', img: 'https://simo-c3.github.io/image_url/CG.png' },
-        { link: '#3', img: 'https://simo-c3.github.io/image_url/CG.png' },
-        { link: '#4', img: 'https://simo-c3.github.io/image_url/CG.png' },
-        { link: '#5', img: 'https://simo-c3.github.io/image_url/CG.png' },
-      ],
       hooperSettings: {
         infiniteScroll: true,
         centerMode: true,

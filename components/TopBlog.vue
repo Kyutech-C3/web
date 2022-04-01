@@ -60,18 +60,7 @@ export default {
       type: Array,
       required: true,
       default() {
-        return [
-          {
-            sys: {
-              id: 'hoge',
-            },
-            fields: {
-              publishedAt: '2020',
-              title: 'hogehoge',
-              thumbnail: {},
-            },
-          },
-        ]
+        return []
       },
     },
   },
