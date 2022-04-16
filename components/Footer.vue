@@ -11,9 +11,12 @@
         </div>
         <div>
           <div class="official-text">C3 Official Website</div>
-          <nuxt-link to="/contact" class="inquiry-text-container">
-            <div class="inquiry-text">
-              <font-awesome-icon :icon="['fas', 'envelope-open-text']" />
+          <nuxt-link to="/contact" class="inquiry-text-container disable">
+            <div class="inquiry-text disable">
+              <font-awesome-icon
+                :icon="['fas', 'envelope-open-text']"
+                class="disable"
+              />
               お問い合わせはこちら
             </div>
           </nuxt-link>
@@ -21,8 +24,11 @@
       </div>
       <div class="center-container">
         <div class="icon-container">
-          <a href="/" target="_blank">
-            <font-awesome-icon :icon="['fas', 'box-open']" class="icons" />
+          <a href="/" target="_blank" class="disable">
+            <font-awesome-icon
+              :icon="['fas', 'box-open']"
+              class="icons disable"
+            />
           </a>
           <a href="https://twitter.com/c3_kyutech" target="_blank">
             <font-awesome-icon :icon="['fab', 'twitter']" class="icons" />
@@ -59,6 +65,10 @@ export default {}
 </script>
 
 <style lang="scss" scoped>
+.disable {
+  pointer-events: none;
+  color: #a0a0a0 !important;
+}
 .footer {
   width: 100%;
   margin: 0 0;
