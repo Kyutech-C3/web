@@ -304,7 +304,7 @@ export default {
 /* タブレット↓ */
 @media screen and (max-width: 1000px) {
   .top-news-nav {
-    margin-top: min(8vw, 60px);
+    margin-top: min(14vw, 90px);
     padding: 2vw 4vw;
     width: min(65vw, 500px);
     border-radius: 0 12px 12px 0;

@@ -1,8 +1,12 @@
 <template>
   <div class="blog">
     <base-breadcrumbs />
-    <div class="title">Blog</div>
-    <base-entry-list :entry-list="entry_list" class="blog-list" />
+    <div class="title">ブログ</div>
+    <base-entry-list
+      :entry-list="entry_list"
+      :entry-type="'blog'"
+      class="blog-list"
+    />
   </div>
 </template>
 
@@ -101,7 +105,7 @@ export default {
   max-width: 1500px;
   margin: 0 auto;
   color: $base-font-color;
-  padding: 50px 0;
+  padding: 10px 0;
 }
 .title {
   font-size: $font-size-other-title;

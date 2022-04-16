@@ -98,7 +98,7 @@ export default {
   width: 70%;
   max-width: 1500px;
   margin: 0 auto;
-  padding: 50px 0;
+  padding: 10px 0;
   color: $base-font-color;
 }
 .title {

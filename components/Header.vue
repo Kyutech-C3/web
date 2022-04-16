@@ -1,26 +1,27 @@
 <template>
   <div class="header">
-    <div class="header-wrapper" :style="headerStyles">
-      <div class="header-container center">
-        <div class="left-contents center">
+    <div class="header-wrapper">
+      <div class="header-container y-center">
+        <div class="left-contents y-center">
           <font-awesome-icon
             :icon="isShowContents ? 'times' : 'bars'"
             @click="showContents()"
           />
           <img
             src="https://avatars.githubusercontent.com/u/61457046?s=200&v=4"
+            class="logo"
           />
         </div>
-        <div class="right-contents center">
+        <div v-if="!isMobile" class="right-contents y-center">
           <div class="contact">
-            <nuxt-link to="/contact">
-              <font-awesome-icon icon="envelope-open-text" />
-              <div>お問い合わせ</div>
+            <nuxt-link to="/contact" class="disable">
+              <font-awesome-icon icon="envelope-open-text" class="disable" />
+              <div class="disable">お問い合わせ</div>
             </nuxt-link>
           </div>
-          <div class="language-wrapper center">
-            <font-awesome-icon icon="globe-americas" />
-            <div class="language center">
+          <div class="language-wrapper y-center">
+            <font-awesome-icon icon="globe-americas" class="disable" />
+            <div class="language y-center">
               <a
                 :class="{ selected: !isChangedLanguage }"
                 @click="isChangedLanguage = false"
@@ -29,6 +30,7 @@
               </a>
               <div>/</div>
               <a
+                class="disable"
                 :class="{ selected: isChangedLanguage }"
                 @click="isChangedLanguage = true"
               >
@@ -39,24 +41,71 @@
         </div>
       </div>
       <transition>
-        <div v-show="isShowContents" class="main-container">
-          <div class="contents-wrapper center">
+        <div
+          v-show="isShowContents"
+          class="main-container"
+          :class="{ 'add-height': isMobile }"
+        >
+          <div class="contents-wrapper y-center">
             <ul v-for="(contents, i) in allContents" :key="i">
               <li v-for="(content, j) in contents" :key="j">
                 <div
                   v-if="i != 2"
                   class="contents"
+                  :class="{ 'add-line-spacing': isMobile }"
                   @click="clickContents(content.link)"
                 >
-                  <font-awesome-icon :icon="content.icon" />
-                  <div>{{ content.text }}</div>
+                  <font-awesome-icon
+                    :icon="content.icon"
+                    :class="{ 'font-awesome-size': isMobile }"
+                  />
+                  <div v-if="isShowContentsTitle">{{ content.text }}</div>
                 </div>
-                <a v-else :href="content.link" target="_blank" class="contents">
-                  <font-awesome-icon :icon="content.icon" />
-                  <div>{{ content.text }}</div>
+                <a
+                  v-else
+                  :href="content.link"
+                  target="_blank"
+                  class="contents"
+                  :class="{ 'add-line-spacing': isMobile, disable: j === 0 }"
+                >
+                  <font-awesome-icon
+                    :icon="content.icon"
+                    :class="{ 'font-awesome-size': isMobile, disable: j === 0 }"
+                  />
+                  <div :class="{ disable: j === 0 }">{{ content.text }}</div>
                 </a>
               </li>
             </ul>
+          </div>
+          <div v-if="isMobile" class="line"></div>
+          <div v-if="isMobile" class="bottom-contents y-center x-center">
+            <div class="contact">
+              <nuxt-link to="/contact" class="disable">
+                <font-awesome-icon icon="envelope-open-text" class="disable" />
+                <div v-if="isShowContentsTitle" class="disable">
+                  お問い合わせ
+                </div>
+              </nuxt-link>
+            </div>
+            <div class="language-wrapper y-center">
+              <font-awesome-icon icon="globe-americas" class="disable" />
+              <div class="language y-center">
+                <a
+                  :class="{ selected: !isChangedLanguage }"
+                  @click="isChangedLanguage = false"
+                >
+                  JP
+                </a>
+                <div>/</div>
+                <a
+                  class="disable"
+                  :class="{ selected: isChangedLanguage }"
+                  @click="isChangedLanguage = true"
+                >
+                  EN
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </transition>
@@ -70,6 +119,9 @@ export default {
     return {
       isShowContents: false,
       isChangedLanguage: false,
+      isMobile: true,
+      isShowContentsTitle: true,
+      width: 0,
       allContents: [
         [
           {
@@ -140,18 +192,12 @@ export default {
       ],
     }
   },
-  computed: {
-    headerStyles() {
-      if (this.isShowContents) {
-        return {
-          '--height': '300px',
-        }
-      } else {
-        return {
-          '--height': '90px',
-        }
-      }
-    },
+  mounted() {
+    this.handleResize()
+    window.addEventListener('resize', this.handleResize)
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.handleResize)
   },
   methods: {
     showContents() {
@@ -166,11 +212,31 @@ export default {
       this.isShowContents = false
       this.$emit('masked-screen')
     },
+    handleResize() {
+      this.width = window.innerWidth
+      if (this.width < 1000) {
+        this.isMobile = true
+
+        if (this.width < 600) {
+          this.isShowContentsTitle = false
+        } else {
+          this.isShowContentsTitle = true
+        }
+      } else {
+        this.isMobile = false
+        this.isShowContentsTitle = true
+      }
+      console.log(this.isMobile)
+    },
   },
 }
 </script>
 
 <style lang="scss" scoped>
+.disable {
+  pointer-events: none;
+  color: $light-gray !important;
+}
 // ヘッダー全体
 .header {
   width: 100%;
@@ -181,11 +247,10 @@ export default {
 }
 .header-wrapper {
   width: 95%;
-  height: var(--height);
   background-color: $white;
   margin: auto;
   box-shadow: 0px 2px 8px #00000033;
-  border-radius: 60px;
+  border-radius: 45px;
 }
 
 // ヘッダー部分
@@ -196,15 +261,16 @@ export default {
   font-size: $font-size-header;
 
   .left-contents {
+    height: inherit;
     svg {
       width: 40px;
       height: 100%;
       margin: auto;
-      margin-right: 60px;
+      margin-right: min(7vw, 60px);
       cursor: pointer;
     }
     img {
-      height: 70px;
+      height: 60%;
     }
   }
   .right-contents {
@@ -242,15 +308,15 @@ export default {
 
 // ヘッダー展開時の中身
 .main-container {
-  height: 200px;
+  padding: 0 0 20px 0;
 
   .contents-wrapper {
-    height: 100%;
-    padding: 0 50px;
+    padding: 20px 50px 0 50px;
     justify-content: space-around;
     border-top: solid 1px $light-gray;
 
     .contents {
+      height: 30px;
       display: flex;
       align-items: center;
       color: $base-font-color;
@@ -280,6 +346,9 @@ export default {
       background: $black;
       transform: scale(1, 1);
     }
+    .add-line-spacing {
+      padding: 1vw 0;
+    }
     ul {
       list-style: none;
       padding-left: 0;
@@ -294,11 +363,67 @@ export default {
       margin-right: 10px;
     }
   }
+  .bottom-contents {
+    padding: 0 17vw;
+    justify-content: space-around;
+    svg {
+      font-size: 28px;
+      margin-right: 15px;
+    }
+    .contact {
+      font-size: 20px;
+      margin-left: 15px;
+      margin-right: 15px;
+
+      div {
+        color: $base-font-color;
+      }
+    }
+    .language {
+      width: 120px;
+      height: 40px;
+      font-size: 20px;
+      justify-content: center;
+      box-shadow: 0px 2px 8px #00000033;
+      border-radius: 60px;
+
+      .selected {
+        color: $light-blue !important;
+        border-bottom: solid $light-blue;
+      }
+      div {
+        color: $base-font-color;
+        margin: 0 7px;
+      }
+    }
+  }
+  .line {
+    content: '';
+    margin: 0 auto 20px auto;
+    width: 70%;
+    height: 0.5px;
+    border: solid $light-gray;
+    border-width: 0.5px;
+  }
 }
 
-.center {
+.font-awesome-size {
+  width: 30px !important;
+  height: 30px;
+}
+
+.logo {
+  width: auto;
+  height: 60%;
+}
+
+.y-center {
   display: flex;
   align-items: center;
+}
+
+.x-center {
+  justify-content: center;
 }
 
 a,

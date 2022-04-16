@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link :to="'/blog/' + entryId" class="item-link">
+  <nuxt-link :to="`/${entryType}/${entryId}`" class="item-link">
     <div class="item-title-wrapper">
       <span class="item-title">{{ entryTitle }}</span>
       <span class="item-date">{{ dateFormatter(entryDate) }}</span>
@@ -33,6 +33,13 @@ export default {
       },
     },
     entryDate: {
+      type: String,
+      required: true,
+      default() {
+        return ''
+      },
+    },
+    entryType: {
       type: String,
       required: true,
       default() {
