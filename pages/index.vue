@@ -2,7 +2,10 @@
   <div>
     <top-top :news="news" :important-news="importantNews" />
     <top-about-c-3 :c3-introduction="c3Introduction" class="component" />
-    <top-about-community :about-community="aboutCommunity" class="component" />
+    <top-about-community
+      :about-community="aboutCommunity"
+      class="component component-comunity"
+    />
     <top-community-link
       v-for="(community, idx) in eachCommunity"
       :id="idx"
@@ -94,8 +97,18 @@ export default {
 
 <style lang="scss" scoped>
 .component {
-  margin: 10vw auto;
+  margin: 20vw auto;
   width: 75vw;
   max-width: 1500px;
+}
+@media screen and (max-width: $media-query-standard-max-width) {
+  .component-comunity {
+    margin: 30vw auto 20vw auto;
+  }
+}
+@media screen and (max-width: $media-query-small-max-width) {
+  .component-comunity {
+    margin: 50vw auto 20vw auto;
+  }
 }
 </style>

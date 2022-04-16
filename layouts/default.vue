@@ -38,8 +38,7 @@ html {
   overflow-x: hidden;
 }
 .page {
-  margin-top: 90px !important;
-  margin-bottom: 10vw !important;
+  margin-top: min(40vw, 120px) !important;
 }
 body {
   width: 100%;

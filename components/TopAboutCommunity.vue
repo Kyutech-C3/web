@@ -2,9 +2,7 @@
   <div>
     <div class="community_wrapper">
       <div class="text_contents">
-        <div class="title">
-          <p>コミュニティ</p>
-        </div>
+        <div class="title">コミュニティ</div>
         <div class="description">
           <div v-html="$md.render(aboutCommunity)"></div>
         </div>
@@ -156,15 +154,19 @@ export default {
 
   .community_icons {
     position: absolute;
+    top: 30px;
     left: 0;
     right: 0;
     margin: auto;
   }
 }
 
-@media screen and (min-width: $media-query-min-width) {
+@media screen and (max-width: $media-query-small-max-width) {
   .title {
     white-space: nowrap;
+  }
+  .community_icons {
+    top: 5px;
   }
 }
 </style>

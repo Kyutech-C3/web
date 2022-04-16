@@ -129,7 +129,7 @@ export default {
 <style scoped>
 .community {
   width: 70%;
-  padding: 50px 0;
+  padding: 10px 0;
   margin: 0 auto;
 }
 </style>
