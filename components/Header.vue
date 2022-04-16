@@ -14,13 +14,13 @@
         </div>
         <div v-if="!isMobile" class="right-contents y-center">
           <div class="contact">
-            <nuxt-link to="/contact">
-              <font-awesome-icon icon="envelope-open-text" />
-              <div>お問い合わせ</div>
+            <nuxt-link to="/contact" class="disable">
+              <font-awesome-icon icon="envelope-open-text" class="disable" />
+              <div class="disable">お問い合わせ</div>
             </nuxt-link>
           </div>
           <div class="language-wrapper y-center">
-            <font-awesome-icon icon="globe-americas" />
+            <font-awesome-icon icon="globe-americas" class="disable" />
             <div class="language y-center">
               <a
                 :class="{ selected: !isChangedLanguage }"
@@ -30,6 +30,7 @@
               </a>
               <div>/</div>
               <a
+                class="disable"
                 :class="{ selected: isChangedLanguage }"
                 @click="isChangedLanguage = true"
               >
@@ -65,13 +66,13 @@
                   :href="content.link"
                   target="_blank"
                   class="contents"
-                  :class="{ 'add-line-spacing': isMobile }"
+                  :class="{ 'add-line-spacing': isMobile, disable: j === 0 }"
                 >
                   <font-awesome-icon
                     :icon="content.icon"
-                    :class="{ 'font-awesome-size': isMobile }"
+                    :class="{ 'font-awesome-size': isMobile, disable: j === 0 }"
                   />
-                  <div>{{ content.text }}</div>
+                  <div :class="{ disable: j === 0 }">{{ content.text }}</div>
                 </a>
               </li>
             </ul>
@@ -79,13 +80,15 @@
           <div v-if="isMobile" class="line"></div>
           <div v-if="isMobile" class="bottom-contents y-center x-center">
             <div class="contact">
-              <nuxt-link to="/contact">
-                <font-awesome-icon icon="envelope-open-text" />
-                <div v-if="isShowContentsTitle">お問い合わせ</div>
+              <nuxt-link to="/contact" class="disable">
+                <font-awesome-icon icon="envelope-open-text" class="disable" />
+                <div v-if="isShowContentsTitle" class="disable">
+                  お問い合わせ
+                </div>
               </nuxt-link>
             </div>
             <div class="language-wrapper y-center">
-              <font-awesome-icon icon="globe-americas" />
+              <font-awesome-icon icon="globe-americas" class="disable" />
               <div class="language y-center">
                 <a
                   :class="{ selected: !isChangedLanguage }"
@@ -95,6 +98,7 @@
                 </a>
                 <div>/</div>
                 <a
+                  class="disable"
                   :class="{ selected: isChangedLanguage }"
                   @click="isChangedLanguage = true"
                 >
@@ -229,6 +233,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.disable {
+  pointer-events: none;
+  color: $light-gray !important;
+}
 // ヘッダー全体
 .header {
   width: 100%;
