@@ -1,8 +1,12 @@
 <template>
   <div class="blog">
     <base-breadcrumbs />
-    <div class="title">Blog</div>
-    <base-entry-list :entry-list="entry_list" class="blog-list" />
+    <div class="title">ブログ</div>
+    <base-entry-list
+      :entry-list="entry_list"
+      :entry-type="'blog'"
+      class="blog-list"
+    />
   </div>
 </template>
 

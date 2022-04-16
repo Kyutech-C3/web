@@ -7,6 +7,7 @@
       :entry-title="entry.title"
       :entry-date="entry.date"
       :entry-contents="entry.contents"
+      :entry-type="entryType"
       class="entry-item"
     />
   </div>
@@ -24,6 +25,13 @@ export default {
       required: true,
       default() {
         return []
+      },
+    },
+    entryType: {
+      type: String,
+      required: true,
+      default() {
+        return ''
       },
     },
   },
