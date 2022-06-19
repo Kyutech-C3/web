@@ -76,6 +76,7 @@ export default {
 }
 
 .title {
+  font-family: $font-family-title;
   font-size: $font-size-contents-title;
   color: $base-font-color;
   margin-top: -100px;
