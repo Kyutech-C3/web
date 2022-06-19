@@ -25,10 +25,9 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: $font-family-contens;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -44,9 +43,6 @@ body {
   width: 100%;
   margin: 0;
 }
-</style>
-
-<style lang="scss" scoped>
 .mask {
   width: 100vw;
   height: 100vh;

@@ -1,3 +1,8 @@
+@font-face {
+  $font-family-title: 'Inter', sans-serif;
+  src: url(https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap);
+}
+
 //Commonly used web colors
 $gray: #707070;
 $light-gray: #d8d8d8;
@@ -14,8 +19,9 @@ $base-font-color: $gray;
 $footer-font-color: $light-gray;
 $font-size-header: 28px;
 $font-size-footer: 20px;
-$font-family-title: 'Inter';
-$font-family-contens: '游ゴシック';
+$font-family-title: 'Inter', sans-serif;
+$font-family-contens: '游ゴシック体', YuGothic, '游ゴシック Medium',
+  'Yu Gothic Medium', '游ゴシック', 'Yu Gothic', sans-serif;
 
 // Variable for top page text
 $font-size-top-title: $base_font_size * 10;

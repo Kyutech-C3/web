@@ -153,16 +153,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap');
 * {
   margin: 0;
   padding: 0;
 }
 .wrap {
+  font-family: $font-family-contens;
   margin: 0;
   background: $white;
   color: $gray;
-  font-family: 'Inter', '游ゴシック';
   justify-content: space-between;
   max-width: 1920px;
   user-select: none;
@@ -190,8 +189,8 @@ export default {
 .top-title-text {
   font-size: min(120px, 6.5vw);
   font-weight: 800;
-  display: flex;
   font-family: $font-family-title;
+  display: flex;
 }
 /* タブレット↑ */
 @media screen and (min-width: 1001px) {
