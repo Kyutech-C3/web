@@ -24,8 +24,7 @@ export default {
   },
 }
 </script>
-
-<style lang="scss" scoped>
+<style lang="scss">
 html {
   font-family: $font-family-contens;
   word-spacing: 1px;
@@ -43,6 +42,8 @@ body {
   width: 100%;
   margin: 0;
 }
+</style>
+<style lang="scss" scoped>
 .mask {
   width: 100vw;
   height: 100vh;

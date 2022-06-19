@@ -95,12 +95,12 @@ export default {
   align-items: center;
 }
 .name {
+  font-family: $font-family-title;
   font-size: $font-size-contents-title;
   width: 100%;
 }
 .about {
   font-size: $font-size-contents-description;
-  font-family: $font-family-contens;
   padding-left: 20px;
   margin-bottom: 20px;
   height: 55%;
