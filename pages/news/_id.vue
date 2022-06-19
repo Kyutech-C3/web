@@ -8,6 +8,7 @@
       :body="news_item.fields.body"
       :updated-at="news_item.sys.updatedAt"
       :recent-blog="recent_news"
+      :users="news_item.fields.user"
     />
   </div>
 </template>
@@ -39,6 +40,8 @@ export default Vue.extend({
             },
           ],
         })
+        console.log(news.fields.user[0].fields)
+        console.log(news.fields.user[0].fields.icon.fields.file.url)
         return {
           news_item: news,
           recent_news: recentNews.items,
