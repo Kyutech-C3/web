@@ -17,6 +17,7 @@
                   <tag :tag="tag.fields.name" class="tag" />
                 </div>
               </div>
+              <users :users="item.fields.user" class="users" />
               <div class="blog-date">
                 {{ dateFormatter(item.sys.updatedAt) }}
               </div>
@@ -46,6 +47,7 @@ import {
 import 'hooper/dist/hooper.css'
 
 import Tag from '~/components/Tag.vue'
+import Users from '~/components/Users.vue'
 
 export default {
   components: {
@@ -54,6 +56,7 @@ export default {
     HooperPagination,
     HooperNavigation,
     Tag,
+    Users,
   },
   props: {
     blog: {
@@ -188,7 +191,7 @@ span {
   .blog-info {
     position: absolute;
     width: 100%;
-    height: max(13vw, 100px);
+    height: max(15vw, 150px);
     bottom: 0;
     background-color: $through-light-blue;
     color: $white;
@@ -226,7 +229,9 @@ span {
         }
       }
     }
-
+    .users {
+      margin-bottom: 10px;
+    }
     .blog-date {
       font-size: $base_font_size * 1.1;
     }

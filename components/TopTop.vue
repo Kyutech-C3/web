@@ -48,6 +48,7 @@
                     <tag :tag="tag.fields.name" class="tag" />
                   </div>
                 </div>
+                <users :users="content.fields.user" class="users" />
                 <div class="news-date">
                   {{ dateFormatter(content.sys.updatedAt) }}
                 </div>
@@ -90,6 +91,7 @@ import {
 } from 'hooper'
 import 'hooper/dist/hooper.css'
 import BaseButton from '@/components/BaseButton.vue'
+import Users from '@/components/Users.vue'
 
 export default {
   components: {
@@ -98,6 +100,7 @@ export default {
     HooperPagination,
     HooperNavigation,
     BaseButton,
+    Users,
   },
   props: {
     news: {
@@ -374,7 +377,7 @@ export default {
   .news-info {
     position: absolute;
     width: 100%;
-    height: max(13vw, 120px);
+    height: max(15vw, 160px);
     bottom: 0;
     background-color: $through-light-blue;
     color: $white;
@@ -411,6 +414,9 @@ export default {
           cursor: pointer;
         }
       }
+    }
+    .users {
+      margin-bottom: 7px;
     }
 
     .news-date {
