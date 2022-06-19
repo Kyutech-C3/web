@@ -59,8 +59,6 @@ export default {
   text-align: left;
   max-height: 200px;
   color: $gray;
-  font-family: 'Inter', '游ゴシック';
-  font-style: Regular;
   font-size: $font-size-contents-description;
 }
 .link {
@@ -72,7 +70,6 @@ export default {
   color: $gray;
   text-decoration: none;
   letter-spacing: 0px;
-  font-family: '游ゴシック';
   font-style: Medium;
   font-size: $font-size-button;
 }

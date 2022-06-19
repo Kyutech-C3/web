@@ -97,9 +97,8 @@ export default {}
 .official-text {
   padding: 40px 0 0 6.25%;
   width: 300px;
+  font-family: $font-family-title;
   font-size: $font-size-other-contents-description;
-  font-family: 'Inter';
-  font-style: Regular;
   color: $white;
 }
 .inquiry-text-container {
@@ -108,8 +107,6 @@ export default {}
 .inquiry-text {
   padding: 47px 0 0 6.45%;
   font-size: 20px;
-  font-family: '游ゴシック';
-  font-style: Medium;
   color: #c9cfd5;
 }
 .icon-container {
@@ -128,8 +125,7 @@ export default {}
 .copyright {
   padding: 120px 0 56px 0;
   font-size: 20px;
-  font-family: 'Inter';
-  font-style: Medium;
+  font-family: $font-family-title;
   color: #aaaaaae6;
   text-align: center;
 }
@@ -142,7 +138,7 @@ export default {}
   position: relative;
   top: 60px;
   font-size: 20px;
-  font-family: 'Inter';
+  font-family: $font-family-title;
   font-style: Medium;
   color: #ffffffe6;
   text-decoration: none;

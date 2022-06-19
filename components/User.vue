@@ -3,7 +3,7 @@
     <div class="icon-wrapper">
       <img :src="icon" class="icon" />
     </div>
-    <div class="name" v-if="showName">{{ name }}</div>
+    <div v-if="showName" class="name">{{ name }}</div>
   </nuxt-link>
 </template>
 
@@ -45,7 +45,7 @@ export default {
 <style lang="scss" scoped>
 .user {
   height: 25px;
-  padding: 3px 10px 3px 5px;
+  padding: 2px 10px 2px 2px;
   box-shadow: 0px 2px 8px #00000033;
   border-radius: 100px;
   display: flex;
@@ -67,8 +67,8 @@ export default {
 .icon-wrapper img {
   object-fit: cover;
   border-radius: 100%;
-  width: 100%;
   height: 100%;
+  width: auto;
 }
 .name {
   font-size: 15px;
