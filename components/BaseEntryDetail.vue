@@ -18,6 +18,7 @@
                 <tag :tag="tag.fields.name" class="tag" />
               </nuxt-link>
             </div>
+            <users :users="users" class="users" />
           </div>
         </div>
         <div class="date">
@@ -34,12 +35,14 @@
 import MarkdownView from '~/components/MarkdownView.vue'
 import Sidebar from '~/components/Sidebar.vue'
 import Tag from '~/components/Tag.vue'
+import Users from '~/components/Users.vue'
 
 export default {
   components: {
     MarkdownView,
     Sidebar,
     Tag,
+    Users,
   },
   props: {
     pageName: {
@@ -85,6 +88,13 @@ export default {
       },
     },
     recentBlog: {
+      type: Array,
+      required: true,
+      default() {
+        return []
+      },
+    },
+    users: {
       type: Array,
       required: true,
       default() {
@@ -172,6 +182,9 @@ export default {
 .tag {
   margin: 0 3px;
   cursor: pointer;
+}
+.users {
+  margin-top: 10px;
 }
 .img {
   display: block;

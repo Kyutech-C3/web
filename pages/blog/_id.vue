@@ -8,6 +8,7 @@
       :body="blog_item.fields.body"
       :updated-at="blog_item.sys.updatedAt"
       :recent-blog="recent_blog"
+      :users="blog_item.fields.user"
     />
   </div>
 </template>
