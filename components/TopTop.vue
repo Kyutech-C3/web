@@ -190,8 +190,8 @@ export default {
 .top-title-text {
   font-size: min(120px, 6.5vw);
   font-weight: 800;
-  display: inherit;
   display: flex;
+  font-family: $font-family-title;
 }
 /* タブレット↑ */
 @media screen and (min-width: 1001px) {
