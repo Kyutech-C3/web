@@ -46,13 +46,10 @@ export default {
 
 .top {
   margin: 0 0 0 5.2%;
-
+  font-family: $font-family-title;
   height: auto;
   line-height: 160px;
   color: $gray;
-  font-family: 'Inter', '游ゴシック';
-  font-style: Regular;
-  font-style: Medium;
   font-size: $font-size-contents-title;
 }
 .sentence {
