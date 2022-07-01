@@ -1,5 +1,9 @@
 <template>
-  <nuxt-link :to="'/user/' + id" class="user">
+  <nuxt-link
+    :to="'/user/' + id"
+    class="user"
+    :class="[`${color}-style`, { shadow: shadow }]"
+  >
     <div class="icon-wrapper">
       <img :src="icon" class="icon" />
     </div>
@@ -38,39 +42,62 @@ export default {
         return true
       },
     },
+    color: {
+      type: String,
+      required: true,
+    },
+    shadow: {
+      type: Boolean,
+      required: true,
+    },
   },
 }
 </script>
 
 <style lang="scss" scoped>
 .user {
-  height: 25px;
+  height: var(--height);
   padding: 2px 10px 2px 2px;
-  box-shadow: 0px 2px 8px #00000033;
   border-radius: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
   border: 1px solid;
-  border-color: $white;
   text-decoration: none;
+}
+.white-style {
+  border-color: $white;
   color: $white;
+}
+.black-style {
+  border-color: $light-gray;
+  color: $gray;
+}
+.shadow {
+  box-shadow: 0px 2px 8px #00000033;
 }
 .user:hover {
   border-color: $gray;
 }
 .icon-wrapper {
-  height: 100%;
-  width: auto;
+  height: var(--height);
+  width: var(--height);
   margin: 0 5px 0 0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 100%;
+  background-color: $white;
 }
 .icon-wrapper img {
-  object-fit: cover;
-  border-radius: 100%;
   height: 100%;
   width: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
 .name {
+  width: max-content;
   font-size: 15px;
   text-decoration: none;
   font-family: $font-family-contens;

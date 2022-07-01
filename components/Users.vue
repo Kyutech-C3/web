@@ -7,6 +7,8 @@
       :name="user.fields.name"
       :icon="user.fields.icon.fields.file.url"
       :show-name="true"
+      :color="'white'"
+      :shadow="true"
       class="user"
     />
   </div>
@@ -37,6 +39,7 @@ export default {
   margin: 0 auto;
   align-items: center;
   justify-content: center;
+  --height: 25px;
 }
 .user {
   margin: 0 5px;
