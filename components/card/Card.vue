@@ -1,12 +1,14 @@
 <template>
   <nuxt-link :to="entryURL" class="card-link">
     <article class="article">
-      <img
-        :src="card_image"
-        alt="thumbnail"
-        title="thumbnail"
-        class="thumbnail"
-      />
+      <div class="thumbnail-wrapper">
+        <img
+          :src="card_image"
+          alt="thumbnail"
+          title="thumbnail"
+          class="thumbnail"
+        />
+      </div>
       <div v-if="isHoverFlag" class="tag_viewer1"></div>
       <div class="content">
         <div class="title">{{ title }}</div>
@@ -114,11 +116,21 @@ export default {
   padding: 10px 15px 10px 15px;
   overflow: hidden;
 }
-.thumbnail {
+.thumbnail-wrapper {
   position: relative;
+  overflow: hidden;
   width: 100%;
   height: 220px;
+}
+.thumbnail {
+  height: 100%;
+  position: absolute;
   object-fit: cover;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
 }
 .title {
   font-size: 22px;
