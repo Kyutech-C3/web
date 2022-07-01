@@ -56,7 +56,7 @@ export default {
 
 <style lang="scss" scoped>
 .user {
-  height: var(--height);
+  height: var(--user-height);
   padding: 2px 10px 2px 2px;
   border-radius: 100px;
   display: flex;
@@ -80,8 +80,8 @@ export default {
   border-color: $gray;
 }
 .icon-wrapper {
-  height: var(--height);
-  width: var(--height);
+  height: var(--img-height);
+  width: var(--img-height);
   margin: 0 5px 0 0;
   position: relative;
   overflow: hidden;

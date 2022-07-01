@@ -39,7 +39,8 @@ export default {
   margin: 0 auto;
   align-items: center;
   justify-content: center;
-  --height: 25px;
+  --user-height: 25px;
+  --img-height: 20px;
 }
 .user {
   margin: 0 5px;

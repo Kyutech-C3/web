@@ -1,5 +1,5 @@
 <template>
-  <div class="card-link" @click="$router.push(entryURL)">
+  <nuxt-link :to="entryURL" class="card-link">
     <article class="article">
       <img
         :src="card_image"
@@ -32,7 +32,7 @@
         <div class="date">2022/12/42 12:32:32</div>
       </div>
     </article>
-  </div>
+  </nuxt-link>
 </template>
 
 <script>
@@ -153,11 +153,12 @@ export default {
   justify-content: flex-start;
   margin-right: 3px;
   margin-bottom: 1px;
-  --height: 18px;
+  ---height: 18px;
 }
 .user-wrraper {
   width: 100%;
-  --height: 20px;
+  --user-height: 20px;
+  --img-height: 20px;
   overflow: hidden;
   overflow-x: auto;
   cursor: default;
