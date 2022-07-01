@@ -188,7 +188,6 @@ export default {
   margin-top: 10px;
 }
 .img {
-  display: block;
   height: 100%;
   position: absolute;
   object-fit: cover;
