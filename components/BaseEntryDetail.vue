@@ -182,13 +182,13 @@ export default {
 .tag {
   margin: 0 3px;
   cursor: pointer;
+  --height: 25px;
 }
 .users {
   margin-top: 10px;
 }
 .img {
-  display: block;
-  width: 100%;
+  height: 100%;
   position: absolute;
   object-fit: cover;
   top: 50%;

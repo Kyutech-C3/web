@@ -2,8 +2,8 @@
   <div class="blog">
     <base-breadcrumbs />
     <div class="title">ブログ</div>
-    <base-entry-list
-      :entry-list="entry_list"
+    <card-list
+      :card-items="entry_list"
       :entry-type="'blog'"
       class="blog-list"
     />
@@ -11,14 +11,14 @@
 </template>
 
 <script>
-import BaseEntryList from '@/components/BaseEntryList.vue'
+import CardList from '~/components/card/CardList.vue'
 import BaseBreadcrumbs from '@/components/BaseBreadcrumbs.vue'
 
 import sdkClient from '@/plugins/contentful.js'
 
 export default {
   components: {
-    BaseEntryList,
+    CardList,
     BaseBreadcrumbs,
   },
   async asyncData({ store, error }) {
@@ -38,12 +38,7 @@ export default {
         // eslint-disable-next-line no-console
         console.log(blog.items)
         for (let i = 0; i < blog.items.length; i++) {
-          resEntryList.push({
-            id: blog.items[i].sys.id,
-            title: blog.items[i].fields.title,
-            date: blog.items[i].sys.updatedAt,
-            contents: blog.items[i].fields.digest,
-          })
+          resEntryList.push(blog.items[i])
         }
         return {
           entry_list: resEntryList,
@@ -101,7 +96,7 @@ export default {
 
 <style lang="scss" scoped>
 .blog {
-  width: 70%;
+  width: 80%;
   max-width: 1500px;
   margin: 0 auto;
   color: $base-font-color;
@@ -112,5 +107,15 @@ export default {
 }
 .blog-list {
   margin: 2vw 0;
+}
+@media screen and (max-width: $media-query-small-max-width) {
+  .blog {
+    width: 95%;
+  }
+}
+@media screen and (max-width: $media-query-standard-max-width) {
+  .blog {
+    width: 85%;
+  }
 }
 </style>

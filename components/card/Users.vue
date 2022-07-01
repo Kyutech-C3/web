@@ -7,8 +7,8 @@
       :name="user.fields.name"
       :icon="user.fields.icon.fields.file.url"
       :show-name="true"
-      :color="'white'"
-      :shadow="true"
+      :color="'black'"
+      :shadow="false"
       class="user"
     />
   </div>
@@ -35,14 +35,10 @@ export default {
 <style lang="scss" scoped>
 .users {
   display: flex;
-  width: 60%;
-  margin: 0 auto;
   align-items: center;
-  justify-content: center;
-  --user-height: 25px;
-  --img-height: 20px;
+  justify-content: flex-start;
 }
 .user {
-  margin: 0 5px;
+  margin: 0 5px 0 0;
 }
 </style>

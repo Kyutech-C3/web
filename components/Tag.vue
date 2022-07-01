@@ -23,13 +23,13 @@ export default {
   border: 1px solid;
   border-color: $light-gray;
   border-radius: 8px;
-  padding: 3px 6px;
-  height: 24px;
+  padding: 2px 10px;
+  height: var(--height);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .tag-item {
-  width: fit-content;
+  width: max-content;
 }
 </style>
