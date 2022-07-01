@@ -47,11 +47,10 @@ body {
 .mask {
   width: 100vw;
   height: 100vh;
-  background-color: $gray;
+  background-color: rgba(112, 112, 112, 0.5);
   position: fixed;
   top: 0;
   left: 0;
-  opacity: 0.5;
   z-index: 5;
 }
 
