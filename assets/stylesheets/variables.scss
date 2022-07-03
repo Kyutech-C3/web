@@ -36,6 +36,7 @@ $font-size-other-contents-description: $base_font_size * 1.8;
 $font-size-other-contents-other: $base_font_size * 1.1;
 
 // Variable for media query
+$media-query-s-small-max-width: 450px;
 $media-query-small-max-width: 600px;
 $media-query-standard-max-width: 1000px;
 $media-query-min-width: 1000px;
