@@ -156,8 +156,6 @@ export default {
   .community_icons {
     position: absolute;
     top: 30px;
-    left: 0;
-    right: 0;
     margin: auto;
   }
 }
