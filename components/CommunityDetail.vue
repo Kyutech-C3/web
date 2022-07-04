@@ -74,5 +74,11 @@ export default {
   .title {
     font-size: 40px;
   }
+  .img-wrapper {
+    width: 85%;
+    height: 60vw;
+    margin-top: 20px;
+    margin-bottom: 50px;
+  }
 }
 </style>
