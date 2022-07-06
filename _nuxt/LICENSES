@@ -18,6 +18,13 @@
 /*! https://mths.be/punycode v1.4.1 by @mathias */
 
 
+/**
+  * Hopper 0.3.4
+  * (c) 2019
+    * @license MIT
+    */
+
+
 /*!
   * vue-router v3.5.2
   * (c) 2021 Evan You
@@ -35,10 +42,3 @@
  * (c) 2021 Evan You
  * @license MIT
  */
-
-
-/**
-  * Hopper 0.3.4
-  * (c) 2019
-    * @license MIT
-    */

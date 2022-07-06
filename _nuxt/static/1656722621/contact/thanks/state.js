@@ -1,1 +1,0 @@
-window.__NUXT__=(function(a,b,c){return {staticAssetsBase:"\u002F_nuxt\u002Fstatic\u002F1656722621",layout:"default",error:a,state:{breadcrumbs:{breadcrumbs:[{url:b,text:"ホーム"},{url:"\u002Fcontact",text:"お問合せ"},{url:c,text:"お問合せ完了"}]}},serverRendered:true,routePath:c,config:{_app:{basePath:b,assetsPath:"\u002F_nuxt\u002F",cdnURL:a}}}}(null,"\u002F","\u002Fcontact\u002Fthanks"));
