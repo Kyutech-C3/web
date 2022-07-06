@@ -226,7 +226,6 @@ export default {
         this.isMobile = false
         this.isShowContentsTitle = true
       }
-      console.log(this.isMobile)
     },
   },
 }

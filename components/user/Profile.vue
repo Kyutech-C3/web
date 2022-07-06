@@ -98,13 +98,11 @@ export default {
   },
   created() {
     for (const linkBase of this.linksBaseInfo) {
-      console.log(linkBase.text)
       if (linkBase.text in this.links) {
         linkBase.url = this.links[linkBase.text]
         this.linksInfo.push(linkBase)
       }
     }
-    console.log(this.linksInfo)
   },
 }
 </script>

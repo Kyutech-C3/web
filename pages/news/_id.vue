@@ -40,8 +40,6 @@ export default Vue.extend({
             },
           ],
         })
-        console.log(news.fields.user[0].fields)
-        console.log(news.fields.user[0].fields.icon.fields.file.url)
         return {
           news_item: news,
           recent_news: recentNews.items,

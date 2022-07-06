@@ -91,9 +91,7 @@ export default {
       return `/${this.entryType}/${this.id}`
     },
     dateFormatter() {
-      console.log(this.date)
       const nowDate = new Date()
-      console.log(nowDate)
       const splitFullDate = this.date.split('T')
       const splitDate = splitFullDate[0].split('-')
       const splitTime = splitFullDate[1].split(':')
