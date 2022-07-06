@@ -17,7 +17,7 @@
                   <tag :tag="tag.fields.name" class="tag" />
                 </div>
               </div>
-              <users :users="item.fields.user" class="users" />
+              <users :users="item.fields.user" :color="'white'" class="users" />
               <div class="blog-date">
                 {{ dateFormatter(item.sys.updatedAt) }}
               </div>
@@ -231,15 +231,11 @@ span {
     }
     .users {
       margin-bottom: 10px;
+      justify-content: center;
     }
     .blog-date {
       font-size: $base_font_size * 1.1;
     }
-  }
-}
-#link-to-blog:hover {
-  .blog-info {
-    height: 15vw;
   }
 }
 ::v-deep .hooper-pagination {

@@ -22,7 +22,9 @@
             :to="`/news/` + item.sys.id"
             :animation="'rightToRight'"
           >
-            {{ dateFormatter(item.sys.updatedAt) + ' ' + item.fields.title }}
+            <div class="slide-item">
+              {{ dateFormatter(item.sys.updatedAt) + ' ' + item.fields.title }}
+            </div>
           </base-button>
         </div>
       </div>
@@ -48,7 +50,11 @@
                     <tag :tag="tag.fields.name" class="tag" />
                   </div>
                 </div>
-                <users :users="content.fields.user" class="users" />
+                <users
+                  :users="content.fields.user"
+                  :color="'white'"
+                  class="users"
+                />
                 <div class="news-date">
                   {{ dateFormatter(content.sys.updatedAt) }}
                 </div>
@@ -74,7 +80,9 @@
             :to="`/news/` + item.sys.id"
             :animation="'rightToRight'"
           >
-            {{ dateFormatter(item.sys.updatedAt) + ' ' + item.fields.title }}
+            <div class="slide-item">
+              {{ dateFormatter(item.sys.updatedAt) + ' ' + item.fields.title }}
+            </div>
           </base-button>
         </div>
       </div>
@@ -252,7 +260,7 @@ export default {
   animation: slideAnime 30s ease infinite;
   height: min(7vw, 60px);
   padding: 5px min(30px, 1.5vw);
-  width: 30vw;
+  width: 90%;
 }
 
 .slide a:nth-of-type(1) {
@@ -416,16 +424,12 @@ export default {
     }
     .users {
       margin-bottom: 7px;
+      justify-content: center;
     }
 
     .news-date {
       font-size: $base_font_size * 1.1;
     }
-  }
-}
-#link-to-news:hover {
-  .news-info {
-    height: 15vw;
   }
 }
 ::v-deep .hooper-list {
@@ -509,5 +513,16 @@ export default {
     margin: 0 10px;
     padding: 0;
   }
+}
+</style>
+
+<style>
+.slide-item {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  text-overflow: ellipsis;
+  white-space: normal;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
 }
 </style>
