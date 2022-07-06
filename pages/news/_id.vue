@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="news">
     <base-entry-detail
       :page-name="'お知らせ'"
       :title="news_item.fields.title"
@@ -113,3 +113,10 @@ export default Vue.extend({
   },
 })
 </script>
+
+<style lang="scss" scoped>
+.news {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+</style>
