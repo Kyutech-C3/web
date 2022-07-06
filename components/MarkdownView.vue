@@ -32,5 +32,32 @@ h3 {
   width: 70%;
   height: auto;
   margin: 0 auto;
+  border-radius: 20px;
+}
+@media screen and (max-width: $media-query-s-small-max-width) {
+  .markdown h1,
+  h2,
+  h3 {
+    padding: 0 5px;
+  }
+  .markdown p img {
+    width: 90%;
+    border-radius: 10px;
+  }
+  .markdown p,
+  blockquote {
+    width: 95%;
+  }
+  .markdown p {
+    margin: 0 auto;
+  }
+  .markdown p,
+  blockquote {
+    margin: 2rem auto;
+  }
+  .markdown blockquote p {
+    width: 100%;
+    margin: 1rem 0;
+  }
 }
 </style>

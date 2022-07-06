@@ -1,6 +1,6 @@
 <template>
   <nuxt-link
-    :to="'/user/' + id"
+    :to="'/author/' + id"
     class="user"
     :class="[`${color}-style`, { shadow: shadow }]"
   >

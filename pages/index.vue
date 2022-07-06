@@ -1,6 +1,6 @@
 <template>
   <div>
-    <top-top :news="news" :important-news="importantNews" />
+    <top-top :news="news" :important-news="importantNews" id="top-top" />
     <top-about-c-3 :c3-introduction="c3Introduction" class="component" />
     <top-about-community
       :about-community="aboutCommunity"
@@ -96,6 +96,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.top-top {
+  max-width: 1500px;
+  margin: 0 auto;
+}
 .component {
   margin: 20vw auto;
   width: 75vw;
@@ -105,10 +109,16 @@ export default {
   .component-comunity {
     margin: 30vw auto 20vw auto;
   }
+  .component {
+    width: 80%;
+  }
 }
 @media screen and (max-width: $media-query-small-max-width) {
   .component-comunity {
     margin: 50vw auto 20vw auto;
+  }
+  .component {
+    width: 90%;
   }
 }
 </style>

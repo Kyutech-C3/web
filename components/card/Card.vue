@@ -31,7 +31,7 @@
           <users :users="author" class="user" />
         </div>
         <div class="description">{{ description }}</div>
-        <div class="date">2022/12/42 12:32:32</div>
+        <div class="date">{{ dateFormatter }}</div>
       </div>
     </article>
   </nuxt-link>
@@ -89,6 +89,34 @@ export default {
   computed: {
     entryURL() {
       return `/${this.entryType}/${this.id}`
+    },
+    dateFormatter() {
+      console.log(this.date)
+      const nowDate = new Date()
+      console.log(nowDate)
+      const splitFullDate = this.date.split('T')
+      const splitDate = splitFullDate[0].split('-')
+      const splitTime = splitFullDate[1].split(':')
+      if (
+        nowDate.getFullYear() === +splitDate[0] &&
+        nowDate.getMonth() + 1 === +splitDate[1] &&
+        nowDate.getDate() === +splitDate[2]
+      ) {
+        if (
+          nowDate.getHours() === +splitTime[0] &&
+          nowDate.getMinutes() === +splitTime[1]
+        ) {
+          return `${nowDate.getSeconds() - +splitTime[2].split('.')[0]} 秒前`
+        } else if (nowDate.getHours() === +splitTime[0]) {
+          return `${nowDate.getMinutes() - +splitTime[1]} 分前`
+        } else {
+          return `${nowDate.getFullYear() - +splitTime[0]} 時間前`
+        }
+      } else {
+        return `${splitDate[0]}年${splitDate[1]}月${splitDate[2]}日 ${
+          splitTime[0]
+        }:${splitTime[1]}:${splitTime[2].split('.')[0]}`
+      }
     },
   },
 }

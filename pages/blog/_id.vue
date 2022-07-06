@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="blog">
     <base-entry-detail
       :page-name="'ブログ'"
       :title="blog_item.fields.title"
@@ -106,3 +106,10 @@ export default Vue.extend({
   },
 })
 </script>
+
+<style lang="scss" scoped>
+.blog {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+</style>

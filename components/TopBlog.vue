@@ -301,14 +301,16 @@ span {
   }
   ::v-deep .hooper-next svg,
   ::v-deep .hooper-prev svg {
-    width: 80px;
+    /* width: 80px;
     height: min(50vw, 680px);
-    transform: scale(1);
+    transform: scale(1); */
+    display: none;
   }
   ::v-deep .hooper-next,
   ::v-deep .hooper-prev {
-    width: 80px;
-    height: min(50vw, 680px);
+    /* width: 80px;
+    height: min(50vw, 680px); */
+    display: none;
   }
   ::v-deep .hooper-next {
     right: 0px;
