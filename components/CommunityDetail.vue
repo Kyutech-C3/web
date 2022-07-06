@@ -50,8 +50,10 @@ export default {
   overflow-wrap: break-word;
 }
 .img-wrapper {
-  width: 65%;
-  height: 30vw;
+  width: 80%;
+  max-width: 600px;
+  height: 35vw;
+  max-height: 400px;
   margin: 60px auto;
   overflow: hidden;
   border-radius: 20px;
@@ -66,17 +68,17 @@ export default {
   font-size: $font-size-other-contents-description;
 }
 @media screen and (max-width: $media-query-small-max-width) {
-  .title {
-    font-size: 60px;
-  }
-}
-@media screen and (max-width: 450px) {
-  .title {
-    font-size: 40px;
-  }
+  //   .title {
+  //     font-size: 60px;
+  //   }
+  // }
+  // @media screen and (max-width: 450px) {
+  // .title {
+  //   font-size: 40px;
+  // }
   .img-wrapper {
-    width: 85%;
-    height: 60vw;
+    width: 100%;
+    height: 50vw;
     margin-top: 20px;
     margin-bottom: 50px;
   }
