@@ -1,1 +1,0 @@
-window.__NUXT__=(function(a,b,c){return {staticAssetsBase:"\u002F_nuxt\u002Fstatic\u002F1657104055",layout:"default",error:a,state:{breadcrumbs:{breadcrumbs:[{url:b,text:"ホーム"},{url:c,text:"MEDIA_ART"}]}},serverRendered:true,routePath:c,config:{_app:{basePath:b,assetsPath:"\u002F_nuxt\u002F",cdnURL:a}}}}(null,"\u002F","\u002Fcommunity\u002F1q0aXzj2r1O0pC5soNRQok"));
