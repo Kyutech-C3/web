@@ -113,7 +113,7 @@ export default {
 .profile {
   width: 100%;
   margin: 0 auto;
-  padding: 100px 0;
+  padding: 80px 0;
   border: 1px solid;
   border-radius: 50px;
   display: flex;
