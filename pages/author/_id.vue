@@ -65,7 +65,6 @@ export default Vue.extend({
             },
           ],
         })
-        console.log(user)
         const links = {}
         let urlSplit = user.fields.twitter.split('/')
         if (urlSplit[3] !== '') {
@@ -87,8 +86,6 @@ export default Vue.extend({
         if (urlSplit[2] !== '') {
           links.homepage = user.fields.homePage
         }
-        console.log(urlSplit[3])
-        console.log(userBlog)
         return {
           user,
           links,

@@ -27,8 +27,6 @@ export default {
             { url: '/about', text: 'C3について' },
           ],
         })
-        // eslint-disable-next-line no-console
-        console.log(about.items)
         return {
           c3_introduction: about.items[0].fields.introduction,
           c3_introduction_digest: about.items[0].fields.summaryOfIntroduction,

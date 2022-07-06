@@ -35,8 +35,6 @@ export default {
         }),
       ]).then(([blog]) => {
         const resEntryList = []
-        // eslint-disable-next-line no-console
-        console.log(blog.items)
         for (let i = 0; i < blog.items.length; i++) {
           resEntryList.push(blog.items[i])
         }
@@ -44,7 +42,6 @@ export default {
           entry_list: resEntryList,
         }
       })
-      // eslint-disable-next-line no-console
     } catch (e) {
       error({
         errorCode: e.errorCode,
