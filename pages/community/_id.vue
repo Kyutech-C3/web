@@ -109,7 +109,7 @@ export default {
 }
 @media screen and (max-width: 450px) {
   .community {
-    width: 85%;
+    width: 90%;
   }
 }
 </style>

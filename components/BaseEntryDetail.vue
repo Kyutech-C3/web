@@ -8,7 +8,7 @@
           <img :src="img" class="img" />
           <div class="title-wrapper">
             <div class="title">{{ title }}</div>
-            <div class="tags">
+            <!-- <div class="tags">
               <nuxt-link
                 v-for="(tag, index) in tags"
                 :key="index"
@@ -18,12 +18,24 @@
                 <tag :tag="tag.fields.name" class="tag" />
               </nuxt-link>
             </div>
-            <users :users="users" class="users" />
+            <users :users="users" class="users" /> -->
           </div>
         </div>
         <div class="date">
           {{ dateFormatter(updatedAt) }}
         </div>
+        <div class="tags">
+          <nuxt-link
+            v-for="(tag, index) in tags"
+            :key="index"
+            :to="'/blog?tag=' + tag.fields.name"
+            class="link"
+          >
+            <tag :tag="tag.fields.name" class="tag" />
+          </nuxt-link>
+        </div>
+        <users :users="users" :color="'black'" class="users" />
+
         <markdown-view :markdown-text="body" />
       </div>
       <sidebar :blogs="recentBlog" class="sidebar" />
@@ -171,13 +183,13 @@ export default {
 }
 .tags {
   display: flex;
-  justify-content: center;
-  margin-top: 15px;
+  justify-content: flex-start;
+  // margin-top: 15px;
   font-size: $font-size-other-contents-other;
 }
 .link {
   text-decoration: none;
-  color: $white;
+  color: $black;
 }
 .tag {
   margin: 0 3px;
@@ -186,6 +198,8 @@ export default {
 }
 .users {
   margin-top: 10px;
+  justify-content: flex-start;
+  width: 100%;
 }
 .img {
   height: 100%;
@@ -205,7 +219,7 @@ export default {
 
 .markdown {
   font-size: $font-size-other-contents-description;
-  margin: 100px 7% 0 7%;
+  margin: 40px 7% 0 7%;
 }
 .sidebar {
   margin-left: 3vw;
@@ -227,7 +241,7 @@ export default {
     width: 50%;
   }
   .markdown {
-    margin: 100px 0 0 0;
+    margin: 40px 0 0 0;
   }
   .sidebar {
     margin: 80px 0 0 0;
@@ -246,7 +260,7 @@ export default {
     width: 60%;
   }
   .markdown {
-    margin: 40px 0 0 0;
+    margin: 30px 0 0 0;
   }
   .sidebar {
     margin: 60px 0 0 0;

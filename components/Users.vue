@@ -7,7 +7,7 @@
       :name="user.fields.name"
       :icon="user.fields.icon.fields.file.url"
       :show-name="true"
-      :color="'white'"
+      :color="color"
       :shadow="true"
       class="user"
     />
@@ -28,6 +28,13 @@ export default {
         return []
       },
     },
+    color: {
+      type: String,
+      required: true,
+      default() {
+        return 'black'
+      },
+    },
   },
 }
 </script>
@@ -38,7 +45,7 @@ export default {
   width: 60%;
   margin: 0 auto;
   align-items: center;
-  justify-content: center;
+  // justify-content: center;
   --user-height: 25px;
   --img-height: 20px;
 }

@@ -2,10 +2,6 @@
   <div>
     <top-top :news="news" :important-news="importantNews" id="top-top" />
     <top-about-c-3 :c3-introduction="c3Introduction" class="component" />
-    <top-about-community
-      :about-community="aboutCommunity"
-      class="component component-comunity"
-    />
     <top-community-link
       v-for="(community, idx) in eachCommunity"
       :id="idx"
@@ -21,7 +17,6 @@
 <script>
 import TopTop from '~/components/TopTop.vue'
 import TopAboutC3 from '~/components/TopAboutC3.vue'
-import TopAboutCommunity from '~/components/TopAboutCommunity.vue'
 import TopBlog from '~/components/TopBlog.vue'
 import TopCommunityLink from '~/components/TopCommunityLink.vue'
 
@@ -29,7 +24,6 @@ import sdkClient from '@/plugins/contentful.js'
 
 export default {
   components: {
-    TopAboutCommunity,
     TopAboutC3,
     TopTop,
     TopCommunityLink,
@@ -106,17 +100,11 @@ export default {
   max-width: 1500px;
 }
 @media screen and (max-width: $media-query-standard-max-width) {
-  .component-comunity {
-    margin: 30vw auto 20vw auto;
-  }
   .component {
     width: 80%;
   }
 }
 @media screen and (max-width: $media-query-small-max-width) {
-  .component-comunity {
-    margin: 50vw auto 20vw auto;
-  }
   .component {
     width: 90%;
   }
