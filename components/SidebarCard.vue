@@ -1,6 +1,6 @@
 <template>
-  <nuxt-link :to="'/blog/'+id" class="sidebar-card">
-    <img :src="img" />
+  <nuxt-link :to="'/blog/' + id" class="sidebar-card">
+    <div class="img-wp"><img :src="img" /></div>
     <div><slot></slot></div>
   </nuxt-link>
 </template>
@@ -37,10 +37,20 @@ export default {
   text-decoration: none;
   color: $base-font-color;
 }
-.sidebar-card img {
-  width: 50%;
-  height: auto;
+.img-wp {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+.img-wp img {
+  position: absolute;
+  height: 100%;
   object-fit: cover;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
 }
 .sidebar-card div {
   width: 50%;
