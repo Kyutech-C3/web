@@ -106,6 +106,7 @@ export default {
   width: 70%;
   padding: 10px 0;
   margin: 0 auto;
+  max-width: 1500px;
 }
 @media screen and (max-width: 450px) {
   .community {
