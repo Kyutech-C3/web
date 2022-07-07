@@ -76,6 +76,7 @@ export default {
     '@nuxtjs/eslint-module',
     // https://github.com/nuxt-community/style-resources-module
     '@nuxtjs/style-resources',
+    '@nuxtjs/device',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
