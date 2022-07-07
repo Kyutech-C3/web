@@ -6,9 +6,7 @@
       class="icon"
     />
     <div class="top">C3について</div>
-    <div class="sentence">
-      <div v-html="$md.render(c3Introduction)"></div>
-    </div>
+    <div class="sentence">{{ c3Introduction }}</div>
     <nuxt-link to="/about" class="link">
       <div class="frame">詳しく見る</div>
     </nuxt-link>
@@ -34,12 +32,11 @@ export default {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  align-content: flex-start;
-  height: 637px;
+  align-content: center;
+  height: 480px;
   max-width: 1920px;
 }
 .icon {
-  margin: 0 0 160px 6.25%;
   width: 400px;
   border-radius: 50%;
 }
@@ -53,6 +50,8 @@ export default {
   font-size: $font-size-contents-title;
 }
 .sentence {
+  position: relative;
+  overflow: hidden;
   margin: 29px 0 0 5.6%;
   width: 51.2%;
   line-height: 45px;
@@ -60,6 +59,14 @@ export default {
   max-height: 200px;
   color: $gray;
   font-size: $font-size-contents-description;
+}
+.sentence::before {
+  background: linear-gradient(to top, #ffffff 0%, #ffffff00 100%);
+  position: absolute;
+  bottom: 0;
+  content: '';
+  height: 1.5em;
+  width: 100%;
 }
 .link {
   margin: 28px 0 0 22.7%;
@@ -113,6 +120,7 @@ export default {
     order: 2;
   }
   .sentence {
+    position: relative;
     margin: 40px 7.5% 0 7.5%;
     width: 85%;
     height: auto;
@@ -121,6 +129,14 @@ export default {
     text-align: center;
     font-size: $font-size-contents-description;
     order: 3;
+  }
+  .sentence::before {
+    background: linear-gradient(to top, #ffffff 0%, #ffffff00 100%);
+    position: absolute;
+    bottom: 0;
+    content: '';
+    height: 1.5em;
+    width: 100%;
   }
   .link {
     margin: 15px auto 0 auto;

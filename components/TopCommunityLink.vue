@@ -8,10 +8,7 @@
         {{ community.field.name }}
       </div>
       <div class="about">
-        <markdown-view
-          :markdown-text="community.field.about"
-          class="markdown"
-        />
+        {{ community.field.about }}
       </div>
       <div class="community-link">
         <base-button
@@ -27,12 +24,12 @@
 
 <script>
 import BaseButton from '@/components/BaseButton.vue'
-import MarkdownView from '@/components/MarkdownView.vue'
+// import MarkdownView from '@/components/MarkdownView.vue'
 
 export default {
   components: {
     BaseButton,
-    MarkdownView,
+    // MarkdownView,
   },
   props: {
     community: {
@@ -68,8 +65,8 @@ export default {
 .community {
   display: flex;
   justify-content: center;
-  height: 28vw;
-  max-height: 540px;
+  height: 32vw;
+  max-height: 370px;
 }
 .img-wrapper {
   height: 100%;
@@ -107,6 +104,7 @@ export default {
   width: 100%;
   overflow: hidden;
   position: relative;
+  text-align: left;
 }
 .about::before {
   background: linear-gradient(to top, #ffffff 0%, #ffffff00 100%);
@@ -138,7 +136,7 @@ export default {
   }
   .img-wrapper {
     position: absolute;
-    bottom: 13vw;
+    bottom: 12vw;
     height: 55vw;
     width: 100%;
   }
@@ -155,7 +153,7 @@ export default {
     height: fit-content;
     padding-bottom: 58vw;
     padding-left: 0;
-    text-align: left;
+    text-align: center;
   }
   .about::before {
     content: none;
