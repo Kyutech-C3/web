@@ -96,8 +96,8 @@ export default {
 }
 .component {
   margin: 20vw auto;
-  width: 75vw;
-  max-width: 1500px;
+  width: 90vw;
+  max-width: 1000px;
 }
 @media screen and (max-width: $media-query-standard-max-width) {
   .component {
