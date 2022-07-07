@@ -90,7 +90,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.top-top {
+#top-top {
   max-width: 1500px;
   margin: 0 auto;
 }
