@@ -95,7 +95,7 @@ export default {
 .about {
   width: 70%;
   max-width: 1500px;
-  margin: 0 auto;
+  margin: 0 auto 100px auto;
   padding: 10px 0;
   color: $base-font-color;
 }
