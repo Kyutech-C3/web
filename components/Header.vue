@@ -238,10 +238,12 @@ export default {
 }
 // ヘッダー全体
 .header {
+  max-width: 1500px;
   width: 100%;
   position: fixed;
   top: 20px;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 10;
 }
 .header-wrapper {
