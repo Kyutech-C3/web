@@ -31,6 +31,35 @@
 
 <script>
 export default {
+  props: {
+    id: {
+      type: String,
+      require: true,
+      default() {
+        return ''
+      },
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    image: {
+      type: String,
+      required: true,
+    },
+    introduction: {
+      type: String,
+      required: true,
+    },
+    links: {
+      type: Object,
+      required: false,
+      default() {
+        return {}
+      },
+    },
+  },
+
   data() {
     return {
       linksBaseInfo: [
@@ -74,28 +103,6 @@ export default {
       linksInfo: [],
     }
   },
-  props: {
-    id: {
-      type: String,
-      require: true,
-    },
-    name: {
-      type: String,
-      required: true,
-    },
-    image: {
-      type: String,
-      required: true,
-    },
-    introduction: {
-      type: String,
-      required: true,
-    },
-    links: {
-      type: Object,
-      required: false,
-    },
-  },
   created() {
     for (const linkBase of this.linksBaseInfo) {
       if (linkBase.text in this.links) {
@@ -112,12 +119,10 @@ export default {
   width: 100%;
   margin: 0 auto;
   padding: 80px 0;
-  border: 1px solid;
   border-radius: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-color: $light-gray;
   box-shadow: 0px 2px 8px #00000033;
 }
 .icon-wrapper {
@@ -149,7 +154,6 @@ export default {
   font-size: $font-size-other-contents-title;
   margin-bottom: 20px;
   position: relative;
-  // border-bottom: solid 3px $through-light-blue;
 }
 .name::after {
   content: '';
@@ -174,6 +178,7 @@ export default {
   white-space: normal;
   overflow: hidden;
   -webkit-box-orient: vertical;
+  text-align: center;
 }
 .links {
   width: 80%;
