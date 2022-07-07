@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/about", {data:[{c3_introduction:"## hoge\ngdaskgjajhdjgfha ",c3_introduction_digest:"C3はC3です"}],fetch:{},mutations:[["breadcrumbs\u002FsetBreadcrumbs",{breadcrumbs:[{url:"\u002F",text:"ホーム"},{url:"\u002Fabout",text:"C3について"}]}]]});
