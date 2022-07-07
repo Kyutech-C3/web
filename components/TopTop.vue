@@ -33,7 +33,12 @@
       <!-- カルーセル -->
       <div class="carousel-nav">
         <hooper :settings="hooperSettings">
-          <slide v-for="(content, idx) in importantNews" :key="idx">
+          <slide
+            v-for="(content, idx) in importantNews"
+            :key="idx"
+            @touchstart="mobileTouchStart"
+            @touchend="mobileTouchEnd"
+          >
             <nuxt-link id="link-to-news" :to="'/news/' + content.sys.id">
               <img
                 :src="content.fields.thumbnail.fields.file.url"
@@ -134,8 +139,11 @@ export default {
         keysControl: false,
         wheelControl: false,
         autoPlay: true,
+        mouseDrag: false,
+        touchDrag: true,
+        hoverPause: true,
         playSpeed: 5000,
-        transition: 1500,
+        transition: 1000,
       },
     }
   },
@@ -155,6 +163,16 @@ export default {
         ':' +
         date.getSeconds()
       )
+    },
+    mobileTouchStart() {
+      if (!this.$device.isDesktop) {
+        this.transition = 0
+        this.autoPlay = false
+      }
+    },
+    mobileTouchEnd() {
+      this.transition = 1500
+      this.autoPlay = true
     },
   },
 }
@@ -380,6 +398,13 @@ export default {
     object-fit: cover;
     width: inherit;
     height: inherit;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
   }
   .news-info {
     position: absolute;
