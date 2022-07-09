@@ -95,7 +95,7 @@ export default {
 .news {
   width: 80%;
   max-width: 1500px;
-  margin: 0 auto;
+  margin: 0 auto 10% auto;
   color: $base-font-color;
   padding: 10px 0;
 }

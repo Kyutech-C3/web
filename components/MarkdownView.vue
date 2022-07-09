@@ -27,12 +27,19 @@ h3 {
   border-bottom: dotted 3px $through-light-blue;
   padding: 0 20px;
 }
+.markdown hr {
+  border-bottom: dotted 3px $through-light-blue;
+  border-right: none;
+  border-top: none;
+  border-left: none;
+}
 .markdown p img {
   display: block;
-  width: 70%;
+  width: 80%;
   height: auto;
   margin: 0 auto;
   border-radius: 20px;
+  pointer-events: none;
 }
 @media screen and (max-width: $media-query-s-small-max-width) {
   .markdown h1,

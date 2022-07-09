@@ -76,7 +76,7 @@ export default Vue.extend({
         }
         urlSplit = user.fields.gitHub.split('/')
         if (urlSplit[3] !== '') {
-          links.gitHub = user.fields.gitHub
+          links.github = user.fields.gitHub
         }
         urlSplit = user.fields.zenn.split('/')
         if (urlSplit[3] !== '') {
