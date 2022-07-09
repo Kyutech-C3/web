@@ -1,1 +1,0 @@
-window.__NUXT__=(function(a,b){return {staticAssetsBase:"\u002F_nuxt\u002Fstatic\u002F1657202765",layout:"default",error:b,state:{breadcrumbs:{breadcrumbs:[{url:a,text:"Composite Computer Club"}]}},serverRendered:true,routePath:a,config:{_app:{basePath:a,assetsPath:"\u002F_nuxt\u002F",cdnURL:b}}}}("\u002F",null));
