@@ -190,7 +190,7 @@ span {
   }
   .blog-info {
     position: absolute;
-    width: 100%;
+    width: inherit;
     height: max(15vw, 150px);
     bottom: 0;
     background-color: $through-light-blue;
@@ -288,12 +288,12 @@ span {
 
 @media screen and (max-width: $media-query-standard-max-width) {
   .carousel-nav {
-    width: min(70vw, 680px);
-    height: min(50vw, 680px);
+    width: 100%;
+    height: min(60vw, 680px);
   }
   .hooper img {
-    width: min(70vw, 680px);
-    height: min(50vw, 680px);
+    width: 100%;
+    height: min(60vw, 680px);
   }
   ::v-deep .hooper-next svg,
   ::v-deep .hooper-prev svg {

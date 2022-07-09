@@ -144,6 +144,8 @@ export default {
         hoverPause: true,
         playSpeed: 5000,
         transition: 1000,
+        sleep: (waitTime) =>
+          new Promise((resolve) => setTimeout(resolve, waitTime)),
       },
     }
   },
@@ -171,6 +173,7 @@ export default {
       }
     },
     mobileTouchEnd() {
+      this.sleep(500)
       this.transition = 1500
       this.autoPlay = true
     },
