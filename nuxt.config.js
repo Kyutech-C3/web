@@ -108,6 +108,9 @@ export default {
   markdownit: {
     injected: true,
     breaks: true,
+    html: true,
+    linkify: true,
+    runtime: true,
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

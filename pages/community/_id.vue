@@ -101,14 +101,13 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .community {
   width: 70%;
-  padding: 10px 0;
-  margin: 0 auto;
+  margin: 5% auto 20% auto;
   max-width: 1500px;
 }
-@media screen and (max-width: 450px) {
+@media screen and (max-width: $media-query-standard-max-width) {
   .community {
     width: 90%;
   }

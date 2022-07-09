@@ -6,7 +6,6 @@
       v-for="(community, idx) in eachCommunity"
       :id="idx"
       :key="idx"
-      :each-community="eachCommunity"
       :community="community"
       class="component"
     />
@@ -36,10 +35,8 @@ export default {
           content_type: 'c3Introduction',
         }),
         await sdkClient.getEntries({
-          content_type: 'aboutCommunity',
-        }),
-        await sdkClient.getEntries({
           content_type: 'eachCommunity',
+          order: 'fields.name',
         }),
         await sdkClient.getEntries({
           content_type: 'news',
@@ -48,7 +45,7 @@ export default {
           content_type: 'blog',
           limit: 5,
         }),
-      ]).then(([c3Introduction, aboutCommunity, eachCommunity, news, blog]) => {
+      ]).then(([c3Introduction, eachCommunity, news, blog]) => {
         const communities = []
         const selectNews = []
         const latestNews = []
@@ -57,7 +54,7 @@ export default {
             id: eachCommunity.items[i].sys.id,
             field: {
               name: eachCommunity.items[i].fields.name,
-              about: eachCommunity.items[i].fields.about,
+              domain: eachCommunity.items[i].fields.domain,
               image: eachCommunity.items[i].fields.image.fields.file.url,
             },
           })
@@ -72,7 +69,6 @@ export default {
         }
         return {
           c3Introduction: c3Introduction.items[0].fields.summaryOfIntroduction,
-          aboutCommunity: aboutCommunity.items[0].fields.about,
           eachCommunity: communities,
           news: latestNews,
           importantNews: selectNews,

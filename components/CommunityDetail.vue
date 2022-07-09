@@ -4,7 +4,9 @@
       {{ title }}
     </div>
     <div class="img-wrapper">
-      <img class="img" :src="img" />
+      <video muted autoplay loop name="media">
+        <source :src="img" type="video/webm" />
+      </video>
     </div>
     <markdown-view :markdown-text="description" class="markdown" />
   </div>
@@ -50,35 +52,38 @@ export default {
   overflow-wrap: break-word;
 }
 .img-wrapper {
-  width: 80%;
-  max-width: 600px;
-  height: 35vw;
-  max-height: 400px;
+  position: relative;
+  width: 100%;
+  max-width: 1500px;
+  height: 40vw;
+  max-height: 850px;
   margin: 60px auto;
   overflow: hidden;
   border-radius: 20px;
   box-shadow: 8px 8px 8px #00000029;
 }
-.img {
-  display: block;
+.img-wrapper video {
+  object-fit: cover;
+  position: absolute;
   width: 100%;
-  height: auto;
+  height: 100%;
+  pointer-events: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
 }
 .markdown {
   font-size: $font-size-other-contents-description;
 }
-@media screen and (max-width: $media-query-small-max-width) {
-  //   .title {
-  //     font-size: 60px;
-  //   }
-  // }
-  // @media screen and (max-width: 450px) {
-  // .title {
-  //   font-size: 40px;
-  // }
+@media screen and (max-width: $media-query-standard-max-width) {
   .img-wrapper {
-    width: 100%;
-    height: 50vw;
+    height: 55vw;
+  }
+}
+@media screen and (max-width: $media-query-small-max-width) {
+  .img-wrapper {
     margin-top: 20px;
     margin-bottom: 50px;
   }

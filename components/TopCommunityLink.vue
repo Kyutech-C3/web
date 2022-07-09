@@ -1,14 +1,20 @@
 <template>
   <div class="community">
-    <div class="img-wrapper" :class="{ 'order-2': id % 2 === 1 }">
-      <img :src="community.field.image" />
+    <div
+      @click="$router.push('/community/' + community.id)"
+      class="img-wrapper"
+      :class="{ 'order-2': id % 2 === 1 }"
+    >
+      <video muted autoplay loop name="media">
+        <source :src="community.field.image" type="video/webm" />
+      </video>
     </div>
     <div class="introduction" :class="{ 'order-1': id % 2 === 1 }">
       <div class="name">
         {{ community.field.name }}
       </div>
-      <div class="about">
-        {{ community.field.about }}
+      <div class="domain">
+        {{ community.field.domain }}
       </div>
       <div class="community-link">
         <base-button
@@ -24,12 +30,10 @@
 
 <script>
 import BaseButton from '@/components/BaseButton.vue'
-// import MarkdownView from '@/components/MarkdownView.vue'
 
 export default {
   components: {
     BaseButton,
-    // MarkdownView,
   },
   props: {
     community: {
@@ -72,14 +76,27 @@ export default {
   height: 100%;
   width: 60%;
   position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 3px 3px 5px 5px rgba(100, 100, 100, 0.2);
 }
-.img-wrapper img {
+.img-wrapper video {
   object-fit: cover;
   position: absolute;
   width: 100%;
   height: 100%;
-  border-radius: 15px;
-  box-shadow: 3px 3px 5px 5px rgba(100, 100, 100, 0.2);
+  pointer-events: none;
+  filter: brightness(80%);
+  transition: filter 0.3s ease-out;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+.img-wrapper:hover video {
+  filter: brightness(110%);
 }
 .introduction {
   color: $base-font-color;
@@ -90,15 +107,18 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 .name {
   font-family: $font-family-title;
   font-size: $font-size-contents-title;
   width: 100%;
+  line-height: 120%;
 }
-.about {
+.domain {
   font-size: $font-size-contents-description;
   padding-left: 20px;
+  margin-top: 15px;
   margin-bottom: 20px;
   height: 55%;
   width: 100%;
@@ -106,17 +126,19 @@ export default {
   position: relative;
   text-align: left;
 }
-.about::before {
-  background: linear-gradient(to top, #ffffff 0%, #ffffff00 100%);
+.domain::before {
+  background: linear-gradient(to top, #ffffff 60%, #ffffff00 100%);
   position: absolute;
   bottom: 0;
   content: '';
-  height: 1.5em;
+  height: 80px;
   width: 100%;
 }
 .community-link {
-  height: 15%;
+  position: absolute;
+  height: 60px;
   width: 65%;
+  bottom: 10px;
 }
 .order-1 {
   order: 1;
@@ -136,7 +158,7 @@ export default {
   }
   .img-wrapper {
     position: absolute;
-    bottom: 12vw;
+    bottom: 15vw;
     height: 55vw;
     width: 100%;
   }
@@ -149,13 +171,13 @@ export default {
     width: fit-content;
     margin: 0;
   }
-  .about {
+  .domain {
     height: fit-content;
-    padding-bottom: 58vw;
+    padding-bottom: 69vw;
     padding-left: 0;
     text-align: center;
   }
-  .about::before {
+  .domain::before {
     content: none;
   }
   .community-link {
