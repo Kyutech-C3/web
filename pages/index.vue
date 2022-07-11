@@ -64,7 +64,7 @@ export default {
             selectNews.push(news.items[i])
           }
         }
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 5 && i < news.items.length; i++) {
           latestNews.push(news.items[i])
         }
         return {
