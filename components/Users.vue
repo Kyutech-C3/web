@@ -43,9 +43,7 @@ export default {
 .users {
   display: flex;
   width: 60%;
-  margin: 0 auto;
   align-items: center;
-  // justify-content: center;
   --user-height: 25px;
   --img-height: 20px;
 }
