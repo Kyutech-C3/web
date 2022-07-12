@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/blog", {data:[{entry_list:[]}],fetch:{},mutations:[["breadcrumbs\u002FsetBreadcrumbs",{breadcrumbs:[{url:"\u002F",text:"ホーム"},{url:"\u002Fblog",text:"ブログ一覧"}]}]]});
