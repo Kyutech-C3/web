@@ -153,7 +153,7 @@ export default {
         sleep: (waitTime) =>
           new Promise((resolve) => setTimeout(resolve, waitTime)),
       },
-      windowWidth: '',
+      windowWidth: window.innerWidth,
     }
   },
   mounted() {
@@ -178,12 +178,14 @@ export default {
     },
     mobileTouchStart() {
       if (!this.$device.isDesktop) {
+        this.playSpeed = 0
         this.transition = 0
         this.autoPlay = false
       }
     },
     mobileTouchEnd() {
-      this.sleep(500)
+      this.sleep(1000)
+      this.playSpeed = 5000
       this.transition = 1500
       this.autoPlay = true
     },
@@ -225,9 +227,6 @@ export default {
 /*                 */
 /*  トップタイトル  */
 /*                 */
-.top-title {
-  margin: 0;
-}
 .top-title-text {
   font-size: min(120px, 6.5vw);
   font-weight: 800;
@@ -512,9 +511,12 @@ export default {
 }
 ::v-deep .hooper-next,
 ::v-deep .hooper-prev {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: $white;
   opacity: 0.2;
-  border-radius: 50%;
+  border-radius: 50px;
 }
 ::v-deep .hooper-next:hover,
 ::v-deep .hooper-prev:hover {
