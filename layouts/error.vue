@@ -2,9 +2,11 @@
   <div class="error-page">
     <div class="error-modal">
       <img
-        src="@/assets/image/c3_logo_circled.png"
+        type="image/webp"
+        src="@/assets/image/s_logo.webp"
         alt="sorry"
         class="error-img"
+        loading="lazy"
       />
       <p class="">{{ error.statusCode }}</p>
       <p class="error-massage">{{ error.message }}</p>

@@ -1,10 +1,13 @@
 <template>
   <div class="area">
     <img
-      src="@/assets/image/c3_logo_circled.png"
+      type="image/webp"
+      src="@/assets/image/s_logo.webp"
       alt="C3アイコン"
+      loading="lazy"
       class="icon"
     />
+
     <div class="top">C3について</div>
     <div class="sentence">{{ c3Introduction }}</div>
     <nuxt-link to="/about" class="link">

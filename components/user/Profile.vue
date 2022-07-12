@@ -1,7 +1,7 @@
 <template>
   <div class="profile">
     <div class="icon-wrapper">
-      <img :src="image" alt="icon" />
+      <img type="image" :src="image" alt="icon" loading="lazy" />
     </div>
     <div class="name">{{ name }}</div>
     <div class="introduction">{{ introduction }}</div>
@@ -20,9 +20,11 @@
         />
         <img
           v-if="link.img !== ''"
+          type="image/webp"
           :src="link.img"
           alt="link"
           class="link-img"
+          loading="lazy"
         />
       </a>
     </div>
@@ -73,7 +75,7 @@ export default {
           text: 'twitter',
           url: '',
           icon: '',
-          img: require('@/assets/image/twitter.png'),
+          img: require('@/assets/image/twitter.webp'),
         },
         {
           text: 'github',
@@ -85,13 +87,13 @@ export default {
           text: 'qiita',
           url: '',
           icon: '',
-          img: require('@/assets/image/qiita.png'),
+          img: require('@/assets/image/qiita.webp'),
         },
         {
           text: 'zenn',
           url: '',
           icon: '',
-          img: require('@/assets/image/zenn.png'),
+          img: require('@/assets/image/zenn.webp'),
         },
         {
           text: 'homepage',
