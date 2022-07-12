@@ -64,8 +64,13 @@ export default {
             selectNews.push(news.items[i])
           }
         }
-        for (let i = 0; i < 5 && i < news.items.length; i++) {
-          latestNews.push(news.items[i])
+        for (let i = 0; i < 2; i++) {
+          // 応急処置 ==要修正==
+          if (news.items.length < 2 && i === 1) {
+            latestNews.push(news.items[i - 1])
+          } else {
+            latestNews.push(news.items[i])
+          }
         }
         return {
           c3Introduction: c3Introduction.items[0].fields.summaryOfIntroduction,

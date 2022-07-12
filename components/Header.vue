@@ -415,8 +415,8 @@ export default {
 }
 
 .logo {
-  width: auto;
   height: 60%;
+  width: auto;
 }
 
 .y-center {
