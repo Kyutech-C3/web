@@ -184,7 +184,7 @@ export default {
       }
     },
     mobileTouchEnd() {
-      this.sleep(1000)
+      this.sleep(700)
       this.playSpeed = 5000
       this.transition = 1500
       this.autoPlay = true
