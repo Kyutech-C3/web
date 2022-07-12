@@ -21,6 +21,7 @@ export default {
           '九州工業大学情報工学部の Composite Computer Club 通称「C3」の公式サイトです。C3はデジタル作品の制作を行なっているサークルで、現在、「GAME、HACK、CG、MEDIA_ART」の４つのコミュニティーから構成されています。This is the official site of the Composite Computer Club, commonly known as "C3," in the Faculty of Information Technology at Kyushu Institute of Technology. C3 is a club that produces digital works and currently consists of four communities: GAME, HACK, CG, and MEDIA_ART.',
       },
       { name: 'format-detection', content: 'telephone=no' },
+      { 'http-equiv': 'Cache-Control', content: 'no-cache' },
       { hid: 'tw-card', name: 'twitter:card', content: 'summary_large_image' },
       { hid: 'tw-site', name: 'twitter:site', content: '@c3_kyutech' },
       { hid: 'og-url', property: 'og:url', content: process.env.BASE_URL },
