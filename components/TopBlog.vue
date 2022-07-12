@@ -5,7 +5,11 @@
       <hooper :settings="hooperSettings">
         <slide v-for="(item, idx) in blog" :key="idx">
           <nuxt-link id="link-to-blog" :to="'blog/' + item.sys.id">
-            <img :src="item.fields.thumbnail.fields.file.url" />
+            <img
+              type="image"
+              :src="item.fields.thumbnail.fields.file.url"
+              loading="lazy"
+            />
             <div class="blog-info">
               <div class="blog-title">{{ item.fields.title }}</div>
               <div class="blog-tags">

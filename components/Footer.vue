@@ -4,9 +4,11 @@
       <div class="left-container">
         <div class="c3-icon-container">
           <img
-            src="@/assets/image/c3_logo_circled.png"
+            type="image/webp"
+            src="@/assets/image/s_logo.webp"
             alt="C3アイコン"
             class="c3-icon"
+            loading="lazy"
           />
         </div>
         <div>

@@ -40,13 +40,18 @@
             @touchend="mobileTouchEnd"
           >
             <nuxt-link id="link-to-news" :to="'/news/' + content.sys.id">
-              <img
-                :src="content.fields.thumbnail.fields.file.url"
-                class="img"
-              />
+              <div class="img-wrapper">
+                <img
+                  type="image"
+                  :src="content.fields.thumbnail.fields.file.url"
+                  class="img"
+                  loading="lazy"
+                />
+              </div>
+
               <div class="news-info">
                 <div class="news-title">{{ content.fields.title }}</div>
-                <div class="news-tags">
+                <div v-if="windowWidth > 600" class="news-tags">
                   <div
                     v-for="(tag, index) in content.fields.tags"
                     :key="index"
@@ -56,6 +61,7 @@
                   </div>
                 </div>
                 <users
+                  v-if="windowWidth > 600"
                   :users="content.fields.user"
                   :color="'white'"
                   class="users"
@@ -147,7 +153,11 @@ export default {
         sleep: (waitTime) =>
           new Promise((resolve) => setTimeout(resolve, waitTime)),
       },
+      windowWidth: '',
     }
+  },
+  mounted() {
+    window.addEventListener('resize', this.resizeWindow)
   },
   methods: {
     dateFormatter(date) {
@@ -176,6 +186,9 @@ export default {
       this.sleep(500)
       this.transition = 1500
       this.autoPlay = true
+    },
+    resizeWindow() {
+      this.windowWidth = window.innerWidth
     },
   },
 }
@@ -397,17 +410,28 @@ export default {
   height: inherit;
   position: relative;
 
-  img {
-    object-fit: cover;
+  .img-wrapper {
+    position: relative;
     width: inherit;
     height: inherit;
-    user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    -moz-user-select: none;
-    -khtml-user-select: none;
-    -webkit-user-drag: none;
-    -khtml-user-drag: none;
+    .img {
+      position: absolute;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      -moz-user-select: none;
+      -khtml-user-select: none;
+      -webkit-user-drag: none;
+      -khtml-user-drag: none;
+    }
   }
   .news-info {
     position: absolute;
@@ -428,8 +452,8 @@ export default {
       width: fit-content;
     }
     .news-title {
-      font-size: $base_font_size * 3;
-      max-width: 60%;
+      font-size: $base_font_size * 2.5;
+      max-width: 70%;
       text-overflow: ellipsis;
       overflow: hidden;
       white-space: nowrap;
@@ -521,16 +545,11 @@ export default {
   }
 }
 /* タブレット↓ */
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: $media-query-standard-max-width) {
   .carousel-nav {
     margin: auto;
-    width: min(88vw, 680px);
-    height: min(88vw, 680px);
-    border-radius: 12px;
-  }
-  .hooper img {
-    width: min(88vw, 680px);
-    height: min(88vw, 680px);
+    width: 90vw;
+    height: 60vw;
     border-radius: 12px;
   }
   ::v-deep .hooper-list {
@@ -540,6 +559,14 @@ export default {
   ::v-deep .hooper-prev {
     margin: 0 10px;
     padding: 0;
+  }
+}
+
+@media screen and (max-width: $media-query-small-max-width) {
+  #link-to-news {
+    .news-info {
+      height: 30%;
+    }
   }
 }
 </style>

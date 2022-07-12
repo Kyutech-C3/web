@@ -8,7 +8,8 @@
             @click="showContents()"
           />
           <img
-            src="https://avatars.githubusercontent.com/u/61457046?s=200&v=4"
+            type="image/webp"
+            src="@/assets/image/s_logo.webp"
             class="logo"
           />
         </div>

@@ -6,7 +6,8 @@
       :class="{ 'order-2': id % 2 === 1 }"
     >
       <video muted autoplay loop name="media">
-        <source :src="community.field.image" type="video/webm" />
+        <source :src="community.field.image" type="video" />
+        <p>このデータ形式に対応してません</p>
       </video>
     </div>
     <div class="introduction" :class="{ 'order-1': id % 2 === 1 }">

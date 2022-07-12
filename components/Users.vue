@@ -8,7 +8,7 @@
       :icon="user.fields.icon.fields.file.url"
       :show-name="true"
       :color="color"
-      :shadow="true"
+      :shadow="false"
       class="user"
     />
   </div>

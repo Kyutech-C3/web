@@ -2,7 +2,12 @@
   <div class="about">
     <base-breadcrumbs />
     <div class="title">C3について</div>
-    <img src="@/assets/image/c3_logo_circled.png" class="about-logo" />
+    <img
+      type="image/webp"
+      src="@/assets/image/s_logo.webp"
+      class="about-logo"
+      loading="lazy"
+    />
     <markdown-view :markdown-text="c3_introduction" class="markdown" />
   </div>
 </template>

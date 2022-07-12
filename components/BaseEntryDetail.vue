@@ -4,27 +4,12 @@
     <div class="page-name">{{ pageName }}</div>
     <div class="page-content">
       <div class="entry-detail">
-        <div class="entry-top">
-          <img :src="img" class="img" />
-          <div class="title-wrapper">
-            <div class="title">{{ title }}</div>
-            <!-- <div class="tags">
-              <nuxt-link
-                v-for="(tag, index) in tags"
-                :key="index"
-                :to="'/blog?tag=' + tag.fields.name"
-                class="link"
-              >
-                <tag :tag="tag.fields.name" class="tag" />
-              </nuxt-link>
-            </div>
-            <users :users="users" class="users" /> -->
-          </div>
+        <div class="image-wrapper">
+          <img type="image" :src="img" class="img" loading="lazy" />
         </div>
-        <div class="date">
-          {{ dateFormatter(updatedAt) }}
-        </div>
+        <div class="title">{{ title }}</div>
         <div class="tags">
+          <div>タグ：</div>
           <nuxt-link
             v-for="(tag, index) in tags"
             :key="index"
@@ -34,8 +19,11 @@
             <tag :tag="tag.fields.name" class="tag" />
           </nuxt-link>
         </div>
-        <users :users="users" :color="'black'" class="users" />
-
+        <div class="users-wrapper">
+          <div>ユーザー：</div>
+          <users :users="users" :color="'black'" class="users" />
+        </div>
+        <div class="date">更新日：{{ dateFormatter }}</div>
         <markdown-view :markdown-text="body" />
       </div>
       <sidebar :blogs="recentBlog" class="sidebar" />
@@ -114,22 +102,14 @@ export default {
       },
     },
   },
-  methods: {
-    dateFormatter(date) {
-      date = new Date(date)
-      return (
-        date.getFullYear() +
-        '/' +
-        date.getMonth() +
-        '/' +
-        date.getDate() +
-        '  ' +
-        date.getHours() +
-        ':' +
-        date.getMinutes() +
-        ':' +
-        date.getSeconds()
-      )
+  computed: {
+    dateFormatter() {
+      const splitFullDate = this.updatedAt.split('T')
+      const splitDate = splitFullDate[0].split('-')
+      const splitTime = splitFullDate[1].split(':')
+      return `${splitDate[0]}年${splitDate[1]}月${splitDate[2]}日 ${
+        splitTime[0]
+      }:${splitTime[1]}:${splitTime[2].split('.')[0]}`
     },
   },
 }
@@ -158,34 +138,32 @@ export default {
 .detail-breadcrumbs {
   margin: 0 7vw;
 }
-.entry-top {
+.image-wrapper {
   position: relative;
   box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.3);
   border-radius: 20px;
   width: 100%;
-  height: 38vw;
+  height: 40vw;
   max-height: 600px;
   overflow: hidden;
 }
-.title-wrapper {
-  position: absolute;
-  padding: 30px 0;
-  width: 100%;
-  background-color: $through-light-blue;
-  color: $white;
-}
 .title {
-  text-align: center;
   overflow-wrap: break-word;
   font-size: $font-size-other-contents-title;
-  width: 40%;
-  margin: 0 auto;
+  width: 100%;
+  margin: 30px 0 0 0;
+  font-weight: bold;
 }
-.tags {
+.tags,
+.users-wrapper {
   display: flex;
   justify-content: flex-start;
-  // margin-top: 15px;
-  font-size: $font-size-other-contents-other;
+  align-items: center;
+}
+.tags,
+.users-wrapper,
+.date {
+  margin-top: 10px;
 }
 .link {
   text-decoration: none;
@@ -195,9 +173,15 @@ export default {
   margin: 0 3px;
   cursor: pointer;
   --height: 25px;
+  color: $gray;
+}
+.users-wrapper div,
+.tags div,
+.date {
+  font-size: $font-size-other-contents-description;
+  width: fit-content;
 }
 .users {
-  margin-top: 10px;
   justify-content: flex-start;
   width: 100%;
 }
@@ -211,12 +195,6 @@ export default {
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
 }
-.date {
-  text-align: right;
-  font-size: 20px;
-  padding: 10px 30px;
-}
-
 .markdown {
   font-size: $font-size-other-contents-description;
   margin: 40px 7% 0 7%;
@@ -231,14 +209,10 @@ export default {
     width: 90%;
     margin: 0;
   }
-  .entry-top {
-    height: 50vw;
-  }
-  .title-wrapper {
-    padding: 20px 0;
-  }
-  .title {
-    width: 50%;
+  .image-wrapper {
+    margin: 0 auto;
+    max-width: 920px;
+    height: 58vw;
   }
   .markdown {
     margin: 40px 0 0 0;
@@ -253,11 +227,9 @@ export default {
   .entry-detail {
     width: 95%;
   }
-  .title-wrapper {
-    padding: 15px 0;
-  }
-  .title {
-    width: 60%;
+  .image-wrapper {
+    height: 60vw;
+    border-radius: 15px;
   }
   .markdown {
     margin: 30px 0 0 0;
