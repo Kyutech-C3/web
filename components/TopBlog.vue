@@ -28,16 +28,11 @@
             </div>
           </nuxt-link>
         </slide>
-        <slide class="link-to-blog-list">
-          <nuxt-link id="link-to-blog-list-content" to="/blog">
-            <span>一覧を見る</span>
-            <font-awesome-icon id="arrow" :icon="['fas', 'angle-right']" />
-          </nuxt-link>
-        </slide>
         <hooper-navigation slot="hooper-addons"></hooper-navigation>
         <hooper-pagination slot="hooper-addons"></hooper-pagination>
       </hooper>
     </div>
+    <base-button to="/blog" class="link"> 一覧を見る </base-button>
   </div>
 </template>
 
@@ -289,7 +284,11 @@ span {
 ::v-deep .hooper-prev:hover {
   transition: 0.3s ease;
 }
-
+.link {
+  margin: 40px auto;
+  width: 240px;
+  height: 60px;
+}
 @media screen and (max-width: $media-query-standard-max-width) {
   .carousel-nav {
     width: 100%;

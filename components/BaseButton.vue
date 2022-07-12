@@ -6,6 +6,7 @@
       'animation to-left': animation === 'toLeft',
       'animation to-right': animation === 'toRight',
       'animation right-to-right': animation === 'rightToRight',
+      'animation standard': animation === 'standard',
     }"
   >
     <div class="frame">
@@ -28,7 +29,7 @@ export default {
       type: String,
       required: false,
       default() {
-        return ''
+        return 'standard'
       },
     },
   },
@@ -58,14 +59,12 @@ export default {
 .animation::before {
   content: '';
   width: 120%;
-  height: 100%;
+  height: 101%;
   position: absolute;
   top: 0;
   right: 0;
   z-index: -1;
   background: $gray;
-  border: 1px solid;
-  border-color: $gray;
   border-radius: 500px;
   transition: transform ease 0.5s;
 }
@@ -80,7 +79,7 @@ export default {
   transform: scaleX(0);
 }
 .animation:hover {
-  color: #fff;
+  color: $white;
 }
 .to-left:hover::before {
   transform: translateX(10%);
@@ -91,5 +90,15 @@ export default {
 .right-to-right:hover::before {
   transform-origin: 0% 50%;
   transform: scaleX(1);
+}
+.standard {
+  transition: 0s;
+}
+.standard::before {
+  transition: 0s;
+  background: $white;
+}
+.standard:hover::before {
+  background: $gray;
 }
 </style>
