@@ -116,4 +116,9 @@ export default {
 .markdown {
   font-size: $font-size-other-contents-description;
 }
+@media screen and (max-width: $media-query-standard-max-width) {
+  .about {
+    width: 90%;
+  }
+}
 </style>
