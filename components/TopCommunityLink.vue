@@ -8,7 +8,7 @@
       <video
         :src="community.field.image"
         type="video"
-        poster="@/assets/image/loading.webp"
+        :poster="require('@/assets/image/loading.webp')"
         preload="metadata"
         webkit-playsinline
         playsinline

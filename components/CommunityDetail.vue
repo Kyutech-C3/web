@@ -7,7 +7,7 @@
       <video
         :src="img"
         type="video/webm"
-        poster="@/assets/image/loading.webp"
+        :poster="require('@/assets/image/loading.webp')"
         preload="metadata"
         webkit-playsinline
         playsinline
