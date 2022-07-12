@@ -27,7 +27,7 @@
             />
           </div>
         </div>
-        <div class="user-wrraper">
+        <div class="user-wrapper">
           <users :users="author" class="user" />
         </div>
         <div class="description">{{ description }}</div>
@@ -193,7 +193,7 @@ export default {
   margin-bottom: 1px;
   ---height: 18px;
 }
-.user-wrraper {
+.user-wrapper {
   width: 100%;
   --user-height: 20px;
   --img-height: 20px;
@@ -203,16 +203,16 @@ export default {
   margin-right: 3px;
   margin-bottom: 4px;
 }
-.user-wrraper::-webkit-scrollbar {
+.user-wrapper::-webkit-scrollbar {
   height: 3px;
 }
 
-.user-wrraper::-webkit-scrollbar-thumb {
+.user-wrapper::-webkit-scrollbar-thumb {
   background: #99d8ffa4;
   border-radius: 3px;
 }
 
-.user-wrraper::-webkit-scrollbar-track {
+.user-wrapper::-webkit-scrollbar-track {
   background: rgba(221, 221, 221, 0.219);
 }
 .user {
