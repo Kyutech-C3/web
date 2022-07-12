@@ -94,7 +94,7 @@ export default {
     }
   },
   created() {
-    this.title = `コミュニティー - ${this.community.fields.name}`
+    this.title = `${this.community.fields.name}`
     this.description = `${this.title} - ${this.community.fields.about}`
     this.img_url = `http:${this.community.fields.image.fields.file.url}`
   },
