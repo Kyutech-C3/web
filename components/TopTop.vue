@@ -568,6 +568,7 @@ export default {
   #link-to-news {
     .news-info {
       height: 30%;
+      min-height: 60px;
     }
   }
 }
