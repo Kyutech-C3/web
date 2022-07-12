@@ -87,7 +87,7 @@ export default {
 
 <style lang="scss" scoped>
 #top-top {
-  max-width: 1500px;
+  max-width: 1900px;
   margin: 0 auto;
 }
 .component {
