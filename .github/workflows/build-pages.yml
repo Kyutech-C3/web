@@ -31,4 +31,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages 
           FOLDER: dist 
-          CNAME: dev.compositecomputer.club
+          CNAME: compositecomputer.club
