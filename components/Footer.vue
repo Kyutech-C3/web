@@ -95,6 +95,7 @@ export default {}
 .c3-icon {
   padding: 60px 0 0 8.3%;
   width: 120px;
+  height: auto;
 }
 .official-text {
   padding: 40px 0 0 6.25%;
