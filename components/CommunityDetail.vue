@@ -4,8 +4,19 @@
       {{ title }}
     </div>
     <div class="img-wrapper">
-      <video muted autoplay loop name="media">
-        <source :src="img" type="video/webm" />
+      <video
+        :src="img"
+        type="video/webm"
+        poster="@/assets/image/loading.webp"
+        preload="metadata"
+        webkit-playsinline
+        playsinline
+        muted
+        autoplay
+        loop
+        name="media"
+      >
+        <p>ブラウザーが対応していません</p>
       </video>
     </div>
     <markdown-view :markdown-text="description" class="markdown" />

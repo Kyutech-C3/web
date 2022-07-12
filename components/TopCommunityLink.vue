@@ -5,9 +5,19 @@
       class="img-wrapper"
       :class="{ 'order-2': id % 2 === 1 }"
     >
-      <video muted autoplay loop name="media">
-        <source :src="community.field.image" type="video" />
-        <p>このデータ形式に対応してません</p>
+      <video
+        :src="community.field.image"
+        type="video"
+        poster="@/assets/image/loading.webp"
+        preload="metadata"
+        webkit-playsinline
+        playsinline
+        muted
+        autoplay
+        loop
+        name="media"
+      >
+        <p>ブラウザーが対応していません</p>
       </video>
     </div>
     <div class="introduction" :class="{ 'order-1': id % 2 === 1 }">
@@ -81,6 +91,7 @@ export default {
   overflow: hidden;
   border-radius: 15px;
   box-shadow: 3px 3px 5px 5px rgba(100, 100, 100, 0.2);
+  z-index: 10;
 }
 .img-wrapper video {
   object-fit: cover;

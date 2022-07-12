@@ -245,7 +245,7 @@ export default {
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 10;
+  z-index: 99;
 }
 .header-wrapper {
   width: 95%;
@@ -439,6 +439,21 @@ a:visited {
 
 svg {
   color: $base-font-color;
+}
+
+@media screen and (max-width: $media-query-s-small-max-width) {
+  .header-wrapper {
+    border-radius: 30px;
+    .header-container {
+      height: 60px;
+      .left-contents svg {
+        width: 30px;
+      }
+    }
+  }
+  .main-container .contents-wrapper {
+    padding: 20px 30px 0 30px;
+  }
 }
 
 // transition
