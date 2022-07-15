@@ -1,3 +1,5 @@
+import sdkClient from '~/plugins/contentful.js'
+
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   // target: 'static',
@@ -93,6 +95,7 @@ export default {
         debug: true,
       },
     ],
+    '@nuxtjs/sitemap',
   ],
 
   fontawesome: {
@@ -113,6 +116,39 @@ export default {
     html: true,
     linkify: true,
     runtime: true,
+  },
+
+  sitemap: {
+    hostname: 'process.env.BASE_URL',
+    defaults: {
+      lastmod: new Date(),
+      changefreq: 'weekly',
+    },
+    cacheTime: 1000 * 60 * 60 * 24,
+    exclude: ['/tmp'],
+    routes() {
+      return Promise.all([
+        await sdkClient.getEntries({
+          content_type: 'blog',
+        }),
+        await sdkClient.getEntries({
+          content_type: 'news',
+        }),
+        await sdkClient.getEntries({
+          content_type: 'eachCommunity',
+        }),
+        await sdkClient.getEntries({
+          content_type: 'user',
+        }),
+      ]).then(([blog, news, community, user]) => {
+        const urls = ['/about']
+        blog.map((item) => urls.push(`/blog/${item.sys.id}`))
+        news.map((item) => urls.push(`/news/${item.sys.id}`))
+        community.map((item) => urls.push(`/community/${item.sys.id}`))
+        user.map((item) => urls.push(`/author/${item.sys.id}`))
+        return urls
+      })
+    },
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
