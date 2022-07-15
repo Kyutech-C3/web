@@ -1,4 +1,4 @@
-import sdkClient from '~/plugins/contentful.js'
+import sdkClient from './plugins/contentful.js'
 
 export default {
   // Target: https://go.nuxtjs.dev/config-target
@@ -119,14 +119,14 @@ export default {
   },
 
   sitemap: {
-    hostname: 'process.env.BASE_URL',
+    hostname: process.env.BASE_URL,
     defaults: {
       lastmod: new Date(),
       changefreq: 'weekly',
     },
     cacheTime: 1000 * 60 * 60 * 24,
     exclude: ['/tmp'],
-    routes() {
+    async routes() {
       return Promise.all([
         await sdkClient.getEntries({
           content_type: 'blog',
@@ -142,10 +142,10 @@ export default {
         }),
       ]).then(([blog, news, community, user]) => {
         const urls = ['/about']
-        blog.map((item) => urls.push(`/blog/${item.sys.id}`))
-        news.map((item) => urls.push(`/news/${item.sys.id}`))
-        community.map((item) => urls.push(`/community/${item.sys.id}`))
-        user.map((item) => urls.push(`/author/${item.sys.id}`))
+        blog.items.map((item) => urls.push(`/blog/${item.sys.id}`))
+        news.items.map((item) => urls.push(`/news/${item.sys.id}`))
+        community.items.map((item) => urls.push(`/community/${item.sys.id}`))
+        user.items.map((item) => urls.push(`/author/${item.sys.id}`))
         return urls
       })
     },
