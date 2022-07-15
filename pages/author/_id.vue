@@ -142,7 +142,7 @@ export default Vue.extend({
         {
           hid: 'canonical',
           rel: 'canonical',
-          href: `${process.env.BASE_URL}/author/${this.$route.params.id}`,
+          href: `${process.env.BASE_URL}author/${this.$route.params.id}`,
         },
       ],
     }

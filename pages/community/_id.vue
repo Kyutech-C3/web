@@ -88,7 +88,7 @@ export default {
         {
           hid: 'canonical',
           rel: 'canonical',
-          href: `${process.env.BASE_URL}/community/${this.$route.params.id}`,
+          href: `${process.env.BASE_URL}community/${this.$route.params.id}`,
         },
       ],
     }
