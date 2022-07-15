@@ -65,7 +65,7 @@ export default {
         {
           hid: 'og-url',
           property: 'og:url',
-          content: `${process.env.BASE_URL}/community/${this.$route.params.id}`,
+          content: `${process.env.BASE_URL}community/${this.$route.params.id}/`,
         },
         {
           hid: 'og-title',
@@ -88,7 +88,7 @@ export default {
         {
           hid: 'canonical',
           rel: 'canonical',
-          href: `${process.env.BASE_URL}community/${this.$route.params.id}`,
+          href: `${process.env.BASE_URL}community/${this.$route.params.id}/`,
         },
       ],
     }

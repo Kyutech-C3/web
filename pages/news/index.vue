@@ -72,7 +72,7 @@ export default {
         {
           hid: 'og-url',
           property: 'og:url',
-          content: `${process.env.BASE_URL}/blog`,
+          content: `${process.env.BASE_URL}blog/`,
         },
         {
           hid: 'og-title',

@@ -67,7 +67,7 @@ export default {
         {
           hid: 'og-url',
           property: 'og:url',
-          content: `${process.env.BASE_URL}/about`,
+          content: `${process.env.BASE_URL}about`,
         },
         {
           hid: 'og-title',

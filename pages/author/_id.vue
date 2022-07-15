@@ -119,7 +119,7 @@ export default Vue.extend({
         {
           hid: 'og-url',
           property: 'og:url',
-          content: `${process.env.BASE_URL}/author/${this.$route.params.id}`,
+          content: `${process.env.BASE_URL}author/${this.$route.params.id}/`,
         },
         {
           hid: 'og-title',

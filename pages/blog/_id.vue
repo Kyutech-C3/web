@@ -71,7 +71,7 @@ export default Vue.extend({
         {
           hid: 'og-url',
           property: 'og:url',
-          content: `${process.env.BASE_URL}/blog/${this.$route.params.id}`,
+          content: `${process.env.BASE_URL}blog/${this.$route.params.id}/`,
         },
         {
           hid: 'og-title',
@@ -94,7 +94,7 @@ export default Vue.extend({
         {
           hid: 'canonical',
           rel: 'canonical',
-          href: `${process.env.BASE_URL}blog/${this.$route.params.id}`,
+          href: `${process.env.BASE_URL}blog/${this.$route.params.id}/`,
         },
       ],
     }
