@@ -3,7 +3,8 @@
     <base-breadcrumbs />
     <community-detail
       :title="community.fields.name"
-      :img="community.fields.image.fields.file.url"
+      :img-webm="community.fields.image.fields.file.url"
+      :img-mp4="community.fields.smallimg.fields.file.url"
       :description="community.fields.about"
     />
   </div>

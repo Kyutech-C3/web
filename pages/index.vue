@@ -49,6 +49,7 @@ export default {
         const communities = []
         const selectNews = []
         const latestNews = []
+        console.log(news.items[0].sys)
         for (let i = 0; i < eachCommunity.items.length; i++) {
           communities.push({
             id: eachCommunity.items[i].sys.id,
@@ -56,6 +57,7 @@ export default {
               name: eachCommunity.items[i].fields.name,
               domain: eachCommunity.items[i].fields.domain,
               image: eachCommunity.items[i].fields.image.fields.file.url,
+              simage: eachCommunity.items[i].fields.smallimg.fields.file.url,
             },
           })
         }

@@ -5,8 +5,6 @@
     </div>
     <div class="img-wrapper">
       <video
-        :src="img"
-        type="video/webm"
         :poster="require('@/assets/image/loading.webp')"
         preload="metadata"
         webkit-playsinline
@@ -16,6 +14,8 @@
         loop
         name="media"
       >
+        <source :src.prop="imgWebm" type="video/webm" />
+        <source :src.prop="imgMp4" type="video/mp4" />
         <p>ブラウザーが対応していません</p>
       </video>
     </div>
@@ -38,7 +38,14 @@ export default {
         return ''
       },
     },
-    img: {
+    imgWebm: {
+      type: String,
+      required: true,
+      default() {
+        return ''
+      },
+    },
+    imgMp4: {
       type: String,
       required: true,
       default() {
