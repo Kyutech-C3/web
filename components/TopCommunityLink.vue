@@ -1,13 +1,11 @@
 <template>
   <div class="community">
     <div
-      @click="$router.push('/community/' + community.id)"
       class="img-wrapper"
       :class="{ 'order-2': id % 2 === 1 }"
+      @click="$router.push('/community/' + community.id)"
     >
       <video
-        :src="community.field.image"
-        type="video"
         :poster="require('@/assets/image/loading.webp')"
         preload="metadata"
         webkit-playsinline
@@ -17,6 +15,8 @@
         loop
         name="media"
       >
+        <source :src.prop="community.field.image" type="video" />
+        <!-- <source :src.prop="community.field.simage" type="video/mp4" /> -->
         <p>ブラウザーが対応していません</p>
       </video>
     </div>
