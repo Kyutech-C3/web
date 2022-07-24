@@ -41,6 +41,24 @@ h3 {
   border-radius: 20px;
   pointer-events: none;
 }
+table {
+  border-collapse: collapse;
+  border: 1px solid $light-gray;
+  margin: 0 auto;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px $light-gray;
+}
+
+th,
+td {
+  padding: 5px 10px;
+  border: 1px solid $light-gray;
+}
+
+th {
+  background: #ebf8ff;
+}
 @media screen and (max-width: $media-query-s-small-max-width) {
   .markdown h1,
   h2,
