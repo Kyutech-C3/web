@@ -125,8 +125,8 @@ export default {
   }
   .sentence {
     position: relative;
-    margin: 40px 7.5% 0 7.5%;
-    width: 85%;
+    margin-top: 40px;
+    width: 100%;
     height: auto;
     max-height: none;
     line-height: 34px;
