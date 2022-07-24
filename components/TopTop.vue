@@ -45,7 +45,6 @@
                   type="image"
                   :src="content.fields.thumbnail.fields.file.url"
                   class="img"
-                  loading="lazy"
                 />
               </div>
 

@@ -41,6 +41,7 @@ export default {
 }
 .icon {
   width: 400px;
+  height: 400px;
   border-radius: 50%;
 }
 
