@@ -7,7 +7,7 @@
     >
       <video
         :poster="require('@/assets/image/loading.webp')"
-        preload="metadata"
+        preload="auto"
         webkit-playsinline
         playsinline
         muted
