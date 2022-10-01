@@ -70,18 +70,18 @@ export default {
           content: this.description,
         },
         {
-          hid: 'og-url',
+          hid: 'og:url',
           property: 'og:url',
           content: `${process.env.BASE_URL}blog/`,
         },
         {
-          hid: 'og-title',
+          hid: 'og:title',
           property: 'og:title',
           content: this.title,
         },
-        { hid: 'og-type', property: 'og:type', content: 'article' },
+        { hid: 'og:type', property: 'og:type', content: 'article' },
         {
-          hid: 'og-description',
+          hid: 'og:description',
           property: 'og:description',
           content: this.description,
         },
