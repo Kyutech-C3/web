@@ -26,7 +26,7 @@ export default {
       { name: 'format-detection', content: 'telephone=no' },
       { 'http-equiv': 'Cache-Control', content: 'no-cache' },
       { name: 'twitter:card', content: 'summary_large_image' },
-      { hid: 'tw-site', name: 'twitter:site', content: '@c3_kyutech' },
+      { name: 'twitter:site', content: '@c3_kyutech' },
       { hid: 'og:url', property: 'og:url', content: process.env.BASE_URL },
       {
         hid: 'og:site_name',
@@ -167,5 +167,28 @@ export default {
 
   generate: {
     fallback: true,
+    async routes() {
+      return Promise.all([
+        await sdkClient.getEntries({
+          content_type: 'blog',
+        }),
+        await sdkClient.getEntries({
+          content_type: 'news',
+        }),
+        await sdkClient.getEntries({
+          content_type: 'eachCommunity',
+        }),
+        await sdkClient.getEntries({
+          content_type: 'user',
+        }),
+      ]).then(([blog, news, community, user]) => {
+        const urls = []
+        blog.items.map((item) => urls.push(`/blog/${item.sys.id}`))
+        news.items.map((item) => urls.push(`/news/${item.sys.id}`))
+        community.items.map((item) => urls.push(`/community/${item.sys.id}`))
+        user.items.map((item) => urls.push(`/author/${item.sys.id}`))
+        return urls
+      })
+    },
   },
 }
