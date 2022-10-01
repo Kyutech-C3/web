@@ -24,7 +24,10 @@ export default Vue.extend({
   components: {
     BaseEntryDetail,
   },
-  async asyncData({ store, params, error }) {
+  async asyncData({ store, params, error, payload }) {
+    if (payload) {
+      return { blog_item: payload }
+    }
     try {
       return Promise.all([
         await sdkClient.getEntry(params.id),
@@ -60,6 +63,9 @@ export default Vue.extend({
     }
   },
   head() {
+    this.title = `ブログ - ${this.blog_item.fields.title}`
+    this.description = `${this.title} - ${this.blog_item.fields.digest}`
+    this.img_url = `http:${this.blog_item.fields.thumbnail.fields.file.url}`
     return {
       title: this.title,
       meta: [
@@ -98,11 +104,6 @@ export default Vue.extend({
         },
       ],
     }
-  },
-  created() {
-    this.title = `ブログ - ${this.blog_item.fields.title}`
-    this.description = `${this.title} - ${this.blog_item.fields.digest}`
-    this.img_url = `http:${this.blog_item.fields.thumbnail.fields.file.url}`
   },
 })
 </script>

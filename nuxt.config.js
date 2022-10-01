@@ -183,10 +183,18 @@ export default {
         }),
       ]).then(([blog, news, community, user]) => {
         const urls = []
-        blog.items.map((item) => urls.push(`/blog/${item.sys.id}`))
-        news.items.map((item) => urls.push(`/news/${item.sys.id}`))
-        community.items.map((item) => urls.push(`/community/${item.sys.id}`))
-        user.items.map((item) => urls.push(`/author/${item.sys.id}`))
+        blog.items.map((item) =>
+          urls.push({ route: `/blog/${item.sys.id}`, payload: item })
+        )
+        news.items.map((item) =>
+          urls.push({ route: `/news/${item.sys.id}`, payload: item })
+        )
+        community.items.map((item) =>
+          urls.push({ route: `/community/${item.sys.id}`, payload: item })
+        )
+        user.items.map((item) =>
+          urls.push({ route: `/author/${item.sys.id}`, payload: item })
+        )
         return urls
       })
     },

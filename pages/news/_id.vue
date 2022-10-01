@@ -24,7 +24,10 @@ export default Vue.extend({
   components: {
     BaseEntryDetail,
   },
-  async asyncData({ params, store, error }) {
+  async asyncData({ params, store, error, payload }) {
+    if (payload) {
+      return { news_item: news }
+    }
     try {
       return Promise.all([
         await sdkClient.getEntry(params.id),
@@ -60,6 +63,9 @@ export default Vue.extend({
     }
   },
   head() {
+    this.title = `お知らせ - ${this.news_item.fields.title}`
+    this.description = `${this.title} - ${this.news_item.fields.digest}`
+    this.img_url = `http:${this.news_item.fields.thumbnail.fields.file.url}`
     return {
       title: this.title,
       htmlAttrs: {
@@ -103,11 +109,6 @@ export default Vue.extend({
         },
       ],
     }
-  },
-  created() {
-    this.title = `お知らせ - ${this.news_item.fields.title}`
-    this.description = `${this.title} - ${this.news_item.fields.digest}`
-    this.img_url = `http:${this.news_item.fields.thumbnail.fields.file.url}`
   },
 })
 </script>
