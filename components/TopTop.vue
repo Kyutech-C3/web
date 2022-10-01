@@ -12,7 +12,7 @@
         <div class="top-news-flex-wrap">
           <div class="top-news-title">お知らせ</div>
           <div class="all-news-link">
-            <nuxt-link to="/news">一覧を見る</nuxt-link>
+            <nuxt-link to="/news/">一覧を見る</nuxt-link>
           </div>
         </div>
         <div class="top-news slide">
@@ -39,7 +39,7 @@
             @touchstart="mobileTouchStart"
             @touchend="mobileTouchEnd"
           >
-            <nuxt-link id="link-to-news" :to="'/news/' + content.sys.id">
+            <nuxt-link id="link-to-news" :to="`/news/${content.sys.id}/`">
               <div class="img-wrapper">
                 <img
                   type="image"
@@ -81,7 +81,7 @@
         <div class="top-news-flex-wrap">
           <div class="top-news-title">お知らせ</div>
           <div class="all-news-link">
-            <nuxt-link to="/news">一覧を見る</nuxt-link>
+            <nuxt-link to="/news/">一覧を見る</nuxt-link>
           </div>
         </div>
         <div class="top-news slide">

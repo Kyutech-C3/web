@@ -9,6 +9,7 @@
       :updated-at="news_item.sys.updatedAt"
       :recent-blog="recent_news"
       :users="news_item.fields.user"
+      :type="'news'"
     />
   </div>
 </template>
@@ -26,7 +27,7 @@ export default Vue.extend({
   },
   async asyncData({ params, store, error, payload }) {
     if (payload) {
-      return { news_item: news }
+      return { news_item: payload }
     }
     try {
       return Promise.all([
@@ -36,9 +37,9 @@ export default Vue.extend({
         store.commit('breadcrumbs/setBreadcrumbs', {
           breadcrumbs: [
             { url: '/', text: 'ホーム' },
-            { url: '/news', text: 'お知らせ一覧' },
+            { url: '/news/', text: 'お知らせ一覧' },
             {
-              url: `/news/${params.id}`,
+              url: `/news/${params.id}/`,
               text: news.fields.title,
             },
           ],

@@ -29,7 +29,7 @@
       </div>
       <div class="community-link">
         <base-button
-          :to="'/community/' + community.id"
+          :to="`/community/${community.id}/`"
           :animation="changeAnimation(id % 2)"
         >
           詳しく見る

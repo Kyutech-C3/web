@@ -15,7 +15,7 @@
         </div>
         <div v-if="!isMobile" class="right-contents y-center">
           <div class="contact">
-            <nuxt-link to="/contact" class="disable">
+            <nuxt-link to="/contact/" class="disable">
               <font-awesome-icon icon="envelope-open-text" class="disable" />
               <div class="disable">お問い合わせ</div>
             </nuxt-link>
@@ -81,7 +81,7 @@
           <div v-if="isMobile" class="line"></div>
           <div v-if="isMobile" class="bottom-contents y-center x-center">
             <div class="contact">
-              <nuxt-link to="/contact" class="disable">
+              <nuxt-link to="/contact/" class="disable">
                 <font-awesome-icon icon="envelope-open-text" class="disable" />
                 <div v-if="isShowContentsTitle" class="disable">
                   お問い合わせ
@@ -132,39 +132,39 @@ export default {
           },
           {
             text: 'お知らせ',
-            link: '/news',
+            link: '/news/',
             icon: 'info-circle',
           },
           {
             text: 'C3について',
-            link: '/about',
+            link: '/about/',
             icon: 'users',
           },
           {
             text: 'ブログ',
-            link: '/blog',
+            link: '/blog/',
             icon: 'file-alt',
           },
         ],
         [
           {
             text: 'GAME',
-            link: '/community/21AY3pJOP214Gsw1d9u6cD',
+            link: '/community/21AY3pJOP214Gsw1d9u6cD/',
             icon: 'gamepad',
           },
           {
             text: 'CG',
-            link: '/community/5Ay58j7CHdYFqKShRbr5tD',
+            link: '/community/5Ay58j7CHdYFqKShRbr5tD/',
             icon: 'cubes',
           },
           {
             text: 'HACK',
-            link: '/community/39t5DaMrgq579LDvqWGKZK',
+            link: '/community/39t5DaMrgq579LDvqWGKZK/',
             icon: 'laptop-code',
           },
           {
             text: 'MEDIA_ART',
-            link: '/community/1q0aXzj2r1O0pC5soNRQok',
+            link: '/community/1q0aXzj2r1O0pC5soNRQok/',
             icon: 'palette',
           },
         ],

@@ -28,7 +28,7 @@ export default {
             breadcrumbs: [
               { url: '/', text: 'ホーム' },
               {
-                url: `/community/${params.id}`,
+                url: `/community/${params.id}/`,
                 text: community.fields.name,
               },
             ],

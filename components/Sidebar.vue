@@ -6,6 +6,7 @@
       :id="blog.sys.id"
       :key="idx"
       :img="blog.fields.thumbnail.fields.file.url"
+      :type="type"
       class="sidebar-card"
     >
       {{ blog.fields.title }}
@@ -25,6 +26,10 @@ export default {
       default() {
         return []
       },
+    },
+    type: {
+      type: String,
+      required: true,
     },
   },
 }

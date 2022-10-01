@@ -26,7 +26,7 @@ export default {
       await store.commit('breadcrumbs/setBreadcrumbs', {
         breadcrumbs: [
           { url: '/', text: 'ホーム' },
-          { url: '/news', text: 'お知らせ一覧' },
+          { url: '/news/', text: 'お知らせ一覧' },
         ],
       })
       return Promise.all([

@@ -49,7 +49,6 @@ export default {
         const communities = []
         const selectNews = []
         const latestNews = []
-        console.log(news.items[0].sys)
         for (let i = 0; i < eachCommunity.items.length; i++) {
           communities.push({
             id: eachCommunity.items[i].sys.id,

@@ -9,6 +9,7 @@
       :updated-at="blog_item.sys.updatedAt"
       :recent-blog="recent_blog"
       :users="blog_item.fields.user"
+      :type="'blog'"
     />
   </div>
 </template>
@@ -36,9 +37,9 @@ export default Vue.extend({
         store.commit('breadcrumbs/setBreadcrumbs', {
           breadcrumbs: [
             { url: '/', text: 'ホーム' },
-            { url: '/blog', text: 'ブログ一覧' },
+            { url: '/blog/', text: 'ブログ一覧' },
             {
-              url: `/blog/${params.id}`,
+              url: `/blog/${params.id}/`,
               text: blog.fields.title,
             },
           ],

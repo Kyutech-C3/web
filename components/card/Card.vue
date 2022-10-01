@@ -88,7 +88,7 @@ export default {
   },
   computed: {
     entryURL() {
-      return `/${this.entryType}/${this.id}`
+      return `/${this.entryType}/${this.id}/`
     },
     dateFormatter() {
       const nowDate = new Date()
