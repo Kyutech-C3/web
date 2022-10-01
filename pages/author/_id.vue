@@ -45,7 +45,10 @@ export default Vue.extend({
     Profile,
     CardList,
   },
-  async asyncData({ store, params, error }) {
+  async asyncData({ store, params, error, payload }) {
+    if (payload) {
+      return { user: payload }
+    }
     try {
       return Promise.all([
         await sdkClient.getEntry(params.id),
@@ -108,6 +111,9 @@ export default Vue.extend({
     }
   },
   head() {
+    this.title = `Author - ${this.user.fields.name}`
+    this.description = `${this.title} - ${this.user.fields.introduction}`
+    this.img_url = `http:${this.user.fields.icon.fields.file.url}`
     return {
       title: this.title,
       meta: [
@@ -146,11 +152,6 @@ export default Vue.extend({
         },
       ],
     }
-  },
-  created() {
-    this.title = `Author - ${this.user.fields.name}`
-    this.description = `${this.title} - ${this.user.fields.introduction}`
-    this.img_url = `http:${this.user.fields.icon.fields.file.url}`
   },
 })
 </script>

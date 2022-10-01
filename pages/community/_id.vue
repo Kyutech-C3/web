@@ -17,7 +17,10 @@ import sdkClient from '~/plugins/contentful.js'
 
 export default {
   components: { CommunityDetail },
-  async asyncData({ params, store, error }) {
+  async asyncData({ params, store, error, payload }) {
+    if (payload) {
+      return { community: payload }
+    }
     try {
       return Promise.all([await sdkClient.getEntry(params.id)]).then(
         ([community]) => {
@@ -50,6 +53,9 @@ export default {
     }
   },
   head() {
+    this.title = `${this.community.fields.name}`
+    this.description = `${this.title} - ${this.community.fields.about}`
+    this.img_url = `http:${this.community.fields.image.fields.file.url}`
     return {
       title: this.title,
       htmlAttrs: {
@@ -93,11 +99,6 @@ export default {
         },
       ],
     }
-  },
-  created() {
-    this.title = `${this.community.fields.name}`
-    this.description = `${this.title} - ${this.community.fields.about}`
-    this.img_url = `http:${this.community.fields.image.fields.file.url}`
   },
 }
 </script>
