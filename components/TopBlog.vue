@@ -4,7 +4,7 @@
     <div class="carousel-nav">
       <hooper :settings="hooperSettings">
         <slide v-for="(item, idx) in blog" :key="idx">
-          <nuxt-link id="link-to-blog" :to="'blog/' + item.sys.id">
+          <nuxt-link id="link-to-blog" :to="`blog/${item.sys.id}/`">
             <img
               type="image"
               :src="item.fields.thumbnail.fields.file.url"
@@ -32,7 +32,7 @@
         <hooper-pagination slot="hooper-addons"></hooper-pagination>
       </hooper>
     </div>
-    <base-button to="/blog" class="link"> 一覧を見る </base-button>
+    <base-button to="/blog/" class="link"> 一覧を見る </base-button>
   </div>
 </template>
 

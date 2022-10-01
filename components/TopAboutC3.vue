@@ -10,7 +10,7 @@
 
     <div class="top">C3について</div>
     <div class="sentence">{{ c3Introduction }}</div>
-    <nuxt-link to="/about" class="link">
+    <nuxt-link to="/about/" class="link">
       <div class="frame">詳しく見る</div>
     </nuxt-link>
   </div>

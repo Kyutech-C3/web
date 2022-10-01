@@ -13,7 +13,7 @@
           <nuxt-link
             v-for="(tag, index) in tags"
             :key="index"
-            :to="'/blog?tag=' + tag.fields.name"
+            :to="`/${type}?tag=${tag.fields.name}`"
             class="link"
           >
             <tag :tag="tag.fields.name" class="tag" />
@@ -26,7 +26,7 @@
         <div class="date">更新日：{{ dateFormatter }}</div>
         <markdown-view :markdown-text="body" />
       </div>
-      <sidebar :blogs="recentBlog" class="sidebar" />
+      <sidebar :blogs="recentBlog" :type="type" class="sidebar" />
     </div>
   </div>
 </template>
@@ -100,6 +100,10 @@ export default {
       default() {
         return []
       },
+    },
+    type: {
+      type: String,
+      required: true,
     },
   },
   computed: {

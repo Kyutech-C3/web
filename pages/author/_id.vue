@@ -61,9 +61,9 @@ export default Vue.extend({
         store.commit('breadcrumbs/setBreadcrumbs', {
           breadcrumbs: [
             { url: '/', text: 'ホーム' },
-            { url: '/author', text: 'ユーザー一覧' },
+            { url: '/author/', text: 'ユーザー一覧' },
             {
-              url: `/author/${params.id}`,
+              url: `/author/${params.id}/`,
               text: user.fields.name,
             },
           ],
