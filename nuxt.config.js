@@ -124,7 +124,7 @@ export default {
       lastmod: new Date(),
       changefreq: 'weekly',
     },
-    cacheTime: 1000 * 60 * 60 * 24,
+    cacheTime: 1000 * 60 * 60 * 2,
     exclude: ['/tmp'],
     async routes() {
       return Promise.all([
