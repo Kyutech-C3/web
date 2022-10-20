@@ -122,7 +122,7 @@ export default {
     hostname: process.env.BASE_URL,
     defaults: {
       lastmod: new Date(),
-      changefreq: 'weekly',
+      changefreq: 'always',
     },
     cacheTime: 1000 * 60 * 60 * 24,
     exclude: ['/tmp'],
