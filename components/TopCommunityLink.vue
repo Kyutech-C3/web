@@ -15,7 +15,10 @@
         loop
         name="media"
       >
-        <source :src.prop="community.field.image" type="video/webm" />
+        <source
+          :src.prop="`${community.field.image}?fm=webm&q=50`"
+          type="video/webm"
+        />
         <source :src.prop="community.field.simage" type="video/mp4" />
         <p>ブラウザーが対応していません</p>
       </video>
