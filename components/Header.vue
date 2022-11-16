@@ -11,6 +11,7 @@
             type="image/webp"
             src="@/assets/image/s_logo.webp"
             class="logo"
+            alt="logo"
           />
         </div>
         <div v-if="!isMobile" class="right-contents y-center">
@@ -68,6 +69,7 @@
                   target="_blank"
                   class="contents"
                   :class="{ 'add-line-spacing': isMobile, disable: j === 0 }"
+                  :title="content.text"
                 >
                   <font-awesome-icon
                     :icon="content.icon"
