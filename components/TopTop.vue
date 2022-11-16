@@ -43,7 +43,7 @@
               <div class="img-wrapper">
                 <img
                   type="image"
-                  :src="content.fields.thumbnail.fields.file.url"
+                  :src="`${content.fields.thumbnail.fields.file.url}?fm=webp&q=30`"
                   class="img"
                   rel="preload"
                 />

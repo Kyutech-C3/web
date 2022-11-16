@@ -126,6 +126,7 @@ export default {
   .sentence {
     position: relative;
     margin-top: 40px;
+    margin-left: 0;
     width: 100%;
     height: auto;
     max-height: none;
