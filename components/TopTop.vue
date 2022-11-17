@@ -39,7 +39,7 @@
             @touchstart="mobileTouchStart"
             @touchend="mobileTouchEnd"
           >
-            <nuxt-link id="link-to-news" :to="`/news/${content.sys.id}/`">
+            <nuxt-link class="link-to-news" :to="`/news/${content.sys.id}/`">
               <div class="img-wrapper">
                 <img
                   type="image"
@@ -405,7 +405,7 @@ export default {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-#link-to-news {
+.link-to-news {
   width: inherit;
   height: inherit;
   position: relative;
@@ -566,7 +566,7 @@ export default {
 }
 
 @media screen and (max-width: $media-query-small-max-width) {
-  #link-to-news {
+  .link-to-news {
     .news-info {
       height: 30%;
       min-height: 60px;

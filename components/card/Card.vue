@@ -3,7 +3,7 @@
     <article class="article">
       <div class="thumbnail-wrapper">
         <img
-          :src="`${card_image}?fm=webp&q=50`"
+          :src="`${card_image}?fm=webp&q=20`"
           alt="thumbnail"
           title="thumbnail"
           class="thumbnail"

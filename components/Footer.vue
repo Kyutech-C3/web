@@ -102,7 +102,7 @@ export default {}
   width: 300px;
   font-family: $font-family-title;
   font-size: $font-size-other-contents-description;
-  color: $white;
+  color: $footer-font-color;
 }
 .inquiry-text-container {
   text-decoration: none;
@@ -129,13 +129,13 @@ export default {}
   padding: 120px 0 56px 0;
   font-size: 20px;
   font-family: $font-family-title;
-  color: #aaaaaae6;
+  color: $footer-font-color;
   text-align: center;
 }
 .angle-icon {
   font-size: 40px;
   font-style: Regular;
-  color: #ffffffe6;
+  color: $footer-font-color;
 }
 .right-container #return-top {
   position: relative;
@@ -143,7 +143,7 @@ export default {}
   font-size: 20px;
   font-family: $font-family-title;
   font-style: Medium;
-  color: #ffffffe6;
+  color: $footer-font-color;
   text-decoration: none;
   scroll-behavior: smooth;
 }

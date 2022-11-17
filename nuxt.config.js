@@ -9,7 +9,7 @@ export default {
   head: {
     title: 'Composite Computer Club [ C3 ]',
     htmlAttrs: {
-      lang: 'jp',
+      lang: 'ja',
       prefix:
         'og: https://ogp.me/ns# fb: https://ogp.me/ns/fb# website: https://ogp.me/ns/website#',
     },
