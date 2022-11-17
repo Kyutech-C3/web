@@ -5,7 +5,7 @@
     :class="[`${color}-style`, { shadow: shadow }]"
   >
     <div class="icon-wrapper">
-      <img :src="icon" class="icon" />
+      <img :src="icon" class="icon" alt="user icon" />
     </div>
     <div v-if="showName" class="name">{{ name }}</div>
   </nuxt-link>
