@@ -1,9 +1,11 @@
 <template>
   <!-- eslint-disable-next-line vue/no-v-html -->
-  <div class="markdown" v-html="$md.render(markdownText)"></div>
+  <div class="markdown" v-html="getHTML()"></div>
 </template>
 
 <script>
+import Prism from '@/plugins/prism'
+
 export default {
   props: {
     markdownText: {
@@ -14,32 +16,51 @@ export default {
       },
     },
   },
+  mounted() {
+    Prism.highlightAll()
+  },
+  methods: {
+    getHTML() {
+      return this.$md.render(this.markdownText)
+    },
+  },
 }
 </script>
 
 <style lang="scss">
 .markdown {
   overflow-wrap: break-word;
-}
-.markdown h1,
-h2,
-h3 {
-  border-bottom: dotted 3px $through-light-blue;
-  padding: 0 20px;
-}
-.markdown hr {
-  border-bottom: dotted 3px $through-light-blue;
-  border-right: none;
-  border-top: none;
-  border-left: none;
-}
-.markdown p img {
-  display: block;
-  width: 80%;
-  height: auto;
-  margin: 0 auto;
-  border-radius: 20px;
-  pointer-events: none;
+  h1,
+  h2,
+  h3 {
+    border-bottom: dotted 3px $through-light-blue;
+    padding: 0 20px;
+    margin: 40px 0 10px 0;
+  }
+  p {
+    line-height: 4rem;
+    code {
+      background-color: #f0f0f0;
+      padding: 1px 5px;
+      border-radius: 5px;
+      color: #905;
+    }
+    img {
+      display: block;
+      width: 60vw;
+      max-width: 80%;
+      height: auto;
+      margin: 20px auto;
+      border-radius: 20px;
+      pointer-events: none;
+    }
+  }
+  hr {
+    border-bottom: dotted 3px $through-light-blue;
+    border-right: none;
+    border-top: none;
+    border-left: none;
+  }
 }
 table {
   border-collapse: collapse;
