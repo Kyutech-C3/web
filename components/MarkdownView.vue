@@ -37,6 +37,9 @@ export default {
     padding: 0 20px;
     margin: 40px 0 10px 0;
   }
+  pre {
+    border-radius: 10px;
+  }
   p {
     line-height: 4rem;
     code {
