@@ -48,4 +48,6 @@ import 'prismjs/components/prism-tsx'
 import 'prismjs/components/prism-markup-templating'
 import 'prismjs/components/prism-php'
 
+// 機能拡張
+
 export default Prism
