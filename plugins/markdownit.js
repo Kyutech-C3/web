@@ -1,6 +1,7 @@
 import MarkdownIt from 'markdown-it'
-import mk from 'markdown-it-katex'
 import 'katex/dist/katex.min.css'
+import katex from 'katex'
+import tm from 'markdown-it-texmath'
 
 export default ({ app }, inject) => {
   const md = new MarkdownIt({
@@ -24,7 +25,11 @@ export default ({ app }, inject) => {
     return defaultRender(tokens, idx, options, env, self)
   }
 
-  md.use(mk)
+  md.use(tm, {
+    engine: katex,
+    delimiters: 'dollars',
+    katexOptions: { macros: { '\\RR': '\\mathbb{R}' } },
+  })
 
   inject('md', md)
 }
