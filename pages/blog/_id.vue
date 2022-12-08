@@ -37,9 +37,9 @@ export default Vue.extend({
         store.commit('breadcrumbs/setBreadcrumbs', {
           breadcrumbs: [
             { url: '/', text: 'ホーム' },
-            { url: '/blog/', text: 'ブログ一覧' },
+            { url: '/blog', text: 'ブログ一覧' },
             {
-              url: `/blog/${params.id}/`,
+              url: `/blog/${params.id}`,
               text: blog.fields.title,
             },
           ],
@@ -78,7 +78,7 @@ export default Vue.extend({
         {
           hid: 'og:url',
           property: 'og:url',
-          content: `${process.env.BASE_URL}blog/${this.$route.params.id}/`,
+          content: `${process.env.BASE_URL}blog/${this.$route.params.id}`,
         },
         {
           hid: 'og:title',
@@ -101,7 +101,7 @@ export default Vue.extend({
         {
           hid: 'canonical',
           rel: 'canonical',
-          href: `${process.env.BASE_URL}blog/${this.$route.params.id}/`,
+          href: `${process.env.BASE_URL}blog/${this.$route.params.id}`,
         },
       ],
     }

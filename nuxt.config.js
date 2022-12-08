@@ -162,6 +162,8 @@ export default {
 
   router: {
     base: '/',
+    trailingSlash: false,
+    middleware: 'redirect',
   },
 
   generate: {

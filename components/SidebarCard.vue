@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link :to="`/${type}/${id}/`" class="sidebar-card">
+  <nuxt-link :to="`/${type}/${id}`" class="sidebar-card">
     <div class="img-wp"><img :src="img" /></div>
     <div><slot></slot></div>
   </nuxt-link>

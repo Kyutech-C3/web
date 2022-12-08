@@ -3,7 +3,7 @@
     <div
       class="img-wrapper"
       :class="{ 'order-2': id % 2 === 1 }"
-      @click="$router.push(`community/${community.id}/`)"
+      @click="$router.push(`community/${community.id}`)"
     >
       <video
         :poster="require('@/assets/image/loading.webp')"
@@ -32,7 +32,7 @@
       </div>
       <div class="community-link">
         <base-button
-          :to="`/community/${community.id}/`"
+          :to="`/community/${community.id}`"
           :animation="changeAnimation(id % 2)"
         >
           詳しく見る

@@ -33,13 +33,13 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
-  overflow-x: hidden !important;
 }
 .page {
   margin-top: min(40vw, 120px) !important;
 }
 body {
-  width: 100%;
+  overflow-x: hidden;
+  width: 100vw;
   margin: 0;
 }
 </style>
