@@ -26,7 +26,7 @@ export default {
       await store.commit('breadcrumbs/setBreadcrumbs', {
         breadcrumbs: [
           { url: '/', text: 'ホーム' },
-          { url: '/blog/', text: 'ブログ一覧' },
+          { url: '/blog', text: 'ブログ一覧' },
         ],
       })
       return Promise.all([
@@ -72,7 +72,7 @@ export default {
         {
           hid: 'og:url',
           property: 'og:url',
-          content: `${process.env.BASE_URL}blog/`,
+          content: `${process.env.BASE_URL}blog`,
         },
         {
           hid: 'og:title',

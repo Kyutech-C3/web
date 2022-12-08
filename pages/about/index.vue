@@ -29,7 +29,7 @@ export default {
         store.commit('breadcrumbs/setBreadcrumbs', {
           breadcrumbs: [
             { url: '/', text: 'ホーム' },
-            { url: '/about/', text: 'C3について' },
+            { url: '/about', text: 'C3について' },
           ],
         })
         return {

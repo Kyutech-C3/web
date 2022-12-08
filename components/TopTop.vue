@@ -39,7 +39,7 @@
             @touchstart="mobileTouchStart"
             @touchend="mobileTouchEnd"
           >
-            <nuxt-link class="link-to-news" :to="`/news/${content.sys.id}/`">
+            <nuxt-link class="link-to-news" :to="`/news/${content.sys.id}`">
               <div class="img-wrapper">
                 <img
                   type="image"
