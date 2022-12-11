@@ -24,6 +24,7 @@ export default {
   },
 }
 </script>
+
 <style lang="scss">
 html {
   font-family: $font-family-contens;
@@ -34,13 +35,24 @@ html {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
 }
-.page {
-  margin-top: min(40vw, 120px) !important;
-}
+
 body {
   overflow-x: hidden;
   width: 100vw;
   margin: 0;
+  --header-max-height: 90px;
+  --header-height: 12vw;
+  --header-min-height: 50px;
+  --header-top: max(min(2vw, 20px), 10px);
+}
+
+.page {
+  margin-top: calc(
+    max(
+        min(var(--header-height), var(--header-max-height)),
+        var(--header-min-height)
+      ) + var(--header-top) * 2
+  );
 }
 </style>
 <style lang="scss" scoped>
@@ -57,7 +69,7 @@ body {
 // transition
 .v-enter-active,
 .v-leave-active {
-  transition: opacity 0.5s;
+  transition: opacity 0.2s;
 }
 .v-enter,
 .v-leave-to {

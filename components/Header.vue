@@ -2,7 +2,7 @@
   <div class="header">
     <div class="header-wrapper">
       <div class="header-container y-center">
-        <div class="left-contents y-center">
+        <div class="header-container__left y-center">
           <font-awesome-icon
             :icon="isShowContents ? 'times' : 'bars'"
             @click="showContents()"
@@ -14,7 +14,7 @@
             alt="logo"
           />
         </div>
-        <div v-if="!isMobile" class="right-contents y-center">
+        <div v-if="!isMobile" class="header-container__right y-center">
           <div class="contact">
             <nuxt-link to="/contact/" class="disable">
               <font-awesome-icon icon="envelope-open-text" class="disable" />
@@ -46,7 +46,10 @@
         <div
           v-show="isShowContents"
           class="main-container"
-          :class="{ 'add-height': isMobile }"
+          :class="[
+            { 'add-height': isMobile },
+            [isShowContents ? 'show' : 'hide'],
+          ]"
         >
           <div class="contents-wrapper y-center">
             <ul v-for="(contents, i) in allContents" :key="i">
@@ -68,14 +71,18 @@
                   :href="content.link"
                   target="_blank"
                   class="contents"
-                  :class="{ 'add-line-spacing': isMobile, disable: j === 0 }"
+                  :class="{ 'add-line-spacing': isMobile }"
                   :title="content.text"
                 >
                   <font-awesome-icon
                     :icon="content.icon"
-                    :class="{ 'font-awesome-size': isMobile, disable: j === 0 }"
+                    :class="{ 'font-awesome-size': isMobile }"
                   />
-                  <div :class="{ disable: j === 0 }">{{ content.text }}</div>
+                  <div>{{ content.text }}</div>
+                  <font-awesome-icon
+                    :icon="['fas', 'arrow-up-right-from-square']"
+                    class="contents__out-link"
+                  />
                 </a>
               </li>
             </ul>
@@ -172,8 +179,8 @@ export default {
         ],
         [
           {
-            text: 'Toybox',
-            link: '/',
+            text: 'ToyBox',
+            link: 'https://toybox.compositecomputer.club/',
             icon: 'box-open',
           },
           {
@@ -244,40 +251,47 @@ export default {
   max-width: 1500px;
   width: 100%;
   position: fixed;
-  top: 20px;
+  top: var(--header-top);
   left: 50%;
   transform: translateX(-50%);
   z-index: 99;
 }
 .header-wrapper {
+  position: relative;
   width: 95%;
   background-color: $white;
   margin: auto;
   box-shadow: 0px 2px 8px #00000033;
-  border-radius: 45px;
+  border-radius: max(min(6vw, 45px), 25px);
 }
 
 // ヘッダー部分
 .header-container {
-  height: 90px;
-  padding: 0 50px;
+  position: relative;
+  max-height: var(--header-max-height);
+  height: var(--header-height);
+  min-height: var(--header-min-height);
+  padding: 0 max(min(7vw, 50px), 25px);
   justify-content: space-between;
   font-size: $font-size-header;
 
-  .left-contents {
-    height: inherit;
+  &__left {
     svg {
       width: 40px;
-      height: 100%;
-      margin: auto;
-      margin-right: min(7vw, 60px);
+      max-height: calc(var(--header-max-height) * 0.6);
+      height: calc(var(--header-height) * 0.6);
+      min-height: calc(var(--header-min-height) * 0.6);
+      margin-right: min(5vw, 50px);
       cursor: pointer;
     }
-    img {
-      height: 60%;
+    .logo {
+      max-height: calc(var(--header-max-height) * 0.6);
+      height: calc(var(--header-height) * 0.6);
+      min-height: calc(var(--header-min-height) * 0.6);
+      width: auto;
     }
   }
-  .right-contents {
+  &__right {
     svg {
       font-size: 28px;
       margin-right: 15px;
@@ -313,6 +327,7 @@ export default {
 // ヘッダー展開時の中身
 .main-container {
   padding: 0 0 20px 0;
+  overflow: hidden;
 
   .contents-wrapper {
     padding: 20px 50px 0 50px;
@@ -326,6 +341,10 @@ export default {
       color: $base-font-color;
       cursor: pointer;
       position: relative;
+
+      &__out-link {
+        font-size: xx-small;
+      }
     }
     .contents::after {
       position: absolute;
@@ -416,11 +435,6 @@ export default {
   height: 30px;
 }
 
-.logo {
-  height: 60%;
-  width: auto;
-}
-
 .y-center {
   display: flex;
   align-items: center;
@@ -443,24 +457,9 @@ svg {
   color: $base-font-color;
 }
 
-@media screen and (max-width: $media-query-s-small-max-width) {
-  .header-wrapper {
-    border-radius: 30px;
-    .header-container {
-      height: 60px;
-      .left-contents svg {
-        width: 30px;
-      }
-    }
-  }
-  .main-container .contents-wrapper {
-    padding: 20px 30px 0 30px;
-  }
-}
-
 // transition
 .v-enter-active {
-  transition: opacity 1s;
+  transition: opacity 0.5s linear;
 }
 .v-enter {
   opacity: 0;
@@ -471,5 +470,11 @@ svg {
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
+}
+
+@media screen and (max-width: $media-query-s-small-max-width) {
+  .main-container .contents-wrapper {
+    padding: 20px 30px 0 30px;
+  }
 }
 </style>
