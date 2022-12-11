@@ -3,33 +3,21 @@
     <div class="title">ブログ</div>
     <div class="carousel-nav">
       <hooper :settings="hooperSettings">
-        <slide v-for="(item, idx) in blog" :key="idx">
-          <nuxt-link class="link-to-blog" :to="`blog/${item.sys.id}`">
-            <img
-              type="image"
-              :src="`${item.fields.thumbnail.fields.file.url}?fm=webp&q=20`"
-              :alt="`${item.fields.title} サムネイル`"
-              loading="lazy"
-            />
-            <div class="blog-info">
-              <div class="blog-title">{{ item.fields.title }}</div>
-              <div class="blog-tags">
-                <div
-                  v-for="(tag, index) in item.fields.tags"
-                  :key="index"
-                  class="link"
-                >
-                  <tag :tag="tag.fields.name" class="tag" />
-                </div>
-              </div>
-              <users :users="item.fields.user" :color="'white'" class="users" />
-              <div class="blog-date">
-                {{ dateFormatter(item.sys.updatedAt) }}
-              </div>
-            </div>
-          </nuxt-link>
+        <slide v-for="(content, idx) in blog" :key="idx">
+          <carousel-item
+            :link-url="`/news/${content.sys.id}`"
+            :image-url="content.fields.thumbnail.fields.file.url"
+            :title="content.fields.title"
+            :tags="content.fields.tags"
+            :users="content.fields.user"
+            :updated-at="content.sys.updatedAt"
+            class-name="link-to-blog"
+          />
         </slide>
-        <hooper-navigation slot="hooper-addons"></hooper-navigation>
+        <hooper-navigation
+          v-if="!$device.isMobileOrTablet"
+          slot="hooper-addons"
+        ></hooper-navigation>
         <hooper-pagination slot="hooper-addons"></hooper-pagination>
       </hooper>
     </div>
@@ -46,9 +34,8 @@ import {
 } from 'hooper'
 import 'hooper/dist/hooper.css'
 
-import Tag from '~/components/commons/Tag.vue'
-import Users from '~/components/commons/Users.vue'
 import BaseButton from '@/components/commons/BaseButton.vue'
+import CarouselItem from '~/components/commons/CarouselItem.vue'
 
 export default {
   components: {
@@ -56,9 +43,8 @@ export default {
     Slide,
     HooperPagination,
     HooperNavigation,
-    Tag,
-    Users,
     BaseButton,
+    CarouselItem,
   },
   props: {
     blog: {
@@ -78,6 +64,8 @@ export default {
         wheelControl: false,
         hoverPause: false,
         autoPlay: true,
+        mouseDrag: false,
+        touchDrag: true,
         playSpeed: 5000,
         transition: 1000,
       },
@@ -138,6 +126,8 @@ export default {
 }
 ::v-deep .hooper-list {
   border-radius: 20px;
+  overflow: hidden;
+  isolation: isolate;
 }
 ::v-deep .link-to-blog-list {
   display: flex;
@@ -241,7 +231,7 @@ span {
   }
 }
 ::v-deep .hooper-pagination {
-  bottom: max(-50px, -6vw);
+  bottom: max(-35px, -6vw);
 }
 ::v-deep .hooper-indicator {
   margin: 0 min(20px, 1.5vw);
@@ -296,6 +286,8 @@ span {
   .carousel-nav {
     width: 100%;
     height: min(60vw, 680px);
+    overflow: hidden;
+    isolation: isolate;
   }
   .hooper img {
     width: 100%;
@@ -303,16 +295,14 @@ span {
   }
   ::v-deep .hooper-next svg,
   ::v-deep .hooper-prev svg {
-    /* width: 80px;
-    height: min(50vw, 680px);
-    transform: scale(1); */
-    display: none;
+    width: 80px;
+    height: 100%;
+    transform: scale(1);
   }
   ::v-deep .hooper-next,
   ::v-deep .hooper-prev {
-    /* width: 80px;
-    height: min(50vw, 680px); */
-    display: none;
+    width: 80px;
+    height: 100%;
   }
   ::v-deep .hooper-next {
     right: 0px;
