@@ -1,7 +1,11 @@
 <template>
   <div>
-    <Header ref="header" @masked-screen="isMaskedScreen = !isMaskedScreen" />
-    <Nuxt class="page" />
+    <Header
+      ref="header"
+      @masked-screen="isMaskedScreen = !isMaskedScreen"
+      @change-header-height="handleResize()"
+    />
+    <Nuxt class="page" :style="`--page-top-margin: ${headerHeight}px;`" />
     <transition>
       <div v-show="isMaskedScreen" class="mask" @click="closeHeader()"></div>
     </transition>
@@ -14,6 +18,7 @@ export default {
   data() {
     return {
       isMaskedScreen: false,
+      headerHeight: 0,
     }
   },
   methods: {
@@ -21,6 +26,14 @@ export default {
       this.isMaskedScreen = false
       this.$refs.header.closeHeader()
     },
+    handleResize() {
+      if (this.$refs.header) {
+        this.headerHeight = this.$refs.header.headerHeight
+      }
+    },
+  },
+  mounted() {
+    this.handleResize()
   },
 }
 </script>
@@ -47,12 +60,7 @@ body {
 }
 
 .page {
-  margin-top: calc(
-    max(
-        min(var(--header-height), var(--header-max-height)),
-        var(--header-min-height)
-      ) + var(--header-top) * 2
-  );
+  margin-top: calc(var(--page-top-margin) + var(--header-top) * 2);
 }
 </style>
 <style lang="scss" scoped>
