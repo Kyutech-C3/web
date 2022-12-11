@@ -7,7 +7,7 @@
           <nuxt-link id="link-to-blog" :to="`blog/${item.sys.id}`">
             <img
               type="image"
-              :src="`${item.fields.thumbnail.fields.file.url}?fm=webm&q=30`"
+              :src="`${item.fields.thumbnail.fields.file.url}?fm=webp&q=20`"
               loading="lazy"
             />
             <div class="blog-info">

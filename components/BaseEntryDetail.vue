@@ -5,7 +5,12 @@
     <div class="page-content">
       <div class="entry-detail">
         <div class="image-wrapper">
-          <img type="image" :src="img" class="img" loading="lazy" />
+          <img
+            type="image"
+            :src="img + '?fm=webp&q=50'"
+            class="img"
+            loading="lazy"
+          />
         </div>
         <div class="title">{{ title }}</div>
         <div class="tags">
