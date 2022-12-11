@@ -64,8 +64,10 @@
 </template>
 
 <script>
+import BaseBreadcrumbs from '~/components/commons/BaseBreadcrumbs.vue'
+
 export default {
-  // components: { Header, Footer },
+  components: { BaseBreadcrumbs },
   data() {
     return {
       // value

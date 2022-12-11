@@ -1,6 +1,6 @@
 <template>
   <nuxt-link :to="`/${type}/${id}`" class="sidebar-card">
-    <div class="img-wp"><img :src="img" /></div>
+    <div class="img-wp"><img :src="`${img}?fm=webp&q=20`" /></div>
     <div><slot></slot></div>
   </nuxt-link>
 </template>

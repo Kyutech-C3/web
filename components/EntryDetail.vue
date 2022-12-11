@@ -5,7 +5,12 @@
     <div class="page-content">
       <div class="entry-detail">
         <div class="image-wrapper">
-          <img type="image" :src="img" class="img" loading="lazy" />
+          <img
+            type="image"
+            :src="img + '?fm=webp&q=50'"
+            class="img"
+            loading="lazy"
+          />
         </div>
         <div class="title">{{ title }}</div>
         <div class="tags">
@@ -32,10 +37,11 @@
 </template>
 
 <script>
-import MarkdownView from '~/components/MarkdownView.vue'
-import Sidebar from '~/components/Sidebar.vue'
-import Tag from '~/components/Tag.vue'
-import Users from '~/components/Users.vue'
+import MarkdownView from '~/components/commons/MarkdownView.vue'
+import Sidebar from '~/components/sidebar/Sidebar.vue'
+import Tag from '~/components/commons/Tag.vue'
+import Users from '~/components/commons/Users.vue'
+import BaseBreadcrumbs from '~/components/commons/BaseBreadcrumbs.vue'
 
 export default {
   components: {
@@ -43,6 +49,7 @@ export default {
     Sidebar,
     Tag,
     Users,
+    BaseBreadcrumbs,
   },
   props: {
     pageName: {

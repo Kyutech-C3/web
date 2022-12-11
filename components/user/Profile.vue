@@ -1,7 +1,12 @@
 <template>
   <div class="profile">
     <div class="icon-wrapper">
-      <img type="image" :src="image" alt="icon" loading="lazy" />
+      <img
+        type="image"
+        :src="`${image}?fm=webp&q=20`"
+        alt="icon"
+        loading="lazy"
+      />
     </div>
     <div class="name">{{ name }}</div>
     <div class="introduction">{{ introduction }}</div>

@@ -12,7 +12,7 @@
 
 <script>
 import CardList from '~/components/card/CardList.vue'
-import BaseBreadcrumbs from '@/components/BaseBreadcrumbs.vue'
+import BaseBreadcrumbs from '~/components/commons/BaseBreadcrumbs.vue'
 
 import sdkClient from '@/plugins/contentful.js'
 

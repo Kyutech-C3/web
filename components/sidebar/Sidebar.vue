@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import SidebarCard from '~/components/SidebarCard.vue'
+import SidebarCard from '~/components/sidebar/SidebarCard.vue'
 
 export default {
   components: { SidebarCard },
