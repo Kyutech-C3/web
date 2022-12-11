@@ -1,6 +1,6 @@
 <template>
   <div class="blog">
-    <base-entry-detail
+    <entry-detail
       :page-name="'ブログ'"
       :title="blog_item.fields.title"
       :tags="blog_item.fields.tags"
@@ -17,13 +17,13 @@
 <script>
 import Vue from 'vue'
 
-import BaseEntryDetail from '~/components/BaseEntryDetail.vue'
+import EntryDetail from '~/components/EntryDetail.vue'
 
 import sdkClient from '~/plugins/contentful.js'
 
 export default Vue.extend({
   components: {
-    BaseEntryDetail,
+    EntryDetail,
   },
   async asyncData({ store, params, error, payload }) {
     if (payload) {

@@ -12,11 +12,12 @@
 
 <script>
 import CommunityDetail from '@/components/CommunityDetail.vue'
+import BaseBreadcrumbs from '~/components/commons/BaseBreadcrumbs.vue'
 
 import sdkClient from '~/plugins/contentful.js'
 
 export default {
-  components: { CommunityDetail },
+  components: { CommunityDetail, BaseBreadcrumbs },
   async asyncData({ params, store, error, payload }) {
     if (payload) {
       return { community: payload }

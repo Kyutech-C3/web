@@ -1,6 +1,6 @@
 <template>
   <div>
-    <top-top :news="news" :important-news="importantNews" id="top-top" />
+    <top :news="news" :important-news="importantNews" id="top-top" />
     <top-about-c-3 :c3-introduction="c3Introduction" class="component" />
     <top-community-link
       v-for="(community, idx) in eachCommunity"
@@ -14,17 +14,17 @@
 </template>
 
 <script>
-import TopTop from '~/components/TopTop.vue'
-import TopAboutC3 from '~/components/TopAboutC3.vue'
-import TopBlog from '~/components/TopBlog.vue'
-import TopCommunityLink from '~/components/TopCommunityLink.vue'
+import Top from '~/components/top/Top.vue'
+import TopAboutC3 from '~/components/top/AboutC3.vue'
+import TopBlog from '~/components/top/TopBlog.vue'
+import TopCommunityLink from '~/components/top/TopCommunityLink.vue'
 
 import sdkClient from '@/plugins/contentful.js'
 
 export default {
   components: {
     TopAboutC3,
-    TopTop,
+    Top,
     TopCommunityLink,
     TopBlog,
   },

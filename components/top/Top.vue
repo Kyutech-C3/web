@@ -110,8 +110,9 @@ import {
   Navigation as HooperNavigation,
 } from 'hooper'
 import 'hooper/dist/hooper.css'
-import BaseButton from '@/components/BaseButton.vue'
-import Users from '@/components/Users.vue'
+import BaseButton from '@/components/commons/BaseButton.vue'
+import Users from '~/components/commons/Users.vue'
+import Tag from '~/components/commons/Tag.vue'
 
 export default {
   components: {
@@ -121,6 +122,7 @@ export default {
     HooperNavigation,
     BaseButton,
     Users,
+    Tag,
   },
   props: {
     news: {
@@ -229,7 +231,7 @@ export default {
 /*  トップタイトル  */
 /*                 */
 .top-title-text {
-  font-size: min(120px, 6.5vw);
+  font-size: min(120px, 6vw);
   font-weight: 800;
   font-family: $font-family-title;
   display: flex;
@@ -285,6 +287,7 @@ export default {
 .slide {
   position: relative;
   overflow: hidden;
+  isolation: isolate;
 }
 
 .slide a {
@@ -390,6 +393,8 @@ export default {
 .carousel-nav {
   box-shadow: 8px 8px 8px #00000029;
   background: transparent;
+  overflow: hidden;
+  isolation: isolate;
 }
 *:focus {
   outline: none;
@@ -436,8 +441,11 @@ export default {
   .news-info {
     position: absolute;
     width: 100%;
-    height: max(15vw, 160px);
+    height: 15vw;
+    max-height: 160px;
+    min-height: 50px;
     bottom: 0;
+    left: 0;
     background-color: $through-light-blue;
     color: $white;
     display: flex;

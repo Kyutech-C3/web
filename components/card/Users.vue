@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import User from '@/components/User.vue'
+import User from '@/components/commons/User.vue'
 export default {
   components: {
     User,

@@ -13,13 +13,15 @@
 </template>
 
 <script>
-import MarkdownView from '~/components/MarkdownView.vue'
+import MarkdownView from '~/components/commons/MarkdownView.vue'
+import BaseBreadcrumbs from '~/components/commons/BaseBreadcrumbs.vue'
 
 import sdkClient from '~/plugins/contentful.js'
 
 export default {
   components: {
     MarkdownView,
+    BaseBreadcrumbs,
   },
   async asyncData({ store, error }) {
     try {

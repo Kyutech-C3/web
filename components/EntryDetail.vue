@@ -37,10 +37,11 @@
 </template>
 
 <script>
-import MarkdownView from '~/components/MarkdownView.vue'
-import Sidebar from '~/components/Sidebar.vue'
-import Tag from '~/components/Tag.vue'
-import Users from '~/components/Users.vue'
+import MarkdownView from '~/components/commons/MarkdownView.vue'
+import Sidebar from '~/components/sidebar/Sidebar.vue'
+import Tag from '~/components/commons/Tag.vue'
+import Users from '~/components/commons/Users.vue'
+import BaseBreadcrumbs from '~/components/commons/BaseBreadcrumbs.vue'
 
 export default {
   components: {
@@ -48,6 +49,7 @@ export default {
     Sidebar,
     Tag,
     Users,
+    BaseBreadcrumbs,
   },
   props: {
     pageName: {

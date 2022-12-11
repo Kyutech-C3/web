@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import Tag from '~/components/Tag.vue'
+import Tag from '~/components/commons/Tag.vue'
 import Users from '~/components/card/Users.vue'
 
 export default {

@@ -4,10 +4,11 @@
     <div class="carousel-nav">
       <hooper :settings="hooperSettings">
         <slide v-for="(item, idx) in blog" :key="idx">
-          <nuxt-link id="link-to-blog" :to="`blog/${item.sys.id}`">
+          <nuxt-link class="link-to-blog" :to="`blog/${item.sys.id}`">
             <img
               type="image"
               :src="`${item.fields.thumbnail.fields.file.url}?fm=webp&q=20`"
+              :alt="`${item.fields.title} サムネイル`"
               loading="lazy"
             />
             <div class="blog-info">
@@ -45,8 +46,9 @@ import {
 } from 'hooper'
 import 'hooper/dist/hooper.css'
 
-import Tag from '~/components/Tag.vue'
-import Users from '~/components/Users.vue'
+import Tag from '~/components/commons/Tag.vue'
+import Users from '~/components/commons/Users.vue'
+import BaseButton from '@/components/commons/BaseButton.vue'
 
 export default {
   components: {
@@ -56,6 +58,7 @@ export default {
     HooperNavigation,
     Tag,
     Users,
+    BaseButton,
   },
   props: {
     blog: {
@@ -142,7 +145,7 @@ export default {
   align-items: center;
   font-size: large;
 }
-::v-deep #link-to-blog-list-content {
+::v-deep .link-to-blog-list-content {
   position: relative;
   display: flex;
   justify-content: center;
@@ -151,7 +154,7 @@ export default {
   text-decoration: none;
   color: $base-font-color;
 }
-::v-deep #link-to-blog-list-content::after {
+::v-deep .link-to-blog-list-content::after {
   position: absolute;
   bottom: -4px;
   left: 0;
@@ -163,10 +166,10 @@ export default {
   transform-origin: center top;
   transition: transform 0.3s;
 }
-::v-deep #link-to-blog-list-content:hover {
+::v-deep .link-to-blog-list-content:hover {
   color: $black;
 }
-::v-deep #link-to-blog-list-content:hover::after {
+::v-deep .link-to-blog-list-content:hover::after {
   background: $black;
   transform: scale(1, 1);
 }
@@ -177,7 +180,7 @@ span {
 ::v-deep .link-to-blog-list #arrow {
   font-size: 25px;
 }
-#link-to-blog {
+.link-to-blog {
   width: inherit;
   height: inherit;
   position: relative;

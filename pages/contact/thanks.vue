@@ -33,7 +33,10 @@
 </template>
 
 <script>
+import BaseBreadcrumbs from '~/components/commons/BaseBreadcrumbs.vue'
+
 export default {
+  comments: { BaseBreadcrumbs },
   data() {
     return {
       snslinks: [

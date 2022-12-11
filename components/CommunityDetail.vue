@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import MarkdownView from '~/components/MarkdownView.vue'
+import MarkdownView from '~/components/commons/MarkdownView.vue'
 
 export default {
   components: {
