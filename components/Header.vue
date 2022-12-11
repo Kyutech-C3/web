@@ -1,5 +1,5 @@
 <template>
-  <div class="header">
+  <div ref="header" class="header">
     <div class="header-wrapper">
       <div class="header-container y-center">
         <div class="header-container__left y-center">
@@ -132,6 +132,7 @@ export default {
       isMobile: true,
       isShowContentsTitle: true,
       width: 0,
+      headerHeight: 0,
       allContents: [
         [
           {
@@ -203,13 +204,17 @@ export default {
     }
   },
   mounted() {
-    this.handleResize()
+    this.changeHeaderHeightHandler()
     window.addEventListener('resize', this.handleResize)
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.handleResize)
   },
   methods: {
+    changeHeaderHeightHandler() {
+      this.$emit('change-header-height')
+      this.headerHeight = this.$refs.header.getBoundingClientRect().height
+    },
     showContents() {
       this.isShowContents = !this.isShowContents
       this.$emit('masked-screen')
@@ -223,6 +228,7 @@ export default {
       this.$emit('masked-screen')
     },
     handleResize() {
+      this.changeHeaderHeightHandler()
       this.width = window.innerWidth
       if (this.width < 1000) {
         this.isMobile = true
