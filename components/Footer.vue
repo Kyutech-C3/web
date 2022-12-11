@@ -26,26 +26,36 @@
       </div>
       <div class="center-container">
         <div class="icon-container">
-          <a href="/" target="_blank" class="disable">
-            <font-awesome-icon
-              :icon="['fas', 'box-open']"
-              class="icons disable"
-            />
+          <a
+            href="https://toybox.compositecomputer.club/"
+            target="_blank"
+            title="ToyBox"
+          >
+            <font-awesome-icon :icon="['fas', 'box-open']" class="icons" />
           </a>
-          <a href="https://twitter.com/c3_kyutech" target="_blank">
+          <a
+            href="https://twitter.com/c3_kyutech"
+            target="_blank"
+            title="C3 Twitter"
+          >
             <font-awesome-icon :icon="['fab', 'twitter']" class="icons" />
           </a>
           <a
             href="https://www.youtube.com/channel/UCeRY2jujVBYRqmilrCZytFw"
             target="_blank"
+            title="C3 YouTube チャンネル"
           >
             <font-awesome-icon :icon="['fab', 'youtube']" class="icons" />
           </a>
-          <a href="https://github.com/Kyutech-C3" target="_blank">
+          <a
+            href="https://github.com/Kyutech-C3"
+            target="_blank"
+            title="C3 GitHub"
+          >
             <font-awesome-icon :icon="['fab', 'github']" class="icons" />
           </a>
         </div>
-        <div class="copyright">© 2021 C3</div>
+        <div class="copyright">© 2021 - {{ date }} Composite Computer Club</div>
       </div>
       <div class="right-container">
         <a id="return-top" href="#">
@@ -63,7 +73,13 @@
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      date: new Date().getFullYear(),
+    }
+  },
+}
 </script>
 
 <style lang="scss" scoped>
