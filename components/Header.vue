@@ -204,14 +204,14 @@ export default {
     }
   },
   mounted() {
-    this.changeHeaderHeightHandler()
+    this.initHeaderHeight()
     window.addEventListener('resize', this.handleResize)
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.handleResize)
   },
   methods: {
-    changeHeaderHeightHandler() {
+    initHeaderHeight() {
       this.$emit('change-header-height')
       this.headerHeight = this.$refs.header.getBoundingClientRect().height
     },
@@ -228,7 +228,7 @@ export default {
       this.$emit('masked-screen')
     },
     handleResize() {
-      this.changeHeaderHeightHandler()
+      this.initHeaderHeight()
       this.width = window.innerWidth
       if (this.width < 1000) {
         this.isMobile = true
