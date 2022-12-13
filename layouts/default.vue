@@ -3,7 +3,7 @@
     <Header
       ref="header"
       @masked-screen="isMaskedScreen = !isMaskedScreen"
-      @change-header-height="handleResize()"
+      @change-header-height="handleHeaderHeightResize()"
     />
     <Nuxt class="page" :style="`--page-top-margin: ${headerHeight}px;`" />
     <transition>
@@ -21,19 +21,19 @@ export default {
       headerHeight: 0,
     }
   },
+  mounted() {
+    this.handleHeaderHeightResize()
+  },
   methods: {
     closeHeader() {
       this.isMaskedScreen = false
       this.$refs.header.closeHeader()
     },
-    handleResize() {
+    handleHeaderHeightResize() {
       if (this.$refs.header) {
         this.headerHeight = this.$refs.header.headerHeight
       }
     },
-  },
-  mounted() {
-    this.handleResize()
   },
 }
 </script>
@@ -60,7 +60,7 @@ body {
 }
 
 .page {
-  margin-top: calc(var(--page-top-margin) + var(--header-top) * 2);
+  margin-top: calc(var(--page-top-margin) + var(--header-top) * 2) !important;
 }
 </style>
 <style lang="scss" scoped>

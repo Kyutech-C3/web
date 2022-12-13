@@ -28,7 +28,12 @@
           <div>ユーザー：</div>
           <users :users="users" :color="'black'" class="users" />
         </div>
-        <div class="date">更新日：{{ dateFormatter }}</div>
+        <div class="date">
+          投稿日：{{ $dayjs(createdAt).format('YYYY年MM月DD日 HH:mm:ss') }}
+        </div>
+        <div class="date">
+          更新日：{{ $dayjs(updatedAt).format('YYYY年MM月DD日 HH:mm:ss') }}
+        </div>
         <markdown-view :markdown-text="body" />
       </div>
       <sidebar :blogs="recentBlog" :type="type" class="sidebar" />
@@ -87,6 +92,13 @@ export default {
         return ''
       },
     },
+    createdAt: {
+      type: String,
+      required: true,
+      default() {
+        return ''
+      },
+    },
     updatedAt: {
       type: String,
       required: true,
@@ -114,8 +126,9 @@ export default {
     },
   },
   computed: {
-    dateFormatter() {
-      const splitFullDate = this.updatedAt.split('T')
+    dateFormatter(date) {
+      const handleDate = String(date)
+      const splitFullDate = handleDate.split('T')
       const splitDate = splitFullDate[0].split('-')
       const splitTime = splitFullDate[1].split(':')
       return `${splitDate[0]}年${splitDate[1]}月${splitDate[2]}日 ${
