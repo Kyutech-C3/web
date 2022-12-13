@@ -8,6 +8,7 @@
           title="thumbnail"
           class="thumbnail"
         />
+        <div v-if="isNew" class="new-ravel">New</div>
       </div>
       <div v-if="isHoverFlag" class="tag_viewer1"></div>
       <div class="content">
@@ -31,7 +32,10 @@
           <users :users="author" class="user" />
         </div>
         <div class="description">{{ description }}</div>
-        <div class="date">{{ dateFormatter }}</div>
+        <div class="date">
+          <div>作成日：{{ dateFormatter(createdAt) }}</div>
+          <div>更新日：{{ dateFormatter(updatedAt) }}</div>
+        </div>
       </div>
     </article>
   </nuxt-link>
@@ -73,7 +77,11 @@ export default {
       type: String,
       required: true,
     },
-    date: {
+    createdAt: {
+      type: String,
+      required: true,
+    },
+    updatedAt: {
       type: String,
       required: true,
     },
@@ -90,37 +98,55 @@ export default {
     entryURL() {
       return `/${this.entryType}/${this.id}`
     },
-    dateFormatter() {
-      const nowDate = new Date()
-      const splitFullDate = this.date.split('T')
-      const splitDate = splitFullDate[0].split('-')
-      const splitTime = splitFullDate[1].split(':')
-      if (
-        nowDate.getFullYear() === +splitDate[0] &&
-        nowDate.getMonth() + 1 === +splitDate[1] &&
-        nowDate.getDate() === +splitDate[2]
-      ) {
-        if (
-          nowDate.getHours() === +splitTime[0] &&
-          nowDate.getMinutes() === +splitTime[1]
-        ) {
-          return `${nowDate.getSeconds() - +splitTime[2].split('.')[0]} 秒前`
-        } else if (nowDate.getHours() === +splitTime[0]) {
-          return `${nowDate.getMinutes() - +splitTime[1]} 分前`
-        } else {
-          return `${nowDate.getFullYear() - +splitTime[0]} 時間前`
-        }
-      } else {
-        return `${splitDate[0]}年${splitDate[1]}月${splitDate[2]}日 ${
-          splitTime[0]
-        }:${splitTime[1]}:${splitTime[2].split('.')[0]}`
+    isNew() {
+      const now = this.$dayjs()
+      const dayDiff = now.diff(this.createdAt, 'day')
+      return dayDiff < 1
+    },
+  },
+  methods: {
+    dateFormatter(date) {
+      let defaultFormat = 'MM月DD日 HH:mm:ss'
+      const now = this.$dayjs()
+      const secondDiff = now.diff(date, 'second')
+      if (secondDiff < 60) {
+        return secondDiff + ' 秒前'
       }
+      const minuteDiff = Math.floor(now.diff(date, 'minute'))
+      if (minuteDiff < 60) {
+        return minuteDiff + ' 分前'
+      }
+      const hourDiff = Math.floor(now.diff(date, 'hour'))
+      if (hourDiff < 6) {
+        return hourDiff + ' 時前'
+      }
+
+      if (now.format('YYYY') !== this.$dayjs(date).format('YYYY')) {
+        defaultFormat = 'YYYY年' + defaultFormat
+      }
+      return this.$dayjs(date).format(defaultFormat)
     },
   },
 }
 </script>
 
 <style lang="scss" scoped>
+.new-ravel {
+  color: red;
+  font-size: medium;
+  font-weight: bold;
+  position: absolute;
+  left: 0px;
+  top: 20px;
+  z-index: 40;
+  border-radius: 0 7px 7px 0;
+  background-color: #fffc;
+  padding: 2px 10px;
+  -webkit-filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.2));
+  -moz-filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.2));
+  -ms-filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.2));
+}
 .card-link {
   text-decoration: none;
   color: #000000;

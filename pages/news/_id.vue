@@ -6,6 +6,7 @@
       :tags="news_item.fields.tags"
       :img="news_item.fields.thumbnail.fields.file.url"
       :body="news_item.fields.body"
+      :created-at="news_item.sys.createdAt"
       :updated-at="news_item.sys.updatedAt"
       :recent-blog="recent_news"
       :users="news_item.fields.user"

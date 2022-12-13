@@ -9,7 +9,8 @@
       :tags="card_item.fields.tags"
       :description="card_item.fields.digest"
       :card_image="card_item.fields.thumbnail.fields.file.url"
-      :date="card_item.sys.updatedAt"
+      :created-at="card_item.sys.createdAt"
+      :updated-at="card_item.sys.updatedAt"
       :entryType="entryType"
     />
   </div>
