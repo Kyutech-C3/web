@@ -32,14 +32,11 @@ export default {
       return Promise.all([
         await sdkClient.getEntries({
           content_type: 'blog',
+          order: '-sys.createdAt',
         }),
       ]).then(([blog]) => {
-        const resEntryList = []
-        for (let i = 0; i < blog.items.length; i++) {
-          resEntryList.push(blog.items[i])
-        }
         return {
-          entry_list: resEntryList,
+          entry_list: blog.items,
         }
       })
     } catch (e) {
