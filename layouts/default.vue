@@ -21,6 +21,9 @@ export default {
       headerHeight: 0,
     }
   },
+  mounted() {
+    this.handleHeaderHeightResize()
+  },
   methods: {
     closeHeader() {
       this.isMaskedScreen = false
@@ -31,9 +34,6 @@ export default {
         this.headerHeight = this.$refs.header.headerHeight
       }
     },
-  },
-  mounted() {
-    this.handleHeaderHeightResize()
   },
 }
 </script>

@@ -3,7 +3,7 @@
     <article class="article">
       <div class="thumbnail-wrapper">
         <img
-          :src="`${card_image}?fm=webp&q=20`"
+          :src="`${cardImage}?fm=webp&q=20`"
           alt="thumbnail"
           title="thumbnail"
           class="thumbnail"
@@ -21,10 +21,8 @@
           >
             <Tag
               v-for="tag in tags"
-              extraSmall
-              outline
-              :tag="tag.fields.name"
               :key="tag.sys.name"
+              :tag="tag.fields.name"
             />
           </div>
         </div>
@@ -46,16 +44,14 @@ import Tag from '~/components/commons/Tag.vue'
 import Users from '~/components/card/Users.vue'
 
 export default {
-  data() {
-    return {
-      style: true,
-      isHoverFlag: false,
-    }
+  components: {
+    Tag,
+    Users,
   },
   props: {
     id: {
       type: String,
-      require: true,
+      required: true,
     },
     title: {
       type: String,
@@ -73,7 +69,7 @@ export default {
       type: String,
       required: true,
     },
-    card_image: {
+    cardImage: {
       type: String,
       required: true,
     },
@@ -90,9 +86,11 @@ export default {
       required: true,
     },
   },
-  components: {
-    Tag,
-    Users,
+  data() {
+    return {
+      style: true,
+      isHoverFlag: false,
+    }
   },
   computed: {
     entryURL() {
