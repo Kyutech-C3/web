@@ -1,9 +1,9 @@
 <template>
-  <div class="page">
+  <div class="entry">
     <base-breadcrumbs class="detail-breadcrumbs" />
-    <div class="page-name">{{ pageName }}</div>
-    <div class="page-content">
-      <div class="entry-detail">
+    <div class="entry__name">C3 {{ pageName }}</div>
+    <div class="entry__content">
+      <div class="entry__detail">
         <div class="image-wrapper">
           <img
             type="image"
@@ -13,16 +13,18 @@
           />
         </div>
         <div class="title">{{ title }}</div>
-        <div class="tags">
-          <div>タグ：</div>
-          <nuxt-link
-            v-for="(tag, index) in tags"
-            :key="index"
-            :to="`/${type}?tag=${tag.fields.name}`"
-            class="link"
-          >
-            <tag :tag="tag.fields.name" class="tag" />
-          </nuxt-link>
+        <div class="tags-wrapper">
+          <div class="tags-title">タグ：</div>
+          <div class="tags">
+            <nuxt-link
+              v-for="(tag, index) in tags"
+              :key="index"
+              :to="`/${type}?tag=${tag.fields.name}`"
+              class="link"
+            >
+              <tag :tag="tag.fields.name" class="tag" />
+            </nuxt-link>
+          </div>
         </div>
         <div class="users-wrapper">
           <div>ユーザー：</div>
@@ -125,111 +127,124 @@ export default {
       required: true,
     },
   },
-  computed: {
-    dateFormatter(date) {
-      const handleDate = String(date)
-      const splitFullDate = handleDate.split('T')
-      const splitDate = splitFullDate[0].split('-')
-      const splitTime = splitFullDate[1].split(':')
-      return `${splitDate[0]}年${splitDate[1]}月${splitDate[2]}日 ${
-        splitTime[0]
-      }:${splitTime[1]}:${splitTime[2].split('.')[0]}`
-    },
-  },
 }
 </script>
 
 <style lang="scss" scoped>
-.page {
+.entry {
   padding: 10px 0 80px 0;
-}
-.page-content {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  color: $base-font-color;
-}
-.entry-detail {
-  width: 63vw;
-  max-width: 1000px;
-  margin-left: 5vw;
-}
-.page-name {
-  font-size: $font-size-other-title;
-  color: $base-font-color;
-  margin: 0 7vw 2vw 7vw;
+
+  &__name {
+    font-size: $font-size-other-title;
+    color: $base-font-color;
+    margin: 0 7vw 2vw 7vw;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    color: $base-font-color;
+  }
+
+  &__detail {
+    width: 63vw;
+    max-width: 1000px;
+    margin-left: 5vw;
+
+    .image-wrapper {
+      position: relative;
+      box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.3);
+      border-radius: 20px;
+      width: 100%;
+      height: 40vw;
+      max-height: 600px;
+      overflow: hidden;
+      .img {
+        height: 100%;
+        position: absolute;
+        object-fit: cover;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+      }
+    }
+
+    .title {
+      overflow-wrap: break-word;
+      font-size: $font-size-other-contents-title;
+      width: 100%;
+      margin: 30px 0 0 0;
+      font-weight: bold;
+    }
+    .tags-wrapper {
+      width: 100%;
+
+      .tags-title {
+        min-width: 50px;
+      }
+
+      .tags {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
+        .link {
+          margin: 1px 0;
+          text-decoration: none;
+          color: $black;
+          .tag {
+            margin: 0 3px;
+            cursor: pointer;
+            --height: 25px;
+            color: $gray;
+          }
+        }
+      }
+    }
+    .users-wrapper {
+      .users {
+        justify-content: flex-start;
+      }
+    }
+
+    .markdown {
+      font-size: $font-size-other-contents-description;
+      margin: 40px 7% 0 7%;
+    }
+
+    .tags-wrapper,
+    .users-wrapper {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    .tags-wrapper,
+    .users-wrapper,
+    .date {
+      margin-top: 10px;
+    }
+    .users-wrapper div,
+    .tags-wrapper,
+    .date {
+      font-size: $font-size-other-contents-description;
+      width: fit-content;
+    }
+  }
 }
 .detail-breadcrumbs {
   margin: 0 7vw;
 }
-.image-wrapper {
-  position: relative;
-  box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.3);
-  border-radius: 20px;
-  width: 100%;
-  height: 40vw;
-  max-height: 600px;
-  overflow: hidden;
-}
-.title {
-  overflow-wrap: break-word;
-  font-size: $font-size-other-contents-title;
-  width: 100%;
-  margin: 30px 0 0 0;
-  font-weight: bold;
-}
-.tags,
-.users-wrapper {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-.tags,
-.users-wrapper,
-.date {
-  margin-top: 10px;
-}
-.link {
-  text-decoration: none;
-  color: $black;
-}
-.tag {
-  margin: 0 3px;
-  cursor: pointer;
-  --height: 25px;
-  color: $gray;
-}
-.users-wrapper div,
-.tags div,
-.date {
-  font-size: $font-size-other-contents-description;
-  width: fit-content;
-}
-.users {
-  justify-content: flex-start;
-  width: 100%;
-}
-.img {
-  height: 100%;
-  position: absolute;
-  object-fit: cover;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-}
-.markdown {
-  font-size: $font-size-other-contents-description;
-  margin: 40px 7% 0 7%;
-}
+
 .sidebar {
   margin-left: 3vw;
   width: 300px;
 }
 
 @media screen and (max-width: 1285px) {
-  .entry-detail {
+  .entry__detail {
     width: 90%;
     margin: 0;
   }
@@ -248,7 +263,7 @@ export default {
   }
 }
 @media screen and (max-width: $media-query-small-max-width) {
-  .entry-detail {
+  .entry__detail {
     width: 95%;
   }
   .image-wrapper {
