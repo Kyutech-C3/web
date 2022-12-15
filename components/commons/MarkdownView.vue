@@ -56,6 +56,8 @@ export default {
       margin: 20px auto;
       border-radius: 20px;
       pointer-events: none;
+      border: 1.5px solid;
+      border-color: #f5f5f5;
     }
   }
   hr {
@@ -63,6 +65,11 @@ export default {
     border-right: none;
     border-top: none;
     border-left: none;
+  }
+  iframe {
+    margin: 0 auto;
+    display: block;
+    border-radius: 20px;
   }
 }
 table {
