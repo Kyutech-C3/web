@@ -205,10 +205,13 @@ export default {
   },
   mounted() {
     this.initHeaderHeight()
+    this.handleResize()
     window.addEventListener('resize', this.handleResize)
+    window.addEventListener('resize', this.initHeaderHeight)
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.handleResize)
+    window.removeEventListener('resize', this.initHeaderHeight)
   },
   methods: {
     initHeaderHeight() {
@@ -228,7 +231,6 @@ export default {
       this.$emit('masked-screen')
     },
     handleResize() {
-      this.initHeaderHeight()
       this.width = window.innerWidth
       if (this.width < 1000) {
         this.isMobile = true
