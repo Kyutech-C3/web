@@ -70,6 +70,10 @@ export default {
     margin: 0 auto;
     display: block;
     border-radius: 20px;
+    width: 60vw;
+    height: 35vw;
+    max-width: 80%;
+    max-height: 400px;
   }
 }
 table {
@@ -96,9 +100,14 @@ th {
   h3 {
     padding: 0 5px;
   }
-  .markdown p img {
-    width: 90%;
-    border-radius: 10px;
+  .markdown p img,
+  iframe {
+    width: 90vw !important;
+    height: 50vw !important;
+    border-radius: 10px !important;
+    margin: 2rem auto;
+    max-width: none !important;
+    max-height: none !important;
   }
   .markdown p,
   blockquote {

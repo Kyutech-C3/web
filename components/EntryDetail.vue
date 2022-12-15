@@ -250,11 +250,11 @@ export default {
   }
   .image-wrapper {
     margin: 0 auto;
-    max-width: 920px;
-    height: 58vw;
+    max-width: 920px !important;
+    height: 58vw !important;
   }
   .markdown {
-    margin: 40px 0 0 0;
+    margin: 40px 0 0 0 !important;
   }
   .sidebar {
     margin: 80px 0 0 0;
@@ -267,11 +267,11 @@ export default {
     width: 95%;
   }
   .image-wrapper {
-    height: 60vw;
+    height: 60vw !important;
     border-radius: 15px;
   }
   .markdown {
-    margin: 30px 0 0 0;
+    margin: 30px 0 0 0 !important;
   }
   .sidebar {
     margin: 60px 0 0 0;
