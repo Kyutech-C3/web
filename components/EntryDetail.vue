@@ -7,7 +7,8 @@
         <div class="image-wrapper">
           <img
             type="image"
-            :src="img + '?fm=webp&q=50'"
+            :src="getImageURL"
+            :alt="title + 'サムネイル'"
             class="img"
             loading="lazy"
           />
@@ -125,6 +126,15 @@ export default {
     type: {
       type: String,
       required: true,
+    },
+  },
+  computed: {
+    getImageURL() {
+      if (this.$device.isMobile) {
+        return this.img + '?fm=webp&q=90&w=500'
+      } else {
+        return this.img + '?fm=webp&q=50&w=1000'
+      }
     },
   },
 }
