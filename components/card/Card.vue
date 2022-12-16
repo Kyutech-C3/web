@@ -7,6 +7,7 @@
           alt="thumbnail"
           title="thumbnail"
           class="thumbnail"
+          loading="lazy"
         />
         <div v-if="isNew" class="new-ravel">New</div>
       </div>
