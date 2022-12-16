@@ -241,7 +241,7 @@ export default {
     margin: 0;
     padding: 0;
     width: 70%;
-    font-size: min(32px, 3vw);
+    font-size: clamp(12px, 3vw, 32px);
   }
 
   &__link {
@@ -322,9 +322,7 @@ export default {
     border-radius: 0 12px 12px 0;
 
     a {
-      font-size: 2vw;
-      /* height: min(5vw, 50px); */
-      /* width: min(60vw, 465px); */
+      font-size: max(2vw, 12px);
       width: 94%;
     }
   }

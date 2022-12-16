@@ -1,6 +1,8 @@
 <template>
   <nuxt-link :to="`/${type}/${id}`" class="sidebar-card">
-    <div class="img-wp"><img :src="`${img}?fm=webp&q=20`" /></div>
+    <div class="img-wp">
+      <img :src="`${img}?fm=webp&q=80&w=300`" :alt="title + 'サムネイル'" />
+    </div>
     <div><slot></slot></div>
   </nuxt-link>
 </template>
@@ -23,6 +25,10 @@ export default {
       },
     },
     type: {
+      type: String,
+      required: true,
+    },
+    title: {
       type: String,
       required: true,
     },

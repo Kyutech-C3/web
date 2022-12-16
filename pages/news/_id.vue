@@ -71,7 +71,7 @@ export default Vue.extend({
     return {
       title: this.title,
       htmlAttrs: {
-        lang: 'jp',
+        lang: 'ja',
         prefix:
           'og: https://ogp.me/ns# fb: https://ogp.me/ns/fb# article: https://ogp.me/ns/article#',
       },

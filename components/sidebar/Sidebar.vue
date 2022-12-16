@@ -7,6 +7,7 @@
       :key="idx"
       :img="blog.fields.thumbnail.fields.file.url"
       :type="type"
+      :title="blog.fields.title"
       class="sidebar-card"
     >
       {{ blog.fields.title }}

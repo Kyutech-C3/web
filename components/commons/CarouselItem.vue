@@ -4,7 +4,7 @@
     <div class="img-wrapper">
       <img
         type="image"
-        :src="`${imageUrl}?fm=webp&q=20`"
+        :src="`${imageUrl}?fm=webp&q=70&w=1000`"
         class="img"
         rel="preload"
         alt="img"
