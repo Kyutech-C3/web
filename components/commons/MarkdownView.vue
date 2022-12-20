@@ -103,11 +103,13 @@ th {
   .markdown p img,
   iframe {
     width: 90vw !important;
-    height: 50vw !important;
     border-radius: 10px !important;
     margin: 2rem auto;
     max-width: none !important;
     max-height: none !important;
+  }
+  iframe {
+    height: 50vw !important;
   }
   .markdown p,
   blockquote {
