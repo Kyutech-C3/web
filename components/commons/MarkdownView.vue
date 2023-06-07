@@ -48,17 +48,21 @@ export default {
       border-radius: 5px;
       color: #905;
     }
-    img {
-      display: block;
-      width: 60vw;
-      max-width: 80%;
-      height: auto;
-      margin: 20px auto;
-      border-radius: 20px;
-      pointer-events: none;
-      border: 1.5px solid;
-      border-color: #f5f5f5;
-    }
+  }
+  img {
+    display: block;
+    width: 60vw;
+    max-width: 80%;
+    height: auto;
+    margin: 20px auto;
+    border-radius: 20px;
+    pointer-events: none;
+    border: 1.5px solid;
+    border-color: #f5f5f5;
+  }
+  ul li {
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
   hr {
     border-bottom: dotted 3px $through-light-blue;
@@ -101,8 +105,9 @@ th {
     padding: 0 5px;
   }
   .markdown p img,
+  .markdown ul img,
   iframe {
-    width: 90vw !important;
+    width: 100% !important;
     border-radius: 10px !important;
     margin: 2rem auto;
     max-width: none !important;
@@ -110,6 +115,14 @@ th {
   }
   iframe {
     height: 50vw !important;
+  }
+  .markdown ul {
+    padding-left: 20px;
+
+    li {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
   }
   .markdown p,
   blockquote {
