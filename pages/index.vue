@@ -1,6 +1,6 @@
 <template>
   <div>
-    <top :news="news" :important-news="importantNews" id="top-top" />
+    <top id="top-top" :news="news" :important-news="importantNews" />
     <top-about-c-3 :c3-introduction="c3Introduction" class="component" />
     <top-community-link
       v-for="(community, idx) in eachCommunity"
@@ -9,15 +9,19 @@
       :community="community"
       class="component"
     />
+    <top-work :works="works" class="component" />
     <top-blog :blog="blog" class="component" />
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 import Top from '~/components/top/Top.vue'
 import TopAboutC3 from '~/components/top/AboutC3.vue'
 import TopBlog from '~/components/top/TopBlog.vue'
 import TopCommunityLink from '~/components/top/TopCommunityLink.vue'
+import TopWork from '~/components/top/TopWork.vue'
 
 import sdkClient from '@/plugins/contentful.js'
 
@@ -27,6 +31,7 @@ export default {
     Top,
     TopCommunityLink,
     TopBlog,
+    TopWork,
   },
   async asyncData({ error }) {
     try {
@@ -45,10 +50,10 @@ export default {
           content_type: 'blog',
           limit: 5,
         }),
-      ]).then(([c3Introduction, eachCommunity, news, blog]) => {
+        await axios.get(`${process.env.TOYBOX_API_BASE_URL}/works?limit=30`),
+      ]).then(([c3Introduction, eachCommunity, news, blog, toyboxWork]) => {
         const communities = []
         const selectNews = []
-        const latestNews = []
         for (let i = 0; i < eachCommunity.items.length; i++) {
           communities.push({
             id: eachCommunity.items[i].sys.id,
@@ -65,20 +70,23 @@ export default {
             selectNews.push(news.items[i])
           }
         }
-        for (let i = 0; i < 2; i++) {
-          // 応急処置 ==要修正==
-          if (news.items.length < 2 && i === 1) {
-            latestNews.push(news.items[i - 1])
-          } else {
-            latestNews.push(news.items[i])
+        const latestNews = news.items.slice(0, 5)
+
+        const works = toyboxWork.data.works.map((work) => {
+          return {
+            id: work.id,
+            title: work.title,
+            thumbnail: work.thumbnail.url,
           }
-        }
+        })
+
         return {
           c3Introduction: c3Introduction.items[0].fields.summaryOfIntroduction,
           eachCommunity: communities,
           news: latestNews,
           importantNews: selectNews,
           blog: blog.items,
+          works,
         }
       })
     } catch (e) {
