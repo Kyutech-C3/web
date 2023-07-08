@@ -30,11 +30,31 @@ export default {
 <style lang="scss">
 .markdown {
   overflow-wrap: break-word;
+
+  h2 {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  h3 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  h4 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  h5 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
   h1,
   h2,
   h3 {
     border-bottom: dotted 3px $through-light-blue;
-    padding: 0 20px;
     margin: 40px 0 10px 0;
   }
   pre {
