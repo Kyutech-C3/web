@@ -9,9 +9,9 @@
     />
     <div class="change">
       <div
-        @click="isSelect = 'blog'"
         class="item1"
         :class="{ select: isSelect === 'blog' }"
+        @click="isSelect = 'blog'"
       >
         ブログ
       </div>

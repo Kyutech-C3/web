@@ -17,6 +17,22 @@
 import { mapGetters } from 'vuex'
 
 export default {
+  head() {
+    const hid = `jsonld-${this._uid}`
+    return {
+      script: [
+        {
+          hid,
+          type: 'application/ld+json',
+          innerHTML: JSON.stringify(this.jsonld, null, 2),
+        },
+      ],
+      __dangerouslyDisableSanitizers: ['script'],
+      __dangerouslyDisableSanitizersByTagID: {
+        [hid]: 'innerHTML',
+      },
+    }
+  },
   computed: {
     ...mapGetters('breadcrumbs', ['breadcrumbs']),
     jsonld() {
@@ -34,22 +50,6 @@ export default {
         itemListElement: items,
       }
     },
-  },
-  head() {
-    const hid = `jsonld-${this._uid}`
-    return {
-      script: [
-        {
-          hid,
-          type: 'application/ld+json',
-          innerHTML: JSON.stringify(this.jsonld, null, 2),
-        },
-      ],
-      __dangerouslyDisableSanitizers: ['script'],
-      __dangerouslyDisableSanitizersByTagID: {
-        [hid]: 'innerHTML',
-      },
-    }
   },
 }
 </script>

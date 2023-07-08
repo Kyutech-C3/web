@@ -68,6 +68,14 @@ import BaseBreadcrumbs from '~/components/commons/BaseBreadcrumbs.vue'
 
 export default {
   components: { BaseBreadcrumbs },
+  async asyncData({ store }) {
+    await store.commit('breadcrumbs/setBreadcrumbs', {
+      breadcrumbs: [
+        { url: '/', text: 'ホーム' },
+        { url: '/contact', text: 'お問合せ' },
+      ],
+    })
+  },
   data() {
     return {
       // value
@@ -83,14 +91,6 @@ export default {
       emailComment: '*メールアドレスを入力してください',
       messageComment: '*お問い合わせ内容を入力してください',
     }
-  },
-  async asyncData({ store }) {
-    await store.commit('breadcrumbs/setBreadcrumbs', {
-      breadcrumbs: [
-        { url: '/', text: 'ホーム' },
-        { url: '/contact', text: 'お問合せ' },
-      ],
-    })
   },
   head() {
     return {

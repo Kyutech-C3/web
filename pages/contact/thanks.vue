@@ -37,6 +37,15 @@ import BaseBreadcrumbs from '~/components/commons/BaseBreadcrumbs.vue'
 
 export default {
   comments: { BaseBreadcrumbs },
+  async asyncData({ store }) {
+    await store.commit('breadcrumbs/setBreadcrumbs', {
+      breadcrumbs: [
+        { url: '/', text: 'ホーム' },
+        { url: '/contact', text: 'お問合せ' },
+        { url: '/contact/thanks', text: 'お問合せ完了' },
+      ],
+    })
+  },
   data() {
     return {
       snslinks: [
@@ -62,15 +71,6 @@ export default {
         },
       ],
     }
-  },
-  async asyncData({ store }) {
-    await store.commit('breadcrumbs/setBreadcrumbs', {
-      breadcrumbs: [
-        { url: '/', text: 'ホーム' },
-        { url: '/contact', text: 'お問合せ' },
-        { url: '/contact/thanks', text: 'お問合せ完了' },
-      ],
-    })
   },
   head() {
     return {
