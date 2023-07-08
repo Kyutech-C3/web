@@ -11,6 +11,8 @@ $through-light-blue: #489fd4e0;
 $white: #ffffff;
 $black: #000000;
 
+$bg-hover-color: #efefef;
+
 //Variable for default ui
 
 // Common variable for text
@@ -22,6 +24,12 @@ $font-size-footer: 20px;
 $font-family-title: 'Inter', sans-serif;
 $font-family-contens: '游ゴシック体', YuGothic, '游ゴシック Medium',
   'Yu Gothic Medium', '游ゴシック', 'Yu Gothic', sans-serif;
+
+$h1-font-size: $base_font_size * 4;
+$h2-font-size: $base_font_size * 3.25;
+$h3-font-size: $base_font_size * 2.5;
+$h4-font-size: $base_font_size * 2;
+$h5-font-size: $base_font_size * 1.75;
 
 // Variable for top page text
 $font-size-top-title: $base_font_size * 10;
