@@ -7,12 +7,14 @@
             :icon="isShowContents ? 'times' : 'bars'"
             @click="showContents()"
           />
-          <img
-            type="image/webp"
-            src="@/assets/image/s_logo.webp"
-            class="logo"
-            alt="logo"
-          />
+          <nuxt-link to="/">
+            <img
+              type="image/webp"
+              src="@/assets/image/s_logo.webp"
+              class="logo"
+              alt="logo"
+            />
+          </nuxt-link>
         </div>
         <div v-if="!isMobile" class="header-container__right y-center">
           <div class="contact">
@@ -141,14 +143,14 @@ export default {
             icon: 'home',
           },
           {
-            text: 'お知らせ',
-            link: '/news',
-            icon: 'info-circle',
-          },
-          {
             text: 'C3について',
             link: '/about',
             icon: 'users',
+          },
+          {
+            text: 'お知らせ',
+            link: '/news',
+            icon: 'info-circle',
           },
           {
             text: 'ブログ',
@@ -163,7 +165,7 @@ export default {
             icon: 'gamepad',
           },
           {
-            text: 'CG',
+            text: '3DCG',
             link: '/community/5Ay58j7CHdYFqKShRbr5tD',
             icon: 'cubes',
           },
@@ -173,9 +175,14 @@ export default {
             icon: 'laptop-code',
           },
           {
-            text: 'MEDIA_ART',
+            text: '2DCG',
             link: '/community/1q0aXzj2r1O0pC5soNRQok',
             icon: 'palette',
+          },
+          {
+            text: 'MUSIC',
+            link: '/community/mlIRfpRrISVzKc6K0l181',
+            icon: 'music',
           },
         ],
         [
@@ -263,6 +270,7 @@ export default {
   left: 50%;
   transform: translateX(-50%);
   z-index: 99;
+  transition: transform 0.5s ease-in-out;
 }
 .header-wrapper {
   position: relative;
@@ -286,10 +294,10 @@ export default {
   &__left {
     svg {
       width: 40px;
-      max-height: calc(var(--header-max-height) * 0.6);
-      height: calc(var(--header-height) * 0.6);
-      min-height: calc(var(--header-min-height) * 0.6);
-      margin-right: min(5vw, 50px);
+      max-height: calc(var(--header-max-height) * 0.5);
+      height: calc(var(--header-height) * 0.5);
+      min-height: calc(var(--header-min-height) * 0.5);
+      margin-right: min(5vw, 30px);
       cursor: pointer;
     }
     .logo {
@@ -301,11 +309,11 @@ export default {
   }
   &__right {
     svg {
-      font-size: 28px;
+      font-size: 24px;
       margin-right: 15px;
     }
     .contact {
-      font-size: 24px;
+      font-size: 20px;
       margin-right: 30px;
 
       div {
@@ -314,8 +322,8 @@ export default {
     }
     .language {
       width: 132px;
-      height: 48px;
-      font-size: 24px;
+      height: 44px;
+      font-size: 20px;
       justify-content: center;
       box-shadow: 0px 2px 8px #00000033;
       border-radius: 60px;
@@ -341,6 +349,8 @@ export default {
     padding: 20px 50px 0 50px;
     justify-content: space-around;
     border-top: solid 1px $light-gray;
+    display: flex;
+    align-items: flex-start;
 
     .contents {
       height: 30px;
@@ -365,6 +375,7 @@ export default {
       transform: scale(0, 1);
       transform-origin: left top;
       transition: transform 0.3s;
+      border-radius: 2px;
     }
     .contents:hover {
       color: $black;
