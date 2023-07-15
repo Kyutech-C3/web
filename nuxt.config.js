@@ -158,6 +158,7 @@ export default {
     CTF_CDA_ACCESS_TOKEN: process.env.CTF_CDA_ACCESS_TOKEN,
     BASE_URL: process.env.BASE_URL,
     GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID,
+    TOYBOX_API_BASE_URL: process.env.TOYBOX_API_BASE_URL,
   },
 
   router: {
