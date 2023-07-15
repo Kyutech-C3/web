@@ -2,6 +2,11 @@
   <div>
     <Header
       ref="header"
+      :style="
+        showHeader
+          ? 'transform: translate(-50%, 0);'
+          : 'transform: translate(-50%, calc(var(--header-height) * -2));'
+      "
       @masked-screen="isMaskedScreen = !isMaskedScreen"
       @change-header-height="handleHeaderHeightResize()"
     />
@@ -19,10 +24,26 @@ export default {
     return {
       isMaskedScreen: false,
       headerHeight: 0,
+      oldScrollY: 0,
+      showHeader: true,
     }
+  },
+  watch: {
+    isMaskedScreen() {
+      if (this.isMaskedScreen) {
+        document.addEventListener('touchmove', this.noScroll, {
+          passive: false,
+        })
+        document.addEventListener('wheel', this.noScroll, { passive: false })
+      } else {
+        document.removeEventListener('touchmove', this.noScroll)
+        document.removeEventListener('wheel', this.noScroll)
+      }
+    },
   },
   mounted() {
     this.handleHeaderHeightResize()
+    window.addEventListener('scroll', this.scrollEventHandler)
   },
   methods: {
     closeHeader() {
@@ -31,8 +52,26 @@ export default {
     },
     handleHeaderHeightResize() {
       if (this.$refs.header) {
-        this.headerHeight = this.$refs.header.headerHeight
+        const headerContainer =
+          this.$refs.header.$el.getElementsByClassName('header-container')
+        if (headerContainer.length === 1) {
+          this.headerHeight = headerContainer[0].offsetHeight
+        }
       }
+    },
+    scrollEventHandler() {
+      const scrollY = window.scrollY
+      if (scrollY > this.oldScrollY) {
+        if (scrollY > this.headerHeight * 3) {
+          this.showHeader = false
+        }
+      } else {
+        this.showHeader = true
+      }
+      this.oldScrollY = scrollY
+    },
+    noScroll(e) {
+      e.preventDefault()
     },
   },
 }
@@ -53,10 +92,30 @@ body {
   overflow-x: hidden;
   width: 100vw;
   margin: 0;
-  --header-max-height: 90px;
+  --header-max-height: 80px;
   --header-height: 12vw;
   --header-min-height: 50px;
   --header-top: max(min(2vw, 20px), 10px);
+}
+
+h1 {
+  font-size: $h1-font-size;
+}
+
+h2 {
+  font-size: $h2-font-size;
+}
+
+h3 {
+  font-size: $h3-font-size;
+}
+
+h4 {
+  font-size: $h4-font-size;
+}
+
+h5 {
+  font-size: $h5-font-size;
 }
 
 .page {
