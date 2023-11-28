@@ -117,7 +117,7 @@ export default {
       }
       const hourDiff = Math.floor(now.diff(date, 'hour'))
       if (hourDiff < 6) {
-        return hourDiff + ' 時前'
+        return hourDiff + ' 時間前'
       }
 
       if (now.format('YYYY') !== this.$dayjs(date).format('YYYY')) {
