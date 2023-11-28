@@ -24,6 +24,7 @@ import TopCommunityLink from '~/components/top/TopCommunityLink.vue'
 import TopWork from '~/components/top/TopWork.vue'
 
 import sdkClient from '@/plugins/contentful.js'
+import { formatToybox } from '~/utils/toybox'
 
 export default {
   components: {
@@ -51,44 +52,58 @@ export default {
           limit: 5,
         }),
         await axios.get(`${process.env.TOYBOX_API_BASE_URL}/works?limit=30`),
-      ]).then(([c3Introduction, eachCommunity, news, blog, toyboxWork]) => {
-        const communities = []
-        const selectNews = []
-        for (let i = 0; i < eachCommunity.items.length; i++) {
-          communities.push({
-            id: eachCommunity.items[i].sys.id,
-            field: {
-              name: eachCommunity.items[i].fields.name,
-              domain: eachCommunity.items[i].fields.domain,
-              image: eachCommunity.items[i].fields.image.fields.file.url,
-              simage: eachCommunity.items[i].fields.smallimg.fields.file.url,
-            },
+        await axios.get(`${process.env.TOYBOX_API_BASE_URL}/blogs?limit=5`),
+      ]).then(
+        ([
+          c3Introduction,
+          eachCommunity,
+          news,
+          blog,
+          toyboxWork,
+          toyboxblog,
+        ]) => {
+          const communities = []
+          const selectNews = []
+          for (let i = 0; i < eachCommunity.items.length; i++) {
+            communities.push({
+              id: eachCommunity.items[i].sys.id,
+              field: {
+                name: eachCommunity.items[i].fields.name,
+                domain: eachCommunity.items[i].fields.domain,
+                image: eachCommunity.items[i].fields.image.fields.file.url,
+                simage: eachCommunity.items[i].fields.smallimg.fields.file.url,
+              },
+            })
+          }
+          for (let i = 0; i < news.items.length; i++) {
+            if (news.items[i].fields.important) {
+              selectNews.push(news.items[i])
+            }
+          }
+          const latestNews = news.items.slice(0, 5)
+
+          const works = toyboxWork.data.works.map((work) => {
+            return {
+              id: work.id,
+              title: work.title,
+              thumbnail: work.thumbnail.url,
+            }
           })
-        }
-        for (let i = 0; i < news.items.length; i++) {
-          if (news.items[i].fields.important) {
-            selectNews.push(news.items[i])
-          }
-        }
-        const latestNews = news.items.slice(0, 5)
 
-        const works = toyboxWork.data.works.map((work) => {
           return {
-            id: work.id,
-            title: work.title,
-            thumbnail: work.thumbnail.url,
+            c3Introduction:
+              c3Introduction.items[0].fields.summaryOfIntroduction,
+            eachCommunity: communities,
+            news: latestNews,
+            importantNews: selectNews,
+            blog: toyboxblog.data.blogs
+              .map(formatToybox)
+              .concat(blog.items)
+              .slice(0, 5),
+            works,
           }
-        })
-
-        return {
-          c3Introduction: c3Introduction.items[0].fields.summaryOfIntroduction,
-          eachCommunity: communities,
-          news: latestNews,
-          importantNews: selectNews,
-          blog: blog.items,
-          works,
         }
-      })
+      )
     } catch (e) {
       error({
         errorCode: e.errorCode,
