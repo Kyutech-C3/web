@@ -11,6 +11,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 import CardList from '~/components/card/CardList.vue'
 import BaseBreadcrumbs from '~/components/commons/BaseBreadcrumbs.vue'
 
@@ -34,9 +36,57 @@ export default {
           content_type: 'blog',
           order: '-sys.createdAt',
         }),
-      ]).then(([blog]) => {
+        await axios.get(`${process.env.TOYBOX_API_BASE_URL}/blogs`),
+      ]).then(([ctfResult, toyboxResult]) => {
+        const blogs = toyboxResult.data.blogs.map((blog) => {
+          const tags = blog.tags.map((tag) => {
+            return {
+              fields: {
+                name: tag.name,
+              },
+              sys: {
+                id: tag.id,
+              },
+            }
+          })
+          return {
+            fields: {
+              body: blog.body_text,
+              digest: blog.body_text,
+              tags,
+              thumbnail: {
+                fields: {
+                  file: {
+                    url: blog.thumbnail.url,
+                  },
+                },
+              },
+              title: blog.title,
+              user: [
+                {
+                  fields: {
+                    name: blog.user.name,
+                    icon: {
+                      fields: {
+                        file: {
+                          url: blog.user.avatar_url,
+                        },
+                      },
+                    },
+                  },
+                  sys: {
+                    id: blog.user.id,
+                  },
+                },
+              ],
+            },
+            sys: {
+              id: blog.id,
+            },
+          }
+        })
         return {
-          entry_list: blog.items,
+          entry_list: blogs.concat(ctfResult.items),
         }
       })
     } catch (e) {
