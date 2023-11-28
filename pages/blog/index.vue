@@ -18,6 +18,8 @@ import BaseBreadcrumbs from '~/components/commons/BaseBreadcrumbs.vue'
 
 import sdkClient from '@/plugins/contentful.js'
 
+import { formatToybox } from '~/utils/toybox'
+
 export default {
   components: {
     CardList,
@@ -38,53 +40,7 @@ export default {
         }),
         await axios.get(`${process.env.TOYBOX_API_BASE_URL}/blogs`),
       ]).then(([ctfResult, toyboxResult]) => {
-        const blogs = toyboxResult.data.blogs.map((blog) => {
-          const tags = blog.tags.map((tag) => {
-            return {
-              fields: {
-                name: tag.name,
-              },
-              sys: {
-                id: tag.id,
-              },
-            }
-          })
-          return {
-            fields: {
-              body: blog.body_text,
-              digest: blog.body_text,
-              tags,
-              thumbnail: {
-                fields: {
-                  file: {
-                    url: blog.thumbnail.url,
-                  },
-                },
-              },
-              title: blog.title,
-              user: [
-                {
-                  fields: {
-                    name: blog.user.name,
-                    icon: {
-                      fields: {
-                        file: {
-                          url: blog.user.avatar_url,
-                        },
-                      },
-                    },
-                  },
-                  sys: {
-                    id: blog.user.id,
-                  },
-                },
-              ],
-            },
-            sys: {
-              id: blog.id,
-            },
-          }
-        })
+        const blogs = toyboxResult.data.blogs.map(formatToybox)
         return {
           entry_list: blogs.concat(ctfResult.items),
         }
