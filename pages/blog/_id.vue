@@ -17,10 +17,12 @@
 
 <script>
 import Vue from 'vue'
+import axios from 'axios'
 
 import EntryDetail from '~/components/EntryDetail.vue'
 
 import sdkClient from '~/plugins/contentful.js'
+import { formatToybox } from '~/utils/toybox'
 
 export default Vue.extend({
   components: {
@@ -30,11 +32,13 @@ export default Vue.extend({
     if (payload) {
       return { blog_item: payload }
     }
+
     try {
       return Promise.all([
         await sdkClient.getEntry(params.id),
         await sdkClient.getEntries({ content_type: 'blog', limit: 3 }),
-      ]).then(([blog, recentBlog]) => {
+        await axios.get(`${process.env.TOYBOX_API_BASE_URL}/blogs?limit=3`),
+      ]).then(([blog, recentBlog, recentToyboxBlog]) => {
         store.commit('breadcrumbs/setBreadcrumbs', {
           breadcrumbs: [
             { url: '/', text: 'ホーム' },
@@ -45,16 +49,50 @@ export default Vue.extend({
             },
           ],
         })
+        const formattedRecentToyboxBlogs =
+          recentToyboxBlog.data.blogs.map(formatToybox)
         return {
           blog_item: blog,
-          recent_blog: recentBlog.items,
+          recent_blog: formattedRecentToyboxBlogs
+            .concat(recentBlog.items)
+            .slice(0, 3),
         }
       })
     } catch (e) {
-      error({
-        errorCode: e.errorCode,
-        message: e.message,
-      })
+      try {
+        return Promise.all([
+          await axios.get(
+            `${process.env.TOYBOX_API_BASE_URL}/blogs/${params.id}`
+          ),
+          await sdkClient.getEntries({ content_type: 'blog', limit: 3 }),
+          await axios.get(`${process.env.TOYBOX_API_BASE_URL}/blogs?limit=3`),
+        ]).then(([blog, recentBlog, recentToyboxBlog]) => {
+          store.commit('breadcrumbs/setBreadcrumbs', {
+            breadcrumbs: [
+              { url: '/', text: 'ホーム' },
+              { url: '/blog', text: 'ブログ一覧' },
+              {
+                url: `/blog/${params.id}`,
+                text: blog.data.title,
+              },
+            ],
+          })
+          const formattedRecentToyboxBlogs =
+            recentToyboxBlog.data.blogs.map(formatToybox)
+
+          return {
+            blog_item: formatToybox(blog.data),
+            recent_blog: formattedRecentToyboxBlogs
+              .concat(recentBlog.items)
+              .slice(0, 3),
+          }
+        })
+      } catch (e) {
+        error({
+          errorCode: e.errorCode,
+          message: e.message,
+        })
+      }
     }
   },
   data() {
@@ -114,5 +152,12 @@ export default Vue.extend({
 .blog {
   max-width: 1920px;
   margin: 0 auto;
+}
+</style>
+<style>
+.markdown video {
+  display: block;
+  margin: auto;
+  width: 60vw;
 }
 </style>

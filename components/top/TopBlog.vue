@@ -5,7 +5,7 @@
       <hooper :settings="hooperSettings">
         <slide v-for="(content, idx) in blog" :key="idx">
           <carousel-item
-            :link-url="`/news/${content.sys.id}`"
+            :link-url="`/blog/${content.sys.id}`"
             :image-url="content.fields.thumbnail.fields.file.url"
             :title="content.fields.title"
             :tags="content.fields.tags"

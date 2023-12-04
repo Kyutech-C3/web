@@ -11,10 +11,14 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 import CardList from '~/components/card/CardList.vue'
 import BaseBreadcrumbs from '~/components/commons/BaseBreadcrumbs.vue'
 
 import sdkClient from '@/plugins/contentful.js'
+
+import { formatToybox } from '~/utils/toybox'
 
 export default {
   components: {
@@ -34,9 +38,11 @@ export default {
           content_type: 'blog',
           order: '-sys.createdAt',
         }),
-      ]).then(([blog]) => {
+        await axios.get(`${process.env.TOYBOX_API_BASE_URL}/blogs`),
+      ]).then(([ctfResult, toyboxResult]) => {
+        const blogs = toyboxResult.data.blogs.map(formatToybox)
         return {
-          entry_list: blog.items,
+          entry_list: blogs.concat(ctfResult.items),
         }
       })
     } catch (e) {
