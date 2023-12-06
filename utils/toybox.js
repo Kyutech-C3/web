@@ -9,6 +9,17 @@ export function formatToybox(blog) {
       },
     }
   })
+  const createdAt = blog.published_at
+    ? new Date(blog.created_at) < new Date(blog.published_at)
+      ? blog.published_at
+      : blog.created_at
+    : blog.created_at
+  const updatedAt = blog.published_at
+    ? new Date(blog.updated_at) < new Date(blog.published_at)
+      ? blog.published_at
+      : blog.updated_at
+    : blog.updated_at
+
   return {
     fields: {
       body: blog.body_text,
@@ -42,8 +53,8 @@ export function formatToybox(blog) {
     },
     sys: {
       id: blog.id,
-      createdAt: blog.created_at,
-      updatedAt: blog.updated_at,
+      createdAt,
+      updatedAt,
     },
   }
 }
