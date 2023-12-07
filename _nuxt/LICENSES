@@ -1,3 +1,10 @@
+/**
+  * Hopper 0.3.4
+  * (c) 2019
+    * @license MIT
+    */
+
+
 /*!
  * Vue.js v2.7.14
  * (c) 2014-2022 Evan You
@@ -9,6 +16,16 @@
  * (c) 2021 Evan You
  * @license MIT
  */
+
+
+/*!
+ * The buffer module from node.js, for the browser.
+ *
+ * @author   Feross Aboukhadijeh <http://feross.org>
+ * @license  MIT
+ */
+
+/*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
 
 
 /*!
@@ -33,20 +50,3 @@
  * @namespace
  * @public
  */
-
-
-/*!
- * The buffer module from node.js, for the browser.
- *
- * @author   Feross Aboukhadijeh <http://feross.org>
- * @license  MIT
- */
-
-/*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
-
-
-/**
-  * Hopper 0.3.4
-  * (c) 2019
-    * @license MIT
-    */
