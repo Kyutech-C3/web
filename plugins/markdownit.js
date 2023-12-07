@@ -2,6 +2,7 @@ import MarkdownIt from 'markdown-it'
 import 'katex/dist/katex.min.css'
 import katex from 'katex'
 import tm from 'markdown-it-texmath'
+import anchor from 'markdown-it-anchor'
 
 export default ({ app }, inject) => {
   const md = new MarkdownIt({
@@ -30,6 +31,7 @@ export default ({ app }, inject) => {
     delimiters: 'dollars',
     katexOptions: { macros: { '\\RR': '\\mathbb{R}' } },
   })
+  md.use(anchor, {})
 
   inject('md', md)
 }

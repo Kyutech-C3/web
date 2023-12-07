@@ -21,7 +21,9 @@ export default {
   },
   methods: {
     getHTML() {
-      return this.$md.render(this.markdownText)
+      const regexp = /\[(.*)\]\(#(.*)\)/g
+      const replaceText = `[$1](${location.pathname}#$2)`
+      return this.$md.render(this.markdownText.replaceAll(regexp, replaceText))
     },
   },
 }

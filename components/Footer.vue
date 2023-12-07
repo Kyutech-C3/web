@@ -58,7 +58,7 @@
         <div class="copyright">© 2021 - {{ date }} Composite Computer Club</div>
       </div>
       <div class="right-container">
-        <a id="return-top" href="#">
+        <nuxt-link id="return-top" to="#">
           <div>
             <font-awesome-icon
               :icon="['fas', 'angle-up']"
@@ -66,7 +66,7 @@
             /><br />
             <div>PAGE TOP</div>
           </div>
-        </a>
+        </nuxt-link>
       </div>
     </div>
   </div>
