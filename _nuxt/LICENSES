@@ -1,10 +1,3 @@
-/**
-  * Hopper 0.3.4
-  * (c) 2019
-    * @license MIT
-    */
-
-
 /*!
  * Vue.js v2.7.14
  * (c) 2014-2022 Evan You
@@ -40,6 +33,8 @@
  * Released under the MIT License.
  */
 
+/*! https://mths.be/he v1.2.0 by @mathias | MIT license */
+
 /*! https://mths.be/punycode v1.4.1 by @mathias */
 
 /**
@@ -50,3 +45,10 @@
  * @namespace
  * @public
  */
+
+
+/**
+  * Hopper 0.3.4
+  * (c) 2019
+    * @license MIT
+    */
