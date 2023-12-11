@@ -3,6 +3,7 @@ import 'katex/dist/katex.min.css'
 import katex from 'katex'
 import tm from 'markdown-it-texmath'
 import anchor from 'markdown-it-anchor'
+import namedCodeBlocks from 'markdown-it-named-code-blocks'
 
 export default ({ app }, inject) => {
   const md = new MarkdownIt({
@@ -32,6 +33,7 @@ export default ({ app }, inject) => {
     katexOptions: { macros: { '\\RR': '\\mathbb{R}' } },
   })
   md.use(anchor, {})
+  md.use(namedCodeBlocks, {})
 
   inject('md', md)
 }

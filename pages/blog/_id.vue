@@ -154,10 +154,26 @@ export default Vue.extend({
   margin: 0 auto;
 }
 </style>
-<style>
+<style lang="scss">
 .markdown video {
   display: block;
   margin: auto;
   width: 60vw;
+}
+
+.named-fence-block.named-fence-block {
+  position: relative;
+  padding-top: 2em;
+}
+
+.named-fence-filename {
+  position: absolute;
+  top: 0;
+  left: 1em;
+  padding: 0 6px;
+  color: $black;
+  background-color: $light-gray;
+  border-radius: 0 0 4px 4px;
+  opacity: 0.8;
 }
 </style>
