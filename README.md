@@ -2,45 +2,6 @@
 
 公式サイトのリニューアル版
 
-# 役割分担
-* <s>Header：ふぃる先輩</s>
-![フロー1 - Google Chrome 9_19_2021 2_20_13 AM (2)](https://user-images.githubusercontent.com/65708479/133897178-74b9ceb9-452e-495b-aff2-b594e68e5d49.png)
-* <s>Footer：Kizuku(担当：ふぃる先輩)</s>  
-![フロー1 - Google Chrome 2021_09_06 22_49_23 (2)](https://user-images.githubusercontent.com/65708479/132235192-371ce95f-e4ff-4b40-9d66-a11f147e5cbb.png)
-* トップページ(pages/index.vue)：シモ
-    components/
-    * <s>TopTop.vue：ko_suke(担当：ふぃる先輩)</s>
-    * ![フロー1 - Google Chrome 2021_09_06 22_48_52 (2)](https://user-images.githubusercontent.com/65708479/132235269-f2a5018a-9a65-4b82-b750-2bc11cafbcd8.png)
-    * <s>TopAboutC3.vue：Kizuku(担当：鳩)</s>
-    * ![フロー1 - Google Chrome 2021_09_06 22_48_58 (2)](https://user-images.githubusercontent.com/65708479/132235320-764faf29-e38c-42ee-bfb2-25c2a0258c90.png)
-    * <s>TopAboutCommunity.vue：まつり(担当：シモ)</s>
-    * ![フロー1 - Google Chrome 2021_09_06 22_49_07 (2)](https://user-images.githubusercontent.com/65708479/132235334-e68e5503-8836-4bdb-a0ab-f48047816881.png)
-    * <s>TopCommunityLink.vue：オンコン(担当：シモ)</s>
-    * ![フロー1 - Google Chrome 2021_09_06 22_49_12 (2)](https://user-images.githubusercontent.com/65708479/132235359-92d1ccb0-e9f9-444a-b08e-6997dd8f6b71.png)
-    * <s>TopBlog.vue：シモ(担当：鳩)</s>
-    * ![フロー1 - Google Chrome 2021_09_06 22_49_20 (2)](https://user-images.githubusercontent.com/65708479/132235398-2bbd68bd-ba6d-4686-89bc-90c06dc260f5.png)
-* <s>C3について(pages/about/index.vue)  ：シモ</s>
-    components/
-    * 必要に応じて作成
-* お知らせ一覧(pages/news/index.vue)  ：まつり
-    components/
-    * 必要に応じて作成
-* お知らせ詳細(pages/news/\_id.vue) ：ko_suke
-    components/
-    * 必要に応じて作成
-* <s>各コミュニティーページ(pages/community/\_id.vue) ：Kizuku</s>  
-    components/  
-    * 必要に応じて作成
-* <s>ブログ一覧(pages/blog/index.vue)  ：シモ</s>
-    components/
-    * 必要に応じて作成
-* <s>ブログ詳細(pages/blog/\_id.vue)   ：シモ</s>   
-    components/
-    * 必要に応じて作成
-* <s>お問い合わせ(pages/contact/index.vue) ：ko_suke</s>  
-    components/
-    * 必要に応じて作成
-
 # デザイン
 
 ## デザイン
