@@ -40,9 +40,15 @@ export default {
         }),
         await axios.get(`${process.env.TOYBOX_API_BASE_URL}/blogs`),
       ]).then(([ctfResult, toyboxResult]) => {
-        const blogs = toyboxResult.data.blogs.map(formatToybox)
+        const toyboxBlogs = toyboxResult.data.blogs.map(formatToybox)
+        const ctfBlogs = ctfResult.items
+        const entry_list = toyboxBlogs.concat(ctfBlogs).sort((a, b) => {
+          const createdAtA = new Date(a?.sys?.createdAt || 0)
+          const createdAtB = new Date(b?.sys?.createdAt || 0)
+          return createdAtB - createdAtA
+        })
         return {
-          entry_list: blogs.concat(ctfResult.items),
+          entry_list,
         }
       })
     } catch (e) {

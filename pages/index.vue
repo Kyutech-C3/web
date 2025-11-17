@@ -90,16 +90,23 @@ export default {
             }
           })
 
+          const blogs = toyboxblog.data.blogs
+            .map(formatToybox)
+            .concat(blog.items)
+            .sort((a, b) => {
+              const createdAtA = new Date(a?.sys?.createdAt || 0)
+              const createdAtB = new Date(b?.sys?.createdAt || 0)
+              return createdAtB - createdAtA
+            })
+            .slice(0, 5)
+
           return {
             c3Introduction:
               c3Introduction.items[0].fields.summaryOfIntroduction,
             eachCommunity: communities,
             news: latestNews,
             importantNews: selectNews,
-            blog: toyboxblog.data.blogs
-              .map(formatToybox)
-              .concat(blog.items)
-              .slice(0, 5),
+            blog: blogs,
             works,
           }
         }
