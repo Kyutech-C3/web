@@ -2,10 +2,12 @@
   <div class="blog">
     <base-breadcrumbs />
     <div class="title">ブログ</div>
-    <card-list
-      :card-items="entry_list"
-      :entry-type="'blog'"
-      class="blog-list"
+    <card-list :card-items="entryList" :entry-type="'blog'" class="blog-list" />
+    <base-pagination
+      v-if="totalPages > 1"
+      :current-page="currentPage"
+      :total-pages="totalPages"
+      @page-change="onPageChange"
     />
   </div>
 </template>
@@ -15,18 +17,25 @@ import axios from 'axios'
 
 import CardList from '~/components/card/CardList.vue'
 import BaseBreadcrumbs from '~/components/commons/BaseBreadcrumbs.vue'
+import BasePagination from '~/components/commons/BasePagination.vue'
 
 import sdkClient from '@/plugins/contentful.js'
 
 import { formatToybox } from '~/utils/toybox'
 
+const ITEMS_PER_PAGE = 10
+
 export default {
   components: {
     CardList,
     BaseBreadcrumbs,
+    BasePagination,
   },
-  async asyncData({ store, error }) {
+  async asyncData({ store, error, query }) {
     try {
+      const currentPage = parseInt(query.page) || 1
+      const limit = ITEMS_PER_PAGE
+
       await store.commit('breadcrumbs/setBreadcrumbs', {
         breadcrumbs: [
           { url: '/', text: 'ホーム' },
@@ -38,17 +47,28 @@ export default {
           content_type: 'blog',
           order: '-sys.createdAt',
         }),
-        await axios.get(`${process.env.TOYBOX_API_BASE_URL}/blogs`),
+        await axios.get(`${process.env.TOYBOX_API_BASE_URL}/blogs`, {
+          params: {
+            limit,
+            page: currentPage,
+          },
+        }),
       ]).then(([ctfResult, toyboxResult]) => {
         const toyboxBlogs = toyboxResult.data.blogs.map(formatToybox)
+        const toyboxTotal =
+          toyboxResult.data.total || toyboxResult.data.blogs.length
         const ctfBlogs = ctfResult.items
-        const entry_list = toyboxBlogs.concat(ctfBlogs).sort((a, b) => {
+        const entryList = toyboxBlogs.concat(ctfBlogs).sort((a, b) => {
           const createdAtA = new Date(a?.sys?.createdAt || 0)
           const createdAtB = new Date(b?.sys?.createdAt || 0)
           return createdAtB - createdAtA
         })
+        const totalItems = toyboxTotal + ctfResult.total
+        const totalPages = Math.ceil(totalItems / limit)
         return {
-          entry_list,
+          entryList,
+          currentPage,
+          totalPages,
         }
       })
     } catch (e) {
@@ -62,6 +82,8 @@ export default {
     return {
       title: 'ブログ - 一覧',
       description: `${this.title} - ブログ一覧を表示するページです。`,
+      currentPage: 1,
+      totalPages: 1,
     }
   },
   head() {
@@ -96,6 +118,15 @@ export default {
         },
       ],
     }
+  },
+  watchQuery: ['page'],
+  methods: {
+    onPageChange(page) {
+      this.$router.push({
+        path: '/blog',
+        query: { page },
+      })
+    },
   },
 }
 </script>
