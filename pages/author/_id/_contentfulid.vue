@@ -49,13 +49,14 @@ export default Vue.extend({
     if (payload) {
       return { user: payload }
     }
+    const { id, contentfulid } = params
     try {
       return Promise.all([
-        await sdkClient.getEntry(params.id),
+        await sdkClient.getEntry(contentfulid),
         await sdkClient.getEntries({
           content_type: 'blog',
           order: '-sys.createdAt',
-          'fields.user.sys.id': params.id,
+          'fields.user.sys.id': contentfulid,
         }),
       ]).then(([user, userBlog]) => {
         store.commit('breadcrumbs/setBreadcrumbs', {
@@ -63,7 +64,7 @@ export default Vue.extend({
             { url: '/', text: 'ホーム' },
             { url: '/author', text: 'ユーザー一覧' },
             {
-              url: `/author/${params.id}`,
+              url: `/author/${id}/${contentfulid}`,
               text: user.fields.name,
             },
           ],
@@ -125,7 +126,7 @@ export default Vue.extend({
         {
           hid: 'og:url',
           property: 'og:url',
-          content: `${process.env.BASE_URL}author/${this.$route.params.id}`,
+          content: `${process.env.BASE_URL}author/${this.$route.params.id}/${this.$route.params.contentfulid}`,
         },
         {
           hid: 'og:title',
@@ -148,7 +149,7 @@ export default Vue.extend({
         {
           hid: 'canonical',
           rel: 'canonical',
-          href: `${process.env.BASE_URL}author/${this.$route.params.id}`,
+          href: `${process.env.BASE_URL}author/${this.$route.params.id}/${this.$route.params.contentfulid}`,
         },
       ],
     }

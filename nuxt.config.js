@@ -144,7 +144,9 @@ export default {
         blog.items.map((item) => urls.push(`/blog/${item.sys.id}`))
         news.items.map((item) => urls.push(`/news/${item.sys.id}`))
         community.items.map((item) => urls.push(`/community/${item.sys.id}`))
-        user.items.map((item) => urls.push(`/author/${item.sys.id}`))
+        user.items.map((item) =>
+          urls.push(`/author/${item.sys.id}/${item.sys.id}`)
+        )
         return urls
       })
     },
@@ -195,7 +197,10 @@ export default {
           urls.push({ route: `/community/${item.sys.id}`, payload: item })
         )
         user.items.map((item) =>
-          urls.push({ route: `/author/${item.sys.id}`, payload: item })
+          urls.push({
+            route: `/author/${item.sys.id}/${item.sys.id}`,
+            payload: item,
+          })
         )
         return urls
       })

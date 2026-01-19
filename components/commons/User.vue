@@ -1,6 +1,6 @@
 <template>
   <nuxt-link
-    :to="`/author/${id}`"
+    :to="`/author/${id}/${resolvedAnotherId}`"
     class="user"
     :class="[`${color}-style`, { shadow: shadow }]"
   >
@@ -42,6 +42,13 @@ export default {
         return true
       },
     },
+    contentfulId: {
+      type: String,
+      required: false,
+      default() {
+        return ''
+      },
+    },
     color: {
       type: String,
       required: true,
@@ -49,6 +56,11 @@ export default {
     shadow: {
       type: Boolean,
       required: true,
+    },
+  },
+  computed: {
+    resolvedAnotherId() {
+      return this.contentfulId || this.id
     },
   },
 }
