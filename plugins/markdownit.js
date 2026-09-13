@@ -3,7 +3,7 @@ import 'katex/dist/katex.min.css'
 import katex from 'katex'
 import tm from 'markdown-it-texmath'
 import anchor from 'markdown-it-anchor'
-import namedCodeBlocks from 'markdown-it-named-code-blocks'
+import namedCodeBlocks from './namedcodeblocks'
 
 export default ({ app }, inject) => {
   const md = new MarkdownIt({
