@@ -53,38 +53,43 @@ export default function namedCodeBlocks(md) {
 
   md.renderer.rules.fence = (tokens, idx, options, env, self) => {
     const token = tokens[idx]
-    const originalInfo = token.info
-    const parsed = parseFenceInfo(originalInfo)
+    const parsed = parseFenceInfo(token.info)
 
     if (!parsed.langName || !parsed.fileName) {
       return defaultFenceRenderer(tokens, idx, options, env, self)
     }
 
-    // デフォルトレンダラーへ渡す情報からファイル名部分を除去する。
-    token.info = parsed.langAttrs
-      ? `${parsed.langName} ${parsed.langAttrs}`
-      : parsed.langName
+    const highlighted = options.highlight
+      ? options.highlight(token.content, parsed.langName, parsed.langAttrs) ||
+        md.utils.escapeHtml(token.content)
+      : md.utils.escapeHtml(token.content)
 
-    try {
-      const codeBlockHtml = defaultFenceRenderer(
-        tokens,
-        idx,
-        options,
-        env,
-        self
-      )
+    const safeFileName = md.utils.escapeHtml(parsed.fileName)
+    const filenameDiv = `<div class="${FILE_NAME_CLASS}">${safeFileName}</div>`
 
-      const safeFileName = md.utils.escapeHtml(parsed.fileName)
-
-      return [
-        `<div class="${BLOCK_CLASS}">`,
-        `<div class="${FILE_NAME_CLASS}">${safeFileName}</div>`,
-        codeBlockHtml,
-        '</div>',
-        '',
-      ].join('\n')
-    } finally {
-      token.info = originalInfo
+    // カスタムハイライタが完結した<pre>ブロックを返すケース(markdown-it本体と
+    // 同じ判定)は中身の構造を把握できないため、外側divで囲むだけに留める。
+    if (highlighted.indexOf('<pre') === 0) {
+      return `<div class="${BLOCK_CLASS}">\n${filenameDiv}\n${highlighted}\n</div>\n`
     }
+
+    const classAttrIndex = token.attrIndex('class')
+    const tmpAttrs = token.attrs ? token.attrs.slice() : []
+    const langClass = options.langPrefix + parsed.langName
+
+    if (classAttrIndex < 0) {
+      tmpAttrs.push(['class', langClass])
+    } else {
+      tmpAttrs[classAttrIndex] = tmpAttrs[classAttrIndex].slice()
+      tmpAttrs[classAttrIndex][1] += ` ${langClass}`
+    }
+
+    const codeAttrs = self.renderAttrs({ attrs: tmpAttrs })
+
+    return (
+      `<pre class="${BLOCK_CLASS}"><code${codeAttrs}>` +
+      highlighted +
+      `</code>${filenameDiv}</pre>\n`
+    )
   }
 }
