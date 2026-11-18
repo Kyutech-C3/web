@@ -25,6 +25,7 @@ import TopWork from '~/components/top/TopWork.vue'
 
 import sdkClient from '@/plugins/contentful.js'
 import { formatToybox } from '~/utils/toybox'
+import { getC3Introduction, getCommunities } from '~/utils/contents'
 
 export default {
   components: {
@@ -37,13 +38,8 @@ export default {
   async asyncData({ error }) {
     try {
       return Promise.all([
-        await sdkClient.getEntries({
-          content_type: 'c3Introduction',
-        }),
-        await sdkClient.getEntries({
-          content_type: 'eachCommunity',
-          order: 'fields.name',
-        }),
+        await getC3Introduction(),
+        await getCommunities(),
         await sdkClient.getEntries({
           content_type: 'news',
         }),
@@ -62,19 +58,16 @@ export default {
           toyboxWork,
           toyboxblog,
         ]) => {
-          const communities = []
+          const communities = eachCommunity.map((community) => ({
+            id: community.id,
+            field: {
+              name: community.name,
+              domain: community.domain,
+              image: community.image,
+              simage: community.smallimg,
+            },
+          }))
           const selectNews = []
-          for (let i = 0; i < eachCommunity.items.length; i++) {
-            communities.push({
-              id: eachCommunity.items[i].sys.id,
-              field: {
-                name: eachCommunity.items[i].fields.name,
-                domain: eachCommunity.items[i].fields.domain,
-                image: eachCommunity.items[i].fields.image.fields.file.url,
-                simage: eachCommunity.items[i].fields.smallimg.fields.file.url,
-              },
-            })
-          }
           for (let i = 0; i < news.items.length; i++) {
             if (news.items[i].fields.important) {
               selectNews.push(news.items[i])
@@ -101,8 +94,7 @@ export default {
             .slice(0, 5)
 
           return {
-            c3Introduction:
-              c3Introduction.items[0].fields.summaryOfIntroduction,
+            c3Introduction: c3Introduction.summaryOfIntroduction,
             eachCommunity: communities,
             news: latestNews,
             importantNews: selectNews,

@@ -161,27 +161,27 @@ export default {
         [
           {
             text: 'GAME',
-            link: '/community/21AY3pJOP214Gsw1d9u6cD',
+            link: '/community/game',
             icon: 'gamepad',
           },
           {
             text: '3DCG',
-            link: '/community/5Ay58j7CHdYFqKShRbr5tD',
+            link: '/community/3dcg',
             icon: 'cubes',
           },
           {
             text: 'HACK',
-            link: '/community/39t5DaMrgq579LDvqWGKZK',
+            link: '/community/hack',
             icon: 'laptop-code',
           },
           {
             text: '2DCG',
-            link: '/community/1q0aXzj2r1O0pC5soNRQok',
+            link: '/community/2dcg',
             icon: 'palette',
           },
           {
             text: 'MUSIC',
-            link: '/community/mlIRfpRrISVzKc6K0l181',
+            link: '/community/music',
             icon: 'music',
           },
         ],

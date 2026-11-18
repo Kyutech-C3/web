@@ -41,7 +41,7 @@ import MarkdownView from '~/components/commons/MarkdownView.vue'
 import BaseBreadcrumbs from '~/components/commons/BaseBreadcrumbs.vue'
 import WorkLink from '~/components/WorkLink.vue'
 
-import sdkClient from '~/plugins/contentful.js'
+import { getC3Introduction } from '~/utils/contents'
 
 export default {
   components: {
@@ -52,7 +52,7 @@ export default {
   async asyncData({ store, error }) {
     try {
       return Promise.all([
-        await sdkClient.getEntries({ content_type: 'c3Introduction' }),
+        await getC3Introduction(),
         await axios.get(`${process.env.TOYBOX_API_BASE_URL}/works?limit=30`),
       ]).then(([about, toyboxWork]) => {
         store.commit('breadcrumbs/setBreadcrumbs', {
@@ -71,8 +71,8 @@ export default {
         })
 
         return {
-          c3_introduction: about.items[0].fields.introduction,
-          c3_introduction_digest: about.items[0].fields.summaryOfIntroduction,
+          c3_introduction: about.introduction,
+          c3_introduction_digest: about.summaryOfIntroduction,
           works,
         }
       })
@@ -90,27 +90,27 @@ export default {
       areas_data: [
         {
           name: 'GAME',
-          link: '/community/21AY3pJOP214Gsw1d9u6cD',
+          link: '/community/game',
           icon: 'gamepad',
         },
         {
           name: '3DCG',
-          link: '/community/5Ay58j7CHdYFqKShRbr5tD',
+          link: '/community/3dcg',
           icon: 'cubes',
         },
         {
           name: 'HACK',
-          link: '/community/39t5DaMrgq579LDvqWGKZK',
+          link: '/community/hack',
           icon: 'laptop-code',
         },
         {
           name: '2DCG',
-          link: '/community/1q0aXzj2r1O0pC5soNRQok',
+          link: '/community/2dcg',
           icon: 'palette',
         },
         {
           name: 'MUSIC',
-          link: '/community/mlIRfpRrISVzKc6K0l181',
+          link: '/community/music',
           icon: 'music',
         },
       ],
