@@ -1,0 +1,37 @@
+[
+  {
+    "id": "2dcg",
+    "name": "2DCG",
+    "domain": "MediBang Paint / ibisPaint / CLIP STUDIO PAINT / Procreate / adobe fresco / Artstudio Pro / コンセプト / 熊猫绘画 / AfterEfects / AdobePremiaPro / aviutil / etc",
+    "image": "/assets/community/2dcg.webm",
+    "smallimg": "/assets/community/2dcg.mp4"
+  },
+  {
+    "id": "3dcg",
+    "name": "3DCG",
+    "domain": "Blender / XISMO / Fusion360 / Maya / 3dsMax / xismo / Zbrush / RizomUV / GIMP / Houdini / Photoshop / clipStudioPaint / SubstancePainter / After Effects / Unity / Illustrator / SubstanceDesigner / UE",
+    "image": "/assets/community/3dcg.webm",
+    "smallimg": "/assets/community/3dcg.mp4"
+  },
+  {
+    "id": "game",
+    "name": "GAME",
+    "domain": "Unity / Unreal Engine / C# / C++ / 2D / 3D",
+    "image": "/assets/community/game.webm",
+    "smallimg": "/assets/community/game.mp4"
+  },
+  {
+    "id": "hack",
+    "name": "HACK",
+    "domain": "ウェブ / ネイティブアプリ / インフラ / セキュリティー / ボット / ハード/ etc",
+    "image": "/assets/community/hack.webm",
+    "smallimg": "/assets/community/hack.mp4"
+  },
+  {
+    "id": "music",
+    "name": "MUSIC",
+    "domain": "DTM / Cubase 12 pro / Logic Pro X / Garage Band / studio one / Cakewalk / Domino / Medly / MuseScore / Neutrino / Vocaloid / Synthesizer V",
+    "image": "/assets/community/music.webm",
+    "smallimg": "/assets/community/music.mp4"
+  }
+]
