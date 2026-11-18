@@ -2,10 +2,10 @@
   <div class="community">
     <base-breadcrumbs />
     <community-detail
-      :title="community.fields.name"
-      :img-webm="community.fields.image.fields.file.url"
-      :img-mp4="community.fields.smallimg.fields.file.url"
-      :description="community.fields.about"
+      :title="community.name"
+      :img-webm="community.image"
+      :img-mp4="community.smallimg"
+      :description="community.about"
     />
   </div>
 </template>
@@ -14,23 +14,20 @@
 import CommunityDetail from '@/components/CommunityDetail.vue'
 import BaseBreadcrumbs from '~/components/commons/BaseBreadcrumbs.vue'
 
-import sdkClient from '~/plugins/contentful.js'
+import { getCommunity } from '~/utils/contents'
 
 export default {
   components: { CommunityDetail, BaseBreadcrumbs },
-  async asyncData({ params, store, error, payload }) {
-    if (payload) {
-      return { community: payload }
-    }
+  async asyncData({ params, store, error }) {
     try {
-      return Promise.all([await sdkClient.getEntry(params.id)]).then(
+      return Promise.all([await getCommunity(params.id)]).then(
         ([community]) => {
           store.commit('breadcrumbs/setBreadcrumbs', {
             breadcrumbs: [
               { url: '/', text: 'ホーム' },
               {
                 url: `/community/${params.id}`,
-                text: community.fields.name,
+                text: community.name,
               },
             ],
           })
@@ -54,9 +51,9 @@ export default {
     }
   },
   head() {
-    this.title = `${this.community.fields.name}`
-    this.description = `${this.title} - ${this.community.fields.about}`
-    this.img_url = `http:${this.community.fields.image.fields.file.url}`
+    this.title = `${this.community.name}`
+    this.description = `${this.title} - ${this.community.about}`
+    this.img_url = `${process.env.BASE_URL}${this.community.image.slice(1)}`
     return {
       title: this.title,
       htmlAttrs: {

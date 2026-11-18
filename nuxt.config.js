@@ -1,4 +1,5 @@
 import sdkClient from './plugins/contentful.js'
+import communities from './static/contents/communities.json'
 
 export default {
   // Target: https://go.nuxtjs.dev/config-target
@@ -134,16 +135,13 @@ export default {
           content_type: 'news',
         }),
         await sdkClient.getEntries({
-          content_type: 'eachCommunity',
-        }),
-        await sdkClient.getEntries({
           content_type: 'user',
         }),
-      ]).then(([blog, news, community, user]) => {
+      ]).then(([blog, news, user]) => {
         const urls = ['/about']
         blog.items.map((item) => urls.push(`/blog/${item.sys.id}`))
         news.items.map((item) => urls.push(`/news/${item.sys.id}`))
-        community.items.map((item) => urls.push(`/community/${item.sys.id}`))
+        communities.map((item) => urls.push(`/community/${item.id}`))
         user.items.map((item) => urls.push(`/author/${item.sys.id}`))
         return urls
       })
@@ -178,12 +176,9 @@ export default {
           content_type: 'news',
         }),
         await sdkClient.getEntries({
-          content_type: 'eachCommunity',
-        }),
-        await sdkClient.getEntries({
           content_type: 'user',
         }),
-      ]).then(([blog, news, community, user]) => {
+      ]).then(([blog, news, user]) => {
         const urls = []
         blog.items.map((item) =>
           urls.push({ route: `/blog/${item.sys.id}`, payload: item })
@@ -191,9 +186,7 @@ export default {
         news.items.map((item) =>
           urls.push({ route: `/news/${item.sys.id}`, payload: item })
         )
-        community.items.map((item) =>
-          urls.push({ route: `/community/${item.sys.id}`, payload: item })
-        )
+        communities.map((item) => urls.push(`/community/${item.id}`))
         user.items.map((item) =>
           urls.push({ route: `/author/${item.sys.id}`, payload: item })
         )
